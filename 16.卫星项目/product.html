@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./css/normalize.css">
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./css/theme-info.css">
+		<link rel="stylesheet" href="./css/animate.min.css">
+		<title>项目主题驾驶舱</title>
+	</head>
+
+	<body>
+		<div class="theme-info theme-wrapper scale-wrapper">
+			<div id="loading">
+				<div class="loading_img">
+					<!-- 加载动画 -->
+					<img class="loading-ring-o" src="images/loading-ring-o.png">
+					<img class="loading-ring-i" src="images/loading-ring-i.png">
+				</div>
+			</div>
+			<!-- <div class="title-bar">
+				<p class="title-name">数据可视化大屏显示</p>
+				<span id="time"></span>
+				<div class="nav-btn">距离竣工还有 <span> 534 </span> 天</div>
+			</div> -->
+			<div class="content">
+				<div class="c-safe">
+					<div class="chart-item">
+						<p class="charts-title">单位完成率</p>
+						<div class="pj-dn-info tableBox">
+							<table class="area-table tbl-header" border cellspacing="0">
+								<thead>
+									<tr>
+										<td colspan="5">产品任务表</td>
+									</tr>
+									<tr>
+										<td>产品名称</td>
+										<td>任务总数</td>
+										<td>已完成数</td>
+										<td>结束时间</td>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr>
+										<td>产品名称</td>
+										<td>2</td>
+										<td>3</td>
+										<td>3</td>
+									</tr>
+									<tr>
+										<td>产品名称</td>
+										<td>2</td>
+										<td>3</td>
+										<td>3</td>
+									</tr>
+									<tr>
+										<td>产品名称</td>
+										<td>2</td>
+										<td>3</td>
+										<td>3</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="area-table tbl-body" border cellspacing="0">
+								<thead>
+									<tr>
+										<td colspan="5">产品任务表</td>
+									</tr>
+									<tr>
+										<td>产品名称</td>
+										<td>任务总数</td>
+										<td>已完成数</td>
+										<td>结束时间</td>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr>
+										<td>产品名称</td>
+										<td>2</td>
+										<td>3</td>
+										<td>3</td>
+									</tr>
+									<tr>
+										<td>产品名称</td>
+										<td>2</td>
+										<td>3</td>
+										<td>3</td>
+									</tr>
+									<tr>
+										<td>产品名称</td>
+										<td>2</td>
+										<td>3</td>
+										<td>3</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="c-danger-work2">
+					<div class="chart-item">
+						<p class="charts-title">目标类型需求完成率</p>
+						<div class="pj-dn-info">
+							<div class="pie" id="per-charts"></div>
+							<div class="pie" id="taskPer-charts"></div>
+						</div>
+					</div>
+				</div>
+				<div class="c-danger-work3">
+					<div class="chart-item">
+						<p class="charts-title">专项人才</p>
+						<div class="talent">
+						</div>
+					</div>
+				</div>
+				<div class="c-plan">
+					<div class="chart-item">
+						<p class="charts-title">任务数量</p>
+						<div class="pj-dn-info">
+							<div id="taskNum-charts"></div>
+						</div>
+					</div>
+				</div>
+				<div class="c-status">
+					<div class="chart-item">
+						<p class="charts-title">卫星任务表</p>
+						<div class="pj1">
+							<table class="area-table" border cellspacing="0">
+								<thead>
+									<tr>
+										<td colspan="5">卫星任务表</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>卫星名称</td>
+										<td>载荷时长</td>
+										<td>数传时长</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+										<td>3</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+										<td>3</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+										<td>3</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="pj2">
+							<table class="area-table" border cellspacing="0">
+								<thead>
+									<tr>
+										<td colspan="5">数传站任务表</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>数传站名称</td>
+										<td>任务总时长</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="pj2">
+							<table class="area-table" border cellspacing="0">
+								<thead>
+									<tr>
+										<td colspan="5">测控站任务表</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>测控站名称</td>
+										<td>任务总时长</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>2</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/echarts.min.js"></script>
+		<script src="./js/global.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				resetTheme()
+				scalePage()
+				clearLoading()
+				taskNumInit()
+				perInit()
+				talentInit()
+				tableInit()
+				//全屏
+				// $("#fullScreen").on("click",function(){
+				//     fullScreen();
+				// })
+				// //退出全屏
+				// $("#exitFullScreen").on("click",function(){
+				//     exitFullscreen();
+				// })
+			})
+			tableInit = () => {
+				var MyMarhq = '';
+				clearInterval(MyMarhq);
+				$('.tbl-body tbody').empty();
+				$('.tbl-header tbody').empty();
+				var str = '';
+				var Items = [{
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称',
+					num: '20'
+				}, {
+					name: '产品名称12312312',
+					num: '20'
+				}, ]
+				var countNum=Items.length-4
+				$.each(Items, function(i, item) {
+					str = '<tr>' +
+						'<td>' + item.name + '</td>' +
+						'<td>' + item.num + '</td>' +
+						'<td>' + item.num + '</td>' +
+						'<td>' + item.num + '</td>' +
+						'</tr>'
+
+					$('.tbl-body tbody').append(str);
+					$('.tbl-header tbody').append(str);
+				});
+				var index=0
+				if (Items.length > 4) {
+					$('.tbl-body tbody').html($('.tbl-body tbody').html() + $('.tbl-body tbody').html());
+					$('.tbl-body').css('top', '0');
+					var tblTop = 0;
+					var speedhq = 15000; // 数值越大越慢
+					var outerHeight = $('.tbl-body tbody').find("tr").outerHeight();
+					
+					function Marqueehq() {
+						if(countNum>index){
+							$('.tbl-body').animate({
+							"top": -64*(++index)+"px"
+						}, 600)
+						}else{
+							index=0
+							$('.tbl-body').css({
+								"top": -64*(index)+"px"
+							})
+						}
+						//调用获取数据方法
+						taskNumInit()
+						
+						
+						
+						
+					}
+
+					MyMarhq = setInterval(Marqueehq, speedhq);
+
+					// 鼠标移上去取消事件
+					$(".tbl-header tbody").hover(function() {
+						clearInterval(MyMarhq);
+					}, function() {
+						clearInterval(MyMarhq);
+						MyMarhq = setInterval(Marqueehq, speedhq);
+					})
+
+				}
+			}
+			perInit = () => {
+				const ivtOrgData = [{
+					name: '已完成',
+					value: 100,
+					selected: true
+				}, {
+					name: '未完成',
+					value: 80
+				}]
+				let perChart = echarts.init(document.getElementById('per-charts'));
+				let taskPerChart = echarts.init(document.getElementById('taskPer-charts'));
+				ivtOrgOption = {
+					tooltip: {
+						trigger: 'item',
+						formatter: "{b}:{c} ({d}%)"
+					},
+					title: {
+						text: '应急任务',
+						// subtext: '应急任务',
+						textStyle: {
+							color: '#00FFFE',
+							fontSize: 25,
+						},
+						// subtextStyle: {
+						//     fontSize: 20,
+						//     color: '#00FFFE',
+						// },
+						x: '18.5%',
+						y: '45%',
+					},
+					grid: {
+						left: 15,
+						top: 20,
+						bottom: 20,
+						right: 15
+					},
+					legend: {
+						show: true,
+						orient: 'vertical',
+						top: 170,
+						right: 8,
+						textStyle: {
+							color: '#00FFFE',
+							fontSize: 13,
+							fontWeight: 'bold'
+						},
+						formatter: (name) => {
+							let curItem = ivtOrgData.filter(item => item.name === name)
+							return name + '：' + curItem[0].value + '亿'
+						}
+					},
+					series: [{
+						type: "pie",
+						center: ["30%", "50%"],
+						radius: ["32%", "52%"],
+						color: ['#2BC191', '#00AEFF', '#FEC006'],
+						startAngle: 90,
+						selectedMode: 'single',
+						label: {
+							show: false,
+							position: 'center'
+						},
+						labelLine: {
+							show: false
+						},
+						data: ivtOrgData
+					}]
+				}
+				perChart.setOption(ivtOrgOption)
+				taskPerChart.setOption(ivtOrgOption)
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					perChart.resize()
+					taskPerChart.resize()
+				});
+			}
+			talentInit = () => {
+				const talentData = [{
+					id: '1',
+					name: '任务平均时间',
+					value: '146s',
+				}, {
+					id: '2',
+					name: '任务最小完成时间',
+					value: '90s',
+				}, {
+					id: '3',
+					name: '任务最大完成时间',
+					value: '50s',
+				}, {
+					id: '4',
+					name: '任务平均回传时间',
+					value: '50s',
+				}, {
+					id: '5',
+					name: '平均需求响应性',
+					value: '10s',
+				}]
+				let talenDom = ''
+				$.each(talentData, (index, item) => {
+					talenDom += '<div class="timeBox">' +
+						'<div class="label">' + item.name + '</div>' +
+						'<div class="value">' + item.value + '</div>' +
+						'</div>'
+				})
+				$('.talent').append(talenDom)
+			}
+			taskNumInit = () => {
+				let taskNumChart = echarts.init(document.getElementById('taskNum-charts'));
+				taskNumOption = {
+					tooltip: {
+						trigger: 'item',
+						formatter: "{b}: {c}"
+					},
+					xAxis: {
+						type: 'category',
+						data: ['卫星名称', '卫星名称', '卫星名称', '卫星名称'],
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255)'
+							}
+						},
+					},
+					yAxis: {
+						type: 'value',
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255)'
+							}
+						},
+					},
+					series: [{
+						data: [2, 2.8, 3.6, 4.6],
+						type: 'bar',
+						barWidth: '40px',
+						itemStyle: {
+							normal: {
+								color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+									offset: 0,
+									color: '#0ECFF8' // 0% 处的颜色
+								}, {
+									offset: 1,
+									color: '#0570E9' // 100% 处的颜色
+								}], false),
+								shadowBlur: 4,
+							}
+						}
+					}]
+				}
+				taskNumChart.setOption(taskNumOption)
+
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					taskNumChart.resize()
+				});
+			}
+
+
+			clearLoading = () => {
+				//删除加载动画
+				$('#loading').fadeOut(1000)
+				setTimeout(function() {
+					$('#loading').remove()
+				}, 1000);
+			}
+
+			timeInit = () => {
+				setInterval(() => {
+					let date = new Date()
+					$('#time').text(getFormatDate)
+				}, 1000);
+			}
+			getFormatDate = () => {
+				let nowDate = new Date();
+				let year = nowDate.getFullYear();
+				let month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+				let date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+				let hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+				let minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+				let second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+				return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+			}
+			getScale = () => {
+				// 固定好16:9的宽高比，计算出最合适的缩放比，宽高比可根据需要自行更改
+				const width = 1920
+				const height = 1080
+				let ww = window.innerWidth / width
+				let wh = window.innerHeight / height
+				return ww < wh ? ww : wh
+			}
+			// 页面渲染计算比例缩放
+			scalePage = () => {
+				setScale = debounce(() => {
+					// 获取到缩放比，设置它
+					let scale = this.getScale()
+					$('.scale-wrapper').css({
+						'transform': 'scale(' + scale + ') translate(-50%, -50%)',
+						'-webkit-transform': 'scale(' + scale + ') translate(-50%, -50%)'
+					})
+				}, 200)
+				setScale()
+				window.addEventListener('resize', setScale)
+			}
+			// 防抖
+			debounce = (fun, delay) => {
+				let timer
+				return function() {
+					if (timer) {
+						clearTimeout(timer)
+					}
+					timer = setTimeout(fun, delay)
+				}
+			}
+		</script>
+	</body>
+
+</html>

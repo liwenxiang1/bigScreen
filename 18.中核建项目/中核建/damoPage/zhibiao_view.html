@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国核工业建设·指标查看</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid zhibiao-view animated fadeInRight search-content">
+        <!-- <div id="toolbar">
+            <button class="btn btn-default" onclick="add()">新增任务</button>
+        </div> -->
+        <div id="toolbar" class="tabs-wrapper clearfix">
+            <div data-toggle="buttons" id="tabs-group" class="btn-group">
+                <label class="btn btn-sm btn-white active" id="option1">
+                    <input type="radio" name="options">主要经济指标</label>
+                <label class="btn btn-sm btn-white" id="option2">
+                    <input type="radio" name="options">运营管理指标</label>
+                <label class="btn btn-sm btn-white" id="option3">
+                    <input type="radio" name="options">市场开发</label>
+                <label class="btn btn-sm btn-white" id="option4">
+                    <input type="radio" name="options">采购</label>
+                <label class="btn btn-sm btn-white" id="option5">
+                    <input type="radio" name="options">人力</label>
+            </div>
+        </div>
+        <table id="table"></table>
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../js/plugins/layer/layer.js"></script>
+    <script src="../js/hplus.min.js?v=4.0.0"></script>
+    <script type="text/javascript" src="../js/contabs.min.js"></script>
+    <script src="common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // console.log("$('#tabs-width').width()", $('#tabs-width').width())
+            let btnsWidth = 0;
+            let btnsWrapperWidth = $('.tabs-wrapper').outerWidth();
+            let btnsWidthArr = [];
+            $('.tabs-wrapper .btn-group label').each((index, el) => {
+                btnsWidthArr.push($(el).outerWidth())
+                btnsWidth += $(el).outerWidth()
+            })
+            $('#tabs-group').width(btnsWidth)
+            if (btnsWrapperWidth < btnsWidth) {
+                $('.slid-left').css('display', 'block')
+                $('.slid-right').css('display', 'block')
+            }
+            let minWidthBtn = Math.min(...btnsWidthArr)
+            $('.slid-left').click(() => {
+                let leftValue = $('#tabs-group').css('left');
+                leftValue = Number(leftValue.split('px')[0])
+                $('#tabs-group').css('left', leftValue >= 30? 30 : (leftValue + minWidthBtn) + 'px')
+            })
+            $('.slid-right').click(() => {
+                let leftValue = $('#tabs-group').css('left');
+                leftValue = Number(leftValue.split('px')[0])
+                $('#tabs-group').css('left',
+                    leftValue <= (0 - (btnsWidth - btnsWrapperWidth))? (0 - (btnsWidth - btnsWrapperWidth + 30)) : (leftValue - minWidthBtn) + 'px'
+                )
+            })
+            var $table = $('#table');
+            $('#tabs-group').on('click', '.btn', (e) => {
+                const id = $(e.currentTarget).attr('id')
+                if (id === 'option1') {
+                   const tableData = [{
+                        code: 'E1',
+                        code1: 'E1-1',
+                        target: '主要经济指标',
+                        name: '营业收入(集团内/外)'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-2',
+                        target: '主要经济指标',
+                        name: '利润总额'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-3',
+                        target: '主要经济指标',
+                        name: '净利润（含考核口径和报表口径）'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-4',
+                        target: '主要经济指标',
+                        name: '科技支出'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-5',
+                        target: '主要经济指标',
+                        name: '研发费用'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-6',
+                        target: '主要经济指标',
+                        name: '科技支出占营业收入比率'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-7',
+                        target: '主要经济指标',
+                        name: '研发费用占营业收入比率'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-8',
+                        target: '主要经济指标',
+                        name: '存货'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-9',
+                        target: '主要经济指标',
+                        name: '应收账款净额'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-10',
+                        target: '主要经济指标',
+                        name: '流动资产'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-11',
+                        target: '主要经济指标',
+                        name: '两金占流动资产比率'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-12',
+                        target: '主要经济指标',
+                        name: '净资产收益率'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-13',
+                        target: '主要经济指标',
+                        name: 'EVA（经济增加值）'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-14',
+                        target: '主要经济指标',
+                        name: '资产总额'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-15',
+                        target: '主要经济指标',
+                        name: '负债总额'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-16',
+                        target: '主要经济指标',
+                        name: '资产负债率'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-17',
+                        target: '主要经济指标',
+                        name: '总产出（产值）'
+                    }, {
+                        code: 'E1',
+                        code1: 'E1-18',
+                        target: '主要经济指标',
+                        name: '增加值'
+                    }, {
+                        code: 'E2',
+                        code1: 'E2-1',
+                        target: '成本及两金',
+                        name: '营业成本'
+                    }, {
+                        code: 'E2',
+                        code1: 'E2-2',
+                        target: '成本及两金',
+                        name: '销售费用'
+                    }, {
+                        code: 'E2',
+                        code1: 'E2-3',
+                        target: '成本及两金',
+                        name: '管理费用'
+                    }, {
+                        code: 'E2',
+                        code1: 'E2-4',
+                        target: '成本及两金',
+                        name: '营业成本'
+                    }, {
+                        code: 'E2',
+                        code1: 'E2-5',
+                        target: '财务费用',
+                        name: '成本费用占营业收入比（含研发费用）'
+                    }, {
+                        code: 'E3',
+                        code1: 'E3-1',
+                        target: '其他',
+                        name: '从业人员数'
+                    }, {
+                        code: 'E3',
+                        code1: 'E3-2',
+                        target: '其他',
+                        name: '全员劳动生产率（年化）'
+                    }]
+                    $table.bootstrapTable('load', tableData);
+                    $table.bootstrapTable('mergeCells', {index: 0, field: 'code', colspan: 1, rowspan: 18});
+                    $table.bootstrapTable('mergeCells', {index: 0, field: 'target', colspan: 1, rowspan: 18});
+                    $table.bootstrapTable('mergeCells', {index: 19, field: 'code', colspan: 1, rowspan: 5});
+                    $table.bootstrapTable('mergeCells', {index: 19, field: 'target', colspan: 1, rowspan: 5});
+                    $table.bootstrapTable('mergeCells', {index: 24, field: 'code', colspan: 1, rowspan: 2});
+                    $table.bootstrapTable('mergeCells', {index: 24, field: 'target', colspan: 1, rowspan: 2});
+                }else if(id === 'option2'){
+                    const tableData2 = [{
+                        code: 'D1',
+                        code1: 'D1-1',
+                        target: '主要经营活动',
+                        name: '海外业务情况'
+                    },{
+                        code: 'D2',
+                        code1: 'D2-1',
+                        target: '投融资计划',
+                        name: '年度融资计划'
+                    },{
+                        code: 'D2',
+                        code1: 'D2-2',
+                        target: '投融资计划',
+                        name: '年度融资计划'
+                    },{
+                        code: 'D2',
+                        code1: 'D2-3',
+                        target: '投融资计划',
+                        name: '股权投资计划'
+                    },{
+                        code: 'D2',
+                        code1: 'D2-4',
+                        target: '投融资计划',
+                        name: '军工国拨预算'
+                    },{
+                        code: 'D2',
+                        code1: 'D2-5',
+                        target: '投融资计划',
+                        name: '自主纪检计划'
+                    },{
+                        code: 'D2',
+                        code1: 'D2-6',
+                        target: '投融资计划',
+                        name: '执行投资'
+                    }]
+                    $table.bootstrapTable('load', tableData2);
+                    $table.bootstrapTable('mergeCells', {index: 1, field: 'code', colspan: 1, rowspan: 6});
+                    $table.bootstrapTable('mergeCells', {index: 1, field: 'target', colspan: 1, rowspan: 6});
+                } else if(id==='option3'){
+                    const tableData3 = [{
+                        code: 'F1',
+                        code1: 'F1-1',
+                        target: '市场开发',
+                        name: '在建合同储备金额'
+                    },{
+                        code: 'F1',
+                        code1: 'F1-2',
+                        target: '市场开发',
+                        name: '重大合同签约数量'
+                    },{
+                        code: 'F1',
+                        code1: 'F1-3',
+                        target: '市场开发',
+                        name: '重大合同开工数量'
+                    },{
+                        code: 'F1',
+                        code1: 'F1-4',
+                        target: '市场开发',
+                        name: '投资计划执行金额'
+                    },{
+                        code: 'F1',
+                        code1: 'F1-5',
+                        target: '市场开发',
+                        name: '投资计划执行完成率'
+                    },{
+                        code: 'F1',
+                        code1: 'F1-6',
+                        target: '市场开发',
+                        name: '自主基建合同数'
+                    },{
+                        code: 'F1',
+                        code1: 'F1-7',
+                        target: '市场开发',
+                        name: '自主基建投资类别'
+                    }]
+                    $table.bootstrapTable('load', tableData3);
+                    $table.bootstrapTable('mergeCells', {index: 0, field: 'code', colspan: 1, rowspan: 7});
+                    $table.bootstrapTable('mergeCells', {index: 0, field: 'target', colspan: 1, rowspan: 7});
+                } else {
+                    $table.bootstrapTable('load', []);
+                }
+            })
+            createTable($table, [])
+            $('#tabs-group .active').trigger("click");
+        })
+
+        function createTable($table, tableData) {
+            const tableColumns = [{
+                title: '编号',
+                field: 'code',
+                align: 'center',
+            }, {
+                title: '目标',
+                field: 'code1',
+                align: 'center',
+            }, {
+                title: '编号',
+                field: 'target',
+                align: 'center',
+            }, {
+                title: '指标名称',
+                field: 'name',
+                align: 'center',
+                formatter: (val, row, c) => {
+                    return '<a href="javascript:void(0)">'+ val + '</a>'
+                }
+            }, {
+                title: '指标定义',
+                field: 'definition',
+                align: 'center',
+            }]
+            $table.bootstrapTable({
+                columns: tableColumns,
+                data: tableData,
+                pagination: true,
+                pageSize: 20,
+                pageList: [20, 50, 100],
+                showColumns: false, //是否显示所有的列
+                showColumns: true, // 开启自定义列显示功能
+                paginationLoop: false,
+                paginationPreText: "上一页",
+                paginationNextText: "下一页",
+                showRefresh: true,
+                toolbar: '#toolbar',
+                onClickRow: function (row) {
+                    layer.open({
+                        type: 2,
+                        title: '查看',
+                        maxmin: true,
+                        shadeClose: true, //点击遮罩关闭层
+                        area: ['90%', '90%'],
+                        content: 'zhibiao_view_info.html',
+                        success: function (layero, index) { //可选方法,用于设定弹出页面是否可编辑
+
+                        }
+                    });
+                }
+            })
+           }
+    </script>
+</body>
+
+</html>

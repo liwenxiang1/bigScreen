@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="lib/bootstrapValidator/bootstrapValidator.min.css"> -->
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="普陀·大数据" />
+    <meta name="description" content="普陀·大数据" />
+    <title>普陀·大数据</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar-wrapper clearfix">
+            <!--未登录显示-->
+            <div class="login-bar">
+                <span data-toggle="modal" data-target="#login-dialog">登录</span>
+                <span data-toggle="modal" data-target="#login-dialog">注册</span>
+            </div>
+            <!--已登录显示-->
+            <div class="navbar">
+                <img src="./static/logo.png" alt="" class="logo">
+                <ul class="menu-list">
+                    <li class="menu-item active">数据资产</li>
+                    <li class="menu-item">数据治理</li>
+                    <li class="menu-item">共享应用</li>
+                    <li class="menu-item">运维保障</li>
+                </ul>
+                <div class="user-info">
+                    <p class="user-name">您好：马冬梅</p>
+                    <div class="avatar">
+                        <img src="./static/avatar.png" alt="">
+                    </div>
+                    <div class="message new">
+                        <img src="./static/message.png" alt="">
+                    </div>
+                    <span class="logout" onclick="logout()">退出</span>
+                </div>
+            </div>
+        </div>
+        <div class="banner">
+            <p class="banner-slogan">平台·让创新无限</p>
+            <p class="banner-slogan">共享门户，联通全国</p>
+            <p class="banner-slogan">覆盖全国多个城市，多平台自动切换</p>
+        </div>
+        <div class="content">
+            <div class="float-card shadow">
+                <div class="card-title clearfix">
+                    <span class="title">通知公告</span>
+                    <span class="more-data">更多 ></span>
+                </div>
+                <ul class="card-list">
+                    <li class="card-item">
+                        <p class="title">2020年工作计划通知公告</p>
+                        <p class="time">2020-03-01</p>
+                    </li>
+                    <li class="card-item">
+                        <p class="title">2020年工作计划通知公告</p>
+                        <p class="time">2020-03-01</p>
+                    </li>
+                    <li class="card-item">
+                        <p class="title">2020年工作计划通知公告</p>
+                        <p class="time">2020-03-01</p>
+                    </li>
+                    <li class="card-item">
+                        <p class="title">2020年工作计划通知公告</p>
+                        <p class="time">2020-03-01</p>
+                    </li>
+                </ul>
+            </div>
+            <p class="public-data-title">公共数据概览</p>
+            <div class="public-data clearfix">
+                <div class="public-data-item shadow-sm">
+                    <img src="./static/gjsjzy.png" alt="" class="item-icon">
+                    <p class="item-title">归集数据资源</p>
+                    <p class="item-num"><span>256799</span>个</p>
+                </div>
+                <div class="public-data-item shadow-sm">
+                    <img src="./static/bmsjzy.png" alt="" class="item-icon">
+                    <p class="item-title">编码数据资源</p>
+                    <p class="item-num"><span>256799</span>个</p>
+                </div>
+                <div class="public-data-item shadow-sm">
+                    <img src="./static/gxsjzy.png" alt="" class="item-icon">
+                    <p class="item-title">共享数据资源</p>
+                    <p class="item-num"><span>256799</span>个</p>
+                </div>
+                <div class="public-data-item shadow-sm">
+                    <img src="./static/gjjghsj.png" alt="" class="item-icon">
+                    <p class="item-title">归集结构化数据</p>
+                    <p class="item-num"><span>256799</span>个</p>
+                </div>
+                <div class="public-data-item shadow-sm">
+                    <img src="./static/bmyyxt.png" alt="" class="item-icon">
+                    <p class="item-title">编目应用系统</p>
+                    <p class="item-num"><span>256799</span>个</p>
+                </div>
+                <div class="public-data-item shadow-sm">
+                    <img src="./static/sjfwdy.png" alt="" class="item-icon">
+                    <p class="item-title">数据服务调用</p>
+                    <p class="item-num"><span>256799</span> 个</p>
+                </div>
+            </div>
+        </div>
+        <div class="charts">
+            <p class="charts-title">单位排名</p>
+            <div class="charts-body clearfix">
+                <div class="charts-item">
+                    <p class="chart-title"><span>各部门编目情况(TOP10)</span><img class="gold-medal" src="./static/avatar.png"
+                            alt=""></img></p>
+                    <div class="chart" id="chart1"></div>
+                </div>
+                <div class="charts-item">
+                    <p class="chart-title"><span>各部门编目情况(TOP10)</span><img class="gold-medal" src="./static/avatar.png"
+                            alt=""></img></p>
+                    <div class="chart" id="chart2"></div>
+                </div>
+                <div class="charts-item">
+                    <p class="chart-title"><span>各部门编目情况(TOP10)</span><img class="gold-medal" src="./static/avatar.png"
+                            alt=""></img></p>
+                    <div class="chart" id="chart3"></div>
+                </div>
+                <div class="charts-item">
+                    <p class="chart-title"><span>各部门编目情况(TOP10)</span><img class="gold-medal" src="./static/avatar.png"
+                            alt=""></img></p>
+                    <div class="chart" id="chart4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="questions">
+            <p class="questions-title">公共数据概览</p>
+            <div class="questions-body">
+                <img class="questions-img" src="./static/think.png" alt=""></img>
+                <ul class="questions-list shadow-lg">
+                    <li class="question-item">
+                        <p class="question hot">问：【如何申请一个交换资源？】</p>
+                        <p class="answer">
+                            <span>答：首先确定所需数据资源及资源用途，填写完整的需求和内容，然后确定数据的具体显示，从而达到任何人都能一看水是水少时诵诗书上课卡卡的 奥斯卡奖打瞌睡建档立卡的辣椒酱；教师节泛滥莱克斯诺</span>
+                            <img src="./static/r-arrow.png" alt="">
+                        </p>
+                    </li>
+                    <li class="question-item">
+                        <p class="question hot">问：【如何申请一个交换资源？】</p>
+                        <p class="answer">
+                            <span>答：首先确定所需数据资源及资源用途，填写完整的需求和内容，然后确定数据的具体显示，从而达到任何人都能一看水是水少时诵诗书上课卡卡的 奥斯卡奖打瞌睡建档立卡的辣椒酱；教师节泛滥莱克斯诺</span>
+                            <img src="./static/r-arrow.png" alt="">
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer"></div>
+        <!-- 登录弹窗 -->
+        <div class="modal fade" id="login-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content login-dialog-content">
+                    <div class="login-dialog-title">
+                        <img class="login-logo" src="./static/logo.png" alt="">
+                    </div>
+                    <div class="modal-body">
+                        <form id="login-form" novalidate>
+                            <div class="form-group input-group-lg">
+                                <img src="./static/user.svg" alt="">
+                                <input id="username" type="text" required="required" name="username"
+                                    class="form-control" placeholder="请输入登录账号">
+                                <div class="invalid-feedback"><small>请输入用户名！</small></div>
+                            </div>
+                            <div class="form-group input-group-lg">
+                                <img src="./static/password.svg" alt="">
+                                <input name="password" required="required" type="password" class="form-control"
+                                    placeholder="请输入密码">
+                                <div class="invalid-feedback">请输入密码！</div>
+                            </div>
+                            <button type="submit" class="login-btn btn-hover-animate">
+                                登录
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts-en.common.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            // 本地存储中判断当前用户登录信息
+            let userInfo = localStorage.getItem('putuoUserInfo')
+            if (userInfo) {
+                userInfo = JSON.parse(userInfo)
+                if (userInfo.id) {
+                    // 如果存在登录信息，展示登录后的navbar
+                    $('.navbar-wrapper').addClass('logged')
+                }
+            }
+
+            $("#login-form").submit(function (event) {
+                if ($(this)[0].checkValidity() === false) {
+                    event.preventDefault(); // 阻止提交表单
+                    event.stopPropagation();
+                } else {
+                    // 登录接口，获取用户信息
+                    // 登陆成功后do....
+                    const params = {
+                        id: 'sysadmin',
+                        username: '马冬梅'
+                    }
+                    localStorage.setItem('putuoUserInfo', JSON.stringify(params))
+                    $('.navbar-wrapper').addClass('logged')
+                }
+                $(this).addClass("was-validated");
+            });
+            $('#login-dialog').on('show.bs.modal', function (e) {
+                // 弹窗出现回调
+            })
+            $('#login-dialog').on('shown.bs.modal', function () {
+                // 出现后焦点放到用户名输入框
+                $('#username').trigger('focus')
+            })
+            $('#login-dialog').on('hidden.bs.modal', function (e) {
+                console.log("e", e)
+                // 弹窗已关闭后回调,清除校验警告
+                $("#login-form").removeClass("was-validated");
+            })
+
+            navbarInit()
+            chartsInit()
+        })
+
+        function navbarInit() {
+            $('.navbar .menu-list').on('click', '.menu-item', (e) => {
+                const isActive = $(e.currentTarget).hasClass('active')
+                if (isActive) {
+                    return
+                } else {
+                    $('.navbar .menu-list .active').removeClass('active')
+                    $(e.currentTarget).addClass('active')
+                }
+            })
+        }
+
+        function logout() {
+            localStorage.removeItem('putuoUserInfo')
+            $('.navbar-wrapper').removeClass('logged')
+        }
+
+        function chartsInit() {
+            var myChart1 = echarts.init(document.getElementById('chart1'));
+            var myChart2 = echarts.init(document.getElementById('chart2'));
+            var myChart3 = echarts.init(document.getElementById('chart3'));
+            var myChart4 = echarts.init(document.getElementById('chart4'));
+            myChart1.setOption({
+                // title: {
+                //     left: 'center',
+                //     text: '各部门编目情况(TOP10)',
+                //     textStyle: {
+                //         color: '#999',
+                //         fontWeight: '400',
+                //         rich:{
+
+                //         }
+                //     }
+                // },
+                xAxis: {
+                    type: 'category',
+                    data: ['公安局', '人社局', '财政局', '民政局', '网格化']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar'
+                }]
+            })
+            myChart2.setOption({
+                // title: {
+                //     left: 'center',
+                //     text: '各部门编目情况(TOP10)',
+                // },
+                xAxis: {
+                    type: 'category',
+                    data: ['公安局', '人社局', '财政局', '民政局', '网格化']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar'
+                }]
+            })
+            myChart3.setOption({
+                // title: {
+                //     left: 'center',
+                //     text: '各部门编目情况(TOP10)',
+                // },
+                xAxis: {
+                    type: 'category',
+                    data: ['公安局', '人社局', '财政局', '民政局', '网格化']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar'
+                }]
+            })
+            myChart4.setOption({
+                // title: {
+                //     left: 'center',
+                //     text: '各部门编目情况(TOP10)',
+                // },
+                xAxis: {
+                    type: 'category',
+                    data: ['公安局', '人社局', '财政局', '民政局', '网格化']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar'
+                }]
+            })
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                myChart1.resize()
+                myChart2.resize()
+                myChart3.resize()
+                myChart4.resize()
+            });
+        }
+    </script>
+</body>
+
+</html>

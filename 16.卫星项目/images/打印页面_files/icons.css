@@ -1,0 +1,293 @@
+﻿.icon-checklist {
+	background:url(icons/checklist.png) no-repeat;
+}
+.icon-checkAct {
+	background:url(icons/checkAct.png) no-repeat;
+}
+.icon-jcs {
+	background:url(icons/jcs.png) no-repeat;
+}
+.icon-jcl {
+	background:url(icons/jcl.png) no-repeat;
+}
+.icon-jcx {
+	background:url(icons/jcx.png) no-repeat;
+}
+.icon-gd {
+	background:url(icons/icongd.png) no-repeat;
+}
+.icon-temp {
+	background:url(icons/temp.png) no-repeat;
+}
+.icon-help {
+	background:url(icons/help.png) no-repeat;
+}
+.icon-asyicon {
+	background:url(icons/asyicon.png) no-repeat;
+}
+.icon-editt {
+	background:url(icons/editt.png) no-repeat;
+}
+
+.icon-manualpre {
+	background:url(icons/manualpre.png) no-repeat;
+}
+.icon-export {
+	background:url(icons/export.png) no-repeat;
+}
+.icon-net {
+	background:url(icons/net.png) no-repeat;
+}
+.icon-create {
+	background:url(icons/create.png) no-repeat;
+}
+.icon-submit {
+	background:url(icons/submit.png) no-repeat;
+}
+.icon-yicon {
+	background:url(icons/yicon.png) no-repeat;
+}
+.icon-ga {
+	background:url(icons/Pie_Ch.png) no-repeat;
+}
+.icon-gj {
+	background:url(icons/icongj.png) no-repeat;
+}
+.icon-jz {
+	background:url(icons/iconjz.png) no-repeat;
+}
+.icon-converse {
+	background:url(icons/iconzh.png) no-repeat;
+}
+.icon-manage {
+	background:url(icons/manage.png) no-repeat;
+}
+.icon-market {
+	background:url(icons/market.png) no-repeat;
+}
+.icon-serv {
+	background:url(icons/serv.png) no-repeat;
+}
+.icon-RD {
+	background:url(icons/RD.png) no-repeat;
+}
+.icon-house {
+	background:url(icons/house.png) no-repeat;
+}
+.icon-bigbuilding {
+	background:url(icons/bigbuilding.png) no-repeat;
+}
+.icon-building {
+	background:url(icons/building.png) no-repeat;
+}
+.icon-menu {
+	background:url(icons/menu.png) no-repeat;
+}
+.icon-root {
+	background:url(icons/root.png) no-repeat;
+}
+.icon-organization {
+	background:url(icons/organization.png) no-repeat;
+}
+.icon-quoprodtype {
+	background:url(icons/quoprodtype.png) no-repeat;
+}
+.icon-quoprodtypetree {
+	background:url(icons/quoprodtypetree.png) no-repeat;
+}
+.icon-prod-on {
+	background:url(icons/prod-on.png) no-repeat;
+}
+.icon-prod-down {
+	background:url(icons/prod-down.png) no-repeat;
+}
+.icon-add{
+	background:url(icons/add.gif) no-repeat;
+}
+.icon-addnew{
+	background:url(icons/addnew.gif) no-repeat;
+}
+.icon-edit{
+	background:url(icons/edit.gif) no-repeat;
+}
+.icon-remove{
+	background:url(icons/remove.gif) no-repeat;
+}
+.icon-save{
+	background:url(icons/save.gif) no-repeat;
+}
+.icon-close{
+	background:url(icons/cancel.gif) no-repeat;
+}
+.icon-cut{
+	background:url(icons/cut.png) no-repeat;
+}
+.icon-ok{
+	background:url(icons/ok.png) no-repeat;
+}
+.icon-no{
+	background:url(icons/no.png) no-repeat;
+}
+.icon-cancel{
+	background:url(icons/cancel.gif) no-repeat;
+}
+.icon-reload{
+	background:url(icons/reload.png) no-repeat;
+}
+.icon-search{
+	background:url(icons/search.gif) no-repeat;
+}
+.icon-print{
+	background:url(icons/print.gif) no-repeat;
+}
+.icon-help{
+	background:url(icons/help.gif) no-repeat;
+	
+}
+.icon-undo{
+	background:url(icons/undo.gif) no-repeat;
+}
+.icon-redo{
+	background:url(icons/redo.gif) no-repeat;
+}
+.icon-tip{
+	background:url(icons/tip.png) no-repeat;
+}
+.icon-zoomin{
+	background:url(icons/zoomin.gif) no-repeat;
+}
+.icon-zoomout{
+	background:url(icons/zoomout.gif) no-repeat;
+}
+.icon-goto{
+	background:url(icons/goto.gif) no-repeat;
+}
+.icon-date{
+	background:url(icons/date.gif) no-repeat;
+}
+.icon-filter{
+	background:url(icons/filter.gif) no-repeat;
+}
+.icon-find{
+	background:url(icons/find.png) no-repeat;
+}
+.icon-folder{
+	background:url(icons/folder.gif) no-repeat;
+}
+.icon-folderopen{
+	background:url(icons/folder-open.gif) no-repeat;
+}
+.icon-lock{
+	background:url(icons/lock.png) no-repeat;
+}
+.icon-unlock{
+	background:url(icons/unlock.gif) no-repeat;
+}
+.icon-new{
+	background:url(icons/new.gif) no-repeat;
+}
+.icon-node{
+	background:url(icons/node.png) no-repeat;
+}
+.icon-nowait{
+	background:url(icons/nowait.gif) no-repeat;
+}
+.icon-sort{
+	background:url(icons/sort.gif) no-repeat;
+}
+.icon-wait{
+	background:url(icons/wait.gif) no-repeat;
+}
+.icon-upgrade{
+	background:url(icons/upgrade.gif) no-repeat;
+}
+.icon-downgrade{
+	background:url(icons/downgrade.gif) no-repeat;
+}
+.icon-download{
+	background:url(icons/download.gif) no-repeat;
+}
+.icon-upload{
+	background:url(icons/upload.gif) no-repeat;
+}
+.icon-user{
+	background:url(icons/user.png) no-repeat;
+}
+.icon-split{
+	background:url(icons/split.gif) no-repeat;
+}
+.icon-addfolder{
+	background:url(icons/addfolder.gif) no-repeat;
+}
+
+.icon-expand{
+	background:url(icons/expand.gif) no-repeat;
+}
+.icon-collapse{
+	background:url(icons/collapse.gif) no-repeat;
+}
+.labor-edit{
+	background:url(icons/laboredit.png) no-repeat;
+}
+
+.labor-change{
+	background:url(icons/laborchange.png) no-repeat;
+}
+.labor-recount{
+	background:url(icons/laborrecount.png) no-repeat;
+}
+.labor-trans{
+	background:url(icons/labortrans.png) no-repeat;
+}
+.labor-pmo{
+	background:url(icons/laborpmo.png) no-repeat;
+}
+.labor-fin{
+	background:url(icons/laborfin.png) no-repeat;
+}
+.labor-syc{
+	background:url(icons/laborsyc.png) no-repeat;
+}
+.labor-syq{
+	background:url(icons/laborsyq.png) no-repeat;
+}
+.labor-qedit{
+	background:url(icons/laborqedit.png) no-repeat;
+}
+.labor-qrecall{
+	background:url(icons/laborqrecall.png) no-repeat;
+}
+.labor-checklack{
+	background:url(icons/laborlack.png) no-repeat;
+}
+.labor-sendwx{
+	background:url(icons/laborsendwx.png) no-repeat;
+}
+.icon-leavecounts{
+	background:url(icons/leavecounts.png ) no-repeat;
+}
+.icon-leavecounts2{
+	background:url(icons/leavecounts2.png ) no-repeat;
+}
+.icon-leaveCreateApply{
+	background:url(icons/leaveCreateApply.png ) no-repeat;
+}
+.icon-leaveCreateApply2{
+	background:url(icons/leaveCreateApply2.png ) no-repeat;
+}
+.icon-tempsave{
+	background:url(icons/tempsave.png ) no-repeat;
+}
+.icon-tempsave2{
+	background:url(icons/tempsave2.png ) no-repeat;
+}
+.icon-zhuzhuangtu2{
+	background:url(icons/zhuzhuangtu2.png ) no-repeat;
+}
+.icon-jiantou1{
+	background:url(icons/jiantou1.png ) no-repeat;
+}
+.icon-jiantou2{
+	background:url(icons/jiantou2.png ) no-repeat;
+}
+

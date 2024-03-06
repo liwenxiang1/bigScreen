@@ -1,0 +1,145 @@
+
+.label-line {
+  margin: 10px 0;
+}
+
+.resource-type {
+  width: 100%;
+  height: calc(100vh - 40px);
+  padding: 10px 0;
+}
+.resource-type .action-bar {
+  margin-bottom: 10px;
+  padding: 0 15px;
+  text-align: right;
+}
+.resource-type .action-bar .layui-btn {
+  background-color: #5bc0de;
+  font-weight: 500;
+  border-radius: 5px;
+}
+.resource-type .action-bar .iconfont{
+  vertical-align: bottom;
+}
+.resource-type .theme-tree-wrapper {
+  float: left;
+  width: 200px;
+  height: 100%;
+  overflow: auto;
+  /* padding: 0 15px 30px 15px; */
+  border-radius: 5px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.resource-type .resource-table-wrapper {
+  float: left;
+  width: calc(50% - 110px);
+  height: 100%;
+  overflow: hidden;
+  margin: 0 0 0 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.resource-type .field-table-wrapper{
+  float: left;
+  width: calc(50% - 110px);
+  height: 100%;
+  overflow: hidden;
+  margin: 0 0 0 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+/* .resource-type #resource-table,
+.resource-type #field-table{
+  width: calc(100% - 20px) !important;
+  margin: 0 auto;
+} */
+
+
+.resource-type .search-bar {
+  width: 100%;
+  padding: 0 10px;
+}
+.resource-type .search-bar #selected-name {
+  font-size: 20px;
+  color: #3cb4d9;
+  font-weight: 500;
+  text-align: left;
+}
+.resource-type .search-bar .search-row {
+  width: 260px;
+  height: 34px;
+  padding: 0 0 0 20px;
+  margin-left: 30px;
+  border-radius: 15px;
+  border: 1px solid #5bc0de;
+  overflow: visible;
+}
+
+.resource-type .search-bar .search-row input {
+  float: left;
+  width: calc(100% - 95px);
+  height: 32px;
+  font-size: 13px;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.resource-type .search-bar .search-row .search-btn {
+  float: right;
+  width: 60px;
+  height: 34px;
+  margin: -1px -2px 0 0;
+  background-color: #5bc0de;
+  border-radius: 17px;
+  border: none;
+  text-align: center;
+  line-height: 32px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.resource-type .search-bar .search-row .search-btn:hover {
+  background-color: #3cb4d9;
+}
+
+.resource-type .search-bar .search-row .search-btn span {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.resource-type .search-bar .search-row .search-btn .iconfont {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+  line-height: 34px;
+  color: #fff;
+}
+
+.resource-type .field-table-wrapper .search-bar .search-row {
+  margin-left: 0;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+  background-color: #3cb4d9 !important;
+}
+.resource-type .layui-form-checked[lay-skin=primary] i {
+  border-color: #3cb4d9 !important;
+  background-color: #3cb4d9 !important;
+}
+
+.layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool, .layui-table-total, .layui-table-total tr, .layui-table[lay-even] tr:nth-child(even) {
+  background-color: #e7f2ff !important;
+}
+
+.layui-tree-icon {
+  height: 14px !important;
+  line-height: 12px !important;
+  width: 14px !important;
+}

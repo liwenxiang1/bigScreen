@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/platform.css">
+    <link rel="stylesheet" href="css/information_list.css">
+    <link href="" rel="stylesheet">
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="科协应用平台" />
+    <title>信息列表</title>
+    <style type="text/css">
+        input::-ms-input-placeholder{
+            text-align: center;
+            color: #aaa !important;
+            font-weight: 400 !important;
+        }
+        input::-webkit-input-placeholder{
+            text-align: center;
+            color: #aaa !important;
+            font-weight: 400 !important;
+        }
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+            text-align: center;
+            color: #aaa !important;
+            font-weight: 400 !important;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        // 保存
+        let arrList = []
+        function init(){
+            // 监听搜索框
+            watchSearch()
+          // 调用接口
+            $.ajax({
+              url: "/api。。。。。。。。。。。。",
+              type: 'GET', // or “POST”
+              dataType:"json", 
+              headers:{
+                "Content-Type": "application/json",
+              },
+              data: {
+                '参数': 'xxxxxx',
+              },
+              success: function(res) {
+                if(res.code == 200 && res.success) {
+                //   赋值
+                // arrList = res.data
+                }
+              },
+              error:function(err){
+                //请求出错处理
+                console.log('err ==>', err);
+              }
+            })
+            // 获取数据，放到ajax请求success内
+            arrList = [{
+                id:'1',
+                title: '中国科协青少年科技中心',
+                commitTime: '2020-04-19  11:23:29',
+                writePerson: '隔壁王叔'
+            },{
+                id:'2',
+                title: '中国科协青少年科技中心11',
+                commitTime: '2020-04-19  11:23:29',
+                writePerson: '马冬梅'
+            },{
+                id:'3',
+                title: '中国科协青少年科技中心2222222222222222222222222',
+                commitTime: '2020-04-19  11:23:29',
+                writePerson: '肉丝er'
+            }]
+            // 渲染数据
+            showList()
+        }
+        function showList(){
+            const len = arrList.length
+            if(len <= 0){
+                $('#none-data').css('display', 'block')
+            }
+            for(let i = 0 ;i < len; i++ ){
+                addItem(arrList[i], i)
+            }
+        }
+        function addItem(itemData, index){
+            const itemNode = 
+            `<li id="item-${itemData.id}" class="clearfix">
+                <p class="title">${itemData.title || ''}</p>
+                <p class="commit-time">提交时间：${itemData.commitTime || ''}</p>
+                <p class="write-person">填表人：${itemData.writePerson || ''}</p>
+                <div class="action-row clearfix">
+                    <div valueid="${itemData.id}" class="del-btn">删除</div>
+                    <div valueid="${itemData.id}" class="edit-btn">编辑</div>
+                </div>
+            </li>`
+            if(index === 0) {
+                $('#info-list').on('click', '.del-btn', function(e){
+                    // console.log("addItem -> e.target.valId", e.valId)
+                    // console.log("addItem -> e.target", e.target.valueid)
+                    delItem(e.target.getAttribute('valueid'))
+                })
+                $('#info-list').on('click', '.edit-btn', function(e){
+                    editItem()
+                })
+            }
+            $('#info-list').append(itemNode)
+        }
+        function editItem(id){
+            alert('编辑')
+        }
+        function delItem(id){
+            // 按id来遍历数据，是删除数据与对应dom节点，不用index可避免重绘dom树
+           const index = arrList.findIndex(item=>{
+                return item.id == id
+            })
+            if(index !== -1){
+                arrList.splice(index, 1)
+                $(`#item-${id}`).remove()
+                // 清空后显示暂无数据tip
+                const len = arrList.length
+                if(len <= 0){
+                    $('#none-data').css('display', 'block')
+                    return
+                }
+            } else {
+                return
+            }
+        }
+        function addOne(){
+            window.location.href = 'index.html'
+        }
+        function watchSearch(){
+            // 监听搜索输入框值值变化，动态显示搜索icon
+            $("#keyword").bind('input propertychange', function(e){
+                if($(this).val() !== ''){
+                    $(".search").addClass('before-icon')
+                } else {
+                    $(".search").removeClass('before-icon')
+                }
+            })
+        }
+    </script>
+
+    <div class="information_list platform clearfix">
+        <div class="navbar clearfix">
+            <img class="navbar-back" src="./static/back.png" onclick="goback()" alt="">
+            <p class="navbar-title">信息列表</p>
+        </div>
+        <div class="bg-block">
+            <div class="bg-line"></div>
+        </div>
+        <div class="content clearfix">
+            <ul id="info-list" class="list">
+                <div id="search" class="search">
+                    <input type="text" value="" id="keyword" class="iconfont" placeholder="&#xe623; 请输入关键词">
+                </div>
+            </ul>
+            <p id="none-data">暂无数据</p>
+            <div class="save-button" onclick="addOne()">增加</div>
+        </div>
+    </div>
+</body>
+
+</html>

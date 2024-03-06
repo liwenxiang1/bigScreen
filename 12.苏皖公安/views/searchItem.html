@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>首页</title>
+		<link rel="stylesheet" href="../css/reset/normalize.css">
+		<link rel="stylesheet" href="../js/plugin/layui/css/layui.css">
+		<link rel="stylesheet" href="../font/alifont/iconfont.css">
+		<style>
+			#jobTypeLayer {
+				display: none;
+				padding: 20px;
+			}
+
+			.tooltipster-sidetip .tooltipster-box {
+				border-radius: 5px;
+				border: 0;
+				background: #fff;
+				color: #fff;
+			}
+
+			/* Use this next selector to style things like font-size and line-height: */
+			.tooltipster-sidetip .tooltipster-content {
+				padding: 0 !important;
+			}
+			.layui-bg-cyan{
+				background: #2789F4!important;
+			}
+			.layui-nav-itemed>.layui-nav-child{
+				background: #FFFFFF!important;
+			}
+			.layui-nav-itemed>.layui-nav-child dd a{
+				color: #464646!important;
+			}
+			.layui-nav-item{
+				background: #FAFAFB;
+			}
+			.layui-nav .layui-nav-item a{
+				color: #151515;
+			}
+			.layui-nav-item.layui-nav-itemed{
+				background: #E5EFFA;
+			}
+			.layui-nav-item.layui-nav-itemed>a{
+				color: #157CE5!important;
+			}
+			.layui-nav .layui-nav-mored, .layui-nav-item.layui-nav-itemed>a .layui-nav-more{
+				border-color:  transparent transparent #2889F4;
+			}
+			.layui-nav-item:hover>a{
+				background: #2789F4!important;
+				color: #fff!important;
+			}
+			.layui-nav-item>a>.layui-nav-more{
+				border-color: #CDCDCD transparent transparent ;
+			}
+			.layui-nav-item:hover>a>.layui-nav-more{
+				border-color:  transparent transparent #FFFFFF;
+				margin-top: -9px;
+			}
+			.layui-nav .layui-nav-mored, .layui-nav-item.layui-nav-itemed>a .layui-nav-more{
+				margin-top: -9px;
+			}
+			.layui-tab-title .layui-this:after{
+				border-bottom-color:#e6e6e6
+			}
+			.layui-tab-title .layui-this{
+				background: #5AD9A6;
+			}
+			.layui-tab-title li{
+				border: 1px solid #e6e6e6;
+				margin-right: 10px;
+				border-top-left-radius:5px;
+				border-top-right-radius:5px;
+				border-bottom: 0;
+				overflow: hidden;
+			}
+			.startTime{
+				font-size: 8px;
+				color: #fff;
+				background: #378BF7;
+				text-align: center;
+				line-height: 38px;
+			}
+			.contain{
+				width: 1300px;
+				margin: 10px auto;
+			}
+			.btn{
+				width: 100%;
+				background:#378BF7 ;
+			}
+			.mr40{
+				margin-right: 40px;
+			}
+			.layui-tab-content{
+				padding-left: 0;
+				padding-right: 0;
+			}
+			.layui-table[lay-skin=line]{
+				border: none;
+			}
+			.layui-table td{
+				border-color: rgba(153, 153, 153, 0.2);
+			}
+			.layui-table thead tr{
+				background: rgba(55, 139, 247, 1);
+				color: #FFFFFF;
+			}
+			.layui-laypage{
+				float: right;
+			}
+			.layui-laypage .layui-laypage-curr .layui-laypage-em{
+				background-color: #378BF7;
+			}
+			.layui-nav-tree .layui-nav-child dd.layui-this a,.layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
+				background: #E5EFFA;
+			}
+			.yellowIcon{
+				color: #CFAE80;
+			}
+			.ove{
+				max-height: 450px;
+				overflow-y: auto;
+				overflow-x:hidden;
+			}
+			.pl10{
+				padding-left: 10px;
+			}
+			th, td{
+				text-align: center!important;
+			}
+			::-webkit-scrollbar  
+			{  
+			    width: 8px;  /*滚动条宽度*/
+			    height: 8px;  /*滚动条高度*/
+			}  
+			  
+			/*定义滚动条轨道 内阴影+圆角*/  
+			::-webkit-scrollbar-track  
+			{  
+			    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);  
+			    border-radius: 5px;  /*滚动条的背景区域的圆角*/
+			    background-color: rgba(153, 153, 153, 0.1);/*滚动条的背景颜色*/  
+			}  
+			  
+			/*定义滑块 内阴影+圆角*/  
+			::-webkit-scrollbar-thumb  
+			{  
+			    border-radius: 5px;  /*滚动条的圆角*/
+			    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);  
+			    background-color: rgba(153, 153, 153, .3);  /*滚动条的背景颜色*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="contain">
+			<div class="layui-row">
+				<div class="layui-col-xs2 ove">
+					<ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
+						<li class="layui-nav-item layui-nav-itemed">
+							<a href="javascript:;"> <span class="icon iconfont">&#xe7ce;</span> 默认展开</a>
+							<dl class="layui-nav-child">
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项一</a></dd>
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项二</a></dd>
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项三</a></dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;"><span class="icon iconfont">&#xe696;</span> 解决方案</a>
+							<dl class="layui-nav-child">
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项一</a></dd>
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项二</a></dd>
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项三</a></dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;"><span class="icon iconfont">&#xe696;</span> 解决方案</a>
+							<dl class="layui-nav-child">
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项一</a></dd>
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项二</a></dd>
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项三</a></dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;"><span class="icon iconfont">&#xe696;</span> 解决方案</a>
+							<dl class="layui-nav-child">
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项一</a></dd>
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项二</a></dd>
+								<dd><a href="javascript:;"><span class="icon iconfont yellowIcon">&#xe624;</span> 选项三</a></dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="layui-col-xs10 pl10">
+					<div class="layui-tab">
+						<ul class="layui-tab-title">
+							<li class="layui-this">日志统计</li>
+							<li>访问统计</li>
+							<li>任务指令统计</li>
+							<li>模型指令统计</li>
+						</ul>
+						<div class="layui-tab-content">
+							<div class="layui-tab-item layui-show">
+								<div class="layui-row">
+									<div class="layui-col-xs1">
+										<div class="startTime">
+											开始时间
+										</div>
+									</div>
+									<div class="layui-col-xs4 mr40">
+										<input type="date" name="title" required lay-verify="required" placeholder="请选择开始时间" autocomplete="off" class="layui-input">
+									</div>
+									<div class="layui-col-xs1">
+										<div class="startTime">
+											结束时间
+										</div>
+									</div>
+									<div class="layui-col-xs4 mr40">
+										<input type="date" name="title" required lay-verify="required" placeholder="请选择结束时间" autocomplete="off" class="layui-input">
+									</div>
+									<div class="layui-col-xs1">
+										<button type="button" class="layui-btn btn">查询</button>
+									</div>
+								</div>
+								<div class="layui-row">
+									<table class="layui-table" lay-skin="line">
+										<thead>
+											<tr>
+												<th>序号</th>
+												<th>单位名称</th>
+												<th>签名</th>
+												<th>批号</th>
+												<th>编码</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>贤心</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+											</tr>
+											<tr>
+												<td>许闲心</td>
+												<td>2016-11-28</td>
+												<td>于千万人之中遇见你所遇见的人…</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+											</tr>
+											<tr>
+												<td>许闲心</td>
+												<td>2016-11-28</td>
+												<td>于千万人之中遇见你所遇见的人…</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+											</tr>
+											<tr>
+												<td>许闲心</td>
+												<td>2016-11-28</td>
+												<td>于千万人之中遇见你所遇见的人…</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+											</tr>
+											<tr>
+												<td>许闲心</td>
+												<td>2016-11-28</td>
+												<td>于千万人之中遇见你所遇见的人…</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+											</tr>
+											<tr>
+												<td>许闲心</td>
+												<td>2016-11-28</td>
+												<td>于千万人之中遇见你所遇见的人…</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+											</tr>
+											<tr>
+												<td>许闲心</td>
+												<td>2016-11-28</td>
+												<td>于千万人之中遇见你所遇见的人…</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+											</tr>
+											<tr>
+												<td>许闲心</td>
+												<td>2016-11-28</td>
+												<td>于千万人之中遇见你所遇见的人…</td>
+												<td>2016-11-29</td>
+												<td>人生就像是一场修行</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="layui-row">
+									<div id="laypage"></div>
+								</div>
+							</div>
+							<div class="layui-tab-item">内容2</div>
+							<div class="layui-tab-item">内容3</div>
+							<div class="layui-tab-item">内容4</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="../js/jquery1.8.1.js"></script>
+	<script src="../js/plugin/layui/layui.js"></script>
+	<script src="../js/plugin/echarts/echarts.js"></script>
+	<script src="../js/plugin/template-web.js"></script>
+	<script>
+		$(function() {
+			// 获取当前浏览器类型，如果为chrome，则分别其版本，73版以外的chrome执行以下方法
+			var navigator = window.navigator;
+			var browser = navigator.userAgent
+			if (!browser.includes("Chrome/73")) {
+				$(".home .container-r__b .yui-card-body").css("height", "478px");
+				$(".home .pandect").css("top", "240px");
+			}
+			layui.use('element', function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+				//监听导航点击
+				element.on('nav(demo)', function(elem) {
+					//console.log(elem)
+					layer.msg(elem.text());
+				});
+			});
+			layui.use('laypage', function() {
+				var laypage = layui.laypage;
+
+				//执行一个laypage实例
+				laypage.render({
+					elem: 'laypage',
+					count: 50,
+					layout: ['prev', 'page', 'next', 'skip'],
+					jump: function(obj) {
+						console.log(obj)
+					}
+				});
+			});
+		})
+	</script>
+
+</html>

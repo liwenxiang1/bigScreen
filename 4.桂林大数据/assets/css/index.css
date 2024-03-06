@@ -1,0 +1,592 @@
+.banner {
+	background: url(../imgs/banner.png) no-repeat;
+	background-size: cover;
+	height: 35%;
+}
+
+.search {
+	position: absolute;
+	top: 30%;
+	width: 100%;
+	text-align: center;
+}
+
+.layui-input {
+	height: 50px;
+	line-height: 50px;
+}
+
+.layui-input,
+.layui-textarea {
+	border-radius: 5px;
+}
+
+.layui-btn {
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 18px;
+	background-color: rgba(255, 154, 13, 1);
+	color: #fff;
+	white-space: nowrap;
+	text-align: center;
+	font-size: 22px;
+	border: none;
+	border-radius: 5px;
+	width: 122px;
+}
+
+.layui-btn img {
+	width: 18px;
+	margin-right: 10px;
+}
+
+.menu .layui-nav .layui-nav-item img {
+	margin-right: 20px;
+	margin-top: -5px;
+}
+.layui-card {
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 1px 6px 24px 1px rgba(0, 66, 130, 0.1);
+	border-radius: 10px;
+	margin: 25px 5%;
+}
+
+.item-card {
+	display: flex;
+	width: 100%;
+}
+
+.item-div {
+	display: flex;
+	flex: 1;
+}
+
+.item-div div {
+	padding-left: 15px;
+}
+
+.item-num {
+	font-size: 30px;
+	font-weight: bold;
+	color: rgba(19, 19, 19, 1);
+	line-height: 35px;
+}
+
+.item-num .unit {
+	font-size: 18px;
+}
+
+.item-label {
+	font-size: 20px;
+	font-weight: bold;
+	color: rgba(134, 144, 164, 1);
+	line-height: 24px;
+}
+
+.layui-card:last-child {
+	margin-bottom: 15px;
+}
+
+.title-h1 {
+	font-size: 42px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 1);
+	line-height: 40px;
+	text-align: center;
+}
+
+.data-menu {
+	display: flex;
+	padding: 20px 5%;
+}
+
+.data-menu .left {
+	width: 30%;
+	padding: 0 15px 0 0;
+}
+
+.data-menu .right {
+	flex: 1;
+}
+
+.title-p {
+	font-size: 24px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 1);
+	line-height: 32px;
+}
+
+.under-line {
+	width: 95px;
+	height: 9px;
+	background: rgba(0, 128, 227, 1);
+	border-radius: 0px 0px 6px 0px;
+	margin-top: 10px;
+}
+
+.data-menu-body {
+	padding: 30px 10px 10px 5px;
+}
+
+.menu-card {
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 1px 2px 9px 1px rgba(0, 128, 227, 0.09);
+	border-radius: 4px;
+	padding: 10px 10px 10px 20px;
+}
+
+.menu-card span {
+	font-size: 20px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 1);
+	line-height: 32px;
+}
+
+.btn-space {
+	height: 70px;
+	line-height: 70px;
+	width: 100%;
+	background: rgba(0, 128, 227, 1);
+	box-shadow: 1px 2px 9px 1px rgba(0, 128, 227, 0.09);
+	border-radius: 4px;
+	margin-top: 15px;
+}
+
+.item {
+	text-align: center;
+}
+
+.item p {
+	font-size: 18px;
+	font-family: PingFang SC;
+	color: rgba(25, 27, 52, 1);
+	line-height: 45px;
+}
+
+#unitDiv .layui-row {
+	display: flex;
+}
+
+.item {
+	flex: 1;
+}
+
+#unitDiv .layui-row:first-child .item {
+	margin-bottom: 40px;
+	padding: 20px 0;
+}
+
+#unitDiv .layui-row:first-child .item:hover {
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 1px 2px 9px 1px rgba(0, 128, 227, 0.1);
+	border-radius: 4px;
+}
+
+.deptMenu {
+	display: flex;
+}
+
+.deptMenu-left {
+	background: url(../imgs/leftBg.png);
+	padding: 10px;
+}
+
+.deptMenu p {
+	width: 192px;
+	height: 55px;
+	line-height: 55px;
+	color: #FFFFFF;
+	font-size: 18px;
+	background: rgba(0, 128, 227, 1);
+	margin: 10px 0;
+	padding-left: 20px;
+}
+
+.deptMenu .layui-tab-title {
+	border-bottom-width: 0px;
+}
+
+.deptMenu .deptMenu-left .layui-this {
+	background: url(../imgs/dianji.png) no-repeat;
+	background-size: cover;
+	color: #FFFFFF;
+	width: 210px;
+	background-position: 0 -6px
+}
+
+.deptMenu .layui-tab-title .layui-this:after {
+	background-color: transparent;
+	border-width: 0;
+}
+
+.deptMenu .label {
+	background: rgba(244, 250, 255, 1);
+	border-radius: 3px;
+	font-size: 20px;
+	font-family: PingFang SC;
+	font-weight: 400;
+	color: rgba(82, 86, 104, 1);
+	padding: 10px 20px;
+}
+
+#deptsDiv .layui-row .col-div {
+	padding-right: 30px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+}
+
+#deptsDiv .layui-row div:last-child .label {
+	text-align: center;
+}
+
+.service {
+	background: url(../imgs/fuwu.png) no-repeat;
+	background-size: cover;
+	padding: 50px 5% 40px 5%;
+	width: 100%;
+	display: flex;
+}
+
+.service-left {
+	background: linear-gradient(0deg, rgba(94, 149, 232, 1) 0%, rgba(51, 120, 229, 1) 99%);
+	border-radius: 6px 0px 6px 6px;
+	padding: 40px 0 80px 0;
+	width: 20%;
+}
+
+.service-head {
+	padding: 0 30px;
+}
+
+.service-head p {
+	font-size: 42px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 1);
+	line-height: 32px;
+}
+
+.service-head .under-line {
+	width: 95px;
+	height: 8px;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 0px 0px 6px 0px;
+	margin-top: 30px;
+	margin-left: 20px;
+}
+
+.service-body {
+	margin-top: 50px;
+}
+
+.serviceMenu-left div {
+	font-size: 24px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 1);
+
+}
+
+.serviceMenu-left div p {
+	border-bottom: 2px solid rgba(255, 255, 255, .3);
+	padding: 0 10px;
+	margin: 0 20px;
+	line-height: 100px;
+}
+
+.serviceMenu-left p img {
+	width: 34px;
+	margin-right: 20px;
+}
+
+.serviceMenu-left .layui-this {
+	background-color: rgba(102, 154, 233, 1);
+}
+
+.service-right {
+	background: rgba(255, 255, 255, 1);
+	border-radius: 0px 6px 0px 0px;
+	width: 80%;
+	padding: 35px;
+	padding-bottom: 15px;
+}
+
+.service-right .layui-text a:not(.layui-btn) {
+	color: transparent;
+}
+
+.service-right .layui-tab-title {
+	border-bottom: 2px solid rgba(214, 220, 230, 1);
+	height: 60px;
+}
+
+.service-right .layui-tab-title li {
+	font-size: 24px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(102, 102, 102, 1);
+	line-height: 32px;
+	margin-right: 170px;
+}
+
+.layui-tab-title .layui-this:after {
+	border: none;
+	height: 58px;
+}
+
+.layui-tab-brief>.layui-tab-title .layui-this {
+	color: rgba(0, 128, 227, 1);
+}
+
+.layui-tab-brief>.layui-tab-title .layui-this:after {
+	border-bottom: 2px solid rgba(0, 128, 227, 1);
+}
+
+.layui-timeline-title {
+	line-height: 45px;
+}
+
+.layui-timeline-title span {
+	font-size: 18px;
+	font-family: PingFang SC;
+	font-weight: 400;
+	color: rgba(104, 108, 123, 1);
+	vertical-align:middle;
+	}
+
+.layui-timeline-title .date,
+.layui-timeline-title .time {
+	padding-right: 20px;
+}
+
+.layui-timeline-item::after {
+	padding-bottom: 10px;
+}
+
+.layui-timeline-axis,
+.layui-timeline-item:before {
+	top: 12px;
+	color: rgba(214, 220, 230, 1)
+}
+
+.layui-timeline-item:hover * {
+	color: rgba(19, 105, 192, 1);
+}
+
+.layui-timeline-title .title {
+	width: 78%;
+	display: inline-block;
+	overflow: hidden;
+	word-break: keep-all;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.ranking{
+	background: url(../imgs/huawen.png) no-repeat;
+	background-size: cover;
+	padding: 50px 5% 40px 5%;
+}
+
+.ranking-body {
+	display: flex;
+}
+
+.ranking-body-left {
+	width: 40%;
+}
+
+.ranking-body-right {
+	flex: 1;
+}
+
+.ranking-body .layui-card-header {
+	height: 70px;
+	line-height: 70px;
+	margin: 0 25px;
+	border-bottom: 1px solid rgba(154, 154, 154, .17)
+}
+
+.layui-card-header .left {
+	float: left;
+	font-size: 24px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 1);
+	line-height: 70px;
+}
+
+.layui-card-header .right {
+	float: right;
+
+}
+
+.layui-card-header .right .layui-this {
+	background: rgba(0, 128, 227, 1);
+	border-radius: 12px 10px 0px 10px;
+	color: #FFFFFF;
+}
+
+.layui-card-header .right a {
+	background: rgba(244, 250, 255, 1);
+	border-radius: 12px 10px 0px 10px;
+	font-size: 18px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(94, 98, 114, 1);
+	line-height: 32px;
+	padding: 5px 10px;
+	margin-left: 20px;
+}
+
+.rankingMenus li {
+	padding: 10px;
+	border-bottom: 1px dashed rgba(94, 98, 114, .23);
+}
+
+.rankingMenus li:last-child {
+	border: none;
+}
+
+.rankingMenus a {
+	display: flex;
+	width: 100%;
+}
+
+.content {
+	flex: 1;
+	margin-left: 10px;
+}
+
+.content p {
+	font-size: 18px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(52, 52, 52, 1);
+	line-height: 32px;
+}
+
+.content .layui-row div {
+	font-size: 16px;
+	font-family: PingFang SC;
+	color: rgba(154, 154, 154, 1);
+	line-height: 32px;
+	padding-bottom: 10px;
+}
+
+.content .layui-row div:last-child {
+	text-align: right;
+	padding-right: 30px;
+}
+
+.hot {
+	width: 30px;
+	line-height: 40px;
+	background: url(../imgs/huo.png) no-repeat;
+	margin-top: 10px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 18px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 1);
+	line-height: 42px;
+}
+
+.hot-red {
+	width: 30px;
+	line-height: 40px;
+	background: url(../imgs/huo-red.png) no-repeat;
+	margin-top: 10px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 18px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 1);
+	line-height: 42px;
+}
+
+.hot-liu {
+	width: 30px;
+	line-height: 40px;
+	background: url(../imgs/liu.png) no-repeat;
+	margin-top: 10px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 18px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 1);
+	line-height: 27px;
+}
+
+.ranking-body .layui-card {
+	margin: 25px 10px;
+}
+
+.liulan {
+	width: 18px;
+	margin-right: 10px;
+	margin-top: -5px;
+}
+
+.layui-timeline-title {
+	width: 100%;
+	display: block;
+	overflow: hidden;
+	word-break: keep-all; // 不折行
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.layui-tab-bar{
+	display: none;
+}
+@media screen and (max-width: 1280px) {
+	.banner {
+		height: 30%;
+	}
+
+	.search {
+		top: 25%;
+	}
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1366px) {
+	.service-left {
+		width: 30%;
+	}
+
+	.service-head p {
+		font-size: 40px;
+	}
+
+	.banner {
+		background-position: 10%;
+		height: 45%;
+	}
+
+	.search {
+		top: 35%;
+	}
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1680px) {
+	.banner {
+		background-position: 30%;
+	}
+
+	.search {
+		top: 30%;
+	}
+
+	.service-head p {
+		font-size: 40px;
+	}
+}

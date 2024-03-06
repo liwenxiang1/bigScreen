@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/all_work_orders.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+    
+    <!-- <link rel="stylesheet" href="lib/bootstrapValidator/bootstrapValidator.min.css"> -->
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="普陀·大数据" />
+    <meta name="description" content="普陀·大数据" />
+    <title>普陀·大数据</title>
+</head>
+
+<body>
+    <div class="all-work-orders">
+        <div class="navbar-wrapper clearfix">
+            <!--未登录显示-->
+            <div class="login-bar">
+                <span data-toggle="modal" data-target="#login-dialog">登录</span>
+                <span data-toggle="modal" data-target="#login-dialog">注册</span>
+            </div>
+            <!--已登录显示-->
+            <div class="navbar">
+                <img src="./static/logo.png" alt="" class="logo">
+                <ul class="menu-list">
+                    <li class="menu-item active">数据资产</li>
+                    <li class="menu-item">数据治理</li>
+                    <li class="menu-item">共享应用</li>
+                    <li class="menu-item">运维保障</li>
+                </ul>
+                <div class="user-info">
+                    <p class="user-name">您好：马冬梅</p>
+                    <div class="avatar">
+                        <img src="./static/avatar.png" alt="">
+                    </div>
+                    <div class="message new">
+                        <img src="./static/message.png" alt="">
+                    </div>
+                    <span class="logout" onclick="logout()">退出</span>
+                </div>
+            </div>
+        </div>
+        <div class="content clearfix">
+            <div class="sidebar shadow-sm">
+                <ul id="menu" class="menu clearfix">
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="breadcrumbs">
+                    <a href="/main_center.html" class="clickable">首 页</a>
+                    <span> > 个人中心</span>
+                    <span> > 全部工单</span>
+                </div>
+                <ul class="data-tabs shadow-sm clearfix">
+                    <li class="tab active">全部类型</li>
+                    <li class="tab">用户注册</li>
+                    <li class="tab">需求申请</li>
+                    <li class="tab">...工单</li>
+                </ul>
+                <div class="info-cards">
+                    <div class="info-card clearfix shadow-sm">
+                        <img src="./static/personal/helps.png" alt="" class="info-l">
+                        <div class="info-r">
+                            <p class="info-title">500</p>
+                            <p class="info-info">待处理</p>
+                        </div>
+                    </div>
+                    <div class="info-card clearfix shadow-sm">
+                        <img src="./static/personal/waiting-orders.png" alt="" class="info-l">
+                        <div class="info-r">
+                            <p class="info-title">3405</p>
+                            <p class="info-info">已处理</p>
+                        </div>
+                    </div>
+                    <div class="info-card clearfix shadow-sm">
+                        <img src="./static/personal/today.png" alt="" class="info-l">
+                        <div class="info-r">
+                            <p class="info-title">200</p>
+                            <p class="info-info">今日已处理</p>
+                        </div>
+                    </div>
+                    <div class="info-card clearfix shadow-sm">
+                        <img src="./static/personal/curr-week.png" alt="" class="info-l">
+                        <div class="info-r">
+                            <p class="info-title">800</p>
+                            <p class="info-info">本周已处理</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-wrapper shadow-sm">
+                    <div class="search-row clearfix">
+                        <div class="export-btn">
+                            <span class="iconfont">&#xe607;</span>
+                            <span>导出</span>
+                        </div>
+                        <div class="search-input-block">
+                            <div class="search-btn">
+                                <span>高级查询</span>
+                                <span class="iconfont">&#xe690;</span>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="text" value="" placeholder="请输入工单号">
+                                <span class="suffix">查询</span>
+                            </div>
+                        </div>
+                    </div>
+                    <table 
+                        id="table" 
+                        data-show-export="true"
+                        data-pagination="true" 
+                        data-page-size="10" 
+                        data-pagination-loop="false"
+                        data-pagination-pre-text="上一页"
+                        data-pagination-next-text="下一页"
+                        >
+                        <thead>
+                            <tr>
+                                <th data-field="id" data-align="center">工单编号</th>
+                                <th data-field="name" data-align="center" data-width="250">工单标题</th>
+                                <th data-field="type" data-align="center">工单类型</th>
+                                <th data-field="org" data-align="center">发起单位</th>
+                                <th data-field="status" data-align="center">工单状态</th>
+                                <th data-field="time" data-align="center">工单创建时间</th>
+                                <th data-field="mapActions" data-formatter="operateFormatter"
+                                    data-events="operateEvents" data-align="center">操作</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+        <!-- 登录弹窗 -->
+        <div class="modal fade" id="login-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content login-dialog-content">
+                    <div class="login-dialog-title">
+                        <img class="login-logo" src="./static/logo.png" alt="">
+                    </div>
+                    <div class="modal-body">
+                        <form id="login-form" novalidate>
+                            <div class="form-group input-group-lg">
+                                <img src="./static/user.svg" alt="">
+                                <input id="username" type="text" required="required" name="username"
+                                    class="form-control" placeholder="请输入登录账号">
+                                <div class="invalid-feedback"><small>请输入用户名！</small></div>
+                            </div>
+                            <div class="form-group input-group-lg">
+                                <img src="./static/password.svg" alt="">
+                                <input name="password" required="required" type="password" class="form-control"
+                                    placeholder="请输入密码">
+                                <div class="invalid-feedback">请输入密码！</div>
+                            </div>
+                            <button type="submit" class="login-btn btn-hover-animate">
+                                登录
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts-en.common.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+            // 本地存储中判断当前用户登录信息
+            let userInfo = localStorage.getItem('putuoUserInfo')
+            if (userInfo) {
+                userInfo = JSON.parse(userInfo)
+                if (userInfo.id) {
+                    // 如果存在登录信息，展示登录后的navbar
+                    $('.navbar-wrapper').addClass('logged')
+                }
+            }
+
+            $("#login-form").submit(function (event) {
+                if ($(this)[0].checkValidity() === false) {
+                    event.preventDefault(); // 阻止提交表单
+                    event.stopPropagation();
+                } else {
+                    // 登录接口，获取用户信息
+                    // 登陆成功后do....
+                    const params = {
+                        id: 'sysadmin',
+                        username: '马冬梅'
+                    }
+                    localStorage.setItem('putuoUserInfo', JSON.stringify(params))
+                    $('.navbar-wrapper').addClass('logged')
+                }
+                $(this).addClass("was-validated");
+            });
+            $('#login-dialog').on('show.bs.modal', function (e) {
+                // 弹窗出现回调
+            })
+            $('#login-dialog').on('shown.bs.modal', function () {
+                // 出现后焦点放到用户名输入框
+                $('#username').trigger('focus')
+            })
+            $('#login-dialog').on('hidden.bs.modal', function (e) {
+                console.log("e", e)
+                // 弹窗已关闭后回调,清除校验警告
+                $("#login-form").removeClass("was-validated");
+            })
+
+            navbarInit()
+            menuInit()
+            dataTabInit()
+
+            window.operateEvents = {
+                'click .handle': function (e, value, row, index) {
+                    alert('处理：You click like action, row: ' + JSON.stringify(row))
+                },
+                'click .view': function (e, value, row, index) {
+                    alert('查看：You click like action, row: ' + JSON.stringify(row))
+                }
+            }
+            loadTableData()
+        })
+
+        function navbarInit() {
+            $('.navbar .menu-list').on('click', '.menu-item', (e) => {
+                const isActive = $(e.currentTarget).hasClass('active')
+                if (isActive) {
+                    return
+                } else {
+                    $('.navbar .menu-list .active').removeClass('active')
+                    $(e.currentTarget).addClass('active')
+                }
+            })
+        }
+
+        function logout() {
+            localStorage.removeItem('putuoUserInfo')
+            $('.navbar-wrapper').removeClass('logged')
+        }
+
+
+        function dataTabInit() {
+            $('.main-content .data-tabs').on('click', '.tab', function (e) {
+                const index = $(this).index()
+                const isActive = $(e.currentTarget).hasClass('active')
+                if (isActive) {
+                    return
+                } else {
+                    $('.main-content .data-tabs .active').removeClass('active')
+                    $(e.currentTarget).addClass('active')
+                }
+            })
+        }
+
+        function loadTableData() {
+            var $table = $('#table')
+            var data = [{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            },{
+                'id': 'PEFJSJ-0301001',
+                'name': 'XQ202030294048需求申请',
+                'type': '需求申请',
+                'org': '区府办',
+                'status': '待处理',
+                'time': '2020-03-26 13:30',
+            }]
+            $table.bootstrapTable({
+                undefinedText: '-',
+                data: data,
+                exportDataType: 'all',
+                exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+            })
+        }
+
+
+        function operateFormatter(value, row, index) {
+            return [
+                '<span class="iconfont handle" title="处理">&#xe656;</span>  ',
+                '<span class="iconfont view" title="查看">&#xe67a;</span>'
+            ].join('')
+        }
+    </script>
+</body>
+
+</html>

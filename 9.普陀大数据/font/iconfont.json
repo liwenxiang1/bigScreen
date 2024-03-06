@@ -1,0 +1,86 @@
+{
+  "id": "1802104",
+  "name": "普陀大数据",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14124601",
+      "name": "收 起",
+      "font_class": "shouqi",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "11173892",
+      "name": "search bar_active",
+      "font_class": "searchbar_active",
+      "unicode": "e690",
+      "unicode_decimal": 59024
+    },
+    {
+      "icon_id": "557179",
+      "name": "arrow right circle",
+      "font_class": "arrowrightcircle",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "14080968",
+      "name": "eye",
+      "font_class": "eye",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "7236131",
+      "name": "导出",
+      "font_class": "daochu",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "1034253",
+      "name": "pinglun",
+      "font_class": "pinglun",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "2391187",
+      "name": "公告",
+      "font_class": "gonggao",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "8207253",
+      "name": "xiangqing",
+      "font_class": "xiangqing",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "11450141",
+      "name": "书签",
+      "font_class": "shuqian",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "12017391",
+      "name": "个人中心",
+      "font_class": "gerenzhongxin",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "12108691",
+      "name": "yuedu-2",
+      "font_class": "yuedu-",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    }
+  ]
+}

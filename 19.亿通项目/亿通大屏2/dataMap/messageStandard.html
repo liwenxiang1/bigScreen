@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<link rel="stylesheet" href="./assets/css/messageStandard.css">
+		<meta name="keywords" content="数据地图" />
+		<meta name="description" content="数据地图" />
+		<title>数据地图</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<div class="layui-logo"><a href="javascript:;"><img class="logo-img" src="assets/imgs/logo.png" alt="logo"></a></div>
+
+				<ul class="layui-nav" lay-filter="">
+					<li class="layui-nav-item"><a href="javascript:;">首页</a></li>
+					<li class="layui-nav-item "><a href="businessTopic.html">业务主题</a></li>
+					<li class="layui-nav-item"><a href="dataSource.html">数据来源</a></li>
+					<li class="layui-nav-item"><a href="proSystem.html">项目系统</a></li>
+					<li class="layui-nav-item layui-this"><a href="messageStandard.html">报文标准</a></li>
+				</ul>
+				<div class="search-div">
+					<input type="text" name="title" autocomplete="off" placeholder="请输入关键词" class="search-input">
+					<i class="iconfont icon-sousuo"></i>
+				</div>
+
+				<button type="button" class="layui-btn search-button">搜索</button>
+				<a class="refData" href="javascript:;"><i class="iconfont icon-a-shuju4"></i>参考数据</a>
+			</div>
+			<div class="layui-body">
+				<div id="badgeList" class="badge-list"></div>
+				<form class="layui-form search-form" action="">
+					<table class="layui-hide" id="systemTable"></table>
+					<div class="list-header">定长格式（15）</div>
+					<table class="flow-default" id="LAY_demo1" style="width: 100%; height: 500px;">
+						<tr class="li-title">
+							<th width="25%">
+								报文类型
+							</th>
+							<th width="25%">
+								报文名称
+							</th>
+							<th width="50%">
+								说明
+							</th>
+						</tr>
+					</table>
+				</form>
+			</div>
+
+			<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+			<!--[if lt IE 9]>
+			  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+			  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+		</div>
+		<script src="./assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/template-web.js"></script>
+		<script id="badge-template" type="text/html">
+			<span class="badge-label">单证来源:</span>
+			{{each list}}
+				<div class="item-div">
+					<button type="text">{{$value.name}}</button>
+				</div>
+			{{/each}}
+			<button type="text" class="btn-more">更多</button>
+		</script>
+		<script type="text/html" id="checkboxTpl">
+			<button type="button" class="layui-btn layui-btn-normal">详情</button>
+		</script>
+
+		<script>
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use(['element', 'laypage', 'form', 'table', 'flow', 'util'], function() {
+				var util = layui.util
+				//固定块
+				util.fixbar({
+					top:true
+					, css: { right: 30, bottom: 35 }
+					, bgcolor: '#2a96ff !important;display:block;'
+					,showHeight:100
+					, click: function (type) {
+						if (type === 'top') {
+							$('.layui-body').animate({//主要代码
+								scrollTop: 0
+							}, 200);
+						}
+					}
+				});
+				
+				var element = layui.element;
+				var laypage = layui.laypage;
+				var form = layui.form
+				var table = layui.table;
+				$(function() {
+					initBadge()
+					initTable()
+				})
+
+				function initBadge() {
+					var list = [{
+						name: '全部',
+					}, {
+						name: '海关',
+					}, {
+						name: '海事',
+					}, {
+						name: '码头',
+					}, {
+						name: '货代',
+					}, {
+						name: '船代',
+					}, {
+						name: '船公司',
+					}]
+					var html = template('badge-template', {
+						list: list
+					})
+					$('#badgeList').append(html);
+					// 将第一个设置为选中状态
+					$($('#badgeList').children("div").get(0)).addClass("active")
+					// 设置切换效果
+					$(".item-div").click(function() {
+						$(this).siblings('.item-div').removeClass('active'); // 删除其他子元素的样式
+						$(this).addClass('active'); // 添加当前元素的样式
+					});
+				}
+
+				function initTable() {
+					var flow = layui.flow;
+					flow.load({
+						elem: '#LAY_demo1' //流加载容器
+						//,scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
+						,isAuto: true
+						,done: function(page, next){ //执行下一页的回调
+						  
+						  //模拟数据插入
+						  setTimeout(function(){
+							var lis = [];
+							for(var i = 0; i < 20; i++){
+							  lis.push(`<tr class="li-content">
+									<td width="25%">
+										<a href="javascript:;">check${i+1}</a>
+									</td>
+									<td width="25%">
+										电子口岸海关查验
+									</td>
+									<td width="50%">
+										海关-->亿通平台<br/>
+										海关向上海电子口岸提供需要进行查验的报关单信息。
+									</td>
+								</tr>`)
+							}
+							
+							//执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+							//pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+							next(lis.join(''), page < 10); //假设总页数为 10
+						  }, 500);
+						}
+					});
+				}
+				
+			});
+		</script>
+	</body>
+
+</html>

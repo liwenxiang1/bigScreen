@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>月报</title>
+	<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+	<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+	<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="../css/animate.min.css" rel="stylesheet">
+	<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+	<link href="../css/common.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid form-div animated fadeInRight">
+		<form id="form1" class="form-horizontal">
+			<input type="hidden" name="id"/> <!-- 主键Id 必须 -->
+			<div class="form-group">
+				<label class="col-xs-2 control-label">月报类型:</label>
+				<div class="col-xs-2">
+					<input type="text" class="form-control" name="name" readonly value="主要经济指标月报" />
+				</div>
+				<label class="col-xs-2 control-label">年份:</label>
+				<div class="col-xs-2">
+					<select class="form-control" name="sex" >
+						<option>2016年</option>
+						<option>2017年</option>
+						<option>2018年</option>
+						<option>2019年</option>
+						<option>2020年</option>
+						<option>2021年</option>
+					</select>
+				</div>
+				<label class="col-xs-2 control-label">月份:</label>
+				<div class="col-xs-2">
+					<select class="form-control" name="sex" >
+						<option>1月</option>
+						<option>2月</option>
+						<option>3月</option>
+						<option>4月</option>
+						<option>5月</option>
+						<option>6月</option>
+						<option>7月</option>
+						<option>8月</option>
+						<option>9月</option>
+						<option>10月</option>
+						<option>11月</option>
+						<option>12月</option>
+					</select>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-xs-2 control-label">状态:</label>
+				<div class="col-xs-4">
+					<input type="text" class="form-control" value="未报" readonly/>
+				</div>
+				<label class="col-xs-2 control-label">审批状态:</label>
+				<div class="col-xs-4">
+					<input type="text" class="form-control" value="未送审" readonly/>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div>
+				<label class="control-label" style="text-align: left;">中核二三-2020年4月主要经济指标月报表（万元）:
+					<button id="btn_edit" onclick="layerEnd('导入成功')" type="button" class="btn btn-sm btn-success">
+						<span class="glyphicon glyphicon-import" aria-hidden="true"></span>批量导入
+					</button>
+				</label>
+				<div>
+					<table id="table" >
+					</table>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="subButt">
+				<button type="button" onclick="layerEnd('提交成功')" class="btn btn-info">
+				<span class="glyphicon glyphicon-ok"></span>提交</button>
+				<button type="button" onclick="layerEnd('保存成功')" class="btn btn-info">
+				<span class="glyphicon glyphicon-ok"></span>暂存</button>
+				<button type="button" onclick="cancel()" class="btn btn-default">
+				<span class="glyphicon glyphicon-remove"></span>取消</button>
+			</div>
+		</form>
+	</div>
+	<script src="../js/jquery.min.js?v=2.1.4"></script>
+	<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+	<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="common.js"></script>
+	<script type="text/javascript">
+	var $table = $('#table');
+	var typeObj = [
+		'总产出',
+		'增加值',
+		'营业收入',
+		'其中：贸易收入',
+		'利润总额',
+		'净利润',
+		'其中：报表净利润',
+		'其中：研发费用',
+		'EVA',
+		'资产负债率(%)',
+		'成本费用占营业收入比重(%)',
+		'营业成本',
+		'销售费用',
+		'管理费用',
+		'财务费用',
+		'存货',
+		'其中：产成品',
+		'应收账款净额'];
+	var data = [];
+	$.each(typeObj,function(i,e){
+		data.push(getMon({type:e}));
+	});
+	function getMon(obj){
+		for(var i=1;i<=12;i++){
+			if(obj.type.indexOf('%')>-1) obj['m'+i] = Math.floor((Math.random()*3100)+700)/100+'%';
+			else obj['m'+i] = Math.floor((Math.random()*500000)+20000)/100;
+		}
+		return obj
+	}
+	$(function(){
+		var columns = [{title:'序号',align:'center',formatter:thIndex},{field:'type',title:'指标名称',align:'center'}];
+		for(var i=1;i<=12;i++){
+			columns.push({field:'m'+i,title:i+'月',align:'center',formatter:thInput});
+		}
+		$table.bootstrapTable({
+			columns:columns
+		}).bootstrapTable('load',data);
+	});
+	function setData(data,mode){//写入数据方法，父页面调用
+		$('#form1').setForm(data);//写入主表数据
+		if(data.testResumes){//写入从表数据
+			$('#table').bootstrapTable('load',JSON.parse(JSON.stringify(data.testResumes)));
+		}
+		if(mode){//查看详情全部设置为文本并且移除保存按钮
+			$('#table').bootstrapTable('hideColumn', 'delMode');//隐藏删除列
+			$('.subButt,.edit-tfoot').remove();
+			$(':input').prop('disabled',true);
+			$('.control-label span').remove();
+		}
+	}
+	</script>
+</body>
+</html>

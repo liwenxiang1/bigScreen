@@ -1,0 +1,30 @@
+{
+  "id": "1851418",
+  "name": "中核建",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6848943",
+      "name": "上升",
+      "font_class": "shangsheng",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
+      "icon_id": "6848950",
+      "name": "下降",
+      "font_class": "xiajiang",
+      "unicode": "e688",
+      "unicode_decimal": 59016
+    },
+    {
+      "icon_id": "7598788",
+      "name": "闪电",
+      "font_class": "weibiaoti-",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    }
+  ]
+}

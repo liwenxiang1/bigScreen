@@ -1,0 +1,522 @@
+html,body{
+	background: #F1F3F9;
+}
+.header{
+	overflow: hidden;
+	height: 70px;
+	background: #3B69B6;
+}
+.title{
+	font-size: 22px;
+	color: #fff;
+	letter-spacing: 1.02px;
+	line-height: 70px;
+}
+.logo{
+	margin: 22px 15px ;
+	float: left;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.mt20{
+	margin-top: 20px;
+}
+.people{
+	font-size: 16px;
+	color: #fff;
+	padding-right: 46px;
+	letter-spacing: 0.74px;
+	line-height: 70px;
+}
+
+.leftBox{
+	padding: 23px 20px 23px 30px;
+	/* min-height: 900px; */
+}
+.middleBox{
+	padding: 23px 20px 23px 0;
+}
+.rightBox{
+	padding: 23px 0;
+}
+.app{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 5px #E8EDFB;
+}
+.todo{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 5px #E8EDFB;
+	padding-bottom: 16px;
+}
+.todoBottom{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 5px #E8EDFB;
+	padding: 20px;
+	padding-left: 0;
+	overflow: hidden;
+	margin-top: 20px;
+}
+.titleKuaijie{
+	width: 100%;
+	overflow: hidden;
+	padding-top: 11px;
+	padding-left: 15px;
+	border: 1px solid #E5E5E5;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.todoBottomLeft{
+	padding-right: 20px;
+}
+.todoitem{
+	width: 20%;
+	padding-top: 28px;
+	padding-bottom: 28px;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	float: left;
+	cursor: pointer;
+	transition: all .5s;
+}
+.todoitem:hover{
+	transform: scale(1.1);
+}
+.kuaijieBottom{
+	overflow: hidden;
+	border: 1px solid #E5E5E5;
+	border-top: none;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.todoItemText{
+	font-size: 14px;
+	color: #121212;
+	padding-top: 22px;
+	padding-top: 10px;
+	text-align: center;
+}
+.todoItemIcon{
+	width: 42px;
+	height: 42px;
+	display: block;
+	margin: 0 auto;
+}
+.notice{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 5px #E8EDFB;
+	padding-bottom: 19px;
+}
+.titleSmallBox{
+	overflow: hidden;
+	padding: 16px 24px;
+	display: flex;
+	justify-content: space-between;
+}
+.flex{
+	display: flex;
+}
+.titleSmallBoxItem{
+	margin-right: 20px;
+	color: #121212;
+	cursor: pointer;
+}
+.titleSmallBoxItemThis{
+	color: #167EFF;
+}
+.titleSmall{
+	font-size: 16px;
+	margin-left: 10px;
+	position: relative;
+	top: -4px;
+}
+.titleSmallMore{
+	font-size: 16px;
+	color: #121212;
+	cursor: pointer;
+}
+.titleIconApp{
+	width: 14px;
+	height: 12px;
+}
+.titleIconTodo{
+	width: 16px;
+	height: 14px;
+}
+.titleIconNotice{
+	width: 12px;
+	height: 14px;
+}
+.con{
+	padding-right: 30px;
+}
+.applyBigBox{
+	padding: 0 12px 12px;
+	overflow: hidden;
+	height: 270px;
+	overflow-y: scroll;
+}
+.applyBigBox-bottom{
+	padding: 0 12px 12px;
+	overflow: hidden;
+	height: 400px;
+	overflow-y: scroll;	
+}
+.applyItem{
+	background: #F7FAFF;
+	border-radius: 6px;
+	margin:12px 12px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	cursor: pointer;
+}
+.applyItem:hover{
+	background: #fff;
+	border: 1px solid #F3F3F3;
+	margin:12px 12px;
+	padding-top: 13px;
+	padding-bottom:13px;
+	box-shadow: 0 0 5px rgba(232, 232, 232, 0.33);
+}
+.imgApplyItem{
+	width: 42px;
+	height: 42px;
+	display: block;
+	margin: 0px auto;
+}
+.pd0{
+	padding: 0 !important;
+}
+.applyItemName{
+	margin: 13px auto 0;
+	text-align: center;
+}
+.todoBarOut{
+	padding: 0 20px 20px ;
+}
+.todoBar{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background:linear-gradient(to right,#F9F9F9, #ECF0F5);
+}
+.tab{
+	padding: 0 ;
+}
+a{
+	color: #333333;
+}
+.nav>li>a{
+	padding: 0;
+	line-height: 50px;
+}
+.dropdown-toggle{
+	color: #999999;
+}
+.down{
+	width: 14px;
+	position: absolute;
+	top: 20px;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+	color: #2277F6;
+	background-color: rgba(0,0,0,0);
+}
+.nav-tabs{
+	border: none;
+}
+.nav-tabs>li>a{
+	margin-right: 0;
+	border: none;
+	border-radius:  0;
+}
+.nav-tabs .dropdown-menu{
+	border-radius: 6px;
+}
+.nav-tabs .dropdown-menu li a{
+	line-height: 30px;
+}
+.rhomb{
+	color: #D2D9E6;
+	font-size: 14px;
+	line-height: 36px;
+	margin-right: 5px;
+}
+.todoTitle{
+	color: #121212;
+	font-size: 14px;
+	line-height: 36px;
+	margin-right: 5px;
+}
+.todoFrom{
+	color: #999999;
+	font-size: 12px;
+	line-height: 36px;
+}
+.todoTime{
+	color: #333333;
+	font-size: 14px;
+	float: right;
+	line-height: 36px;
+}
+.todoList{
+	border-bottom: 1px dashed #CCCCCC;
+	cursor: pointer;
+}
+.todoList:hover .rhomb,.todoList:hover .todoTitle{
+	color:#167EFF;
+}
+.todoListBox{
+	padding: 0 20px;
+}
+.chrome{
+	width: 40px;
+	height: 40px;
+	float: left;
+}
+.chromeName{
+	font-size: 14px;
+	color: #121212;
+	padding-left: 20px;
+	line-height: 40px;
+	float: left;
+}
+.chromeBoxL{
+	width: 47%;
+	padding: 19px 19px;
+	overflow: hidden;
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+	float: left;
+	margin-right: 3%;
+	cursor: pointer;
+	transition: all .5s;
+}
+.chromeBoxL:hover{
+	transform: scale(1.03);
+}
+.chromeBoxR{
+	width: 47%;
+	padding: 19px 19px;
+	overflow: hidden;
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+	float: left;
+	margin-left: 3%;
+	cursor: pointer;
+	transition: all .5s;
+}
+.chromeBoxR:hover{
+	transform: scale(1.03);
+}
+.mb{
+	margin-bottom: 15px;
+}
+.bar{
+	width: 1px;
+	height: 100%;
+	background: #DCDCDC;
+	position: absolute;
+	left: 20px;
+}
+.titleRight{
+	font-size: 14px;
+	color: #6281AC;
+}
+.textRight{
+	margin-top: 5px;
+	font-size: 16px;
+	color: #333333;
+	width:200px;
+	word-break:break-all;
+	display:-webkit-box;
+	-webkit-line-clamp:1;
+	-webkit-box-orient:vertical;
+	overflow:hidden;
+}
+.circle{
+	margin-left: 15px;
+	margin-right: 17px;
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius: 10px;
+	border: 1px solid #CFCFCF;
+	float: left;
+	position: relative;
+	top: 5px;
+}
+.noticeValue{
+	float: left;
+	width: calc( 100% - 47px );
+}
+.noticeItem{
+	overflow: hidden;
+	padding: 7px 0 30px;
+	cursor: pointer;
+}
+.barItem{
+	position: relative;
+}
+.noticeItem:hover .circle{
+	background: #167EFF;
+	border: #167EFF;
+}
+.noticeItem:hover .textRight{
+	color: #167EFF;
+}
+.circleRed{
+	width: 13px;
+	height: 13px;
+	background: #F32E2E;
+	border-radius: 13px;
+	position: absolute;
+	top: 10px;
+	right: 20%;
+	color: #fff;
+	font-size: 12px;
+	line-height: 12px;
+	text-align: center;
+}
+.applyBigBox::-webkit-scrollbar {
+    width: 4px;
+}
+.applyBigBox::-webkit-scrollbar-thumb {
+    background-color: rgba(144,147,153,.3);
+	border-radius:4px;
+}
+/* 弹框 */
+.modal-dialog{
+	top: 50px;
+	margin: 0;
+	width: 100%;
+}
+.modal-content{
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+	padding:  30px;
+}
+.topFunctionBox{
+	width: 100%;
+	height: 40px;
+	display: flex;
+	align-items: center;
+}
+.searchSpan{
+	margin-right: 10px;
+}
+.topFunctionCol{
+	display: flex;
+	align-items: center;
+}
+.form-control{
+	width: 100%;
+	flex: 1;
+}
+.btn{
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+}
+.btn:hover{
+    color: #fff;
+    background-color: #409eff99;
+    border-color: #409eff99;
+}
+.modal-body{
+	/* padding: 0; */
+}
+.tableItem{
+	width: 100%;
+	height: 40px;
+	/* background-color: yellow; */
+	border-bottom: 1px dotted #F0F0F0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.modalTitleBox{
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+.modalYuan{
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	border: 2px solid #1369C0;
+	margin-right: 10px;
+}
+.modalTitle{
+	width: 80%;
+}
+.juCenter{
+	justify-content: space-between;
+}
+.zidingyi{
+	margin-right: 10px;
+	cursor: pointer;
+}
+.modal-footer-center{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+}
+.pagination{
+	margin: 0;
+	cursor: pointer;
+}
+.pagination-total{
+	margin-right: 10px;
+}
+.centerPagination>li>span{
+	color: #000000;	
+}
+.pagination>.disabled>span{
+	color: #D6D5DA;
+}
+.pagination>.pageChoose>span{
+	background-color: #1369C0;
+	color: #ffffff;
+}
+.pagination>.pageChoose:hover>span{
+	background-color: #1369C0;
+	color: #ffffff;
+}
+.selectPageSize{
+	height: 34px;
+	margin-left: 10px;
+    border: 1px solid #ddd;
+	border-radius: 4px;
+}
+#centerModalBody{
+	overflow-y: scroll;
+	max-height: 500px;
+}
+.jumpBox,.jumpBoxBtn{
+	margin-left: 20px;
+}
+.inputNumber{
+	width: 40px;
+	height: 34px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+	margin: 0 5px;
+}

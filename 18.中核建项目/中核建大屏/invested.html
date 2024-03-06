@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/invested.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <title>投资看板</title>
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="invested theme-wrapper scale-wrapper">
+        <div id="loading">
+            <div class="loading_img">
+                <!-- 加载动画 -->
+                <img class="loading-ring-o" src="images/loading-ring-o.png">
+                <img class="loading-ring-i" src="images/loading-ring-i.png">
+            </div>
+        </div>
+        <div class="title-bar">
+            <p class="title-name">投资看板</p>
+            <span id="time"></span>
+            <div class="nav-btn">查看报告</div>
+        </div>
+        <div class="content">
+            <div id="c-map"></div>
+            <div class="c-left">
+                <div class="chart-item">
+                    <p class="charts-title">投资类型</p>
+                    <div id="ivt-type"></div>
+                    <!-- <div class="pj-dn-info"></div> -->
+                </div>
+                <div class="divider"></div>
+                <div class="chart-item">
+                    <p class="charts-title">投资主体</p>
+                    <div id="ivt-orgs"></div>
+                </div>
+                <div class="divider"></div>
+                <div class="chart-item">
+                    <p class="charts-title">投资行业</p>
+                    <div id="ivt-industry"></div>
+                </div>
+            </div>
+            <!-- <div class="c-center">
+                <div id="china-map"></div>
+            </div> -->
+            <div class="c-right">
+                <div class="chart-item">
+                    <p class="charts-title">PPP项目情况</p>
+                    <div id="PPP-pj"></div>
+                    <!-- <div class="pj-dn-info"></div> -->
+                </div>
+                <div class="divider"></div>
+                <div class="chart-item">
+                    <p class="charts-title">超概提示</p>
+                    <div class="super-tip sroll-wrapper">
+                        <ul class="super-tip-list sroll-ul"></ul>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="chart-item">
+                    <p class="charts-title">境外项目情况</p>
+                    <div class="overseas-pj sroll-wrapper">
+                        <ul class="overseas-pj-list sroll-ul"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="c-date">
+                <span class="date-wrapper">2</span>
+                <span class="date-wrapper">0</span>
+                <span class="date-wrapper">2</span>
+                <span class="date-wrapper">0</span>
+                <span class="date-line">－</span>
+                <span class="date-wrapper">0</span>
+                <span class="date-wrapper">6</span>
+            </div>
+            <!-- <p class="c-total">项目总额：<span>243,236.00</span></p> -->
+            <div class="c-num clearfix">
+                <p><span>累计年投资项目：</span><span>66</span></p>
+                <p><span>总投资额：</span><span>1,389.047亿</span></p>
+            </div>
+            <div class="c-bottom">
+                <div id="bar-chart"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/china.js"></script>
+    <script src="./js/global.js"></script>
+    <script type="text/javascript">
+        let PPPpjChart = null
+        let ivtTypeOption = null
+        let ivtOrgOption = null
+        let ivtIndustryOption = null
+        let pjInfo = null
+        let PPPpjOption = null
+        let cMapOption = null
+        let barOption = null
+        $(function () {
+            resetTheme()
+            scalePage()
+            clearLoading()
+                timeInit()
+                // 投资类型
+                ivtTypeInit()
+                // 投资主体
+                ivtOrgOptionInit()
+                // 投资行业
+                ivtIndustryOptionInit()
+                // PPP项目情况
+                PPPpjInit()
+                // 超概提示
+                superTipInit()
+                // 境外项目情况
+                overseasPjInit()
+
+                // 地图渲染
+                mapInit()
+
+                // 底部柱状图
+                barinit()
+            // 
+            // progressChartsInit()
+            // statisticsInit()
+            // bChartsInit()
+            //全屏
+            // $("#fullScreen").on("click",function(){
+            //     fullScreen();
+            // })
+            // //退出全屏
+            // $("#exitFullScreen").on("click",function(){
+            //     exitFullscreen();
+            // })
+        })
+
+        clearLoading = () => {
+            //删除加载动画
+            $('#loading').fadeOut(1000)
+            setTimeout(function () {
+                $('#loading').remove()
+            }, 1200);
+        }
+
+        timeInit = () => {
+            setInterval(() => {
+                let date = new Date()
+                $('#time').text(getFormatDate)
+            }, 1000);
+        }
+        getFormatDate = () => {
+            let nowDate = new Date();
+            let year = nowDate.getFullYear();
+            let month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+            let date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+            let hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+            let minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+            let second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+            return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+        }
+        getScale = () => {
+            // 固定好16:9的宽高比，计算出最合适的缩放比，宽高比可根据需要自行更改
+            const width = 1920
+            const height = 1080
+            let ww = window.innerWidth / width
+            let wh = window.innerHeight / height
+            return ww < wh ? ww : wh
+        }
+        // 页面渲染计算比例缩放
+        scalePage = () => {
+            setScale = debounce(() => {
+                // 获取到缩放比，设置它
+                let scale = this.getScale()
+                $('.scale-wrapper').css({
+                    'transform': 'scale(' + scale + ') translate(-50%, -50%)',
+                    '-webkit-transform': 'scale(' + scale + ') translate(-50%, -50%)'
+                })
+            }, 200)
+            setScale()
+            window.addEventListener('resize', setScale)
+        }
+        // 防抖
+        debounce = (fun, delay) => {
+            let timer
+            return function () {
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(fun, delay)
+            }
+        }
+
+        ivtTypeInit = () => {
+            const ivtTypeData = [{
+                value: 324,
+                name: 'PPP项目投资'
+            }, {
+                value: 524,
+                name: '固定资产投资'
+            }, {
+                value: 659,
+                name: '股权投资'
+            }]
+            const ivtTypeData1 = [{
+                value: 524,
+                name: '基本建设类股权投资'
+            }, {
+                value: 659,
+                name: '控股投资'
+            }, {
+                value: 659,
+                name: '参股投资'
+            }]
+            let ivtTypeChart = echarts.init(document.getElementById('ivt-type'));
+            ivtTypeOption = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{b}: {c}亿元 ({d}%)"
+                },
+                grid: {
+                    left: 15,
+                    top: 20,
+                    bottom: 20,
+                    right: 15
+                },
+                legend: {
+                    show: true,
+                    orient: 'vertical',
+                    top: 60,
+                    right: 10,
+                    itemWidth: 10,
+                    itemHeight: 10,
+                    itemGap: 15,
+                    // formatter: (name) => {
+                    //     let curItem = ivtTypeData.filter(item => item.name === name)
+                    //     return name + '：' + curItem[0].value
+                    // }
+                    // formatter: (name) => {
+                    //     let curItem = ivtTypeData.filter(item => item.name === name)
+                    //     let arr = [
+                    //         '{n|' + name + '：' + curItem[0].num + '}',
+                    //         '{m|' + curItem[0].value + '} {u|亿}'
+                    //     ]
+                    //     return arr.join('\n\n')
+                    // },
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 14,
+                        rich: {
+                            n: {
+                                fontSize: 18,
+                                color: '#fff',
+                                padding: [0, 15, 50, 0]
+                            },
+                            m: {
+                                fontSize: 38,
+                                color: '#20FDFA',
+                                align: 'left',
+                                verticalAlign: 'bottom',
+                                padding: [0, 0, 0, -15]
+                            },
+                            u: {
+                                fontSize: 18,
+                                color: '#20FDFA',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    center: ["33%", "50%"],
+                    radius: ["0%", "42%"],
+                    color: ['#FF6D82', '#00AEFF', '#C25EC4'],
+                    startAngle: 210,
+                    // selectedMode: 'single',
+                    // itemStyle: {
+                    //     normal: {
+                    //         borderColor: '#fff',
+                    //         borderWidth: 2
+                    //     }
+                    // },
+                    labelLine: {
+                        show: false
+                    },
+                    label: {
+                        normal: {
+                            formatter: "{b|{d}%}",
+                            rich: {
+                                b: {
+                                    fontSize: 15,
+                                    color: '#fff'
+                                }
+                            },
+                            position: 'inner'
+                        }
+                    },
+                    data: ivtTypeData
+                }, {
+                    type: "pie",
+                    center: ["33%", "50%"],
+                    radius: ["52%", "65%"],
+                    color: ['#45dbf7', '#f6d54a', '#f69846', '#ff4343'],
+                    startAngle: 210,
+                    // selectedMode: 'single',
+                    labelLine: {
+                        length: 5,
+                        length2: 50,
+                        lineStyle: {
+                            type: 'dashed'
+                        }
+                    },
+                    label: {
+                        normal: {
+                            formatter: "{b|{d}%}",
+                            padding: [0, -58, 25, -55],
+                            rich: {
+                                b: {
+                                    fontSize: 15
+                                }
+                            }
+                        }
+                    },
+                    data: ivtTypeData1
+                }]
+            }
+            ivtTypeChart.setOption(ivtTypeOption)
+
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                ivtTypeChart.resize()
+            });
+        }
+
+        ivtOrgOptionInit = () => {
+            const ivtOrgData = [{
+                name: '中核二二',
+                value: 100,
+                selected: true
+            }, {
+                name: '中核二三',
+                value: 80
+            }, {
+                name: '中核二四',
+                value: 50
+            }]
+            let ivtOrgChart = echarts.init(document.getElementById('ivt-orgs'));
+            ivtOrgOption = {
+                title: {
+                    text: 230,
+                    subtext: ' 总数',
+                    textStyle: {
+                        color: '#00FFFE',
+                        fontSize: 30,
+                    },
+                    subtextStyle: {
+                        fontSize: 20,
+                        color: '#00FFFE'
+                    },
+                    x: '28.5%',
+                    y: '37%',
+                },
+                grid: {
+                    left: 15,
+                    top: 20,
+                    bottom: 20,
+                    right: 15
+                },
+                legend: {
+                    show: true,
+                    orient: 'vertical',
+                    top: 70,
+                    right: 18,
+                    textStyle: {
+                        color: '#00FFFE',
+                        fontSize: 13,
+                        fontWeight: 'bold'
+                    },
+                    formatter: (name) => {
+                        let curItem = ivtOrgData.filter(item => item.name === name)
+                        return name + '：' + curItem[0].value + '亿'
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    center: ["35%", "50%"],
+                    radius: ["62%", "75%"],
+                    color: ['#2BC191', '#00AEFF', '#FEC006'],
+                    startAngle: 90,
+                    selectedMode: 'single',
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: ivtOrgData
+                }]
+            }
+            ivtOrgChart.setOption(ivtOrgOption)
+
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                ivtOrgChart.resize()
+            });
+        }
+
+        ivtIndustryOptionInit = () => {
+            let ivtIndustryChart = echarts.init(document.getElementById('ivt-industry'));
+            let data1 = []
+            let data2 = []
+            for (let i = 0; i < 5; i++) {
+                data1.push(Math.floor(Math.random() * 500 + 20))
+                data2.push(Math.floor(Math.random() * 500 + 20))
+            }
+            // const ivtIndustryOptionData = []
+            ivtIndustryOption = {
+                color: ['#336ECF', '#FC41A8'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        // type: 'cross',
+                        // crossStyle: {
+                        //     color: '#fff'
+                        // },
+                        // lineStyle: {
+                        //     type: 'dashed'
+                        // },
+                        lineStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }, {
+                                    offset: 0.5,
+                                    color: 'rgba(255, 255, 255,1)',
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }],
+                                global: false
+                            }
+                        }
+                    }
+                },
+                grid: {
+                    left: 15,
+                    right: 50,
+                    bottom: 20,
+                    top: 30,
+                    containLabel: true
+                },
+                // legend: {
+                //     data: ['主营收入曲线', '利润总额曲线', '资产总额曲线'],
+                //     orient: 'horizontal',
+                //     show: true,
+                //     right: 20,
+                //     top: 0,
+                //     textStyle: {
+                //         color: '#fff',
+                //         fontWeight: 'blod'
+                //     },
+                //     borderRadius: 10
+                // },
+                xAxis: {
+                    type: 'category',
+                    data: ['土砂石开采', '结构性金属制品制造', '电力生产', '住宅房屋建筑', '其他房屋建筑业'],
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        // rotate: 30,
+                        color: '#fff',
+                        textStyle: {
+                            fontSize: 12
+                        }
+                    },
+                    boundaryGap: false // 两侧不留白
+                },
+                yAxis: {
+                    type: 'value',
+                    // max: max_value>=100? max_value + 100: max_value+10,
+                    // max: max_value > 100 ? max_value * 2 : max_value + 10,
+                    // interval: 10,
+                    // nameLocation: "center",
+                    axisLabel: {
+                        color: '#fff',
+                        textStyle: {
+                            fontSize: 12
+                        },
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#424470'
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    }
+                },
+                series: [{
+                        name: '境内',
+                        type: 'line',
+                        smooth: true,
+                        symbol: 'none',
+                        data: data1,
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: '#336ECF30'
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(108,80,243,0)'
+                                    }
+                                ], false),
+                                shadowColor: '#336ECF90',
+                                shadowBlur: 20
+                            }
+                        }
+                    },
+                    {
+                        name: '境外',
+                        type: 'line',
+                        smooth: true,
+                        symbol: 'none',
+                        data: data2,
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: '#FC41A830'
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(108,80,243,0)'
+                                    }
+                                ], false),
+                                shadowColor: '#FC41A890',
+                                shadowBlur: 20
+                            }
+                        }
+                    }
+                ]
+            }
+            ivtIndustryChart.setOption(ivtIndustryOption)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            setInterval(() => {
+                // toolTip轮播
+                ivtIndustryChart.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: toolTipIndex
+                });
+                toolTipIndex++;
+                if (toolTipIndex > ivtIndustryOption.series[0].data.length) {
+                    toolTipIndex = 0;
+                }
+            }, 2000)
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                ivtIndustryChart.resize()
+            });
+        }
+
+        PPPpjInit = () => {
+            // const PPPpjData = [{
+            //     num: 55,
+            //     value: 230.2,
+            //     name: '在建'
+            // }, {
+            //     num: 280,
+            //     value: 624.5,
+            //     name: '待建'
+            // }]
+            PPPpjChart = echarts.init(document.getElementById('PPP-pj'));
+            let data1 = []
+            let data2 = []
+            for (let i = 0; i < 4; i++) {
+                data1.push(Math.floor(Math.random() * 500 + 20))
+                data2.push(Math.floor(Math.random() * 500 + 20))
+            }
+            PPPpjOption = {
+                color: ['#45dbf7', '#f6d54a'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        // type: 'cross',
+                        // crossStyle: {
+                        //     color: '#fff'
+                        // },
+                        // lineStyle: {
+                        //     type: 'dashed'
+                        // },
+                        lineStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }, {
+                                    offset: 0.5,
+                                    color: 'rgba(255, 255, 255,1)',
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }],
+                                global: false
+                            }
+                        }
+                    }
+                },
+                grid: {
+                    left: 15,
+                    right: 30,
+                    bottom: 20,
+                    top: 30,
+                    containLabel: true
+                },
+                // legend: {
+                //     data: ['主营收入曲线', '利润总额曲线', '资产总额曲线'],
+                //     orient: 'horizontal',
+                //     show: true,
+                //     right: 20,
+                //     top: 0,
+                //     textStyle: {
+                //         color: '#fff',
+                //         fontWeight: 'blod'
+                //     },
+                //     borderRadius: 10
+                // },
+                xAxis: {
+                    type: 'category',
+                    data: ['项目前期', '项目实施中', '项目运营中', '已移交'],
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        // rotate: 30,
+                        color: '#fff',
+                        textStyle: {
+                            fontSize: 12
+                        }
+                    },
+                    boundaryGap: false // 两侧不留白
+                },
+                yAxis: {
+                    type: 'value',
+                    // max: max_value>=100? max_value + 100: max_value+10,
+                    // max: max_value > 100 ? max_value * 2 : max_value + 10,
+                    // interval: 10,
+                    // nameLocation: "center",
+                    axisLabel: {
+                        color: '#fff',
+                        textStyle: {
+                            fontSize: 12
+                        },
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#424470'
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    }
+                },
+                series: [{
+                        name: '项目数量',
+                        type: 'line',
+                        smooth: true,
+                        symbol: 'none',
+                        data: data1,
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: '#45dbf730'
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(108,80,243,0)'
+                                    }
+                                ], false),
+                                shadowColor: '#45dbf790',
+                                shadowBlur: 20
+                            }
+                        }
+                    },
+                    {
+                        name: '项目金额',
+                        type: 'line',
+                        smooth: true,
+                        symbol: 'none',
+                        data: data2,
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: '#f6d54a30'
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(108,80,243,0)'
+                                    }
+                                ], false),
+                                shadowColor: '#f6d54a90',
+                                shadowBlur: 20
+                            }
+                        }
+                    }
+                ]
+            }
+            PPPpjChart.setOption(PPPpjOption)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            setInterval(() => {
+                // toolTip轮播
+                PPPpjChart.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: toolTipIndex
+                });
+                toolTipIndex++;
+                if (toolTipIndex > PPPpjOption.series[0].data.length) {
+                    toolTipIndex = 0;
+                }
+            }, 2000)
+
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                PPPpjChart.resize()
+            });
+        }
+        
+        scrollNews = (obj) => {
+            var $self = obj.find("ul");
+            var lineHeight = $self.find("li:first").height();
+            $self.animate({
+                "marginTop": -lineHeight + "px"
+            }, 600, function () {
+                $self.css({
+                    marginTop: 0
+                }).find("li:first").appendTo($self);
+            })
+        }
+        superTipInit = () => {
+            const data = [{
+                value: '1.1',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '0.5',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '1.3',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '0.9',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '0.8',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '1.0',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '1.15',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '1.12',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '3.0',
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '0.7',
+                name: 'XXXXXXXXXX项目'
+            }]
+            let liDom = ''
+            $.each(data, (index, item)=>{
+                liDom += `<li>
+                            <span class="value"><strong>${item.value} </strong>亿元</span>
+                            <span class="label">${item.name}</span>
+                        </li>`
+            })
+            $('.super-tip-list').append(liDom)
+            var $this = $(".super-tip");
+            var scrollTimer;
+            $this.hover(function () {
+                clearInterval(scrollTimer);
+            }, function () {
+                scrollTimer = setInterval(function () {
+                    scrollNews($this);
+                }, 2000);
+            }).trigger("mouseleave");
+        }
+
+        overseasPjInit = () => {
+            const dict = ['已实施', '已批复', '报批中']
+            const data = [{
+                value: '52,275',
+                status: 1,
+                name: '蒙古国巴格诺尔燃煤电站项目'
+            },{
+                value: '105',
+                status: 0,
+                name: '设立中和五（孟加拉国）建设有限公司'
+            },{
+                value: '293.18',
+                status: 2,
+                name: '中和五（马）有限公司实缴注册资本金'
+            },{
+                value: '0.9',
+                status: 2,
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '0.8',
+                status: 0,
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '1.0',
+                status: 0,
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '1.15',
+                status: 0,
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '1.12',
+                status: 1,
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '3.0',
+                status: 2,
+                name: 'XXXXXXXXXX项目'
+            },{
+                value: '0.7',
+                status: 0,
+                name: 'XXXXXXXXXX项目'
+            }]
+            let liDom = ''
+            $.each(data, (index, item)=>{
+                liDom += `<li>
+                            <span class="status ${item.status == '0'? 'primary': item.status == '1'? 'warning':'danger'}">${dict[item.status]}</span>
+                            <span class="label">${item.name}</span>
+                            <span class="value">${item.value}</span>
+                        </li>`
+            })
+            $('.overseas-pj-list').append(liDom)
+            setTimeout(() => {
+                var $this = $(".overseas-pj");
+                var scrollTimer;
+                $this.hover(function () {
+                    clearInterval(scrollTimer);
+                }, function () {
+                    scrollTimer = setInterval(function () {
+                        scrollNews($this);
+                    }, 2000);
+                }).trigger("mouseleave");
+            }, 500);
+        }
+
+        mapInit = () => {
+            let cMap = echarts.init(document.getElementById('c-map'));
+            var data = [{
+                    name: "北京",
+                    value: 200,
+                    value2: 22,
+                    value3: 33
+                },
+                {
+                    name: "天津",
+                    value: 42,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "河北",
+                    value: 102,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "山西",
+                    value: 81,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "内蒙古",
+                    value: 47,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "辽宁",
+                    value: 67,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "吉林",
+                    value: 82,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "黑龙江",
+                    value: 123,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "上海",
+                    value: 24,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "江苏",
+                    value: 92,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "浙江",
+                    value: 114,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "安徽",
+                    value: 109,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "福建",
+                    value: 116,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "江西",
+                    value: 91,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "山东",
+                    value: 119,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "河南",
+                    value: 137,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "湖北",
+                    value: 116,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "湖南",
+                    value: 114,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "重庆",
+                    value: 91,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "四川",
+                    value: 125,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "贵州",
+                    value: 62,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "云南",
+                    value: 83,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "西藏",
+                    value: 9,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "陕西",
+                    value: 80,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "甘肃",
+                    value: 56,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "青海",
+                    value: 10,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "宁夏",
+                    value: 18,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "新疆",
+                    value: 180,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "广东",
+                    value: 123,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "广西",
+                    value: 59,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "海南",
+                    value: 14,
+                    value2: 11,
+                    value3: 31
+                },
+            ];
+
+            var geoCoordMap = {};
+
+            /*获取地图数据*/
+            cMap.showLoading();
+            var mapFeatures = echarts.getMap('china').geoJson.features;
+            cMap.hideLoading();
+            mapFeatures.forEach(function (v) {
+                // 地区名称
+                var name = v.properties.name;
+                // 地区经纬度
+                geoCoordMap[name] = v.properties.cp;
+
+            });
+            var max = 480,
+                min = 9; // todo 
+            var maxSize4Pin = 100,
+                minSize4Pin = 20;
+
+            var convertData = function (data) {
+                var res = [];
+                for (var i = 0; i < data.length; i++) {
+                    var geoCoord = geoCoordMap[data[i].name];
+                    if (geoCoord) {
+                        res.push({
+                            name: data[i].name,
+                            value: geoCoord.concat(data[i].value),
+                        });
+                    }
+                }
+                return res;
+            };
+            cMapOption = {
+                tooltip: {
+                    padding: 0,
+                    enterable: true,
+                    transitionDuration: 1,
+                    textStyle: {
+                        color: '#000',
+                        decoration: 'none',
+                    },
+                    // position: function (point, params, dom, rect, size) {
+                    //   return [point[0], point[1]];
+                    // },
+                    formatter: function (params) {
+                        var tipHtml = '';
+                        tipHtml =
+                            '<div style="position: relative;display:inline-block;min-width: 200px;max-width: 600px; height: 90px;padding: 0 15px; background:linear-gradient(0deg,rgba(14,106,178,0.44),rgba(31,53,127,0.44),rgba(25,123,202,0.44))">' +
+                            '<div style="position: absolute;top: -2px;left: -2px; width: 15px;height: 15px;border-top: 3px solid #117EC8; border-left: 3px solid #117EC8;"></div>' +
+                            '<div style="position: absolute;top: -2px;right: -2px; width: 15px;height: 15px;border-top: 3px solid #117EC8; border-right: 3px solid #117EC8;"></div>' +
+                            '<div style="position: absolute;bottom: -2px;left: -2px; width: 15px;height: 15px;border-bottom: 3px solid #117EC8; border-left: 3px solid #117EC8;"></div>' +
+                            '<div style="position: absolute;bottom: -2px;right: -2px; width: 15px;height: 15px;border-bottom: 3px solid #117EC8; border-right: 3px solid #117EC8;"></div>' +
+                            '<p style="margin: 15px 0 0 0; font-size: 14px;font-weight: 500;color: #fff;line-height: 20px;">' +
+                            '<span style="color: #74BDD8;">投资项目数量：</span>' +
+                            ' <span style="font-size: 20px;font-weight: bold;">' + params.data.value +
+                            '</span>' +
+                            '</p>' +
+                            '<p style="margin: 15px 0 0 0; font-size: 14px;font-weight: 500;color: #fff;line-height: 20px;">' +
+                            '<span style="color: #74BDD8;">投资额：</span>' +
+                            '<span style="font-size: 20px;font-weight: bold;">' + params.data.value2 + '亿' +
+                            '</span>' +
+                            '</p>' +
+                            '</div>'
+                        // setTimeout(function() {
+                        //     tooltipCharts(params.name);
+                        // }, 10);
+                        return tipHtml;
+                    }
+
+                },
+                visualMap: {
+                    show: true,
+                    min: 0,
+                    max: 200,
+                    left: '5%',
+                    bottom: 80,
+                    calculable: true,
+                    seriesIndex: [0],
+                    inRange: {
+                        color: ['#04387b', '#467bc0'] // 蓝绿
+                    }
+                },
+                geo: {
+                    show: true,
+                    map: 'china',
+                    // left: 0, 
+                    // right: 0,
+                    // boundingCoords: [
+                    //     // 定位左上角经纬度
+                    //     [65, 10],
+                    //     // 定位右下角经纬度
+                    //     [150, 55]
+                    // ],
+                    top: 80,
+                    label: {
+                        normal: {
+                            show: false
+                        },
+                        emphasis: {
+                            show: false,
+                        }
+                    },
+                    zoom: 1.25, //当前视角的缩放比例
+                    roam: false, //是否开启平游或缩放
+                    // scaleLimit: { //滚轮缩放的极限控制
+                    //     min: 0.3,
+                    //     max: 8
+                    // },
+                    itemStyle: {
+                        areaColor: '#023677',
+                        borderColor: '#1180c7',
+                        shadowBlur: 20,
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 20,
+                        emphasis: {
+                            areaColor: '#4499d0'
+                        }
+                    },
+                    z: 1
+                },
+                series: [{
+                        name: '',
+                        type: 'map',
+                        map: 'china',
+                        showLegendSymbol: false, // 存在legend时显示
+                        label: {
+                            normal: {
+                                show: false
+                            },
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        roam: false, //是否开启平游或缩放
+                        zoom: 1.25,
+                        z: 2,
+                        itemStyle: {
+                            normal: {
+                                areaColor: '#023677',
+                                borderColor: '#3ea5e6'
+                            },
+                            emphasis: {
+                                areaColor: '#4499d0'
+                            }
+                        },
+                        animation: false,
+                        data: data
+                    }, {
+                        name: '散点',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        data: convertData(data),
+                        symbolSize: function (val) {
+                            return val[2] / 10;
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                formatter: '{b}'
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {
+                            show: false
+                        }
+                    },
+                    {
+                        name: '点',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        zlevel: 6,
+                        tooltip: {
+                            show: false
+                        }
+                    },
+                    {
+                        name: 'Top 10',
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        data: convertData(data.sort(function (a, b) {
+                            return b.value - a.value;
+                        }).slice(0, 10)),
+                        symbolSize: function (val) {
+                            return val[2] / 6;
+                        },
+                        showEffectOn: 'render',
+                        rippleEffect: {
+                            brushType: 'stroke'
+                        },
+                        hoverAnimation: true,
+                        label: {
+                            normal: {
+                                formatter: '{b}',
+                                position: 'left',
+                                show: false
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: 'yellow',
+                                shadowBlur: 10,
+                                shadowColor: 'yellow'
+                            }
+                        },
+                        tooltip: {
+                            show: false
+                        },
+                        zlevel: 1
+                    }
+                ]
+            }
+            cMap.setOption(cMapOption)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            let index = -1;
+            var timer = setInterval(function () {
+                // 隐藏提示框
+                cMap.dispatchAction({
+                    type: 'hideTip',
+                    seriesIndex: 0,
+                    dataIndex: index
+                });
+                // 显示提示框
+                cMap.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: index + 1
+                });
+                // 取消高亮指定的数据图形
+                cMap.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 0,
+                    dataIndex: index
+                });
+                // 高亮指定的数据图形
+                cMap.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: index + 1
+                });
+                index++;
+                if (index > 13) {
+                    index = -1;
+                }
+            }, 3000);      
+            cMap.on('mousemove', function(e) {
+                clearInterval(timer);
+                cMap.dispatchAction({
+                type: 'downplay',
+                seriesIndex: 0
+                });
+                cMap.dispatchAction({
+                type: 'highlight',
+                seriesIndex: 0,
+                dataIndex: e.dataIndex
+                });
+                cMap.dispatchAction({
+                type: 'showTip',
+                seriesIndex: 0,
+                dataIndex: e.dataIndex
+                });
+            }); //---------------------------------------------鼠标移入静止播放
+            cMap.on('mouseout', function(e) {
+                clearInterval(timer);
+                cMap.dispatchAction({
+                type: 'downplay',
+                seriesIndex: 0,
+                dataIndex: e.dataIndex
+                }); //鼠标移出后先把上次的高亮取消
+                timer = setInterval(function() {
+                // 隐藏提示框
+                cMap.dispatchAction({
+                    type: 'hideTip',
+                    seriesIndex: 0,
+                    dataIndex: index
+                });
+                // 显示提示框
+                cMap.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: index + 1
+                });
+                // 取消高亮指定的数据图形
+                cMap.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 0,
+                    dataIndex: index
+                });
+                // 高亮指定的数据图形
+                cMap.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: index + 1
+                });
+                index++;
+                if (index > 13) {
+                    index = -1;
+                }
+            }, 3000);
+            }); 
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                cMap.resize()
+            });
+        }
+
+        barinit = () => {
+            let barChart = echarts.init(document.getElementById('bar-chart'));
+            const orgs = ['核建股份', '中核中原', '中核二三', '中核二四', '中核五', '中核华兴', '中核华泰', '中核岩土', '中核华辰', '中核机械']
+            barOption = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    confine: true
+                },
+                grid: {
+                    // top: 'middle',
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    top: '22%',
+                    containLabel: true
+                },
+                legend: {
+                    data: ['固定资产计划值', '固定资产实际值', '股权计划值', '股权实际值'],
+                    left: 20,
+                    top: 5,
+                    itemWidth: 10,
+                    itemHeight: 10,
+                    textStyle: {
+                        color: "#f6f6f6",
+                        fontSize: 14
+                    }
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: orgs,
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: "#f6f6f6", //X轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    }
+                }],
+                yAxis: [{
+                    type: 'value',
+                    name: '',
+                    axisLabel: {
+                        formatter: '{value} ',
+                        textStyle: {
+                            color: "#f6f6f6", //X轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#42447070'
+                        }
+                    }
+                }],
+                // ['#45dbf7', '#f6d54a', '#f69846', '#ff4343']
+                series: [{
+                        name: '固定资产计划值',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#932AE1"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#303E8C"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [190, 430, 570, 230, 110, 290, 330, 160, 110, 230]
+                    },{
+                        name: '固定资产实际值',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#F3C478"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#F6AD62"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [390, 130, 370, 130, 410, 190, 430, 260, 190, 130]
+                    },{
+                        name: '股权计划值',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#A0FFD3"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#6CFFA7"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [290, 330, 170, 430, 310, 190, 300, 140, 190, 330]
+                    },{
+                        name: '股权实际值',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#0ECFF8"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#0570E9"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [110, 230, 370, 330, 210, 190, 430, 60, 150, 200]
+                    }]
+            }
+            barChart.setOption(barOption)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            setInterval(() => {
+                // toolTip轮播
+                barChart.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: toolTipIndex
+                });
+                toolTipIndex++;
+                if (toolTipIndex > barOption.series[0].data.length) {
+                    toolTipIndex = 0;
+                }
+            }, 1500)
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                barChart.resize()
+            });
+        }
+    </script>
+</body>
+
+</html>

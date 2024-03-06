@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="shangsheng" unicode="&#59014;" d="M744.475 421.689h132.622c55.461 12.055 21.701 57.872 21.701 57.872L626.32 797.855c-48.233 69.928-84.395 4.821-84.395 4.821L271.868 489.199c-45.817-62.694 24.106-67.51 24.106-67.51h122.983c98.862-318.295-296.6-448.506-296.6-448.506-21.7-12.055 0-19.294 0-19.294 593.184-122.973 622.118 467.8 622.118 467.8z m0 0"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="xiajiang" unicode="&#59016;" d="M745.634 347.339S716.831 935.44 126.33 813.023c0 0-21.602-7.206 0-19.206 0 0 393.673-129.623 295.258-446.478H299.161s-69.606-4.794-23.997-67.205L544-31.926s35.998-64.812 84.013 4.8l271.246 316.855s33.608 45.61-21.602 57.61H745.634z m0 0"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="weibiaoti-" unicode="&#58926;" d="M361.984 832h388.032L576 512h191.36l-342.08-577.024V320l-168.256-1.024z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

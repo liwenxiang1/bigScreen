@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>称重表</title>
+		<link rel="stylesheet" href="./css/common.css" media="screen">
+		<link rel="stylesheet" href="./js/layui/css/layui.css">
+		<link href="css/print.css" media="print" rel="stylesheet" type="text/css" />
+		<style>
+			.layui-table td,
+			.layui-table th {
+				color: #000000;
+				border-color: #000000;
+				padding: 5px 15px;
+			}
+
+			table {
+				border-collapse: collapse;
+				border-spacing: 20px 0px;
+			}
+
+			.layui-table th {
+				font-weight: bold;
+			}
+
+			.layui-table td {
+				border: none;
+			}
+
+			.position-relative {
+				position: relative;
+				/* padding-bottom: 18.75rem !important; */
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+		  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+		  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<!-- 你的HTML代码 -->
+		<div class="layui-fluid position-relative print-class">
+			<div class="head-div">
+				<div class="logodiv">
+					<img src="./img/logo-left.png" class="logo" />
+			
+				</div>
+				<div style="flex: 1;" class="text-left">
+					<div class="title">
+						Wuxi Taihu International Expo Centre
+					</div>
+					<div class="name">无锡太湖国际博览中心</div>
+					
+				</div>
+				<div style="flex: 1;margin-right: auto;" class="text-left">
+					<div class="title">
+						Taekwondo
+					</div>
+					<div class="name">跆拳道</div>
+					<div class="title-bottom">
+						Men -58kg
+					</div>
+					<div class="name">男子-58kg</div>
+				</div>
+				<div class="logodiv">
+					<img src="./img/logo-right.png" class="logo"/>
+			
+				</div>
+			
+			</div>
+			
+			<div class="mt5" style="display: flex; padding-top: 5px;">
+				<div style="width: 100%;">
+					<div class="layui-col-md12 title-weigh">WEIGH-IN LIST</div>
+					<div class="layui-col-md12 title" style="padding: 0 5px;text-align: center;">体重称量表</div>
+				</div>
+			</div>
+			<!-- <div class="layui-row font16">
+				<div class="layui-col-md6 text-left">男子-54KG</div>
+				<div class="layui-col-md6 text-right">宜昌市体育中心</div>
+			</div> -->
+			<div class="layui-row">
+				<div class="layui-col-md12">
+					<table class="layui-table table">
+						<thead>
+							<tr style="border: 1px solid #000000;">
+								<th>
+									<div>NOC</div>
+								</th>
+								<th>
+									<div>Bib</div>
+									<div>Number</div>
+								</th>
+								<th>
+									<div>License</div>
+									<div>Number</div>
+								</th>
+								<th>
+									<div>Name</div>
+								</th>
+								<th>
+									<div>1st Attempt</div>
+								</th>
+								<th>
+									<div>2nd Attempt</div>
+								</th>
+								<th>
+									<div>Contestant</div>
+								</th>
+							</tr>
+							
+						</thead>
+						
+						<tbody>
+							<tr>
+								<td>1 CAN - Canada</td>
+								<td></td>
+								<td>CAN - 1838</td>
+								<td>1 CAN - Canada</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>2 CAN - Canada</td>
+								<td></td>
+								<td>CHN-106812</td>
+								<td>Fangtao HU</td>
+								<td class="border-div-black">
+									<div></div>
+								</td><td class="border-div-black">
+									<div></div>
+								</td><td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>3 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>4 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>5 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>6 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>7 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>8 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>9 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>10 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>1 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>2 CAN - Canada</td>
+								<td></td>
+								<td>CHN-106812</td>
+								<td>Fangtao HU</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>3 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>4 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>5 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>6 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>7 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>8 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>9 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>10 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>1 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>2 CAN - Canada</td>
+								<td></td>
+								<td>CHN-106812</td>
+								<td>Fangtao HU</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>3 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+							<td class="border-div-black">
+								<div></div>
+							</td>
+							<td class="border-div-black">
+								<div></div>
+							</td>
+							<td class="border-div-black">
+								<div></div>
+							</td>
+							</tr>
+							<tr>
+								<td>4 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>5 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>6 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>7 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>8 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>9 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div ></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+							<tr>
+								<td>10 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+								<td class="border-div-black">
+									<div></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- 分页代码 -->
+		<div style="page-break-after: always;"></div>
+
+		<div class="layui-fluid position-relative print-class" style="padding-bottom: 18.75rem !important;">
+			<div class="layui-row" style="border-bottom: 1px solid #000;padding-bottom: 10px;display: flex;">
+
+				<div class="layui-col-md1">
+					<img src="./img/logo.jpg" class="logo" />
+
+				</div>
+				<div class="layui-col-md5">
+					<div class="title">
+						Wuxi Taihu International Expo Centre
+					</div>
+					<div class="name">无锡太湖国际博览中心</div>
+
+				</div>
+				<div class="layui-col-md4" style="flex: 1;">
+					<div class="title">
+						Taekwondo
+					</div>
+					<div class="name">跆拳道</div>
+					<div class="title" style="padding-top:5px">
+						MEN -58KG
+					</div>
+					<div class="name">男子 -58KG(60.9kg)</div>
+
+				</div>
+				<div class="layui-col-md2" style="flex: 1;">
+					<img src="./img/logo.jpg" class="logo" style="float: right;margin-right: 50px;" />
+
+				</div>
+			</div>
+			<div class="layui-row font16">
+				<div class="layui-col-md12 title-weigh">WEIGH-IN LIST</div>
+				<div class="layui-col-md12 title" style="padding: 0 5px;text-align: center;">体重称量表</div>
+			</div>
+			<!-- <div class="layui-row font16">
+				<div class="layui-col-md6 text-left">男子-54KG</div>
+				<div class="layui-col-md6 text-right">宜昌市体育中心</div>
+			</div> -->
+			<div class="layui-row">
+				<div class="layui-col-md12">
+					<table class="layui-table table">
+						<thead>
+							<tr style="border: 1px solid #000000;">
+								<th width="200px">
+									<div>NOC</div>
+								</th>
+								<th width="200px">
+									<div>Bib</div>
+									<div>Number</div>
+								</th>
+								<th width="200px">
+									<div>License</div>
+									<div>Number</div>
+								</th>
+								<th width="300px">
+									<div>Name</div>
+								</th>
+								<th>
+									<div>1st Attempt</div>
+								</th>
+								<th>
+									<div>2nd Attempt</div>
+								</th>
+								<th>
+									<div>Contestant</div>
+									<divSignature</th> </tr> </thead> <tbody>
+							<tr>
+								<td>11 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+							</tr>
+							<tr>
+								<td>12 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+							</tr>
+							<tr>
+								<td>13 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+							</tr>
+							<tr>
+								<td>14 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+							</tr>
+							<tr>
+								<td>15 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+							</tr>
+							<tr>
+								<td>16 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+							</tr>
+							<tr>
+								<td>17 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+							</tr>
+							<tr>
+								<td>18 CAN - Canada</td>
+								<td></td>
+								<td>CAN-1838</td>
+								<td>Stefan TRANTALOVSKI</td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+								<td class="border-div-black"></td>
+							</tr>
+							</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- 分页代码 -->
+		<div style="page-break-after: always;"></div>
+
+		<!-- 底部区域 -->
+		<div class="mfooter font16 text-left">
+			<table class="layui-table table">
+				<thead>
+					<tr>
+						<th class="text-center">
+							<div></div>
+						</th>
+						<th class="text-center">
+							<div>Name</div>
+						</th>
+						<th class="text-center">
+							<div>Signature</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="text-right">26 APR 2019 International Referees:</td>
+						<td class="border-b-black"></td>
+						<td class="border-b-black"></td>
+					</tr>
+					<tr>
+						<td class="text-right"></td>
+						<td class="border-b-black"></td>
+						<td class="border-b-black"></td>
+					</tr>
+					<tr>
+						<td class="text-right">Technical Controller:</td>
+						<td class="border-b-black"></td>
+						<td class="border-b-black"></td>
+					</tr>
+					<tr>
+						<td class="text-right">Technical Delegate:</td>
+						<td class="border-b-black"></td>
+						<td class="border-b-black"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="page-foot">
+				<div class="layui-row">
+					<div style="width: 30%;float: left;">
+						TKWM001------------_C56 1.0
+					</div>
+					<div style="30%">
+						Report Created WED 16 OCT 2019 17:26
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="./js/layui/layui.all.js"></script>
+		<script>
+			//由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
+			;
+			! function() {
+				var layer = layui.layer;
+
+
+
+			}();
+		</script>
+	</body>
+</html>

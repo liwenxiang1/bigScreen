@@ -1,0 +1,93 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, a, blockquote, th {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+     font-family: "Microsoft Yahe";
+    /*font-family: 'Helvetica','Arial','黑体';*/
+    color: #303030;
+}
+
+body,html{
+    position: relative;
+     /*min-width: 320px;*/
+   /* max-width: 640px;*/
+  	/*max-width:760px;*/
+    /*margin:0 auto;*/
+}
+ol, ul, li {
+    list-style: none outside none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset, img {
+    border: 0 none;
+    vertical-align:top;/*处理IE6*/
+}
+img{
+    width: 100%;
+    height: auto;
+}
+body {
+    color: #333;
+    text-align: left;
+}
+input::-moz-focus-inner {
+		border: none;
+		padding: 0;
+		outline:none;
+}
+ input{-webkit-appearance: none;outline:none;border: none;padding: 0;}
+a {
+    display: inline-block;
+    outline: none;
+    color: #333;
+    text-decoration: none;
+}
+a img {
+    border: none;
+    vertical-align: top;
+}
+textarea {
+    resize: none;
+    outline: none;
+}
+input {
+    outline: none;
+    border: none;
+}
+/*  共用部分  */
+/* clear fix */
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* 去除手机点击a标签的时候出现灰色半透明 */
+a,button,input{
+    -webkit-tap-highlight-color:rgba(255,0,0,0);
+    -webkit-touch-callout:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

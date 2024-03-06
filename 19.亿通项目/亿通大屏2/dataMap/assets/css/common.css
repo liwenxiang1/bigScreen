@@ -1,0 +1,493 @@
+@font-face {
+	font-family: 'iconfont';
+	src: url('./../font/iconfont.eot');
+	src: url('./../font/iconfont.eot?#iefix') format('embedded-opentype'),
+		url('./../font/iconfont.woff2') format('woff2'),
+		url('./../font/iconfont.woff') format('woff'),
+		url('./../font/iconfont.ttf') format('truetype'),
+		url('./../font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* *,
+*:before,
+*:after {
+	box-sizing: inherit;
+} */
+
+html {
+	font-size: 12px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	box-sizing: border-box;
+}
+
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+textarea {
+	resize: vertical;
+}
+
+a,
+a:focus,
+a:hover {
+	cursor: pointer;
+	color: inherit;
+	outline: none;
+	text-decoration: none;
+}
+
+div:focus {
+	outline: none;
+}
+
+a:focus,
+a:active {
+	outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+	cursor: pointer;
+	color: inherit;
+	text-decoration: none;
+}
+
+p,
+ul {
+	margin: 0;
+}
+
+ol,
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+button {
+	border: 1px solid transparent;
+	outline: none;
+}
+
+input,
+button,
+textarea {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	/*-webkit-appearance:none;*/
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.clearfix:after,
+.clearfix:before {
+	content: '';
+	display: table
+}
+
+.clearfix:after {
+	clear: both;
+	display: block
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+::-webkit-input-placeholder {
+	/* WebKit browsers */
+	color: #999 !important;
+}
+
+:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #999 !important;
+}
+
+::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #999 !important;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10+ */
+	color: #999 !important;
+}
+
+.num-tip {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	line-height: 22px;
+	background-color: red;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 900;
+	-webkit-transform: scale(0.6);
+	transform: scale(0.6);
+	text-align: center;
+	overflow: hidden;
+}
+
+/* 暂无数据 */
+#none-data {
+	display: none;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	font-size: 0.26rem;
+	color: #ddd;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+/* header样式   开始 */
+.layui-header {
+	height: 46px;
+	line-height: 46px;
+	background:#5979F2 !important;
+	background-size: cover;
+	padding: 0 20px;
+	display: flex;
+}
+
+/* header样式   结束 */
+.layui-body {
+	left: 0;
+}
+
+.layui-layout-admin .layui-logo {
+	line-height: 46px;
+}
+.layui-nav{
+	margin-left: 20%;
+	min-width: 50%;
+}
+.logo-img{
+	height: 16px;
+}
+.layui-nav .layui-nav-item {
+	line-height: 46px;
+	margin: 0 20px;
+}
+
+.layui-nav .layui-nav-item a {
+	padding: 0 15px;
+	color: #FFFFFF;
+}
+.divider {
+	border-left: 1px solid rgba(255, 255, 255, .4);
+}
+
+.layui-nav-item span {
+	font-size: 16px;
+}
+
+.layui-layout-left {
+	left: 0;
+	right: 0;
+}
+
+.header-name .layui-nav-item {
+	line-height: 20px;
+}
+
+.layui-nav .layui-this{
+	background-color: #BBC9FF;
+}
+.layui-nav .layui-this a,.layui-nav .layui-this:hover a{
+	color: #001B83;
+}
+
+
+
+/*面包屑*/
+
+
+.breadcrumbs {
+	width: 100%;
+	color: #666;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 1px;
+}
+
+.breadcrumbs .clickable {
+	font-weight: 800;
+	color: #0B2248;
+	cursor: pointer;
+}
+
+.breadcrumbs .clickable:hover {
+	color: #FF7300;
+	text-decoration: underline;
+}
+
+.layui-layout {
+	height: 100%;
+}
+
+.layui-nav .layui-this:after,
+.layui-nav-bar,
+.layui-nav-tree .layui-nav-itemed:after {
+	background-color: transparent;
+}
+
+.menu .layui-nav .layui-this {
+	background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 84, 174, 1) 0%, rgba(0, 128, 227, 1) 0%, rgba(0, 128, 227, 1) 100%);
+}
+
+.layui-layout-admin .layui-body {
+	position: relative;
+	top: auto;
+	bottom: auto;
+	padding-top: 20px;
+	margin: 0 10%;
+	padding: 20px 0 10px;
+}
+
+.current-page {
+	font-size: 20px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(19, 19, 19, 1);
+	line-height: 24px;
+	margin-bottom: 20px;
+}
+
+.current-page img {
+	margin-right: 10px;
+	margin-top: -5px;
+}
+
+.content {
+	background: rgba(255, 255, 255, 1);
+}
+
+.layui-nav .layui-nav-more {
+	font-family: layui-icon !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+	width: auto;
+	height: auto;
+	line-height: normal;
+	border: 0;
+	display: inline-block;
+	right: 15px;
+}
+
+.layui-nav .layui-nav-more:before {
+	content: "\e61a";
+}
+.layui-nav-itemed .layui-nav-more:before{
+	 content: "\e619";
+}
+.search-input{
+	background: rgb(195 195 195 / 50%);
+	height: 30px;
+	margin: auto 0;
+	width: 200px;
+	border-radius: 3px;
+	color: rgba(0, 27, 131, 1);
+	padding: 0 10px 0 25px;
+}
+.search-input::-webkit-input-placeholder { /* WebKit browsers */
+	color: #000000 !important;
+	font-size: 14px;
+}
+ 
+.search-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #000000 !important;;
+	font-size: 14px;
+}
+ 
+.search-input:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color: #000000 !important;;
+	font-size: 14px;
+}
+.search-button{
+	background-color: rgba(0, 27, 131, 0.68);
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+	margin: auto 0;
+	width: 50px;
+	padding: 0;
+	margin-left: 5px;
+}
+.refData,.refData:hover{
+	position: absolute;
+	right: 30px;
+	font-size: 15px;
+	color: rgba(255, 255, 255, 1);
+}
+.refData .iconfont{
+	margin-right: 5px;
+}
+.search-div{
+	position: relative;
+}
+.search-div .iconfont{
+	position: absolute;
+	left: 5px;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    padding: 1px;
+    width: 95%;
+    height: 95%;
+    border: 1px solid #2D8CF0;
+    background-color: transparent;
+	
+}
+.layui-laypage .layui-laypage-curr em{
+	color: #333 !important;
+}
+.laypage{
+	float: right;
+}
+.layui-laypage a, .layui-laypage span{
+	margin: 0 5px !important;
+	padding: 0 12px !important;
+}
+.layui-laypage a:hover{
+	color: #2D8CF0;
+}
+.layui-input, .layui-select, .layui-textarea{
+	height: 32px;
+}
+.layui-select-title{
+	position: relative;
+}
+.layui-select-title .layui-icon{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 12px;
+}
+.form-search-btn,.form-search-btn:hover{
+	background: RGBA(240, 243, 255, 1);
+	border: 1px solid #C3C3C3;
+	color: #5979F2;
+	margin-left: 10px;
+	padding: 0 10px;
+	height: 32px;
+	line-height: 30px;
+}
+.badge-list{
+	display: flex;
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+.badge-list .item-div{
+	color: #666666;
+	padding: 3px 10px;
+	font-size: 14px;
+	margin-right: 20px;
+	
+}
+.badge-list .active{
+	border: 1px solid rgba(89, 121, 242, 0.44);
+	border-radius: 5px;
+	background: rgba(89, 121, 242, 0.05);
+}
+.badge-list .item-div button{
+	cursor: pointer;
+}
+.badge-label {
+    margin-right: 20px;
+}
+.layui-table-cell{
+	height: 30px;
+	text-align: center;
+}
+.layui-table-cell .layui-btn{
+	height: 30px;
+	line-height: 30px;
+	border-radius: 5px;
+}
+.layui-table th{
+	background: #ffffff;
+	font-weight: bold;
+}
+.layui-form-select dl dd.layui-this {
+    background-color: #1e9fff;
+    color: #fff;
+}
+.layui-tab-title .layui-this{
+	color: #5979F2;
+}
+.layui-tab-title .layui-this{
+	background-color: #FFFFFF;
+	border: none;
+}
+.layui-tab-title li {
+    background: RGBA(248, 248, 249, 1);
+    margin: 0 5px;
+    border: 1px solid #e6e6e6;
+}

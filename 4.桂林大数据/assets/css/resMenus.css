@@ -1,0 +1,214 @@
+html,
+.layui-layout {
+	background: #F5F8FE;
+}
+
+.layui-nav {
+	background-color: transparent;
+}
+
+.layui-card-body {
+	padding: 10px 0;
+}
+
+.content {
+	padding: 30px 0;
+	display: flex;
+	background-color: #F5F8FE;
+}
+
+.layui-nav-tree {
+	width: 300px;
+}
+
+.layui-nav-tree .layui-nav-item {
+	background-color: rgba(0, 128, 227, 1);
+}
+
+.layui-nav-tree .layui-nav-item>a {
+	height: 70px;
+	line-height: 70px;
+	font-size: 20px;
+	font-family: PingFang SC;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 1);
+}
+
+.layui-nav-tree .layui-nav-item img {
+	margin-right: 10px;
+	margin-top: -5px;
+	width: 24px;
+}
+
+.layui-nav-tree .layui-nav-item a:hover {
+	background-color: rgba(0, 128, 227, 1);
+}
+
+.layui-nav-tree .layui-nav-bar {
+	background-color: transparent
+}
+
+.layui-nav-child dd {
+	background-color: #FFFFFF;
+	border-left: 1px solid rgba(153, 153, 153, .14);
+	border-right: 1px solid rgba(153, 153, 153, .14);
+
+}
+
+.layui-nav-tree .layui-this>a,
+.layui-nav-tree .layui-this>a:hover {
+	background-color: #007FE3 !important;
+}
+
+.layui-nav-tree .layui-nav-child a {
+	font-size: 20px;
+	font-family: PingFang SC;
+	font-weight: 400;
+	color: rgba(51, 51, 51, 1) !important;
+	height: 70px;
+	line-height: 70px;
+}
+
+.layui-nav-tree .layui-nav-item a:hover {
+	background-color: transparent;
+}
+
+.layui-nav-child img {
+	width: 18px !important;
+}
+
+.layui-nav-tree .layui-nav-child dd.layui-this,
+.layui-nav-tree .layui-nav-child dd.layui-this a {
+	background-color: #F3F9FC !important
+}
+
+.right-list {
+	flex: 1;
+	padding: 0 20px;
+}
+
+.result {
+	display: flex;
+	background-color: #FFFFFF;
+	padding: 20px;
+	position: relative;
+	margin-bottom: 15px;
+
+}
+
+.result span {
+	font-size: 20px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(35, 56, 87, 1);
+	flex: 1;
+}
+
+.result .layui-input {
+	width: 350px;
+	border: 1px solid rgba(153, 153, 153, 1);
+	opacity: 0.33;
+	border-radius: 21px;
+}
+
+.result .num {
+	color: #F4872D;
+}
+
+.result img {
+	position: absolute;
+	right: 35px;
+	top: 30px;
+}
+
+.layui-card-header {
+	border-bottom: 1px solid #89898933;
+	height: 60px;
+	line-height: 60px;
+	margin: 0 20px;
+	padding: 0;
+}
+
+.title {
+	font-size: 22px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(12, 19, 3, 1);
+	line-height: 50px;
+}
+
+.label {
+	color: #999999;
+	font-size: 16px;
+	line-height: 50px;
+}
+
+.list-content {
+	display: table;
+	width: 100%;
+}
+
+.list-content>span {
+	display: table-cell;
+}
+
+.list-content .label {
+	color: #999999;
+	font-size: 16px;
+}
+
+.list-content .value {
+	color: #0C131F;
+	font-size: 16px;
+}
+
+#news li div {
+	border-bottom: 1px solid #E5EDFF;
+	padding: 12px;
+	margin: 0 20px;
+}
+
+#news li:last-child div {
+	border-bottom: none;
+}
+
+#news li:hover {
+	background-color: #F3F9FB;
+}
+
+#news li:hover .title {
+	color: #007FE3;
+}
+
+.label img {
+	width: 15px;
+	margin-right: 5px;
+	margin-top: -5px;
+}
+
+.layui-card-header {
+	display: flex;
+}
+
+.layui-card-header>div {
+	margin-right: 15px;
+	font-size: 18px;
+	font-weight: bold;
+	color: rgba(153, 153, 153, 1);
+}
+
+.layui-table-sort[lay-sort=asc] .layui-table-sort-asc {
+	border-bottom-color: #007FE3
+}
+
+.layui-table-sort[lay-sort=desc] .layui-table-sort-desc {
+	border-top-color: #007FE3
+}
+
+.layui-table-sort {
+	height: 22px;
+}
+
+.layui-table-sort .layui-edge {
+	border-width: 6px;
+}

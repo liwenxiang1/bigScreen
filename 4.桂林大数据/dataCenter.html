@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<link rel="stylesheet" href="./assets/css/dataCenter.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<meta name="keywords" content="电子政务信息共享网站" />
+		<meta name="description" content="电子政务信息共享网站" />
+		<title>电子政务信息共享网站</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<div class="layui-logo"><a href="javascript:;"><img src="assets/imgs/logo.png" alt="logo"></a></div>
+
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<span class="img-span">
+							<img src="assets/imgs/user.png" class="layui-nav-img">
+						</span>
+						<span>刘追星</span>
+					</li>
+					<li class="layui-nav-item"><a href="javascript:;" class="divider"><i class="iconfont icon-quit"></i><span>个人中心</span></a></li>
+					<li class="layui-nav-item"><img width="24px" src="assets/imgs/warnning.png" /></li>
+				</ul>
+			</div>
+			<div class="layui-header menu">
+				<ul class="layui-nav layui-layout-left">
+					<li class="layui-nav-item layui-this"><a href="javascript:;"><img src="assets/imgs/shouye.png" />网站首页</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/xiangqing.png" />数据目录</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/shujia.png" />共享统计</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/haoyou.png" />互动交流</a></li>
+				</ul>
+			</div>
+			<div class="layui-body">
+				<p class="current-page"><img src="assets/imgs/dingwei.png" />当前位置：资源中心</p>
+				<div class="layui-card content">
+					<div class="card-item">
+						<div class="card-item-div dis-fl" style="background: url(assets/imgs/ziyuanshu@2x.png) no-repeat;background-size: cover;">
+							<div class="left">
+								<p class="card-num">123,89<span class="unit">个</span></p>
+								<p class="card-title">发布资源数</p>
+							</div>
+							<div class="right">
+								<p class="title">域内资源</p>
+								<p class="num">660个</p>
+								<p class="title" style="margin-top: 10px;">域外资源</p>
+								<p class="num">21989个</p>
+							</div>
+						</div>
+						<div class="card-item-div" style="background: url(assets/imgs/gognxiang@2x.png) no-repeat;background-size: cover;">
+							<p class="card-num txt-center">221,123<span class="card-unit">个</span></p>
+							<p class="card-title txt-center">域内共享资源</p>
+						</div>
+						<div class="card-item-div dis-fl" style="background: url(assets/imgs/jilu@2x.png) no-repeat;background-size: cover;">
+							<div class="left">
+								<p class="card-num">123,89<span class="card-unit">亿</span></p>
+								<p class="card-title">苦表记录数</p>
+							</div>
+							<div class="right">
+								<p class="title">域内记录（条）</p>
+								<p class="num">66000</p>
+								<p class="title" style="margin-top: 10px;">域外记录（条）</p>
+								<p class="num">21989</p>
+							</div>
+						</div>
+						<div class="card-item-div" style="background: url(assets/imgs/diaoyong@2x.png) no-repeat;background-size: cover;">
+							<p class="card-num txt-center">221,123<span class="card-unit">次</span></p>
+							<p class="card-title txt-center">域内资源被调用总数</p>
+						</div>
+					</div>
+					<div class="echarts-div">
+						<div class="left" id="pieDiv">
+
+						</div>
+						<div class="right" id="lineDiv">
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="./assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/js/echarts.min.js"></script>
+
+
+		<script>
+			var data = [{
+					value: 335,
+					name: '文件'
+				},
+				{
+					value: 310,
+					name: '文件夹'
+				},
+				{
+					value: 234,
+					name: '接口'
+				},
+				{
+					value: 135,
+					name: '数据库',
+				}
+			]
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use('element', function() {
+				var element = layui.element;
+
+			});
+			$(function() {
+				//环状图
+				initPieEchart()
+				//折线图
+				initLineEchart()
+			})
+			//环状图
+			function initPieEchart() {
+				var optionPie = {
+					title: {
+						text: '资源类型分布',
+						textStyle: {
+							color: 'rgba(35, 45, 80, 1)',
+							fontSize: '28',
+							fontWeight: 300
+						},
+						left: 20,
+						top: 20
+					},
+					tooltip: {
+						trigger: 'item',
+						formatter: '{a} <br/>{b}: {c} ({d}%)'
+					},
+					label: {
+						formatter: function(obj) {
+							var total = 0;
+							var target;
+							for (var i = 0, l = data.length; i < l; i++) {
+								total += data[i].value;
+								if (data[i].name == obj.name) {
+									target = data[i].value;
+								}
+							}
+							var arr = [
+								((target / total) * 100).toFixed(2) + '%'
+							]
+							return arr.join('\n')
+						},
+					},
+					legend: {
+						orient: 'vertical',
+						right: '10%',
+						top: '40%',
+						bottom: 20,
+						data: ['文件', '文件夹', '接口', '数据库'],
+						icon: "circle", //形状  类型包括 circle，rect,line，roundRect，triangle，diamond，pin，arrow，none
+						itemWidth: 15, // 设置宽度
+						itemHeight: 15, // 设置高度
+						itemGap: 10,
+						textStyle: {
+							//文字样式
+							color: "rgba(74, 90, 127, 1)",
+							fontSize: "20",
+							lineHeight: '30'
+
+
+						},
+
+						formatter: function(name) {
+							var target;
+							for (var i = 0, l = data.length; i < l; i++) {
+								if (data[i].name == name) {
+									target = data[i].value;
+								}
+							}
+							var arr = [
+								name + ':' + target + '个'
+
+							]
+							return arr.join('\n')
+						},
+					},
+					series: [{
+						name: '访问来源',
+						type: 'pie',
+						radius: ['30%', '60%'],
+						center: ["40%", "50%"],
+						avoidLabelOverlap: false,
+						emphasis: {
+							label: {
+								show: true,
+								fontSize: '30',
+								fontWeight: 'bold'
+							}
+						},
+						data: [{
+								value: 335,
+								name: '文件',
+								itemStyle: {
+									color: 'rgba(64, 137, 255, 1)'
+								}
+							},
+							{
+								value: 310,
+								name: '文件夹',
+								itemStyle: {
+									color: 'rgba(254, 205, 93, 1)'
+								}
+							},
+							{
+								value: 234,
+								name: '接口',
+								itemStyle: {
+									color: 'rgba(37, 208, 150, 1)'
+								}
+							},
+							{
+								value: 135,
+								name: '数据库',
+								itemStyle: {
+									color: 'rgba(255, 85, 153, 1)'
+								}
+							}
+						]
+					}]
+				};
+
+				var dom = document.getElementById("pieDiv");
+				myChart = echarts.init(dom);
+				myChart.setOption(optionPie, true);
+			}
+			//折线图
+			function initLineEchart() {
+				var optionLine = {
+					title: {
+						text: '域内资源被调用情况',
+						textStyle: {
+							color: 'rgba(35, 45, 80, 1)',
+							fontSize: '28',
+							fontWeight: 300
+						},
+						left: 20,
+						top: 20
+					},
+					grid:{
+						y:100
+					},
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						data: ['2020/11/11', '2020/11/12', '2020/11/13', '2020/11/14', '2020/11/15', '2020/11/16'],
+						axisLine: {
+							show: false
+						},
+						axisTick: {
+							show: false
+						},
+						axisLabel: {
+							show: true,
+							textStyle: {
+								color: 'rgba(153, 153, 153, 1)' //这里用参数代替了
+							},
+							margin: 20,
+						},
+					},
+					yAxis: {
+						type: 'value',
+						axisLine: {
+							show: false
+						},
+						axisTick: {
+							show: false
+						},
+						axisLabel: {
+							show: true,
+							textStyle: {
+								color: 'rgba(153, 153, 153, 1)' //这里用参数代替了
+							},
+							margin: 20,
+						},
+					},
+					series: [{
+						data: [150, 682, 285, 382, 236, 357],
+						type: 'line',
+						smooth: true,
+						areaStyle: {
+							color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+								offset: 0,
+								color: 'rgba(71, 179, 255, 1)'
+							}, {
+								offset: .6,
+								color: 'rgba(71, 179, 255, 0.6)'
+							}, {
+								offset: 0,
+								color: 'rgba(71, 179, 255, 0)'
+							}])
+						},
+						itemStyle: {
+							normal: {
+								color: 'rgba(123, 176, 255, 1)', //改变折线点的颜色
+								lineStyle: {
+									color: 'rgba(123, 176, 255, 1)', //改变折线颜色
+									width: 5 //折线宽度
+								}
+							}
+
+						},
+					}]
+				};
+
+
+				var domLine = document.getElementById("lineDiv");
+				myChart = echarts.init(domLine);
+				myChart.setOption(optionLine, true);
+			}
+		</script>
+	</body>
+
+</html>

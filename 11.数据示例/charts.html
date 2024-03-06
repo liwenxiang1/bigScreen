@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./favicon.ico">
+    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="Primeton·普元·资产概览" />
+    <meta name="description" content="Primeton·普元·资产概览" />
+    <title>普元·资产概览</title>
+
+    <style>
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        html {
+            font-size: 12px;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        ::-moz-selection {
+            background: #b3d4fc;
+            text-shadow: none;
+        }
+
+        ::selection {
+            background: #b3d4fc;
+            text-shadow: none;
+        }
+
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 1em 0;
+            padding: 0;
+        }
+
+        audio,
+        canvas,
+        iframe,
+        img,
+        svg,
+        video {
+            vertical-align: middle;
+        }
+
+        fieldset {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        a,
+        a:focus,
+        a:hover {
+            cursor: pointer;
+            color: inherit;
+            outline: none;
+            text-decoration: none;
+        }
+
+        div:focus {
+            outline: none;
+        }
+
+        a:focus,
+        a:active {
+            outline: none;
+        }
+
+        a,
+        a:focus,
+        a:hover {
+            cursor: pointer;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        p,
+        ul {
+            margin: 0;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        button {
+            border: 1px solid transparent;
+            outline: none;
+        }
+
+        input,
+        button,
+        textarea {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            /*-webkit-appearance:none;*/
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .clearfix:after,
+        .clearfix:before {
+            content: '';
+            display: table
+        }
+
+        .clearfix:after {
+            clear: both;
+            display: block
+        }
+
+        .asset-overview {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .asset-overview .list-wrapper {
+            width: 100%;
+            padding: 30px 20px;
+            border-radius: 3px;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+        }
+
+        .asset-overview .item-list {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .asset-overview .item-list:nth-of-type(2) {
+            margin-top: 30px;
+        }
+
+        .asset-overview .item-list .item {
+            flex: 1;
+            width: 100%;
+            height: 115px;
+            margin: 0 7.5px;
+            background-color: #2997EF;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .asset-overview .item-list .item:hover {
+            transform: scale(1.05);
+        }
+
+        .asset-overview .item-list .item .icon {
+            width: 25px;
+            margin: 20px auto 5px auto;
+        }
+
+        .asset-overview .item-list .item .label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .asset-overview .item-list .item .amount {
+            font-size: 24px;
+            color: #fff;
+            font-weight: 500;
+            line-height: 30px;
+        }
+
+        .asset-overview .charts {
+            float: left;
+            width: calc(100% - 295px);
+        }
+
+        .asset-overview .charts .charts-wrapper {
+            float: left;
+            width: calc(50% - 7.5px);
+            margin: 25px 0 0 0;
+            padding: 15px;
+            border-radius: 3px;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+        }
+
+        .asset-overview .charts .charts-wrapper:nth-of-type(2n - 1) {
+            width: calc(50% - 7.5px);
+            margin-right: 15px;
+        }
+
+        .asset-overview .charts .charts-wrapper .chart {
+            width: 100%;
+            height: 250px;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title {
+            position: relative;
+            width: 100%;
+            height: 40px;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title .title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title .dropdown {
+            position: absolute;
+            right: 15px;
+            top: 5px;
+            user-select: none;
+            z-index: 3;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title .dropdown .label {
+            position: relative;
+            height: 25px;
+            width: 110px;
+            line-height: 23px;
+            border: 1px solid #001579;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #001579;
+            font-weight: 500;
+            background-color: #fff;
+            text-align: center;
+            outline: none;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .asset-overview .charts .charts-wrapper .charts-title .dropdown .label:hover {
+            background-color: #efefef;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title .dropdown .label::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 5px;
+            width: 20px;
+            height: 23px;
+            background: url(./assets/expand.png) no-repeat center/cover;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title .dropdown .option-list {
+            width: 100%;
+            height: 0;
+            margin-top: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: height .3s;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title .dropdown.isExpand .option-list {
+            height: auto;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title .dropdown .option {
+            width: 100%;
+            padding: 0 15px;
+            line-height: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #2F2F30;
+        }
+
+        .asset-overview .charts .charts-wrapper .charts-title .dropdown .option:hover {
+            color: #2BD1AB;
+        }
+
+        .asset-overview .rank {
+            float: left;
+            width: 280px;
+            height: 665px;
+            margin: 25px 0 0 15px;
+            padding: 15px 20px;
+            border-radius: 3px;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+        }
+
+        .asset-overview .rank .title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .asset-overview .rank .rank-list {
+            width: 100%;
+            height: 100%;
+            margin: 10px 0 0 0;
+            overflow-y: auto;
+        }
+
+        .asset-overview .rank .rank-list .rank-item {
+            float: left;
+            width: 100%;
+            height: 50px;
+            margin: 5px 0 0 0;
+            border-bottom: 1px solid #E6E7EE;
+        }
+
+        .asset-overview .rank .rank-list .rank-item:nth-last-of-type(1) {
+            border-bottom: none;
+        }
+
+        .asset-overview .rank .rank-list .rank-item .rank-icon {
+            float: left;
+            display: block;
+            width: 20px;
+            margin: 15px 5px;
+        }
+
+        .asset-overview .rank .rank-list .rank-item .rank-icon-bg {
+            float: left;
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin: 15px 5px;
+            background: url(./assets/rank-icon-bg.png) no-repeat center/cover;
+            line-height: 20px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .asset-overview .rank .rank-list .rank-item .progress-wrapper {
+            float: left;
+            display: block;
+            width: calc(100% - 100px);
+            margin: 10px 5px;
+        }
+
+        .asset-overview .rank .rank-list .rank-item .progress-wrapper .title {
+            width: 100%;
+            height: 20px;
+            font-size: 12px;
+            color: #383838;
+        }
+
+        .asset-overview .rank .rank-list .rank-item .progress-wrapper .progress {
+            position: relative;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background-color: #EAEAF2;
+            overflow: hidden;
+        }
+
+        .asset-overview .rank .rank-list .rank-item .progress-wrapper .progress-value {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 6px;
+            border-bottom-right-radius: 3px;
+            border-top-right-radius: 3px;
+            background-color: #2997EF;
+            transition: all .5s;
+        }
+
+        .asset-overview .rank .rank-list .rank-item .score {
+            float: left;
+            display: block;
+            width: 50px;
+            height: 100%;
+            line-height: 50px;
+            margin: 0 5px;
+            font-size: 12px;
+            color: #61A1F7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="asset-overview clearfix">
+        <div class="list-wrapper">
+            <ul class="item-list">
+                <li class="item">
+                    <img src="./assets/assets.png" alt="" class="icon">
+                    <p class="label">资产统计</p>
+                    <p class="amount">1658966</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/assets.png" alt="" class="icon">
+                    <p class="label">系 统</p>
+                    <p class="amount">659</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/assets.png" alt="" class="icon">
+                    <p class="label">实 体</p>
+                    <p class="amount">30999</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/assets.png" alt="" class="icon">
+                    <p class="label">属 性</p>
+                    <p class="amount">128992</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/assets.png" alt="" class="icon">
+                    <p class="label">数据标准</p>
+                    <p class="amount">450665</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/assets.png" alt="" class="icon">
+                    <p class="label">数据质量规则</p>
+                    <p class="amount">1876</p>
+                </li>
+            </ul>
+            <ul class="item-list">
+                <li class="item">
+                    <img src="./assets/server.png" alt="" class="icon">
+                    <p class="label">数据总量</p>
+                    <p class="amount">1658966</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/server.png" alt="" class="icon">
+                    <p class="label">数据库</p>
+                    <p class="amount">1029</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/server.png" alt="" class="icon">
+                    <p class="label">物理模型</p>
+                    <p class="amount">999</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/server.png" alt="" class="icon">
+                    <p class="label">字 段</p>
+                    <p class="amount">8901</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/server.png" alt="" class="icon">
+                    <p class="label">指 标</p>
+                    <p class="amount">890</p>
+                </li>
+                <li class="item">
+                    <img src="./assets/server.png" alt="" class="icon">
+                    <p class="label">数据服务</p>
+                    <p class="amount">580</p>
+                </li>
+            </ul>
+        </div>
+        <div class="charts clearfix">
+            <div class="charts-wrapper">
+                <div class="charts-title">
+                    <span class="title">数据增长趋势</span>
+                    <!-- <select class="dropdown" name="">
+                        <option value="day">按时间（天）</option>
+                        <option value="month">月</option>
+                        <option value="year">年</option>
+                    </select> -->
+                    <div class="dropdown">
+                        <div class="label">按时间（天）</div>
+                        <ul class="option-list">
+                            <li class="option" value="day">天</li>
+                            <li class="option" value="month">月</li>
+                            <li class="option" value="year">年</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chart" id="growth-chart"></div>
+            </div>
+            <div class="charts-wrapper">
+                <div class="charts-title">
+                    <span class="title">资产变更情况</span>
+                    <!-- <select class="dropdown" name="">
+                        <option value="day">按时间（天）</option>
+                        <option value="month">月</option>
+                        <option value="year">年</option>
+                    </select> -->
+                    <div class="dropdown" style="right: 140px;">
+                        <div class="label">按时间（天）</div>
+                        <ul class="option-list">
+                            <li class="option">天</li>
+                            <li class="option">月</li>
+                            <li class="option">年</li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="label">按业务系统</div>
+                        <ul class="option-list">
+                            <li class="option">按业务系统</li>
+                            <li class="option">按主题领域</li>
+                            <li class="option">按模型类型</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chart" id="assets-chart"></div>
+            </div>
+            <div class="charts-wrapper">
+                <div class="charts-title">
+                    <span class="title">数据服务调用情况（分时段）</span>
+                </div>
+                <div class="chart" id="server-chart"></div>
+            </div>
+            <div class="charts-wrapper">
+                <div class="charts-title">
+                    <span class="title">资产健康度情况</span>
+                </div>
+                <div class="chart" id="health-chart"></div>
+            </div>
+        </div>
+        <div class="rank">
+            <p class="title">资产热度排名</p>
+            <div class="rank-list">
+            </div>
+        </div>
+    </div>
+    <script src="./jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
+    <script src="./charts.js"></script>
+</body>
+
+</html>

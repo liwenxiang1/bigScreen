@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>填报状态列表</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+		<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<link href="../css/common.css" rel="stylesheet">
+	</head>
+	<body >
+		<div class="container-fluid animated fadeInRight search-content">
+			
+			<table id="table" data-toggle="table">
+				<thead>
+					<tr>
+						<th data-formatter="thIndex" data-align="center" data-width="3%">序号</th>
+						<th data-field="unit" data-align="center">单位</th>
+						<th data-field="orgname" data-align="center">项目部</th>
+						<th data-field="ys" data-align="center" data-colors="已审批:#4CAF50,已退回:red,未审批:#9C27B0" data-formatter="thColors">审批状态</th>
+						<th data-field="user" data-align="center" >当前处理人</th>
+						<th data-field="date" data-align="center" >处理时间</th>
+						<th data-field="ys" data-align="center" data-formatter="toM">操作</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+		<!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+		<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="../js/plugins/layer/layer.js"></script>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+		var $table = $('#table');
+		var datas = [
+			{unit:'中核二三',orgname:'第一项目部',ys:'未报',user:'张三',date:''},
+			{unit:'中核二二',orgname:'第二项目部',ys:'分公司审核',user:'李四',date:'2020/3/1'},
+			{unit:'中核检修',orgname:'军工项目部',ys:'分公司批准',user:'王五',date:'2020/3/1'},
+			{unit:'中核二四',orgname:'核电巷弄明白',ys:'分公司审核',user:'张明',date:'2020/3/1'},
+			{unit:'中核华兴',orgname:'核电项目部',ys:'分公司批准',user:'赵亮',date:'2020/3/4'},
+			{unit:'中核中原',orgname:'核电项目部',ys:'未报',user:'李星',date:''}
+		];
+		$(function(){
+			$table.bootstrapTable('load',datas);
+		});
+		function toM(val){
+			if(val.indexOf('批准') == -1) return '<a href="javascript:;" onclick="layer.msg(\'催办成功\');$(this).remove();">催办</a>'
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+
+.platform .content {
+    width: 100%;
+    padding: 0 0.15rem;
+}
+
+.platform .content .box {
+    width: 100%;
+    margin: 0.25rem 0 0 0;
+    padding: 0.37rem 0 0 0;
+    border-radius: 0.05rem;
+    background-color: #fff;
+}
+
+.platform .content .box .box-title{
+    float: left;
+    height: 0.5rem;
+    width: 4.5rem;
+    line-height: 0.5rem;
+    padding: 0 0.3rem;
+    text-align: left;
+    font-size: 0.28rem;
+    font-weight: 500;
+    color: #4e8fff;
+}
+
+.platform .content .box .btn-row{
+    float: right;
+    height: 0.5rem;
+    width: 1.5rem;
+    padding: 0 0.25rem 0 0;
+}
+
+.platform .content .box .btn-row img{
+    display: block;
+    float: right;
+    height: 100%;
+}
+
+.platform .content .box .btn-row .minus-icon{
+    margin: 0 0 0 0.25rem;
+}
+.platform .content .box:first-of-type .btn-row .minus-icon{
+    display: none;
+}
+
+.platform .content .box .form-list {
+    float: left;
+    width: 100%;
+}
+.platform .content .box .form-list .list-item {
+    position: relative;
+    height: 1rem;
+    width: 100%;
+    padding: 0.25rem;
+    font-size: 0.28rem;
+    color: #333;
+    text-align: left;
+}
+.platform .content .box .form-list .list-item::after {
+    content: "";
+    position: absolute;
+    width: calc(100% - 0.48rem);
+    height: 0;
+    left: 0.18rem;
+    bottom: 0;
+    border-bottom: 1px solid #E6E6E6;
+}
+.platform .content .box .form-list .list-item:last-of-type::after {
+    border-bottom: none;
+}
+.platform .content .box .form-list .list-item input {
+    width: 100%;
+    height: 0.5rem;
+    line-height: 0.5rem;
+}
+.platform .content .remark{
+    width: 100%;
+    margin: 0.25rem 0 0 0;
+    padding: 0.45rem 0.25rem;
+    background-color: #fff;
+    border-radius: 0.05rem;
+}
+.platform .content .remark textarea{
+    width: 100%;
+    padding: 0.1rem;
+    font-size: 0.26rem;
+    border: 1px solid #E6E6E6;
+    outline:none;
+    resize:none;
+}

@@ -1,0 +1,43 @@
+.resource-selected {
+  width: 100%;
+  height: calc(100vh - 40px);
+  padding: 10px;
+}
+.resource-selected .action-bar {
+  margin-bottom: 10px;
+  padding: 0 15px;
+  text-align: right;
+}
+.resource-selected .action-bar .layui-btn {
+  background-color: #5bc0de;
+  font-weight: 500;
+  border-radius: 5px;
+}
+.resource-selected .action-bar .iconfont{
+  vertical-align: bottom;
+}
+.resource-selected .selected-table-wrapper {
+  width: 100%;
+  height: calc(100% - 10px);
+  margin: 20px 0 0 0;
+  padding: 0 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.label-line {
+  margin: 0;
+  width: auto;
+}
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+  background-color: #3cb4d9 !important;
+}
+.resource-type .layui-form-checked[lay-skin=primary] i {
+  border-color: #3cb4d9 !important;
+  background-color: #3cb4d9 !important;
+}
+
+.layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool, .layui-table-total, .layui-table-total tr, .layui-table[lay-even] tr:nth-child(even) {
+  background-color: #e7f2ff !important;
+}

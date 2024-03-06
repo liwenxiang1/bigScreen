@@ -1,0 +1,201 @@
+// 单行省略号
+@mixin ellipsis () {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: break-all;
+}
+// 双行省略号
+@mixin doubleEllipsis () {
+	text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// 背景图片
+@mixin backgroundImage ($file, $icon) {
+	background: {
+		image: url("../img/#{$file}/#{$icon}.png");
+		repeat: no-repeat;
+		size: cover;
+	} 
+}
+
+@mixin pingFangMedium () {
+	@font-face {
+		font-family: 'PingFangMedium';
+		src: url('../font/PingFangMedium.eot');
+		src:
+			url('../font/PingFangMedium.eot?#iefix') format('embedded-opentype'),
+			url('../font/PingFangMedium.woff') format('woff'),
+			url('../font/PingFangMedium.ttf') format('truetype'),
+			url('../font/PingFangMedium.svg') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+@mixin pingFangRegular () {
+	@font-face {
+		font-family: 'PingFangRegular';
+		src: url('../font/PingFangRegular.eot');
+		src:
+			url('../font/PingFangRegular.eot?#iefix') format('embedded-opentype'),
+			url('../font/PingFangRegular.woff') format('woff'),
+			url('../font/PingFangRegular.ttf') format('truetype'),
+			url('../font/PingFangRegular.svg') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+
+@mixin AlibabaPuHuiTi () {
+	@font-face {
+		font-family: 'AlibabaPuHuiTi';
+		src: url('../font/AlibabaPuHuiTi-Medium.eot');
+		src:
+			url('../font/AlibabaPuHuiTi-Medium.eot?#font-spider') format('embedded-opentype'),
+			url('../font/AlibabaPuHuiTi-Medium.woff') format('woff'),
+			url('../font/AlibabaPuHuiTi-Medium.ttf') format('truetype'),
+			url('../font/AlibabaPuHuiTi-Medium.svg') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+
+
+@mixin leyuiCard () {
+	.layui-card {
+		height: 100%;
+		margin-bottom: 0;
+		background-color: #fff;
+		&-header {
+			height: 59px;
+			line-height: 59px;
+			padding: 0 27px;
+			border: 0;
+			.img-icon {
+				display: inline-block;
+				margin-top: -5px;
+				margin-right: 5px;
+			}
+			.tabs {
+				display: inline-block;
+				font-size: 0;
+				&-inner {
+					position: relative;
+					display: inline-block;
+					line-height: 2;
+					padding: 0 6px;
+					cursor: pointer;
+					.txt {
+						// font-family: "PingFangMedium";
+						font-size: 16px;
+						font-weight: bold;
+						color: rgba(1, 46, 93, 1);
+						behavior: url(../PIE.htc);
+					}
+				}
+			}
+			// tabs可切换时，需要加id=tabs
+			#tabs .tabs-inner {
+				.txt {
+					color: rgba(1, 46, 93, .54);
+				}
+				&.active .txt {
+					color: rgba(1, 46, 93, 1);
+				}
+			}
+			.more {
+				float: right;
+				img {
+					display: inline-block;
+					margin-top: -5px;
+					margin-left: 15px;
+				}
+			}
+		}
+		&-body {
+			padding: 0 27px;
+		}
+	}
+}
+
+@mixin yuiCard () {
+	.yui-card {
+		background-color: #fff;
+		box-sizing: border-box;
+		padding: 0 18px;
+		border-radius: 4px;
+		&-header {
+			height: 45px;
+			line-height: 45px;
+			font-size: 16px;
+			border-bottom: 2px solid rgba(1, 46, 93, .49);
+		}
+	}
+}
+@mixin yuiCard1 () {
+	.yui-card {
+		box-sizing: border-box;
+		padding: 0 18px;
+		border-radius: 4px;
+		background-color: rgba(10, 20, 39, .8);
+		&-header {
+			height: 45px;
+			line-height: 45px;
+			font-size: 16px;
+			color: #60D8E0;
+			border-bottom: 1px solid rgba(96, 216, 224, .49);
+		}
+	}
+}
+
+@mixin browserScroll () {
+	/* IE 浏览器 */
+	.div {
+		/*三角箭头的颜色*/
+		scrollbar-arrow-color: #fff;
+		/*滚动条滑块按钮的颜色*/
+		scrollbar-face-color: #0099dd;
+		/*滚动条整体颜色*/
+		scrollbar-highlight-color: #0099dd;
+		/*滚动条阴影*/
+		scrollbar-shadow-color: #0099dd;
+		/*滚动条轨道颜色*/
+		scrollbar-track-color: #0066ff;
+		/*滚动条3d亮色阴影边框的外观颜色——左边和上边的阴影色*/
+		scrollbar-3dlight-color:#0099dd;
+		/*滚动条3d暗色阴影边框的外观颜色——右边和下边的阴影色*/
+		scrollbar-darkshadow-color: #0099dd;
+		/*滚动条基准颜色*/
+		scrollbar-base-color: #0099dd;
+	}
+
+	/* chrome & safari 浏览器 */
+	/*滚动条整体部分,必须要设置*/
+	div::-webkit-scrollbar{
+			width: 5px;
+			height: 10px;
+			background-color: #ccc;
+	}
+	/*滚动条的轨道*/
+	div::-webkit-scrollbar-track{
+			background-color: #ccc;
+	}
+	/*滚动条的滑块按钮*/
+	div::-webkit-scrollbar-thumb{
+			border-radius: 2px;
+			background-color: #0099ff;
+			box-shadow: inset 0 0 5px #0099ff;
+	}
+	/*滚动条的上下两端的按钮*/
+	div::-webkit-scrollbar-button{
+			height: 0;
+			background-color: #ccc;
+	}
+
+}

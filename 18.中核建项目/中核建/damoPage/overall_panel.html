@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国核工业建设·总体看板</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid overall-panel animated fadeInRight search-content">
+        <h2 class="title">MKJ重点任务</h2>
+        <div id="toolbar" class='btn-group'>
+            <button onclick="exportsPlan()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出计划目标
+            </button>
+            <button onclick="exportsStatus()" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出完成情况
+            </button>
+        </div>
+        <p class="remark">2020年共设置MKJ重点任务 <span>6</span> 项，包括行动项 <span>14</span> 项，截止目前， <span>0</span> 项进展正常，
+            <span>0</span> 项未完成， <span>0</span> 项需关注</p>
+        <table id="table" data-toolbar="#toolbar" data-show-refresh="true" data-show-columns="true"
+            data-show-export="true" data-pagination="true" data-page-size="10" data-pagination-loop="false"
+            data-pagination-pre-text="上一页" data-pagination-next-text="下一页">
+            <thead>
+                <tr>
+                    <th data-formatter="thIndex" data-align="center" data-width="3%">序号</th>
+                    <th data-field="d1" data-align="center">D1推进重大军工项目，完成军品考核任务</th>
+                    <th data-field="d2" data-align="center" data-formatter="D2_info">D2增强科技创新能力，提升核心竞争力</th>
+                    <th data-field="d3" data-align="center">D3保核安全，实现核设施安全稳定运行</th>
+                    <th data-field="d4" data-align="center" data-formatter="D4_info">D4加快核产业转型升级，推进自主重大工程建设</th>
+                    <th data-field="d5" data-align="center">D5加快市场开发，推进全产业链“走出去”</th>
+                    <th data-field="d6" data-align="center">D6调整改革，攻坚克服</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="info-area clearfix">
+            <div class="info-item description">
+                <p class="info-title t-tag">完成情况说明</p>
+                <p class="info">
+                    描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明
+                </p>
+            </div>
+            <div class="info-item measures">
+                <p class="info-title t-tag">改进措施</p>
+                <p class="info">
+                    改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../js/plugins/layer/layer.min.js"></script>
+	<script src="../js/hplus.min.js?v=4.0.0"></script>
+	<script type="text/javascript" src="../js/contabs.min.js"></script>
+    <script src="common.js"></script>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            var $table = $('#table');
+            let tableData = [{
+                id: '1',
+                d1: 'xxx',
+                d2: '核电设计优化',
+                d3: 'xxx',
+                d4: '“华龙一号”国内示范工程及融合示范工程',
+                d5: '海外业务在集团营业收入占比达到1%',
+                d6: '双百行动'
+            }, {
+                id: '2',
+                d1: 'xxx',
+                d2: 'xxx',
+                d3: 'xxx',
+                d4: '核工业大学天津新校区建设',
+                d5: '巴基斯坦海外华龙一号',
+                d6: '降杠杆减负债风险'
+            }, {
+                id: '3',
+                d1: 'xxx',
+                d2: 'xxx',
+                d3: 'xxx',
+                d4: 'xxx',
+                d5: '蒙古火电项目',
+                d6: '退休人员社会化管理'
+            }, {
+                id: '4',
+                d1: 'xxx',
+                d2: 'xxx',
+                d3: 'xxx',
+                d4: 'xxx',
+                d5: 'ITEE项目',
+                d6: '清理拖欠民营企业欠款及民工工资专项工作'
+            }, {
+                id: '5',
+                d1: 'xxx',
+                d2: 'xxx',
+                d3: 'xxx',
+                d4: 'xxx',
+                d5: 'xxx',
+                d6: '十四五规划编制'
+            }, {
+                id: '6',
+                d1: 'xxx',
+                d2: 'xxx',
+                d3: 'xxx',
+                d4: 'xxx',
+                d5: 'xxxx',
+                d6: '法人压减及减亏（压减任务）'
+            }, {
+                id: '7',
+                d1: 'xxx',
+                d2: 'xxx',
+                d3: 'xxx',
+                d4: 'xxx',
+                d5: 'xxxx',
+                d6: '法人压减及减亏（减亏任务）'
+            }]
+            tableData = [tableData, ...tableData, ...tableData]
+            $table.bootstrapTable({
+                data: tableData,
+                undefinedText: '-',
+                onClickRow: (row, $el, filed) => {
+                    $('.row-selected').removeClass('row-selected');
+                    $($el).addClass('row-selected');
+                    // $('.description .info').text(row.d5 || '无')
+                    // $('.measures .info').text(row.d6 || '无')
+                }
+            });
+
+            // $table.bootstrapTable('refresh');
+        })
+
+        function exportsPlan() {
+            // $('.export li[data-type=xlsx]').click();
+        }
+
+        function exportsStatus() {
+            // $('.export li[data-type=xlsx]').click();
+        }
+
+        function D2_info(val, row) {
+            if (!val) {
+                return
+            }
+            return '<a class="J_menuItem" href="./overall_task_info.html?id='+ row.id +'&type=d2">'+ val +'</a>'
+            // return '<a href="./overall_panel.html" class="J_menuItem" valId="'+ row.id +'" type="d2" onclick="openDetail('+ this +')">'+ val +'</a>';
+        }
+
+        function D4_info(val, row) {
+            if (!val) {
+                return
+            }
+            return '<a class="J_menuItem" href="./overall_task_info.html?id='+ row.id +'&type=d4">'+ val +'</a>'
+            // return '<a href="javascript:;" valId="'+ row.id +'" type="d4" onclick="openDetail('+ this +')">'+ val +'</a>';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+
+.btn-more{
+	color: rgba(89, 121, 242, 1);
+	font-size: 14px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+/* .layui-tab-title{
+	margin-top: 30px;
+} */
+.layui-tab-title .layui-this{
+	color: rgba(89, 121, 242, 1);
+	border: none;
+}
+.layui-tab-title li{
+	background: RGBA(248, 248, 249, 1);
+	margin: 0 5px;
+	border: 1px solid #e6e6e6;
+}
+#system-div div{
+	height: 100px;
+	line-height: 100px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+#systemTableDiv{
+	display: none;
+}
+.back-btn{
+	background: RGBA(240, 243, 255, 1);
+	border: 1px solid rgba(89, 121, 242, 0.44);
+	color: #5979F2;
+	margin-top: 15px;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 12px;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	z-index: 9;
+}
+.systemName{
+	font-size: 14px;
+	font-weight: bold;
+	color: #333333;
+	height: 50px;
+	position: relative;
+}
+.systemName .grid-demo{
+	position: absolute;
+	bottom: 0;
+}
+.back-btn .iconfont{
+	font-size: 12px;
+	margin-right: 5px;
+}
+.level{
+	background-color: #19CAAD;
+	color: #FFFFFF;
+	padding: 5px 2px;
+}
+.layui-tab-content {
+	padding: 10px 0;
+}

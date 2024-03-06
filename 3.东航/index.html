@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="fonts/iconfont.css" />
+	<script src="js/jquery-3.4.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<style>
+		.card-item {
+			width: 18%;
+			margin: 5px;
+		}
+
+		.card-label {
+			padding: 5px
+		}
+
+		.card-label span {
+			font-size: 12px;
+			margin: 5px;
+		}
+	</style>
+	<body>
+		<div class="head">
+			<ul class="breadcrumb">
+				<li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span>返回</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="card" style="height: 270px;">
+				<div class="card-title"><i class="iconfont icon-shuju1"></i>数据目录</div>
+				<div style="padding: 15px 25px;">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="active">
+							<a href="#dataMenu" data-toggle="tab">
+								<i class="iconfont icon-shuju3"></i>数据目录
+							</a>
+						</li>
+						<li><a href="#service" data-toggle="tab"><i class="iconfont icon-service"></i>服务目录</a></li>
+						<li><a href="#report " data-toggle="tab"><i class="iconfont icon-baobiao2"></i>报表目录</a></li>
+						<li><a href="#outerData" data-toggle="tab"><i class="iconfont icon-ic_waibushujuguanlian"></i>外部数据目录</a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade in active" id="dataMenu">
+							<div class="menu">
+								<ul>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #facd34;" src='icon/客户.png' /></div>
+										<div class="title-div">客户&参与人</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #6059da;;" src='icon/航班.png' /></div>
+										<div class="title-div">航班计划</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #8f55e7;;" src='icon/库存.png' /></div>
+										<div class="title-div">座位库存</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #5dd7a8;;" src='icon/定价中心.png' /></div>
+										<div class="title-div">定价</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #facd34;;" src='icon/销售.png' /></div>
+										<div class="title-div">销售</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #605ad8;;" src='icon/椅子.png' /></div>
+										<div class="title-div">订座</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #8f55e7;;" src='icon/电脑.png' /></div>
+										<div class="title-div">IT</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #f86846;;" src='icon/积分申请航班.png' /></div>
+										<div class="title-div">航班运行</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #ffb11c;;" src='icon/设备.png' /></div>
+										<div class="title-div">飞机和设备</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #78c448;;" src='icon/维修.png' /></div>
+										<div class="title-div">维修</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #50c4ed;;" src='icon/员工.png' /></div>
+										<div class="title-div">员工</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #f86846;;" src='icon/财务.png' /></div>
+										<div class="title-div">财务</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #ffb119;;" src='icon/位置.png' /></div>
+										<div class="title-div">位置&参看</div>
+									</li>
+									<li>
+										<div class="img-div" style="float: left;"><img style="background: #78c446;;" src='icon/机票.png' /></div>
+										<div class="title-div">机票</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="service">
+							数据服务
+						</div>
+						<div class="tab-pane fade" id="outerData">
+							报表服务
+						</div>
+						<div class="tab-pane fade" id="report">
+							外部数据服务
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-title"><i class="iconfont icon-type"></i>按类型分类</div>
+				<div class='item-box'>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>业务系统<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>数据字典<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								数据库：586
+							</span>
+							<span>
+								敏感数据：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								数据库表：56
+							</span>
+							<span>
+								GDRP：--
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								数据项：5555
+							</span>
+						</div>
+					</div>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>数据标准<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								基础数据域：586
+							</span>
+							<span>
+								应用数据域：58
+								<span>
+						</div>
+						<div class="card-label">
+							<span>
+								基础标准：56
+							</span>
+							<span>
+								应用标准：58
+							</span>
+						</div>
+					</div>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>质量标准<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								质量标准：586
+							</span>
+							<span>
+								数据质量任务：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核检规则：56
+							</span>
+						</div>
+					</div>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>业务系统<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-title"><i class="iconfont icon-data"></i>常用数据</div>
+				<div class='item-box'>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>参考地理数据<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-title"><i class="iconfont icon-shuju2"></i>按数据域分类</div>
+				<div style="padding: 10px;">
+					<div class="card-title-1" style="border-bottom: none;">营销服务</div>
+					<div class='item-box'>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>客户&参与人<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									业务系统：586
+								</span>
+								<span>
+									已采集系统：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									核心系统：56
+								</span>
+								<span>
+									已关联系统库：58
+								</span>
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>航班计划<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									数据库：586
+								</span>
+								<span>
+									敏感数据：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									数据库表：56
+								</span>
+								<span>
+									GDRP：--
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									数据项：5555
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>定价<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									基础数据域：586
+								</span>
+								<span>
+									应用数据域：58
+									<span>
+							</div>
+							<div class="card-label">
+								<span>
+									基础标准：56
+								</span>
+								<span>
+									应用标准：58
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>座位库存<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									质量标准：586
+								</span>
+								<span>
+									数据质量任务：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									核检规则：56
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>销售<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									业务系统：586
+								</span>
+								<span>
+									已采集系统：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									核心系统：56
+								</span>
+								<span>
+									已关联系统库：58
+								</span>
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									敏感系统：5
+								</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div style="border-bottom: 1px solid #E8E8E8;margin: 0 25px;"></div>
+				<div style="padding: 10px;">
+					<div class="card-title-1" style="border-bottom: none;">生产运营</div>
+					<div class='item-box'>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>维修<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									业务系统：586
+								</span>
+								<span>
+									已采集系统：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									核心系统：56
+								</span>
+								<span>
+									已关联系统库：58
+								</span>
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>飞机和设备<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									数据库：586
+								</span>
+								<span>
+									敏感数据：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									数据库表：56
+								</span>
+								<span>
+									GDRP：--
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									数据项：5555
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>航班计划<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									基础数据域：586
+								</span>
+								<span>
+									应用数据域：58
+									<span>
+							</div>
+							<div class="card-label">
+								<span>
+									基础标准：56
+								</span>
+								<span>
+									应用标准：58
+								</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div style="border-bottom: 1px solid #E8E8E8;margin: 0 25px;"></div>
+				<div style="padding: 10px;">
+					<div class="card-title-1" style="border-bottom: none;">管理支持</div>
+					<div class='item-box'>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>员工<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									业务系统：586
+								</span>
+								<span>
+									已采集系统：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									核心系统：56
+								</span>
+								<span>
+									已关联系统库：58
+								</span>
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>IT<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									数据库：586
+								</span>
+								<span>
+									敏感数据：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									数据库表：56
+								</span>
+								<span>
+									GDRP：--
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									数据项：5555
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>财务<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									基础数据域：586
+								</span>
+								<span>
+									应用数据域：58
+									<span>
+							</div>
+							<div class="card-label">
+								<span>
+									基础标准：56
+								</span>
+								<span>
+									应用标准：58
+								</span>
+							</div>
+						</div>
+
+						<div class="card-item">
+							<div class="card-item-title">
+								<div class="item-span"></div>位置&参考<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+									<div style="margin-left:3px">2</div>
+								</div>
+							</div>
+							<div class="card-label">
+								<span>
+									质量标准：586
+								</span>
+								<span>
+									数据质量任务：58
+								</span>
+							</div>
+							<div class="card-label">
+								<span>
+									核检规则：56
+								</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="card" style="padding-bottom: 40px;">
+				<div class="card-title"><i class="iconfont icon-bumen"></i>按权威部门分类</div>
+				<div class='item-box'>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>人力部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>飞行部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								数据库：586
+							</span>
+							<span>
+								敏感数据：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								数据库表：56
+							</span>
+							<span>
+								GDRP：--
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								数据项：5555
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>信息部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								基础数据域：586
+							</span>
+							<span>
+								应用数据域：58
+								<span>
+						</div>
+						<div class="card-label">
+							<span>
+								基础标准：56
+							</span>
+							<span>
+								应用标准：58
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>信息部主机部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								质量标准：586
+							</span>
+							<span>
+								数据质量任务：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核检规则：56
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>办公室<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class='item-box'>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>商务部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>地服部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>客户委<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>客舱部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>技术公司<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class='item-box'>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>机务工程师<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>研发中心<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>空保部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>组织部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>综管部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class='item-box'>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>飞管部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>保卫部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+					<div class="card-item">
+						<div class="card-item-title">
+							<div class="item-span"></div>保卫部<div class="shoucang"><img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+								<div style="margin-left:3px">2</div>
+							</div>
+						</div>
+						<div class="card-label">
+							<span>
+								业务系统：586
+							</span>
+							<span>
+								已采集系统：58
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								核心系统：56
+							</span>
+							<span>
+								已关联系统库：58
+							</span>
+							</span>
+						</div>
+						<div class="card-label">
+							<span>
+								敏感系统：5
+							</span>
+						</div>
+					</div>
+					<!-- <div class="card-item" style="border: none; background: none;">
+						
+					</div>
+					<div class="card-item" style="border: none;">
+						
+					</div> -->
+
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(".card-item .card-item-title img").click(function() {
+			if ($(this).attr('src') != 'icon/收藏灰色.svg') {
+				console.log($(this));
+				$(this).attr('src', 'icon/收藏灰色.svg');
+			} else {
+				$(this).attr('src', 'icon/收藏.svg');
+			}
+		})
+	</script>
+</html>

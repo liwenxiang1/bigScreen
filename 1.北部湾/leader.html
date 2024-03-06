@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/leader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">  <link href="" rel="stylesheet">
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="北部湾投资集团有限公司统一信息集成门户v1.4" />
+    <meta name="description" content="北部湾投资集团有限公司统一信息集成门户v1.4" />
+    <title>北部湾投资集团有限公司统一信息集成门户v1.4</title>
+</head>
+
+<body onload="init()">
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        function init() {
+            initType()
+            readStatus()
+            infoListHandler()
+            swithBtnHandler()
+            isTop()
+            tabChange()
+        }
+
+        function readStatus() {
+            $('.tobe-read .info-list li').each((index, el) => {
+                // 判断是否未读
+                if ($(el).attr('data-isread') === 'N') {
+                    $(el).addClass('not-read')
+                } else {
+                    $(el).removeClass('not-read')
+                }
+            })
+        }
+        // 列表点击事件
+        function infoListHandler() {
+            $('.info-list').on('click', 'li', e => {
+                const notRead = $(e.currentTarget).hasClass('not-read')
+                if (notRead) {
+                    // 未读的查看后设置为已读
+                    $(e.currentTarget).removeClass('not-read')
+                }
+                // 查看公告详情
+                //###########
+            })
+        }
+        let lastActiveName = null
+
+        function swithBtnHandler() {
+            if (!lastActiveName) {
+                // 初始选中第一个
+                $(`.invest-briefing .content-wrapper #A`).css('display', 'block')
+                lastActiveName = 'A'
+            }
+            $('.invest-briefing .switch-btns').on('click', 'span', e => {
+                const currentName = $(e.currentTarget).attr('data-name')
+                if (lastActiveName === currentName) {
+                    return
+                }
+                if (lastActiveName) {
+                    // 隐藏上一个
+                    $(`.invest-briefing .content-wrapper #${lastActiveName}`).css('display', 'none')
+                }
+                // 清空选中状态
+                $('.invest-briefing .switch-btns .active').removeClass('active')
+                // 增加新的选中状态
+                $(`.invest-briefing .content-wrapper #${currentName}`).css('display', 'block')
+                lastActiveName = currentName
+                $(e.currentTarget).addClass('active')
+            })
+        }
+
+        function initType() {
+            $('.type-bar li').click(e => {
+                $('.type-bar li.active').removeClass('active')
+                $(e.currentTarget).addClass('active')
+                let typeName = $(e.currentTarget).attr('data-name')
+                if (typeName === 'ALL') {
+                    // 判断类型获取服务器数据
+                }
+            })
+        }
+
+        // 判断置顶状态
+        function isTop(){
+            $('.news .info-list li').each((index, el) => {
+                // 判断是否有置顶标识
+                if ($(el).attr('data-isTop') === 'Y') {
+                    $(el).addClass('isTop')
+                } else {
+                    $(el).removeClass('isTop')
+                }
+            })
+        }
+        function tabChange(){
+            $('.news .box-title').on('click', 'span', e => {
+                $('.news .box-title .underline').removeClass('underline')
+                $(e.currentTarget).addClass('underline')
+                let tabName = $(e.currentTarget).attr('data-name')
+                if(tabName === 'news'){
+                    // 替换新闻数据
+                } else {
+                    // 替换公告数据
+                }
+            })
+        }
+    </script>
+
+    <div class="north-gulf">
+        <div class="navbar clearfix">
+            <img src="./static/logo.png" alt="" class="logo" onclick="javascript:location.href='leader.html'">
+            <div class="tools-bar">
+                <img src="./static/user.png" alt="" class="user">
+                <div class="message">
+                    <img src="./static/message.png" alt="">
+                    <span class="num-tip">99</span>
+                </div>
+                <img src="./static/book@.png" alt="" class="book">
+            </div>
+            <div class="navbar-bottom-line"></div>
+        </div>
+        <div class="content">
+            <div class="slidebar collapse">
+                <div class="menu-switch" onclick="menuSwitch(this)">
+                    <!-- <img src="./static/menu-collapse.png" title="点击展开" alt="" class="menu-collapse-icon"> -->
+                    <img src="./static/menu-expand.png" title="点击收起" alt="" class="menu-expand-icon">
+                </div>
+                <ul class="menu-list">
+                    <li class="menu-item clearfix" data-name="leader" title="领导专用">
+                        <img src="./static/org.png" alt="" class="menu-item-icon">
+                        <span class="menu-item-label">领导专用</span>
+                    </li>
+                    <li class="menu-item clearfix" data-name="employee" title="员工专用">
+                        <img src="./static/org.png" alt="" class="menu-item-icon">
+                        <span class="menu-item-label">员工专用</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="main leader clearfix">
+                <div class="left-boxs">
+                    <div class="box todo">
+                        <p class="box-title">待办中心</p>
+                        <ul class="type-bar clearfix">
+                            <li class="active" data-name="ALL">
+                                <span>全部待办</span>
+                                <span class="num-tip">99</span>
+                            </li>
+                            <li data-name="OA">
+                                <span>OA系统</span>
+                                <span class="num-tip">99</span></li>
+                            <li data-name="HR">
+                                <span>人事HR</span>
+                                <span class="num-tip">99</span></li>
+                        </ul>
+                        <ul class="info-list">
+                            <li>
+                                <span
+                                    class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作曾庆生深入北投集团定点扶贫村开展督战调研工作曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li>
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li>
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li>
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li>
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li>
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box tobe-read">
+                        <p class="box-title">
+                            <span>待阅中心</span>
+                            <span class="num-tip">99</span>
+                            <span class="deal-with">[ 批量处理 ]</span>
+                        </p>
+                        <ul class="info-list">
+                            <li data-isread="N">
+                                <span
+                                    class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作曾庆生深入北投集团定点扶贫村开展督战调研工作曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li data-isread="N">
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li data-isread="N">
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li data-isread="N">
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li data-isread="N">
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li data-isread="N">
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box common-app">
+                        <p class="box-title">
+                            <span>常用应用</span>
+                            <span class="more-app">[ 更多应用 ]</span>
+                        </p>
+                        <ul class="app-list clearfix">
+                            <li class="app-item">
+                                <img src="./static/apps/report.png" alt="" class="app-icon">
+                                <p class="title">报表填报系统</p>
+                            </li>
+                            <li class="app-item">
+                                <img src="./static/apps/analysis.png" alt="" class="app-icon">
+                                <p class="title">智能决策分析系统</p>
+                            </li>
+                            <li class="app-item">
+                                <img src="./static/apps/main-data.png" alt="" class="app-icon">
+                                <p class="title">主数据管理系统</p>
+                            </li>
+                            <li class="app-item">
+                                <img src="./static/apps/OA.png" alt="" class="app-icon">
+                                <p class="title">OA系统</p>
+                            </li>
+                            <li class="app-item">
+                                <img src="./static/apps/dollar.png" alt="" class="app-icon">
+                                <p class="title">久其财务系统</p>
+                            </li>
+                            <li class="app-item">
+                                <img src="./static/apps/IBMS.png" alt="" class="app-icon">
+                                <p class="title">大厦智能化系统（IBMS）</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-boxs">
+                    <div class="box invest-briefing">
+                        <div class="box-title clearfix">
+                            <span class="underline">投资简报</span>
+                            <div class="switch-btns">
+                                <span data-name="A" class="active"></span>
+                                <span data-name="B"></span>
+                                <span data-name="C"></span>
+                            </div>
+                        </div>
+                        <div class="content-wrapper">
+                            <div id="A" class="content animated fadeInRight"></div>
+                            <div id="B" class="content animated fadeInRight"></div>
+                            <div id="C" class="content animated fadeInRight"></div>
+                        </div>
+                    </div>
+                    <div class="box news">
+                        <div class="box-title clearfix">
+                            <span class="underline" data-name="news">公司新闻</span>
+                            <span data-name="notice">通知公告</span>
+                        </div>
+                        <ul class="info-list">
+                            <li data-isTop="Y">
+                                <span
+                                    class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作曾庆生深入北投集团定点扶贫村开展督战调研工作曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li data-isTop="Y">
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li>
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li>
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                            <li>
+                                <span class="title">曾庆生深入北投集团定点扶贫村开展督战调研工作</span>
+                                <span class="time">2020-03-22</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer">广西北部湾投资集团有限公司    版权所有  Copyright © 2019    建议：360浏览器、IE11; 1600</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

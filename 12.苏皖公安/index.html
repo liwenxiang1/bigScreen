@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>南京市公安局——综合指挥室管理工作平台</title>
+		<link rel="stylesheet" href="css/reset/normalize.css">
+		<link rel="stylesheet" href="js/plugin/layui/css/layui.css">
+		<link rel="stylesheet" href="js/plugin/tooltipster-master/css/tooltipster.bundle.min.css">
+		<link rel="stylesheet" href="js/plugin/tooltipster-master/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css">
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+	<body>
+		<!-- 页头 S -->
+		<div class="header clearfix">
+			<!-- logo -->
+			<div class="logo-g">
+				<img class="logo" src="img/icon/national_emblem.png" alt="">
+				<div class="logo-txt">
+					<img class="logo-txt-t" src="img/icon/area_icon1.png" alt="">
+					<img class="logo-txt-b" src="img/icon/contral.png" alt="">
+				</div>
+			</div>
+			<div class="header-r">
+				<div class="tp-m clearfix">
+					<div class="tp-m__t">
+						<!-- 用户头像 -->
+						<img class="user-avatar" src="img/icon/user.png" alt="">
+						<p class="user-name">张军</p>
+					</div>
+					<div class="tp-m__b">
+						<!-- 快捷导航入口 -->
+						<a class="system-shortcut tooltip" href="javascript: systemShortcut();" title="快捷入口">
+							<img src="img/icon/system_btn.png" alt="">
+						</a>
+						<!-- 设置 -->
+						<div class="setting-up" id="settingBtn">
+							<img src="img/icon/icon_12.png" alt="">
+						</div>
+						<!-- 附件下载 -->
+						<a class="system-shortcut tooltip" id="searchBtn" href="javascript:;" title=" 统计查询">
+							<img src="img/icon/search.png" alt="">
+						</a>
+						<a class="system-shortcut tooltip" href="javascript:;" title="附件下载">
+							<img src="img/icon/adjunct_icon1.png" alt="">
+						</a>
+						<div class="line">
+							<div class="line-inner"></div>
+						</div>
+						<!-- 深/浅版本切换 -->
+						<a class="close-system tooltip" href="javascript: homePage()" title="深、浅版本切换">
+							<img src="img/icon/close_icon1.png" alt="">
+						</a>
+					</div>
+				</div>
+				<!-- 导航 -->
+				<ul class="nav clearfix" id="indexTopNav">
+					<!-- 追加html -->
+				</ul>
+			</div>
+		</div>
+		<!-- 页头 E -->
+
+		<!-- 主体内容 S -->
+		<div class="main" id="main">
+			<ul class="route" id="routeNav">
+			</ul>
+			<div class="main-r">
+				<div class="search layui-form">
+					<label for=""><a href="#" class="search-icon"></a><input type="text" name="search" class="search-inp"><a href="javascript:;"
+						 lay-submit lay-filter="searchBtn" class="search-btn">搜索</a></label>
+				</div>
+				<div class="notice">
+					<span class="tit">通知：</span><span class="txt">信息信息信息信息信息信息信息信息</span>
+				</div>
+			</div>
+			<div class="iframe-container">
+				<iframe class="iframe" src="views/home.html" frameborder="0"></iframe>
+			</div>
+		</div>
+		<!-- 主体内容 E -->
+		<!-- 页尾 S -->
+		<div class="footer">
+			<p class="txt">copyright 南京市公安局 支持单位：南京市公安局大数据中心</p>
+		</div>
+		<!-- 页尾 E -->
+	</body>
+
+	<!-- 页头菜单栏 -->
+	<script type="text/html" id="topNav-template">
+		{{each list}}
+		<li class="inner clearfix">
+			{{if $value.children && $value.children.length > 0}}
+				<a href="javascript:;">
+			{{else}}
+				<a href="javascript:;" onclick="insertTab(this, JSON.stringify({{$value}}), {{$value.target}})">
+			{{/if}}
+				<img class="nav-icon" src="{{$value.iconSrc}}" alt="">
+				<span class="nav-tit">{{$value.label}}</span>
+			</a>
+			{{if $value.children}}
+				<ul class="nav-ul">
+					{{each $value.children next1Item}}
+						<li class="nav-li">
+							{{if next1Item.children && next1Item.children.length > 0}}
+								<a href="javascript:;">
+							{{else}}
+								<a href="javascript:;" onclick="insertTab(this, JSON.stringify({{next1Item}}), {{$value.target}})">
+							{{/if}}
+									<span class="nav-tit">{{next1Item.label}}</span>
+								</a>
+								{{if next1Item.children}}
+									<ul class="nav-ul">
+										{{each next1Item.children next2Item}}
+											<li class="nav-li">
+												<a href="javascript:;" onclick="insertTab(this, JSON.stringify({{next2Item}}), {{$value.target}})">
+													<span class="nav-tit">{{next2Item.label}}</span>
+												</a>
+											</li>
+										{{/each}}
+									</ul>
+								{{/if}}
+						</li>
+					{{/each}}
+				</ul>
+			{{/if}}
+		</li>
+	{{/each}}
+</script>
+
+	<!-- 页签 -->
+	<script type="text/html" id="tagNav-template">
+		{{each list}}
+		<li class="route-li">
+			<a href="javascript:;" onclick="openPage(this, JSON.stringify({{$value}}), {{$index}})">{{$value.label}}</a>
+			<img class="close-btn" onclick="closeTag(this)" src="img/icon/close.png" alt="">
+		</li>
+	{{/each}}
+</script>
+	<!-- 页签iframe -->
+	<script type="text/html" id="iframe-template">
+		<div class="iframe-container">
+		<iframe class="iframe" src="{{href}}" scrolling="yes" frameborder="0"></iframe>
+	</div>
+</script>
+
+	<script src="js/jquery1.8.1.js"></script>
+	<script src="js/plugin/layui/layui.js"></script>
+	<script src="js/plugin/template-web.js"></script>
+	<script src="js/plugin/tooltipster-master/js/tooltipster.bundle.min.js"></script>
+	<script src="js/common.js"></script>
+	<script>
+		// 页头菜单配置
+		var topMenuList = [{
+				label: '综合态势',
+				href: 'views/home.html',
+				target: false, //用于判断是否要在框架外打开，false：在框架中打开，true：在框架外打开
+				iconSrc: 'img/icon/icon_16.png',
+				children: [{
+						label: '辖区态势',
+						href: 'views/model.html',
+						target: false,
+						iconSrc: 'img/icon/icon_16.png'
+					},
+					{
+						label: '人员态势',
+						href: 'views/building.html',
+						target: false,
+						iconSrc: 'img/icon/icon_1.png'
+					}
+				]
+			},
+			{
+				label: '情报研判',
+				href: 'views/model.html',
+				target: false,
+				iconSrc: 'img/icon/icon_1.png',
+				children: [{
+						label: '预警中心',
+						href: 'views/capitalMedicine.html',
+						target: false,
+						iconSrc: 'img/icon/icon_16.png'
+					},
+					{
+						label: '情报研判',
+						href: 'views/building.html',
+						target: false,
+						iconSrc: 'img/icon/icon_1.png',
+						children: [{
+								label: '警情热词',
+								href: 'views/echarts.html',
+								target: false,
+								iconSrc: 'img/icon/icon_16.png'
+							},
+							{
+								label: '研判报告',
+								href: 'views/building.html',
+								target: false,
+								iconSrc: 'img/icon/icon_1.png'
+							}
+						]
+					}
+				]
+			},
+			{
+				label: '警情调度',
+				href: 'views/model2.html',
+				target: false,
+				iconSrc: 'img/icon/icon_17.png',
+				children: [{
+						label: '指挥调度',
+						href: 'views/navigations.html',
+						target: false,
+						iconSrc: 'img/icon/icon_16.png'
+					},
+					{
+						label: '接警台',
+						href: 'views/model2.html',
+						target: false,
+						iconSrc: 'img/icon/icon_1.png'
+					}
+				]
+			},
+			{
+				label: '基础管控',
+				href: 'views/pushRecord.html',
+				target: false,
+				iconSrc: 'img/icon/icon_3.png'
+			},
+			{
+				label: '综合管理',
+				href: 'views/feedbackDetail.html',
+				target: false,
+				iconSrc: 'img/icon/icon_4.png'
+			},
+			{
+				label: '质态监管',
+				href: 'https://www.baidu.com',
+				target: false,
+				iconSrc: 'img/icon/icon_2.png',
+				children: [{
+						label: '综合态势',
+						href: 'views/home.html',
+						target: false,
+						iconSrc: 'img/icon/icon_16.png',
+						children: [{
+								label: '',
+								href: 'views/home.html',
+								target: false,
+								iconSrc: 'img/icon/icon_16.png'
+							},
+							{
+								label: '警情调度',
+								href: 'views/home.html',
+								target: false,
+								iconSrc: 'img/icon/icon_1.png'
+							}
+						]
+					},
+					{
+						label: '警情调度',
+						href: 'views/home.html',
+						target: false,
+						iconSrc: 'img/icon/icon_1.png'
+					}
+				]
+			}
+		];
+
+		// 打开的页面标签
+		var tagList = [{
+			label: '首页',
+			href: 'views/home.html'
+		}];
+
+		layui.use(['layer', 'form'], function() {
+			var layer = layui.layer,
+				form = layui.form;
+
+			$("#settingBtn").click(function() {
+				layer.open({
+					type: 2,
+					title: '项目进度',
+					shade: 0.01,
+					area: ['850px', '500px'],
+					content: 'views/navigation.html' //iframe的url
+				});
+			})
+			$("#searchBtn").click(function() {
+				layer.open({
+					type: 2,
+					title: '统计查询',
+					shadeClose: true,
+					shade: false,
+					maxmin: true, //开启最大化最小化按钮
+					area: ['1400px', '650px'],
+					content: 'views/searchItem.html' //iframe的url
+				});
+			});
+
+			// 快捷导航弹窗
+			var systemShortcutClose = null
+			window.systemShortcut = function() {
+				layer.close(systemShortcutClose)
+				systemShortcutClose = layer.open({
+					type: 2,
+					anim: -1,
+					title: !1,
+					closeBtn: !1,
+					offset: "r",
+					shade: .2,
+					shadeClose: !0,
+					skin: "layui-anim layui-anim-rl layui-layer-adminRight layui-shortcut",
+					area: ["380px", "100%"],
+					content: 'views/shortcut.html'
+				});
+			}
+			// 搜索
+			form.on("submit(searchBtn)", function(data) {
+				console.log(data.field)
+			})
+		})
+
+		$(function() {
+			// 执行添加页头菜单栏方法
+			initTopMenu(topMenuList);
+			// 执行添加页面路径标签方法
+			initTagMenu(tagList, tagList[0]);
+			// 页头菜单鼠标悬浮展示子菜单
+			$("#indexTopNav li").hover(function() {
+				$(this).children("ul").show();
+			}, function() {
+				$(this).children("ul").hide();
+			})
+
+			// title鼠标悬浮显示插件
+			$(".tooltip").tooltipster({
+				animation: 'grow' //title显示时动画效果
+					,
+				delay: 150 //title经过多少时间展示完成
+					,
+				theme: 'tooltipster-shadow' //使用shadow主题，根据引入的link样式来决定
+					,
+				interactive: false //title中文字是否可复制，true为可复制
+					,
+				position: 'left',
+				maxWidth: 200,
+				contentAsHTML: false //titleHTML代码
+			});
+		})
+		// 页签关闭方法
+		function closeTag(that) {
+			// 获取当前点击的元素下标，用于删除页签数组
+			var $index = $(that).parent().index();
+			var obj = tagList[0];
+			// 判断当前点击的元素是否是打开的页面
+			if ($(that).parent().hasClass("active")) {
+				tagList.splice($index, 1);
+				$activeIndex = 0;
+				// 关闭页签的同时关闭相应的iframe
+				$("#main").children(".iframe-container").eq($index).remove();
+				// 关闭当前打开的页签，则切换回首页，并隐藏其他页签
+				$("#main").children(".iframe-container").eq(0).show().siblings(".iframe-container").hide();
+			} else {
+				// 关闭不是当前打开的页面时，获取当前被选中的页签，保证关闭其他页签是，选中页签不变
+				var index = tagList.map(function(v) {
+					return v.label;
+				}).indexOf($.trim($(that).parents("#routeNav").children(".active").text()));
+				obj = tagList[index];
+				tagList.splice($index, 1);
+				// 关闭不是当前打开的页签
+				$("#main").children(".iframe-container").eq($index).remove();
+			}
+			initTagMenu(tagList, obj);
+		}
+
+		// 页头菜单栏
+		function initTopMenu(menuList) {
+			var html = template("topNav-template", {
+				list: menuList
+			});
+			$("#indexTopNav").html(html)
+		}
+
+		// 点击页头菜单，追加页签
+		function insertTab(that, objStr, flag) {
+			var obj = JSON.parse(objStr);
+			var index = tagList.map(function(item) {
+				return item.label;
+			}).indexOf(obj.label);
+			// iframe地址
+			var iframeHtml = template('iframe-template', {
+				href: obj.href
+			})
+			if (index === -1) {
+				if (tagList.length > 5) {
+					if ($("#routeNav .active").index() === 1) {
+						tagList.splice(2, 1);
+						$("#main").children(".iframe-container").eq(2).remove();
+					} else {
+						tagList.splice(1, 1);
+						$("#main").children(".iframe-container").eq(1).remove();
+					}
+					tagList.push(obj)
+				} else {
+					tagList.push(obj)
+				}
+				// flag：数据中发target,用于页面是项目中打开，还是项目外打开，true为框架外打开，false为框架内打开；
+				// 页签中内容的菜单，则添加，并默认选中添加的iframe，隐藏其他iframe
+				flag ? window.open(obj.href) : $("#main").append(iframeHtml).children(".iframe-container:last-child").show().siblings(
+					".iframe-container").hide();
+			} else {
+				// 页签中已存在，则选中已存在页签对应的iframe，隐藏其他iframe
+				flag ? window.open(obj.href) : $("#main").children(".iframe-container").eq(index).show().children(".iframe").attr(
+					"src", obj.href).parent().siblings(".iframe-container").hide();
+			}
+			initTagMenu(tagList, obj)
+		}
+
+		// 添加页面路径标签
+		function initTagMenu(list, obj) {
+			var html = template("tagNav-template", {
+				list: list
+			})
+			var index = list.map(function(v) {
+				return v.label;
+			}).indexOf(obj.label)
+			$("#routeNav").html(html).children().eq(index).addClass("active").siblings().removeClass("active");
+			$("#main").children(".iframe-container").eq(index).show().siblings(".iframe-container").hide();
+		}
+
+		// 页面路径标签点击监听
+		function openPage(that, objStr) {
+			var obj = JSON.parse(objStr);
+			var $thatIndex = $(that).parent().index();
+			$(that).parent().addClass("active").siblings().removeClass("active");
+			$("#main").children(".iframe-container").eq($thatIndex).show().siblings(".iframe-container").hide();
+		}
+
+		// 深、浅版本切换方法
+		function homePage() {
+			var tint = "index.html";
+			var dark = "index1.html";
+			var $iframe = $(".iframe");
+			var page = location.href.includes("index.html");
+			location.replace(page ? dark : tint);
+		}
+	</script>
+</html>

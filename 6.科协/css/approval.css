@@ -1,0 +1,66 @@
+.approval .sim-box {
+    margin: 0.15rem 0 0 0;
+    padding: 0.35rem;
+    background-color: #fff;
+    border-radius: 0.05rem;
+}
+.approval .sim-box .title{
+    font-size: 0.32rem;
+    font-weight: 500;
+    text-align: left;
+}
+.approval .sim-box .title .required{
+    display: inline-block;
+    color: red;
+    vertical-align: middle;
+}
+.approval .sim-box .step-line .add-step{
+    float: left;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0.3rem 0.2rem;
+    border-radius: 50%;
+    background-color: #f6f6f6;
+    color: #ccc;
+    text-align: center;
+    line-height: 0.8rem;
+    font-size: 0.4rem;
+}
+
+.approval .sim-box .step-line .one-step{
+    float: left;
+    margin: 0.3rem 0;
+}
+.approval .sim-box .step-line .one-step .person-block{
+    position: relative;
+    float: left;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0 0.2rem;
+    border-radius: 50%;
+    background-color: #4E8FFF;
+    color: #fff;
+    text-align: center;
+    line-height: 0.8rem;
+    font-size: 0.3rem;
+    font-weight: 500;
+}
+.approval .sim-box .step-line .one-step .person-block i{
+    position: absolute;
+    top: -0.15rem;
+    right: -0.15rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 0.24rem;
+    line-height: 0.5rem;
+    transform: scale(0.65);
+}
+.approval .sim-box .step-line .one-step .arrow{
+    float: left;
+    color: #ccc;
+    line-height: 0.8rem;
+    font-size: 0.32rem;
+}

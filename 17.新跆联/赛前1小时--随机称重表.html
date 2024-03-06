@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>赛前1小时--随机称重表</title>
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./js/layui/css/layui.css">
+		<style>
+			.layui-table td,
+			.layui-table th {
+				color: #000000;
+				border-color: #000000;
+			}
+
+			table {
+				border-collapse: separate;
+				border-spacing: 10px 0px;
+			}
+
+			.layui-table th {
+				font-weight: bold;
+			}
+
+			.layui-table td {
+				border: none;
+			}
+			
+			.position-relative {
+				position: relative;
+				padding-bottom: 200px !important;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+		  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+		  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<!-- 你的HTML代码 -->
+		<div class="layui-fluid position-relative">
+			<div class="layui-row">
+				<div class="layui-col-md3">
+					<img src="./img/logo.jpg" class="logo" />
+				</div>
+				<div class="layui-col-md6 text-center">
+					<h1 class="mt15">第三站</h1>
+					<h2 class="mt15">随机称重表</h2>
+				</div>
+				<div class="layui-col-md3"></div>
+			</div>
+			<div class="layui-row font16">
+				<div class="layui-col-md12 text-left">跆拳道</div>
+			</div>
+			<div class="layui-row font16">
+				<div class="layui-col-md6 text-left">男子-54kg(56.7kg)</div>
+				<div class="layui-col-md6 text-right">宜昌市体育中心</div>
+			</div>
+			<div class="layui-row">
+				<div class="layui-col-md12">
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th width="100px" class="text-center">序号</th>
+								<th width="100px">姓名</th>
+								<th width="100px" class="text-center">单位</th>
+								<th class="text-center">称重</th>
+								<th class="text-center">是否合格</th>
+								<th class="text-center">运动员签字</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="text-center">1</td>
+								<td>叶俊仁</td>
+								<td class="text-center">安徽</td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+							</tr>
+							<tr>
+								<td class="text-center">2</td>
+								<td>叶俊仁</td>
+								<td class="text-center">北京</td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+							</tr>
+							<tr>
+								<td class="text-center">2</td>
+								<td>叶俊仁</td>
+								<td class="text-center">北京</td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+							</tr>
+							<tr>
+								<td class="text-center">2</td>
+								<td>叶俊仁</td>
+								<td class="text-center">北京</td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+							</tr>
+							<tr>
+								<td class="text-center">2</td>
+								<td>叶俊仁</td>
+								<td class="text-center">北京</td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+							</tr>
+							<tr>
+								<td class="text-center">2</td>
+								<td>叶俊仁</td>
+								<td class="text-center">北京</td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+								<td class="border-b-black"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 分页代码 -->
+		<div style="page-break-after: always;"></div>
+		
+		<!-- 底部区域 -->
+		<div class="mfooter font16 text-left">
+			<table>
+				<tr>
+					<td colspan="6">*合格者打“√” 不合格打“×”</td>
+				</tr>
+				<t>
+					<td>称重人数：</td>
+					<td></td>
+					<td>合格人数：</td>
+					<td></td>
+					<td>不合格人数：</td>
+					<td></td>
+					</tr>
+					<tr>
+						<td>称重裁判员签字：</td>
+						<td colspan="5"></td>
+					</tr>
+					<tr class="border-b-black">
+						<td>仲裁委员签字：</td>
+						<td colspan="2"></td>
+						<td>运动队代表签字：</td>
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<td colspan="6">报表创建时间 2019-07-25 13:59</td>
+					</tr>
+			</table>
+		</div>
+
+		<script src="./js/layui/layui.all.js"></script>
+		<script>
+			//由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
+			;
+			! function() {
+				var layer = layui.layer;
+
+
+
+			}();
+		</script>
+	</body>
+</html>

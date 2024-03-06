@@ -1,0 +1,10 @@
+.search-form .layui-form-label {
+	text-align: left;
+	padding: 6px 15px;
+}
+.btn-more{
+	color: rgba(89, 121, 242, 1);
+	font-size: 14px;
+	margin-left: 10px;
+	cursor: pointer;
+}

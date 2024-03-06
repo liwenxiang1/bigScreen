@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./css/normalize.css">
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./css/theme-info.css">
+		<link rel="stylesheet" href="./js/swiper/swiper.min.css">
+		<link rel="stylesheet" href="./css/animate.min.css">
+		<title>项目主题驾驶舱</title>
+	</head>
+
+	<body>
+		<div class="theme-info theme-wrapper scale-wrapper">
+			<div id="loading">
+				<div class="loading_img">
+					<!-- 加载动画 -->
+					<img class="loading-ring-o" src="images/loading-ring-o.png">
+					<img class="loading-ring-i" src="images/loading-ring-i.png">
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="c-top3">
+					<div class="chart-item">
+						<p class="charts-title">境外项目情况</p>
+						<div class="overseas-pj sroll-wrapper">
+							<ul class="overseas-pj-list sroll-ul"></ul>
+						</div>
+					</div>
+				</div>
+				<div class="c-top3">
+					<div class="chart-item">
+						<p class="charts-title">地面站</p>
+						<div id="moon-charts"></div>
+					</div>
+				</div>
+				<div class="c-top3">
+					<div class="chart-item">
+						<p class="charts-title">单个地面站</p>
+						<div id="single-charts"></div>
+					</div>
+				</div>
+				<div class="c-long2 mr2 ">
+					<div class="chart-item swiper-container">
+						<p class="charts-title">常规任务</p>
+						<div class="pj-dn-info swiper-wrapper">
+							<div class="swiper-slide barCommon-charts"></div>
+							<div class="swiper-slide barCommon-charts"></div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="c-long2">
+					<div class="chart-item swiper-container">
+						<p class="charts-title">应急任务</p>
+						<div class="pj-dn-info swiper-wrapper">
+							<div class="swiper-slide barUrgent-charts"></div>
+							<div class="swiper-slide barUrgent-charts"></div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="c-long2 mr2">
+					<div class="chart-item swiper-container">
+						<p class="charts-title">测控任务</p>
+						<div class="pj-dn-info swiper-wrapper">
+							<div class="swiper-slide barTest-charts"></div>
+							<div class="swiper-slide barTest-charts"></div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="c-long2">
+					<div class="chart-item swiper-container">
+						<p class="charts-title">数传任务</p>
+						<div class="pj-dn-info swiper-wrapper">
+							<div class="swiper-slide barCross-charts"></div>
+							<div class="swiper-slide barCross-charts"></div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="c-date">
+
+			</div>
+
+			<div class="c-bottom">
+			</div> -->
+		</div>
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/echarts.min.js"></script>
+		<script src="./js/swiper/swiper.min.js"></script>
+		<script src="./js/global.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				swiperInit()
+				resetTheme()
+				scalePage()
+				clearLoading()
+				overseasPjInit()
+				moonInit()
+				singleInit()
+				barCommonInit()
+				//全屏
+				// $("#fullScreen").on("click",function(){
+				//     fullScreen();
+				// })
+				// //退出全屏
+				// $("#exitFullScreen").on("click",function(){
+				//     exitFullscreen();
+				// })
+			})
+			swiperInit=()=>{
+				var mySwiper = new Swiper('.swiper-container', {
+				    direction: 'horizontal', // 垂直切换选项
+				    speed: 1000, // 切换速度
+				    loop: false, // 循环模式选项
+				    autoplay: {
+				        delay: 3000 // 3秒切换一次
+				    },
+				    observer: true,
+				    observeParents: true,
+				    // 用户操作swiper之后，是否禁止autoplay
+				    disableOnInteraction: false,
+					pagination: {
+					    el: '.swiper-pagination',
+						clickable :true,
+					  }
+				})
+			}
+			//常规任务
+			barCommonInit = () => {
+				barCommonChart = echarts.init(document.getElementsByClassName('barCommon-charts')[0]);
+				barUrgentChart = echarts.init(document.getElementsByClassName('barUrgent-charts')[0]);
+				barTestChart = echarts.init(document.getElementsByClassName('barTest-charts')[0]);
+				barCrossChart = echarts.init(document.getElementsByClassName('barCross-charts')[0]);
+				barCommonChart1 = echarts.init(document.getElementsByClassName('barCommon-charts')[1]);
+				barUrgentChart1 = echarts.init(document.getElementsByClassName('barUrgent-charts')[1]);
+				barTestChart1 = echarts.init(document.getElementsByClassName('barTest-charts')[1]);
+				barCrossChart1 = echarts.init(document.getElementsByClassName('barCross-charts')[1]);
+				barCommonOption = {
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'cross',
+							crossStyle: {
+								color: '#fff'
+							}
+						}
+					},
+					toolbox: {
+						feature: {
+							// dataView: { show: true, readOnly: false },
+							// magicType: { show: true, type: ['line', 'bar'] },
+							// restore: { show: true },
+							// saveAsImage: { show: true }
+						}
+					},
+					legend: {
+						data: ['总任务', '已完成', '未完成'],
+						textStyle: {
+							color: '#ffffff'
+						}
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['单位', '单位', '单位', '单位'],
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255,0.12)'
+							}
+						},
+						axisPointer: {
+							type: 'shadow'
+						},
+						axisLabel: {
+							show: true,
+							textStyle: {
+								color: "#f6f6f6", //X轴文字颜色
+								fontSize: 11
+							}
+						},
+					}],
+					yAxis: [{
+						type: 'value',
+						name: '数量',
+						min: 0,
+						max: 5,
+						interval: 1,
+						axisLabel: {
+							formatter: '{value} '
+						},
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255)'
+							}
+						},
+					}],
+					series: [{
+							name: '总任务',
+							type: 'bar',
+							data: [
+								2, 4, 2, 2
+							],
+							barWidth: '40px',
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#1CACF4'// 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#1738F3'  // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						},
+						{
+							name: '已完成',
+							type: 'bar',
+							data: [
+								2.6, 3.9, 4.0, 3.4
+							],
+							barWidth: '40px',
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#8CCCF4' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0484CC' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						},
+						{
+							name: '未完成',
+							type: 'bar',
+							data: [
+								2.6, 3.9, 4.0, 3.4
+							],
+							barWidth: '40px',
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#06B4F4' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#044474' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						},
+					]
+				}
+				barUrgentChart.setOption(barCommonOption)
+				barTestChart.setOption(barCommonOption)
+				barCrossChart.setOption(barCommonOption)
+				barCommonChart.setOption(barCommonOption)
+				barUrgentChart1.setOption(barCommonOption)
+				barTestChart1.setOption(barCommonOption)
+				barCrossChart1.setOption(barCommonOption)
+				barCommonChart1.setOption(barCommonOption)
+				let toolTipIndex = 0; // 轮播所在下标
+				setInterval(() => {
+					// toolTip轮播
+					barUrgentChart.dispatchAction({
+						type: 'showTip',
+						seriesIndex: 0,
+						dataIndex: toolTipIndex
+					});
+					barTestChart.dispatchAction({
+						type: 'showTip',
+						seriesIndex: 0,
+						dataIndex: toolTipIndex
+					});
+					barCrossChart.dispatchAction({
+						type: 'showTip',
+						seriesIndex: 0,
+						dataIndex: toolTipIndex
+					});
+					barCommonChart.dispatchAction({
+						type: 'showTip',
+						seriesIndex: 0,
+						dataIndex: toolTipIndex
+					});
+					toolTipIndex++;
+					if (toolTipIndex > barCommonOption.series[0].data.length) {
+						toolTipIndex = 0;
+					}
+				}, 2000)
+
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					barUrgentChart.resize()
+					barTestChart.resize()
+					barCrossChart.resize()
+					barCommonChart.resize()
+				});
+			}
+
+			//单个地面站single-charts
+			singleInit = () => {
+				let singleChart = echarts.init(document.getElementById('single-charts'));
+				singleOption = {
+					tooltip: {
+						trigger: 'item',
+						formatter: "{b}: {c}"
+					},
+					xAxis: {
+						type: 'category',
+						data: ['常规任务', '应急任务', '测控任务', '数传任务'],
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255)'
+							}
+						},
+					},
+					yAxis: {
+						type: 'value',
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255)'
+							}
+						},
+					},
+					series: [{
+						data: [120, 200, 150, 80],
+						type: 'bar',
+						barWidth: '40px',
+						itemStyle: {
+							normal: {
+								color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+									offset: 0,
+									color: '#0ECFF8' // 0% 处的颜色
+								}, {
+									offset: 1,
+									color: '#0570E9' // 100% 处的颜色
+								}], false),
+								shadowBlur: 4,
+							}
+						}
+					}]
+				}
+				singleChart.setOption(singleOption)
+
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					singleChart.resize()
+				});
+			}
+
+			moonInit = () => {
+				
+				let moonChart = echarts.init(document.getElementById('moon-charts'));
+				var categories = [];
+				for (var i = 0; i < 2; i++) {
+					categories[i] = {
+						name: '类目' + i
+					};
+				}
+				moonOption = {
+					// 提示框的配置
+					tooltip: {
+						formatter: function(x) {
+							return x.data.des;
+						}
+					},
+					// 工具箱
+					toolbox: {
+						// 显示工具箱
+						show: true,
+						feature: {
+							mark: {
+								show: true
+							},
+							// 还原
+							restore: {
+								show: true
+							},
+							// 保存为图片
+							// saveAsImage: {
+							// 	show: true
+							// }
+						}
+					},
+					legend: [{
+						// selectedMode: 'single',
+						data: categories.map(function(a) {
+							return a.name;
+						}),
+						textStyle: {
+							color: '#ffffff'
+						}
+				
+					}],
+					series: [{
+						type: 'graph', // 类型:关系图
+						layout: 'force', //图的布局，类型为力导图
+						symbolSize: 10, // 调整节点的大小
+						roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+						edgeSymbol: ['circle', 'arrow'],
+						edgeSymbolSize: [2, 5],
+						edgeLabel: {
+							normal: {
+								textStyle: {
+									fontSize: 20
+								}
+							}
+						},
+						force: {
+							repulsion: 1200,
+							edgeLength: [10, 50]
+						},
+						draggable: true,
+						lineStyle: {
+							normal: {
+								width: 2,
+								color: '#ffffff',
+							}
+						},
+						edgeLabel: {
+							normal: {
+								show: true,
+								formatter: function(x) {
+									return x.data.name;
+								}
+							}
+						},
+						label: {
+							normal: {
+								show: true,
+								textStyle: {}
+							}
+						},
+				
+						// 数据
+						data: [{
+							name: '目标类型',
+							symbolSize: 90,
+							category: 0,
+						}, {
+							name: 'node02',
+							symbolSize: 50,
+							category: 1,
+						}, {
+							name: 'node03',
+							symbolSize: 50,
+							category: 1,
+						}, {
+							name: 'node04',
+							symbolSize: 50,
+							category: 1,
+						}, {
+							name: 'node05',
+							symbolSize: 50,
+							category: 1,
+						}],
+						links: [{
+							source: '目标类型',
+							target: 'node02',
+							name: '',
+						}, {
+							source: '目标类型',
+							target: 'node03',
+							name: '',
+						}, {
+							source: '目标类型',
+							target: 'node04',
+							name: '',
+						}, {
+							source: '目标类型',
+							target: 'node05',
+							name: '',
+						}],
+						categories: categories,
+					}]
+				};
+				moonChart.setOption(moonOption)
+
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					moonChart.resize()
+				});
+			}
+			var itemIndex=0//轮播到的条目
+			var countNum=0
+			overseasPjInit = () => {
+				const data = [{
+					value: '2021-12-07',
+					name: '蒙古国巴格诺尔燃煤电站项目'
+				}, {
+					value: '2021-12-07',
+					name: '设立中和五（孟加拉国）建设有限公司'
+				}, {
+					value: '2021-12-07',
+					name: '中和五（马）有限公司实缴注册资本金'
+				}, {
+					value: '2021-12-07',
+					name: 'XXXXXXXXXX项目'
+				}, {
+					value: '2021-12-07',
+					name: 'XXXXXXXXXX项目'
+				}, {
+					value: '2021-12-07',
+					name: 'XXXXXXXXXX项目'
+				}, {
+					value: '2021-12-07',
+					name: 'XXXXXXXXXX项目'
+				}, {
+					value: '2021-12-07',
+					name: 'XXXXXXXXXX项目'
+				}, {
+					value: '2021-12-07',
+					name: 'XXXXXXXXXX项目'
+				}, {
+					value: '2021-12-07',
+					name: 'XXXXXXXXXX项目'
+				}]
+				countNum=data.length-1;
+				let liDom = ''
+				$.each(data, (index, item) => {
+					liDom +=
+						`<li class="listItem">
+			                    <span class="label">${item.name}</span>
+			                    <span class="value">${item.value}</span>
+			             </li>`
+				})
+				$('.overseas-pj-list').append(liDom)
+				$('.listItem').on('click', function(e){
+					console.log($(this).index())//第几个数据
+					//todo,获取新的echarts
+					// moonInit()singleInit()
+					// barCommonInit()
+				})
+				setTimeout(() => {
+					var $this = $(".overseas-pj");
+					var scrollTimer;
+					$this.hover(function() {
+						clearInterval(scrollTimer);
+					}, function() {
+						scrollTimer = setInterval(function() {
+							scrollNews($this);
+							//todo,获取新的echarts
+							// moonInit()singleInit()
+							// barCommonInit()
+							console.log(itemIndex)
+							
+						}, 1200);
+					}).trigger("mouseleave");
+				}, 500);
+			}
+			scrollNews = (obj) => {
+				var $self = obj.find("ul");
+				var lineHeight = $self.find("li:first").height();
+				$self.animate({
+					"marginTop": -lineHeight + "px"
+				}, 600, function() {
+					$self.css({
+						marginTop: 0
+					}).find("li:first").appendTo($self);
+					if(itemIndex<countNum){
+						itemIndex++
+					}else{
+						itemIndex=0
+					}
+				})
+				
+			}
+			//需求完成次数num-charts
+			numInit = () => {
+				let numChart = echarts.init(document.getElementById('num-charts'));
+				numOption = {
+
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						}
+					},
+					legend: {
+						textStyle: {
+							color: '#ffffff'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis: {
+						type: 'value',
+						boundaryGap: [0, 0.01],
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255)'
+							}
+						},
+					},
+					yAxis: {
+						type: 'category',
+						data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World'],
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255)'
+							}
+						},
+					},
+					series: [{
+							name: '2011',
+							type: 'bar',
+							data: [18203, 23489, 29034, 104970, 131744, 630230],
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0ECFF8' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0570E9' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						},
+						{
+							name: '2012',
+							type: 'bar',
+							data: [19325, 23438, 31000, 121594, 134141, 681807],
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0ECFF8' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0570E9' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						}
+					]
+				}
+				numChart.setOption(numOption)
+
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					numChart.resize()
+				});
+			}
+			//需求数量比例
+			needRateInit = () => {
+				const pjDnData = [{
+					value: 233.23,
+					name: '已完成'
+				}, {
+					value: 213.79,
+					name: '未完成'
+				}]
+				let needRateChart = echarts.init(document.getElementById('needRate-charts'));
+				needOption = {
+					grid: {
+						left: 15,
+						top: 20,
+						bottom: 20,
+						right: 15
+					},
+					tooltip: {
+						trigger: 'item',
+						formatter: "{b}:{c} ({d}%)"
+					},
+					title: {
+						text: '',
+						subtext: '需求数量',
+						textStyle: {
+							color: '#00FFFE',
+							fontSize: 25,
+						},
+						subtextStyle: {
+							fontSize: 20,
+							color: '#00FFFE'
+						},
+						x: '22.5%',
+						y: '43%',
+					},
+					legend: {
+						show: true,
+						orient: 'vertical',
+						top: 0,
+						right: 10,
+						itemWidth: 10,
+						itemHeight: 10,
+						itemGap: 0,
+						formatter: (name) => {
+							let curItem = pjDnData.filter(item => item.name === name)
+							console.log("pjDnInit -> curItem", curItem)
+							let arr = [
+								'{n|' + name + '：' + '}',
+								'{m|' + curItem[0].value + '} '
+							]
+							return arr.join('\n\n')
+						},
+						textStyle: {
+							color: '#fff',
+							fontSize: 14,
+							rich: {
+								n: {
+									fontSize: 18,
+									color: '#fff',
+									padding: [0, 15, 50, 0]
+								},
+								m: {
+									fontSize: 38,
+									color: '#20FDFA',
+									align: 'left',
+									verticalAlign: 'bottom',
+									padding: [0, 0, 0, -15]
+								},
+								u: {
+									fontSize: 18,
+									color: '#20FDFA',
+									verticalAlign: 'bottom'
+								}
+							}
+						}
+					},
+					series: [{
+						type: "pie",
+						center: ["30%", "50%"],
+						radius: ["40%", "50%"],
+						color: ['#FF6D82', '#00AEFF'],
+						startAngle: 210,
+						// selectedMode: 'single',
+						labelLine: {
+							length: 10,
+							length2: 50,
+							lineStyle: {
+								type: 'dashed'
+							}
+						},
+						label: {
+							normal: {
+								formatter: "{b|{d}%}",
+								padding: [0, -58, 25, -55],
+								rich: {
+									b: {
+										fontSize: 15
+									}
+								}
+							}
+						},
+						data: pjDnData
+					}]
+				}
+				needRateChart.setOption(needOption)
+
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					needRateChart.resize()
+				});
+			}
+			//单位完成率
+			accRateInit = () => {
+				typeChart = echarts.init(document.getElementById('type-charts'));
+				typeOption = {
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'cross',
+							crossStyle: {
+								color: '#fff'
+							}
+						}
+					},
+					toolbox: {
+						feature: {
+							// dataView: { show: true, readOnly: false },
+							magicType: {
+								show: true,
+								type: ['line', 'bar']
+							},
+							restore: {
+								show: true
+							},
+							// saveAsImage: { show: true }
+						}
+					},
+					legend: {
+						data: ['完成总数', '未完成', '完成率'],
+						textStyle: {
+							color: '#ffffff'
+						}
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['类别1', '类别1', '类别1', '类别1', '类别1'],
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255,0.12)'
+							}
+						},
+						axisPointer: {
+							type: 'shadow'
+						},
+						axisLabel: {
+							show: true,
+							textStyle: {
+								color: "#f6f6f6", //X轴文字颜色
+								fontSize: 11
+							}
+						},
+					}],
+					yAxis: [{
+							type: 'value',
+							name: '完成数',
+							min: 0,
+							max: 50,
+							interval: 10,
+							axisLabel: {
+								formatter: '{value} '
+							},
+							axisLine: {
+								lineStyle: {
+									color: 'rgba(255,255,255)'
+								}
+							},
+						},
+						{
+							type: 'value',
+							name: '百分比',
+							min: 0,
+							max: 25,
+							interval: 5,
+							axisLabel: {
+								formatter: '{value} %'
+							},
+							axisLine: {
+								lineStyle: {
+									color: 'rgba(255,255,255)'
+								}
+							},
+						}
+					],
+					series: [{
+							name: '完成总数',
+							type: 'bar',
+							data: [
+								2.0, 4.9, 7.0, 23.2, 25.6
+							],
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0ECFF8' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0570E9' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						},
+						{
+							name: '未完成',
+							type: 'bar',
+							data: [
+								2.6, 5.9, 9.0, 26.4, 28.7
+							],
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0ECFF8' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0570E9' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						},
+						{
+							name: '完成率',
+							type: 'line',
+							yAxisIndex: 1,
+							data: [2.0, 2.2, 3.3, 4.5, 6.3],
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0ECFF8' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0570E9' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						}
+					]
+				}
+				typeChart.setOption(typeOption)
+				let toolTipIndex = 0; // 轮播所在下标
+				setInterval(() => {
+					// toolTip轮播
+					typeChart.dispatchAction({
+						type: 'showTip',
+						seriesIndex: 0,
+						dataIndex: toolTipIndex
+					});
+					toolTipIndex++;
+					if (toolTipIndex > typeOption.series[0].data.length) {
+						toolTipIndex = 0;
+					}
+				}, 2000)
+
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					typeChart.resize()
+				});
+			}
+			//国家完成率
+			countryInit = () => {
+				countryChart = echarts.init(document.getElementById('country-charts'));
+				countryOption = {
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'cross',
+							crossStyle: {
+								color: '#fff'
+							}
+						}
+					},
+					toolbox: {
+						feature: {
+							// dataView: { show: true, readOnly: false },
+							magicType: {
+								show: true,
+								type: ['line', 'bar']
+							},
+							restore: {
+								show: true
+							},
+							// saveAsImage: { show: true }
+						}
+					},
+					legend: {
+						data: ['完成总数', '未完成', '完成率'],
+						textStyle: {
+							color: '#ffffff'
+						}
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['类别1', '类别1', '类别1', '类别1', '类别1'],
+						axisLine: {
+							lineStyle: {
+								color: 'rgba(255,255,255,0.12)'
+							}
+						},
+						axisPointer: {
+							type: 'shadow'
+						},
+						axisLabel: {
+							show: true,
+							textStyle: {
+								color: "#f6f6f6", //X轴文字颜色
+								fontSize: 11
+							}
+						},
+					}],
+					yAxis: [{
+							type: 'value',
+							name: '完成数',
+							min: 0,
+							max: 50,
+							interval: 10,
+							axisLabel: {
+								formatter: '{value} '
+							},
+							axisLine: {
+								lineStyle: {
+									color: 'rgba(255,255,255)'
+								}
+							},
+						},
+						{
+							type: 'value',
+							name: '百分比',
+							min: 0,
+							max: 25,
+							interval: 5,
+							axisLabel: {
+								formatter: '{value} %'
+							},
+							axisLine: {
+								lineStyle: {
+									color: 'rgba(255,255,255)'
+								}
+							},
+						}
+					],
+					series: [{
+							name: '完成总数',
+							type: 'bar',
+							data: [
+								2.0, 4.9, 7.0, 23.2, 25.6
+							],
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0ECFF8' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0570E9' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						},
+						{
+							name: '未完成',
+							type: 'bar',
+							data: [
+								2.6, 5.9, 9.0, 26.4, 28.7
+							],
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0ECFF8' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0570E9' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						},
+						{
+							name: '完成率',
+							type: 'line',
+							yAxisIndex: 1,
+							data: [2.0, 2.2, 3.3, 4.5, 6.3],
+							itemStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0ECFF8' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#0570E9' // 100% 处的颜色
+									}], false),
+									shadowBlur: 4,
+								}
+							}
+						}
+					]
+				}
+				countryChart.setOption(countryOption)
+				let toolTipIndex = 0; // 轮播所在下标
+				setInterval(() => {
+					// toolTip轮播
+					countryChart.dispatchAction({
+						type: 'showTip',
+						seriesIndex: 0,
+						dataIndex: toolTipIndex
+					});
+					toolTipIndex++;
+					if (toolTipIndex > phAmountOption.series[0].data.length) {
+						toolTipIndex = 0;
+					}
+				}, 2000)
+
+				// 窗口尺寸变化时resize
+				$(window).resize(function() {
+					countryChart.resize()
+				});
+			}
+
+			clearLoading = () => {
+				//删除加载动画
+				$('#loading').fadeOut(1000)
+				setTimeout(function() {
+					$('#loading').remove()
+				}, 1000);
+			}
+
+			timeInit = () => {
+				setInterval(() => {
+					let date = new Date()
+					$('#time').text(getFormatDate)
+				}, 1000);
+			}
+			getFormatDate = () => {
+				let nowDate = new Date();
+				let year = nowDate.getFullYear();
+				let month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+				let date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+				let hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+				let minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+				let second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+				return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+			}
+			getScale = () => {
+				// 固定好16:9的宽高比，计算出最合适的缩放比，宽高比可根据需要自行更改
+				const width = 1920
+				const height = 1080
+				let ww = window.innerWidth / width
+				let wh = window.innerHeight / height
+				return ww < wh ? ww : wh
+			}
+			// 页面渲染计算比例缩放
+			scalePage = () => {
+				setScale = debounce(() => {
+					// 获取到缩放比，设置它
+					let scale = this.getScale()
+					$('.scale-wrapper').css({
+						'transform': 'scale(' + scale + ') translate(-50%, -50%)',
+						'-webkit-transform': 'scale(' + scale + ') translate(-50%, -50%)'
+					})
+				}, 200)
+				setScale()
+				window.addEventListener('resize', setScale)
+			}
+			// 防抖
+			debounce = (fun, delay) => {
+				let timer
+				return function() {
+					if (timer) {
+						clearTimeout(timer)
+					}
+					timer = setTimeout(fun, delay)
+				}
+			}
+		</script>
+	</body>
+
+</html>

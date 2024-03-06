@@ -1,0 +1,16 @@
+{
+	"undo": [
+		{
+			"TASKCODE": "t002",
+			"TASKNAME": "智能感知",
+			"NUM": 2
+		}
+	],
+	"unread": [
+		{
+			"TASKCODE": "t002",
+			"TASKNAME": "人力情报",
+			"NUM": 22
+		}
+	]
+}

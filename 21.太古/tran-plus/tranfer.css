@@ -1,0 +1,63 @@
+.transferBox {
+    height: 100%;
+}
+td{
+    border: none!important;
+}
+th{
+    border: none!important;
+}
+tr:nth-child(2n){
+    background-color: #f6f7fb;
+}
+tr:hover{
+    background-color: #e0e8f5!important;
+    
+}
+.selected td{
+    background-color: #e0e8f5!important;
+}
+.shuttleBtn {
+    height: 100%;
+}
+.th-inner {
+    color: #8c8c8c;
+}
+.transferBtn .btn {
+    display: block;
+}
+
+.transferBtn .btn {
+    margin-bottom: 10px;
+}
+.transferBtn .btn:nth-child(4) {
+    margin-bottom: 30px;
+}
+.transferBtn .btn:nth-child(6) {
+    margin-bottom: 50px;
+}
+
+.transferBtn .btnList {
+    position: absolute;
+    width: 80%;
+    top: 20%;
+    margin-top: -40px;
+}
+
+.transferBox .search {
+    width: 100%;
+}
+
+.transferBtn .btn-default {
+    background: #409ffb;
+    cursor: no-drop;
+    color: #fff;
+}
+
+.fixed-table-container{
+    height: 538px!important;
+}
+
+#transferContainer{
+    margin: 0 auto;
+}

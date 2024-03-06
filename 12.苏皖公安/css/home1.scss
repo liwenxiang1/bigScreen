@@ -1,0 +1,821 @@
+@import "variables";
+@import "mixins";
+
+@include AlibabaPuHuiTi();
+@include yuiCard1();
+@include browserScroll();
+// 悬浮样式
+.title-style {
+	max-width: 200px;
+	min-width: 140px;
+	box-sizing: border-box;
+	padding: 6px 14px;
+	border-radius: 2px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+.title-style h4 {
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+.title-style p {
+	position: relative;
+	padding: 5px 0 0 15px;
+}
+.title-style p .round-mark {
+	display: block;
+	position: absolute;
+	top: 10px;
+	left: 0;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+.home {
+	display: flex;
+	overflow: hidden;
+	background-color: #0A1427;
+	.yui-card-header {
+		font-weight: 550;
+		color: #60D8E0;
+		img {
+			margin-top: -3px;
+			margin-right: 12px;
+		}
+	}
+	.container {
+		&-l {
+			flex: 1;
+			width: 100%;
+			box-sizing: border-box;
+			padding: {
+				right: 8px;
+			}
+			.container-m {
+				position: relative;
+				height: 100%;
+				overflow: hidden;
+				// 一键显示、隐藏
+				.all-hide {
+					position: absolute;
+					left: 346px;
+					top: 7px;
+					z-index: 9999;
+					padding: 7px 10px 7px 32px;
+					color: #fff;
+					font-size: 14px;
+					border-radius: 22px;
+					background: linear-gradient(135deg, #2FB3F4 0%, #238BE9 100%);
+					&:after {
+						content: "";
+						position: absolute;
+						width: 16px;
+						height: 16px;
+						top: 9px;
+						left: 8px;
+						background: {
+							image: url("../img/icon/icon_30.png");
+							repeat: no-repeat;
+							size: cover;
+						}
+					}
+					&.active {
+						display: none;
+						transition: all .5s;
+					}
+				}
+				.map {
+					width: 100%;
+					height: 100%;
+					border-radius: 4px;
+					background-image: url("../img/map.png");
+					background-size: cover;
+				}
+				.yui-card {
+					width: 460px;
+					border: 1px solid rgba(10, 20, 39, .8);
+					&:hover {
+						transition: all .3s;
+						border-color: #60D8E0;
+						background-color: rgba(10, 20, 39, 1);
+					}
+				}
+				.general {
+					position: absolute;
+					top: 0;
+					left: 7px;
+					// 辖区基础
+					.jurisdiction-basis {
+						padding: 9px 0 18px;
+						font-size: 0;
+						li {
+							display: inline-block;
+							border-radius: 2px;
+							width: 136px;
+							height: 70px;
+							text-align: center;
+							box-sizing: border-box;
+							padding-top: 10px;
+							margin: {
+								right: 7px;
+								top: 8px;
+							}
+							&:nth-of-type(3n) {
+								margin-right: 0;
+							}
+							p {
+								line-height: 20px;
+								font-size: 14px;
+							}
+							h2 {
+								line-height: 33px;
+								font-size: 24px;
+								font-family: "AlibabaPuHuiTi";
+							}
+						}
+					}
+				}
+				// 警务总览
+				.pandect {
+					position: absolute;
+					top: 239px;
+					left: 7px;
+					height: 266px;
+					overflow: hidden;
+					margin: auto;
+					.yui-card-header {
+						display: flex;
+						align-items: center;
+						font-weight: 550;
+						color: #60D8E0;
+						img {
+							margin-top: -3px;
+							margin-right: 12px;
+						}
+						.btn-sw {
+							display: inline-block;
+							width: 23px;
+							height: 23px;
+							margin-left: 10px;
+							background: url("../img/icon/icon_32_1.png");
+							background-repeat: no-repeat;
+							background-size: cover;
+							&.active {
+								background: url("../img/icon/icon_31_1.png");
+								background-size: cover;
+							}
+						}
+					}
+					.police-overview {
+						height: 480px;
+						// 值班信息
+						.duty-information {
+							.title {
+								padding: 10px 0;
+								color: #60D8E0;
+							}
+							.titles {
+								overflow: hidden;
+								&-l {
+									float: left;
+									width: 227px;
+									color: rgba(255, 255, 255, .89);
+								}
+								&-r {
+									@extend .titles-l;
+									width: 195px;
+								}
+							}
+							// 值班信息
+							.working {
+								font-size: 0;
+								margin-top: 8px;
+								padding-bottom: 10px;
+								border-bottom: 1px solid #DFDFDF;
+								li {
+									display: inline-block;
+									& ~ li {
+										margin-left: 8px;
+									}
+									&:nth-of-type(3n) {
+										margin-left: 32px;
+									}
+									.working-picture {
+										width: 84px;
+										height: 103px;
+										border: 1px solid #E9E9E9;
+										img {
+											height: 100%;
+										}
+									}
+									p {
+										font-size: 12px;
+										padding-left: 18px;
+										color: #333;
+										margin-top: 4px;
+									}
+									.name {
+										color: rgba(255, 255, 255, .89);
+										background: {
+											image: url("../img/icon/icon11.png");
+											repeat: no-repeat;
+											size: 14px;
+											position: left center;
+										}
+									}
+									.phone {
+										@extend .name;
+										background-image: url("../img/icon/icon12.png");
+									}
+								}
+							}
+						}
+						// 社区队/案件队
+						.troops {
+							display: none;
+							.titles {
+								display: flex;
+								justify-content: space-between;
+								padding: 10px 0;
+								line-height: 20px;
+								.name {
+									a {
+										color: #999;
+										font-weight: 500;
+										&.active {
+											color: #60D8E0;
+										}
+										& ~ a {
+											position: relative;
+											margin-left: 14px;
+											&::before {
+												content: "|";
+												position: absolute;
+												left: -10px;
+												top: -2px;
+												font-weight: 400;
+												color: #60D8E0;
+											}
+										}
+									}
+								}
+								.option {
+									display: flex;
+									align-items: center;
+									.troops-add {
+										width: 18px;
+										height: 18px;
+										background: {
+											image: url("../img/icon/icon24.png");
+											repeat: no-repeat;
+											size: cover;
+										}
+									}
+									.troops-edit {
+										width: 20px;
+										height: 20px;
+										margin-left: 10px;
+										background: {
+											image: url("../img/icon/icon26.png");
+											repeat: no-repeat;
+											size: cover;
+										}
+									}
+								}
+							}
+							&-table {
+								padding-bottom: 10px;
+								.container {
+									display: none;
+									&.active {
+										display: block;
+									}
+									.layui-hide ~ .layui-form {
+										margin: 0;
+									}
+									.layui-table {
+										width: 100%;
+										thead {
+											tr {
+												color: rgba(255, 255, 255, .89);
+												background-color: rgba(10, 20, 39, 0.8);
+											}
+										}
+										tbody {
+											color: rgba(255, 255, 255, .89);
+											background-color: rgba(10, 20, 39, 0.8);
+											tr:hover {
+												background-color: rgba(10, 20, 39, 0.8);
+											}
+										}
+										.layui-table-cell {
+											height: 25px;
+											line-height: 25px;
+											padding: 0 5px;
+										}
+									}
+									.layui-table td, .layui-table th, .layui-table-col-set, .layui-table-fixed-r, .layui-table-grid-down, .layui-table-header, .layui-table-page, .layui-table-tips-main, .layui-table-tool, .layui-table-total, .layui-table-view, .layui-table[lay-skin=line], .layui-table[lay-skin=row] {
+										border-color: rgba(10, 20, 39, 0.9);
+									}
+								}
+							}
+						}
+					}
+				}
+				// 勤务效能
+				.efficiency {
+					position: absolute;
+					bottom: 0;
+					left: 7px;
+					width: 460px;
+					.yui-card-body {
+						height: 222px;
+						#efficiencyEchartsRadar {
+							height: 100%;
+						}
+					}
+				}
+				// 警情分析
+				.police-analysis {
+					position: absolute;
+					bottom: 0;
+					left: 475px;
+					width: 500px;
+					.yui-card-body {
+						overflow: hidden;
+						display: flex;
+						height: 222px;
+						#policeAnalysisEchartsPie {
+							width: 160px;
+						}
+						#policeAnalysisEchartsLine {
+							@extend #policeAnalysisEchartsPie;
+							width: 302px;
+						}
+					}
+				}
+				// 今日警情
+				.latest-alert {
+					position: absolute;
+					bottom: 0;
+					left: 983px;
+					width: 400px;
+					.yui-card-header {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+							.more {
+								padding-right: 18px;
+								margin-right: 0;
+								color: rgba(255, 255, 255, .8);
+								font-weight: 500;
+								background: {
+									image: url("../img/icon/icon18_1.png");
+									repeat: no-repeat;
+									size: 7px 12px;
+									position: right center;
+								}
+							}
+					}
+					.yui-card-body {
+						position: relative;
+						height: 222px;
+						padding-top: 90px;
+						box-sizing: border-box;
+						.nav {
+							position: absolute;
+							display: flex;
+							width: 100%;
+							top: 0;
+							padding: 8px 0;
+							z-index: 999;
+							border-bottom: 1px solid #DFDFDF;
+							li {
+								font-size: 12px;
+								padding: 5px 12px;
+								border-radius: 2px;
+								cursor: pointer;
+								color: rgba(255, 255, 255, .7);
+								background-color: #304262;
+								&.active {
+									color: #fff;
+									background-color: #1B3563;
+								}
+								& ~ li {
+									margin-left: 8px;
+								}
+							}
+						}
+						.new {
+							position: absolute;
+							top: 45px;
+							width: 100%;
+							padding: 10px 0;
+							overflow: hidden;
+							z-index: 999;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							border-bottom: 1px solid #DFDFDF;
+							p {
+								width: 270px;
+								color: rgba(255, 255, 255, .9);
+								@include ellipsis();
+							}
+							a {
+								width: 52px;
+								height: 24px;
+								line-height: 24px;
+								text-align: center;
+								font-size: 12px;
+								color: #fff;
+								border-radius: 2px;
+								background-color: #ACACAC;
+								&.enter {
+									background-color: #1890FF;
+								}
+							}
+						}
+						.scroll {
+							position: relative;
+							overflow: hidden;
+							height: 100%;
+							.item {
+								width: 100%;
+								.inner {
+									padding: 10px 0;
+									overflow: hidden;
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+									border-bottom: 1px solid #DFDFDF;
+									p {
+										width: 270px;
+										color: rgba(255, 255, 255, .89);
+										@include ellipsis();
+									}
+									a {
+										width: 52px;
+										height: 24px;
+										line-height: 24px;
+										text-align: center;
+										font-size: 12px;
+										color: #fff;
+										border-radius: 2px;
+										background-color: #ACACAC;
+										&.enter {
+											background-color: #1890FF;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		&-r {
+			flex-shrink: 0;
+			flex-grow: 0;
+			width: 460px;
+			// 赋值引领
+			&__t {
+				.lead {
+					border: 1px solid #60D8E0;
+					.yui-card-body {
+						height: 200px;
+						#leadEchartsPie {
+							height: 100%;
+						}
+					}
+				}
+			}
+			// 任务指令
+			&__b {
+				margin-top: 8px;
+				.command {
+					border: 1px solid #60D8E0;
+					.yui-card-header {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						.state {
+							display: flex;
+							div[class^=state] ~ div[class^=state] {
+								margin-left: 10px;
+							}
+							&-A {
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								width: 60px;
+								height: 30px;
+								border-radius: 15px;
+								box-sizing: border-box;
+								padding: {
+									top: 1px;
+									left: 2px;
+									right: 5px;
+								} 
+								background-color: #AD8FC9;
+								.icon {
+									position: relative;
+									width: 24px;
+									height: 24px;
+									border-radius: 50%;
+									background-color: #0A1427;
+									&::after {
+										content: "";
+										position: absolute;
+										width: 20px;
+										height: 15px;
+										top: 50%;
+										left: 50%;
+										transform: translate(-50%, -50%);
+										background: {
+											image: url("../img/icon/weidu.png");
+											repeat: no-repeat;
+											size: 15px;
+											position: center;
+										};
+									}
+								}
+								.num {
+									color: #fff;
+									font-weight: 400;
+								}
+							}
+							&-B {
+								@extend .state-A;
+								background-color: #F19C56;
+								.icon {
+									&::after {
+										height: 20px;
+										background: {
+											image: url("../img/icon/yidu.png");
+											size: 16px;
+										};
+									}
+								}
+							}
+							&-C {
+								@extend .state-A;
+								background-color: #5AD8A6;
+								.icon {
+									&::after {
+										width: 14px;
+										height: 14px;
+										background: {
+											image: url("../img/icon/weichuli.png");
+											size: 14px;
+										};
+									}
+								}
+							}
+						}
+						.btn {
+							.type-select {
+								display: inline-block;
+								width: 20px;
+								height: 20px;
+								vertical-align: middle;
+								margin-right: 10px;
+								background: {
+									image: url("../img/icon/icon25.png");
+									repeat: no-repeat;
+									size: cover;
+								}
+							}
+							.more {
+								padding-right: 18px;
+								margin-right: 0;
+								color: rgba(255, 255, 255, .8);
+								background: {
+									image: url("../img/icon/icon18_1.png");
+									repeat: no-repeat;
+									size: 7px 12px;
+									position: right center;
+								}
+							}
+						}
+					}
+					.yui-card-body {
+						height: 462px;
+						box-sizing: border-box;
+						padding: 10px 0;
+						.duty-swiper {
+							height: 100%;
+							box-sizing: border-box;
+							padding-bottom: 20px;
+							.swiper-slide {
+								overflow: hidden;
+								overflow-y: auto;
+							}
+							& > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+								bottom: 0;
+							}
+						}
+						.item {
+							// overflow: hidden;
+							li {
+								position: relative;
+								border-radius: 4px;
+								background-color: #eee;
+								&::after {
+									content: "";
+									position: absolute;
+									right: 0;
+									top: 0;
+									width: 40px;
+									height: 40px;
+									background: {
+										image: url("../img/icon/ryes1.png");
+										repeat: no-repeat;
+										size: cover;
+									}
+								}
+								&.unread {
+									&::after {
+										content: "";
+										position: absolute;
+										right: 0;
+										top: 0;
+										width: 40px;
+										height: 40px;
+										background: {
+											image: url("../img/icon/ryes.png");
+											repeat: no-repeat;
+											size: cover;
+										}
+									}
+								}
+								&.read {
+									&::after {
+										content: "";
+										position: absolute;
+										right: 0;
+										top: 0;
+										width: 40px;
+										height: 40px;
+										background: {
+											image: url("../img/icon/ryes1.png");
+											repeat: no-repeat;
+											size: cover;
+										}
+									}
+								}
+								& ~ li {
+									margin-top: 5px;
+								}
+							}
+							.inner__img {
+								display: flex;
+								justify-content: space-between;
+								background-color: #10203D;
+								.type {
+									width: 20px;
+									flex-grow: 0;
+									background-color: #1B3563;
+									font-size: 14px;
+									color: #fff;
+									font-weight: bold;
+									padding: 5px;
+									-webkit-writing-mode: vertical-rl;
+									writing-mode: tb-rl;
+									writing-mode: vertical-rl;
+									text-align: center;
+									letter-spacing: .3em;
+									text-indent: .8em;
+									border-radius: 4px 0 0 4px;
+								}
+								.img {
+									width: 80px;
+									height: 90px;
+									flex-grow: 0;
+									flex-shrink: 0;
+									margin-top: 5px;
+									margin-left: 10px;
+									margin-bottom: 5px;
+								}
+								&-r {
+									flex: 1;
+									box-sizing: border-box;
+									padding: 5px 12px;
+									padding-left: 10px;
+									&-t {
+										display: flex;
+										justify-content: space-between;
+										.title {
+											width: 170px;
+											height: 40px;
+											color: rgba(255, 255, 255, .85);
+											@include doubleEllipsis();
+										}
+									}
+									&-c {
+										p {
+											width: 270px;
+											color: rgba(255, 255, 255, .45);
+											@include ellipsis();
+										}
+									}
+									&-b {
+										display: flex;
+										justify-content: space-between;
+										align-items: center;
+										margin-top: 8px;
+										.time {
+											color: rgba(255, 255, 255, .45);
+										}
+										.btn {
+											display: flex;
+											.task-issuance {
+												width: 64px;
+												height: 24px;
+												line-height: 24px;
+												border-radius: 2px;
+												text-align: center;
+												color: #fff;
+												background-color: #5AD8A6;
+											}
+											.detail {
+												@extend .task-issuance;
+												width: 52px;
+												margin-left: 5px;
+												background-color: #1890FF;
+											}
+										}
+									}
+								}
+							}
+							.inner {
+								display: flex;
+								justify-content: space-between;
+								background-color: #10203D;
+								.type {
+									width: 20px;
+									flex-grow: 0;
+									background-color: #1B3563;
+									font-size: 14px;
+									color: #fff;
+									font-weight: bold;
+									padding: 5px;
+									-webkit-writing-mode: vertical-rl;
+									writing-mode: tb-rl;
+									writing-mode: vertical-rl;
+									text-align: center;
+									letter-spacing: .3em;
+									text-indent: .8em;
+									border-radius: 4px 0 0 4px;
+								}
+								&-container {
+									display: flex;
+									flex: 1;
+									flex-direction: column;
+									justify-content: space-around;
+									box-sizing: border-box;
+									padding: 5px 12px;
+								}
+								&-l {
+									color: rgba(255, 255, 255, .85);
+									height: 40px;
+									@include doubleEllipsis();
+								}
+								&-r {
+									display: flex;
+									justify-content: space-between;
+									align-items: flex-end;
+									.inner-sub {
+										line-height: 25px;
+									}
+									.time {
+										color: rgba(255, 255, 255, .45);
+										& ~ p {
+											@extend .time;
+										}
+									}
+									.btn {
+										.task-issuance {
+											display: inline-block;
+											width: 64px;
+											height: 24px;
+											line-height: 24px;
+											border-radius: 2px;
+											text-align: center;
+											color: #fff;
+											background-color: #5AD8A6;
+										}
+										.detail {
+											@extend .task-issuance;
+											width: 52px;
+											background-color: #1890FF;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>科研工作台</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="./css/index.css">
+	</head>
+	<body>
+		<div class="layui-row leftNav">
+			<div class="leftNavPre">
+				<div class="layui-side layui-bg-black">
+					<div class="layui-side-scroll">
+						<div class="layui-row">
+							<img class="logo" src="./images/nian.png">
+							<span class="title">
+								logo
+							</span>
+						</div>
+						<ul class="layui-nav layui-nav-tree" lay-filter="test">
+							<li class="layui-nav-item">
+								<a href="javascript:;"><img class="whiteIcon" src="images/shouye@2x.png">首页</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;"><img class="whiteIcon" src="images/gerenziliao@2x.png">用户联通录</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;"><img class="whiteIcon" src="images/zhuanjiaku_tuandui@2x.png">专家组</a>
+								<dl class="layui-nav-child">
+									<dd><a href="javascript:;">A000013项目</a></dd>
+									<dd><a href="javascript:;">A000014项目</a></dd>
+									<dd><a href="javascript:;">A000015项目</a></dd>
+									<dd><a href="javascript:;">A000016项目</a></dd>
+									<dd><a href="javascript:;">A000017项目</a></dd>
+								</dl>
+							</li>
+
+							<li class="layui-nav-item">
+								<a href="javascript:;"><img class="whiteIcon" src="images/dingdan@2x.png">满意度报告</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;"><img class="whiteIcon" src="images/wode@2x.png">成员单位-年度...</a>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;"><img class="whiteIcon" src="images/mic-on@2x.png">月度讲评会</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- </div> -->
+			</div>
+			<div class="rightContent2">
+				<div class="layui-row header">
+					<div class="layui-col-xs12 top">
+						<img class="packUp" src="images/shouqi@2x.png">
+						<ul class="layui-nav fr" lay-filter="">
+							<li class="layui-nav-item"><a href="javascript:;"><img class="notice" src="images/tongzhi@2x.png"></a></li>
+							<li class="layui-nav-item"><a href="javascript:;"><img class="headerIcon" src="images/wenhao-yuankuang@2x.png"></a></li>
+							<li class="layui-nav-item"><a href="javascript:;"><img class="editIcon" src="images/qiabianji-2@2x.png"></a></li>
+							<li class="layui-nav-item">
+								<div class="headerBar"></div>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">
+									<img class="pic" src="images/nian.png">
+									乔巴
+								</a>
+								<dl class="layui-nav-child">
+									<!-- 二级菜单 -->
+									<dd><a href="">修改密码</a></dd>
+									<dd><a href="">注销</a></dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="layui-row pd32">
+					<div class="layui-row">
+						<div class="layui-col-xs2 pr20">
+							<div class="item">
+								<div class="num">
+									1783
+								</div>
+								<div class="itemTitle">
+									待派工单
+								</div>
+							</div>
+						</div>
+						<div class="layui-col-xs2 pr20">
+							<div class="item">
+								<div class="num">
+									102
+								</div>
+								<div class="itemTitle">
+									待完工
+								</div>
+							</div>
+						</div>
+						<div class="layui-col-xs2 pr20">
+							<div class="item">
+								<div class="num">
+									24
+								</div>
+								<div class="itemTitle">
+									待审批
+								</div>
+							</div>
+						</div>
+						<div class="layui-col-xs2 pr20">
+							<div class="item">
+								<div class="num">
+									19
+								</div>
+								<div class="itemTitle">
+									待结算
+								</div>
+							</div>
+						</div>
+						<div class="layui-col-xs2 pr20">
+							<div class="item">
+								<div class="num redColor">
+									3
+								</div>
+								<div class="itemTitle">
+									超时服务单
+								</div>
+							</div>
+						</div>
+						<div class="layui-col-xs2 pr20">
+							<div class="item">
+								<div class="num">
+									124
+								</div>
+								<div class="itemTitle">
+									已取消
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div class="w39 pr20">
+							<div class="item4">
+								<div class="layui-row boxTitle">
+									本月服务单量统计<span class="blueColor"> (服务类型)</span>
+								</div>
+								<div class="layui-row">
+									<div class="layui-col-xs6" id="serviceType">
+									
+									</div>
+									<div class="layui-col-xs6" id="echartsList1">
+										
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="w61 pr20">
+							<div class="item4">
+								<div class="layui-row boxTitle">
+									本月服务单量统计<span class="blueColor"> (产品线)</span>
+								</div>
+								<div class="layui-tab layui-tab-card">
+								  <ul class="layui-tab-title toTop">
+								    <li class="layui-this">网站设置</li>
+								    <li>用户管理</li>
+								    <li>权限分配</li>
+								    <li>商品管理</li>
+								    <li>订单管理</li>
+								  </ul>
+								  <div class="layui-tab-content">
+								    <div class="layui-tab-item layui-show">
+										<div id="netWork">
+											
+										</div>
+									</div>
+								    <div class="layui-tab-item">2</div>
+								    <div class="layui-tab-item">3</div>
+								    <div class="layui-tab-item">4</div>
+								    <div class="layui-tab-item">5</div>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div class="w61 pr20">
+							<div class="item4">
+								<div class="layui-row boxTitle">
+									未完工工单统计
+								</div>
+								<div id="barEcharts">
+									
+								</div>
+							</div>
+						</div>
+						<div class="w39 pr20">
+							<div class="item4">
+								<div class="layui-row boxTitle">
+									其他待处理单据
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		
+		<script src="./js/template-web.js"></script>
+		<script src="./js/jquery1.8.1.min.js"></script>
+		<script src="./js/echarts.min.js"></script>
+		<script src="layui/layui.js"></script>
+		<script src="./js/initPie.js"></script>
+		<script src="./js/initLine.js"></script>
+		<script src="./js/barInit.js"></script>
+		<script id="echartsList1-template" type="text/html">
+			{{each data}}
+				<div class="layui-row precentInfo">
+					<div class="layui-col-xs2">
+						<div class="radius" style="background: {{$value.color}};">
+						</div>
+					</div>
+					<div class="layui-col-xs5">
+						{{$value.name}}
+					</div>
+					<div class="layui-col-xs2">
+						{{$value.pre}}
+					</div>
+					<div class="layui-col-xs3 tr preNum">
+						{{$value.value}}%
+					</div>
+				</div>
+			{{/each}}
+		</script>
+		<script>
+			var dataBefore = [{
+				value: 15,
+				pre: 48,
+				name: '预研项目',
+				color: '#2C4EA5'
+			}, {
+				value: 15,
+				pre: 15,
+				name: '批产项目',
+				color: '#F8B543'
+			}, {
+				value: 15,
+				pre: 10,
+				name: '研制项目',
+				color: '#67C1C8'
+			}, {
+				value: 15,
+				pre: 22,
+				name: '装备保障',
+				color: '#806BF1'
+			}, {
+				value: 15,
+				pre: 48,
+				name: '其他项目',
+				color: '#3FBAFC'
+			}]
+			let html = template('echartsList1-template', {
+				data: dataBefore
+			})
+			$('#echartsList1').append(html);
+			var data = []
+			for (var i = 0; i < dataBefore.length; i++) {
+				data.push({
+					value: dataBefore[i].pre,
+					name: dataBefore[i].name,
+					itemStyle: {
+						color: dataBefore[i].color
+					}
+				})
+			
+			}
+			layui.use(function() {
+				var layer = layui.layer,
+					form = layui.form,
+					laypage = layui.laypage,
+					element = layui.element,
+					laydate = layui.laydate,
+					util = layui.util;
+					radarInit()
+					lineInit()
+					barInit()
+			});
+			$('.packUp').click(function(){
+				if($('.packUp').hasClass('closeLeft')){
+					$('.packUp').removeClass('closeLeft')
+					$('.layui-side').animate({width:"13.5%"})
+					$('.rightContent2').animate({width:'86.5%'})
+				}else{
+					$('.packUp').addClass('closeLeft')
+					$('.layui-side').animate({width:"0px"})
+					$('.rightContent2').animate({width:'100%'})
+				}
+				
+			})
+		</script>
+	</body>
+</html>

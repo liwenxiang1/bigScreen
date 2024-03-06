@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>填报任务</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+		<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<link href="../css/common.css" rel="stylesheet">
+	</head>
+	<body >
+		<div class="container-fluid animated fadeInRight search-content">
+			<table id="table"
+				data-toggle="table"
+				data-toolbar="#toolbar" 
+				data-show-refresh="true"
+				data-show-columns="true"
+				data-show-export="true"
+				data-click-to-select="true"
+				data-export-types="['xlsx']"
+				data-pagination="true"
+				>
+				<thead>
+					<tr>
+						<th data-colspan="8" data-align="center"><h3 style="margin: 0;">中核二三-月报填报</h2></th>
+					</tr>
+					<tr>
+						<th data-formatter="thIndex" data-align="center" data-width="3%">序号</th>
+						<th data-field="type" data-align="center">月报类型</th>
+						<th data-field="year" data-align="center" >年份</th>
+						<th data-field="month" data-align="center" >月份</th>
+						<th data-field="yb" data-align="center" data-colors="已报:#4CAF50,未报:red" data-formatter="thColors">填报进展</th>
+						<th data-field="ys" data-align="center" data-colors="已送审:#4CAF50,未送审:red" data-formatter="thColors">审批状态</th>
+						<th data-align="center" data-formatter="toS">流程状态</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+		<!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+		<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="../js/plugins/layer/layer.js"></script>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+		var $table = $('#table');
+		var datas = [];
+		$(['主要经济指标月报','主要产出月报','增加值月报']).each(function(index,e){
+			for(var i=1;i<=4;i++){
+				datas.push({year:2020,month:i+'月',type:e,status:i<=2?1:0,yb:i<=2?'已报':'未报',ys:i<=2?'已送审':'未送审'});
+			}
+		});
+		function getObj(type){
+			var obj = {type:type};
+			for(var i=1;i<=12;i++){
+				if(i<=3) obj['m'+i] = '已下发';
+				else if(i==4) obj['m'+i] = '编制中';
+				else obj['m'+i] = '未开始';
+			}
+			return obj;
+		}
+		$(function(){
+			$table.bootstrapTable('load',datas);
+		});
+		function search(){//查询方法
+			$table.bootstrapTable('refresh');
+		}
+		function toM(val){
+			var html = '<a href="javascript:edit();">填报</a>';
+			if(val) html += ' | <a href="javascript:edit2();">撤回</a>';
+			return html;
+		}
+		function toS(val){
+			return '<a href="javascript:edit3();">查看</a>';
+		}
+		function edit(){//编辑方法(推荐)
+			layer.open({
+				type: 2,
+				title: '数据填报',
+				content: "form_1.2.html",
+				shadeClose: false,
+				area: ['90%', '90%'],
+				maxmin: true
+			});
+		}
+		function edit2(){//添加方法(推荐)
+			layer.msg('撤回成功');
+		}
+		function edit3(){//添加方法(推荐)
+			layer.open({
+				type: 1,
+				title: '流程详情',
+				content: "<img src='img/lc-img.png' style='width:100%;'></img>",
+				shadeClose: false,
+				area: ['90%', '90%'],
+				maxmin: true
+			});
+		}
+		
+		function getSelections(){//获取所选行方法
+			return $table.bootstrapTable('getSelections');
+		}
+
+		function toDetail(val,row){
+			return '<a href="javascript:;" onclick="openDetail(this)">详情</a>';
+		}
+		
+		function openDetail(e){
+			var index = $(e).parents('tr').data('index');
+			var data = $table.bootstrapTable('getData')[index];
+			layer.open({
+				type: 2,
+				title: '员工信息详情',
+				content: contextPath+"/demo/testUserinfoForm.jsp",
+				shadeClose: false,
+				area: ['90%', '90%'],
+				maxmin: true,
+				success: function(layero, index) {//子页面加载完后执行
+					var iframeWin = window[layero.find('iframe')[0]['name']];//得到iframe页的窗口对象
+					iframeWin.setData(data,'read');//执行子页面写入数据方法
+				}
+			});
+		}
+		
+		function remove(){//删除方法
+			var selRows = getSelections();
+			if(selRows.length==0){sweetAlert("错误", "请先选择行","error");return;}
+			layer.confirm('删除所选项？', {
+				btn: ['删除','取消'] //按钮
+			}, function(){
+				$({datas:selRows}).post('com.primeton.demo.test.deleteTestUserinfos.biz.ext',function(h){
+					if(h.exception == null){
+						layer.msg('删除成功');
+						$table.bootstrapTable('refresh');
+					}else{
+						layer.msg('删除失败');
+					}
+				});
+			});
+		}
+		function exports(){
+			$('.export li[data-type=xlsx]').click();
+		}
+		</script>
+	</body>
+</html>

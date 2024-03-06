@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国核工业建设·衡量指标</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid zhibiao-view-info animated fadeInRight search-content">
+        <!-- <div id="toolbar">
+            <button class="btn btn-default" onclick="add()">新增任务</button>
+        </div> -->
+        <div id="toolbar" class="tabs-wrapper clearfix">
+            <div data-toggle="buttons" id="tabs-group" class="btn-group">
+                <label class="btn btn-sm btn-white active" id="option1">
+                    <input type="radio" name="options">基本信息</label>
+                <label class="btn btn-sm btn-white" id="option2">
+                    <input type="radio" name="options">扩展属性</label>
+            </div>
+        </div>
+        
+        <form id="form1" class="form-horizontal container-fluid">
+            <div class="form-group">
+                <label for="code" class="col-xs-2 control-label">编号:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" disabled id="code" value="E1-1">
+                </div>
+                <label for="name" class="col-xs-2 control-label">名称:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" disabled id="name" value="营业收入(集团内/外)">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label for="definition" class="col-xs-2 control-label">指标定义:</label>
+                <div class="col-xs-10">
+                    <input class="form-control" disabled id="definition" value="xxxxx">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label for="dimension" class="col-xs-2 control-label">指标维度:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" disabled id="dimension" value="xxxxx">
+                </div>
+                <label for="level" class="col-xs-2 control-label">指标密级:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" disabled id="level" value="2">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label for="sort" class="col-xs-2 control-label">指标排序:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" disabled id="sort" value="1">
+                </div>
+            </div>
+        </form>
+        <form id="form2" style="display: none;" class="form-horizontal container-fluid">
+            <div class="form-group">
+                <label for="code" class="col-xs-2 control-label">指标性质:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" disabled id="code" value="xxx">
+                </div>
+                <label for="name" class="col-xs-2 control-label">数据来源:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" disabled id="name" value="xxxx">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label for="definition" class="col-xs-2 control-label">计分规则:</label>
+                <div class="col-xs-10">
+                    <input class="form-control" disabled id="definition" value="xxxxx">
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#tabs-group').on('click', '.btn', (e) => {
+                const id = $(e.currentTarget).attr('id')
+                if (id === 'option1') {
+                    $('#form1').css('display', 'block')
+                    $('#form2').css('display', 'none')
+                } else {
+                    $('#form1').css('display', 'none')
+                    $('#form2').css('display', 'block')
+                }
+            })
+            $('#tabs-group .active').trigger("click");
+        })
+    </script>
+</body>
+
+</html>

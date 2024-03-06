@@ -1,0 +1,115 @@
+.process {
+  width: 100%;
+  height: 100vh;
+  background-color: #F5F6FA;
+}
+
+.process .nav-menu {
+  float: left;
+  width: 270px;
+  height: 100%;
+  overflow: hidden auto;
+  color: #fff;
+  background-color: #2D354B;
+}
+
+.process .content {
+  float: left;
+  width: calc(100% - 270px);
+  height: 100%;
+  padding: 15px;
+}
+.process .content .breadcrumb {
+  background-color: transparent;
+  margin-bottom: 5px;
+}
+.process .content .breadcrumb a {
+  font-size: 20px;
+  color: #2F2F33;
+  font-weight: 500;
+}
+.process .content .breadcrumb>.active {
+  font-size: 20px;
+  color: #A5A7AB;
+  font-weight: 500;
+}
+.process .content .query-row {
+  width: 100%;
+  padding: 20px 24px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+.process .content .query-row .form-group {
+  position: relative;
+}
+.process .content .query-row .query-label {
+  margin: 0 20px 0 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #666;
+  line-height: 40px;
+}
+.process .content .query-row input{
+  width: 400px;
+  padding: 0 0 0 30px;
+  font-size: 16px;
+  background-color: #E6EAF5;
+  border-radius: 6px;
+  line-height: 40px;
+  vertical-align: middle;
+  outline: none;
+}
+.process .content .query-row .glyphicon-search{
+  position: absolute;
+  top: 5px;
+  left: 100px;
+}
+.process .content .query-row input::placeholder{
+  color: #999;
+}
+.process .content .query-row .search-btn{
+  display: inline-block;
+  vertical-align: middle;
+  padding: 6px 19px;
+  margin: 0 0 0 20px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #5581ED;
+  line-height: 1;
+  border: 2px solid #EDEEF2;
+  border-radius: 16px 16px 0px 16px;
+  cursor: pointer;
+  transition: all .3s;
+  user-select: none;
+}
+.process .content .query-row .search-btn#search-btn{
+  color: #fff;
+  background-color: #5581ED;
+  border-color: #5581ED;
+}
+.process .content .query-row .search-btn#search-btn{
+  color: #fff;
+  background-color: #5581ED;
+  border-color: #5581ED;
+}
+.process .content .query-row .search-btn:hover{
+  transform: scale(.98);
+}
+.process .content .result-row {
+  width: 100%;
+  padding: 20px 24px;
+  margin: 20px 0 0 0;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+.process .content .result-row .label-line input[type="radio"]{
+  margin: 0 5px 0 30px;
+}
+.process .content .result-row .label-line .radio-label{
+  font-size: 18px;
+  font-weight: 500;
+  color: #242423;
+  cursor: pointer;
+}

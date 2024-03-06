@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>沪东重机</title>
+	<link rel="stylesheet" href="./mainview/layui/css/layui.css">
+	<link rel="stylesheet" href="./mainview/css/index.css">
+</head>
+
+<body>
+
+	<div>
+		<div class="layui-row leftNav">
+			<div class="rightContent">
+				<div class="layui-row flex-space-between pr25">
+
+					<div class="wd5">
+						<div class="todo bg-FEA726">
+							<div class="todoTitle">
+								巡检
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/inspection.png">
+							</div>
+							<div class="todoNumOne">303<span class="todoNum-span">/339</span></div>
+							<div class="todoNumTwo">36<span class="todoNum-span">/11%</span></div>
+							<img class="icon" src="./mainview/images/tips.png">
+							<img class="iconTwo" src="./mainview/images/tips.png">
+						</div>
+					</div>
+
+					<div class="wd5">
+						<div class="todo bg-5C6BC0">
+							<div class="todoTitle">
+								整改
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/rectification.png">
+							</div>
+							<div class="todoNumOne">25<span class="todoNum-span">/29</span></div>
+							<div class="todoNumTwo">0<span class="todoNum-span">/0%</span></div>
+							<img class="icon" src="./mainview/images/tips.png">
+							<img class="iconTwo" src="./mainview/images/tips.png">
+						</div>
+					</div>
+
+					<div class="wd5">
+						<div class="todo bg-9CCD65">
+							<div class="todoTitle">
+								复核
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/inspection.png">
+							</div>
+							<div class="todoNum">23<span class="todoNum-span">/23</span></div>
+							<img class="icon" src="./mainview/images/tips.png">
+						</div>
+					</div>
+					<div class="wd5">
+						<div class="todo bg-E31A1F">
+							<div class="todoTitle">
+								事故记录
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/clock.png">
+							</div>
+							<div class="todoNum">0</div>
+						</div>
+					</div>
+
+					<div class="wd5">
+						<div class="todo bg-FF5621">
+							<div class="todoTitle">
+								应急预案
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/rectification.png">
+							</div>
+							<div class="todoNum">10</div>
+						</div>
+					</div>
+
+					<div class="wd5">
+						<div class="todo bg-29447F">
+							<div class="todoTitle">
+								技术交底
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/technology.png">
+							</div>
+							<div class="todoNum">71</div>
+						</div>
+					</div>
+
+					<div class="wd5 pr0">
+						<div class="todo bg-B5A151">
+							<div class="todoTitle">
+								专项方案
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/programme.png">
+							</div>
+							<div class="todoNum">86</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-row">
+					<div class="layui-col-xs2 pr25">
+						<div class="label bg-0C1C34">
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/label.png">
+								</div>
+								<div class="label-title">全部</div>
+							</div>
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/company.png">
+								</div>
+								<div class="label-title">ZYSQ1.1标</div>
+							</div>
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/company.png">
+								</div>
+								<div class="label-title">ZYSQ1.2标</div>
+							</div>
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/company.png">
+								</div>
+								<div class="label-title">ZYSQ1.3标</div>
+							</div>
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/company.png">
+								</div>
+								<div class="label-title">ZYSQ1.4标</div>
+							</div>
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/company.png">
+								</div>
+								<div class="label-title">ZYSQ1.5标</div>
+							</div>
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/company.png">
+								</div>
+								<div class="label-title">ZYSQ1.6标</div>
+							</div>
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/company.png">
+								</div>
+								<div class="label-title">ZYSQ1.7标</div>
+							</div>
+							<div class="label-item">
+								<div class="label-img">
+									<img class="label-img" src="./mainview/images/company.png">
+								</div>
+								<div class="label-title">ZYSQ1.8标</div>
+							</div>
+						</div>
+					</div>
+					<div class="layui-col-xs10 pr25">
+						<div class="layui-col-xs12">
+							<div class="todobox bg-0C1C34">
+								<div class="todoHeader">
+									<div class="fl todoHeaderTitle">
+										质量巡检
+									</div>
+								</div>
+								<div class="layui-row">
+									<div class="layui-col-xs6">
+										<div class="layui-col-xs4">
+											<div class="layui-col-xs12" id="pieDiv2">
+											</div>
+											<div class="layui-col-xs12">
+												<div class="pieDiv-line fl"></div>
+												<div class="pieDiv-text fl">
+													<div class="pieDiv-border"></div>
+													<img class="search-icon" src="./mainview/images/search.png">
+													<div class="pieDiv-title">巡检</div>
+												</div>
+												<div class="pieDiv-line fr"></div>
+											</div>
+										</div>
+										<div class="layui-col-xs4">
+											<div class="layui-col-xs12" id="pieDiv3">
+											</div>
+											<div class="layui-col-xs12">
+												<div class="pieDiv-line fl"></div>
+												<div class="pieDiv-text fl">
+													<div class="pieDiv-border"></div>
+													<img class="search-icon" src="./mainview/images/search.png">
+													<div class="pieDiv-title">整改</div>
+												</div>
+												<div class="pieDiv-line fr"></div>
+											</div>
+										</div>
+										<div class="layui-col-xs4">
+											<div class="layui-col-xs12" id="pieDiv4">
+											</div>
+											<div class="layui-col-xs12">
+												<div class="pieDiv-line fl"></div>
+												<div class="pieDiv-text fl">
+													<div class="pieDiv-border"></div>
+													<img class="search-icon" src="./mainview/images/search.png">
+													<div class="pieDiv-title">复核</div>
+												</div>
+												<div class="pieDiv-line fr"></div>
+											</div>
+										</div>
+									</div>
+									<div class="layui-col-xs6" id="barDiv">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="layui-col-xs6 pr25">
+							<div class="todobox bg-0C1C34">
+								<div class="preHeader">
+									<div class="fl todoHeaderTitle">
+										项目阶段统计
+									</div>
+								</div>
+								<div class="layui-row">
+									<div class="layui-col-xs12">
+										<div class="layui-col-xs2 preHeader-title">
+											损失程度
+										</div>
+										<div class="layui-col-xs8" id="pieDiv5">
+										</div>
+									</div>
+									<div class="layui-col-xs6 margin-top-30-0">
+										<div class="layui-col-xs2 preHeader-title">
+											责任
+										</div>
+										<div class="layui-col-xs8" id="pieDiv6">
+										</div>
+									</div>
+									<div class="layui-col-xs6 margin-top-30-0">
+										<div class="layui-col-xs3 preHeader-title">
+											产生原因
+										</div>
+										<div class="layui-col-xs8" id="pieDiv7">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-col-xs6 pr25">
+							<div class="todobox bg-0C1C34">
+								<div class="todoHeader">
+									<div class="fl todoHeaderTitle">
+										应急预案
+									</div>
+								</div>
+								<div class="layui-row">
+									<div class="layui-col-xs4" id="pieDiv">
+									</div>
+									<div class="layui-col-xs8">
+										<div class="echarts1Info" id="echartsList1">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="todobox bg-0C1C34">
+								<div class="todoHeader">
+									<div class="fl todoHeaderTitle">
+										专项方案
+									</div>
+								</div>
+								<div class="layui-row">
+									<div class="layui-col-xs4" id="pieDiv8">
+									</div>
+									<div class="layui-col-xs8">
+										<div class="echarts1Info" id="echartsList2">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-row">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./mainview/js/template-web.js"></script>
+	<script src="./mainview/js/jquery1.8.1.min.js"></script>
+	<script src="./mainview/js/echarts.min.js"></script>
+	<script src="./mainview/js/inspectEcharts.js"></script>
+	<script src="./mainview/layui/layui.js"></script>
+	<script id="echartsList1-template" type="text/html">
+		<div class="layui-row precentInfo">
+			<table class="layui-col-xs12">
+				<tr class="layui-col-xs12 precentInfo-border">
+					<th class="layui-col-xs2">序号</th>
+					<th class="layui-col-xs8">预案名</th>
+					<th class="layui-col-xs2">数量</th>
+				</tr>
+					{{each data}}
+					<tr class="layui-col-xs12 table-content">
+						<td class="layui-col-xs2">{{$value.index}}</td>
+						<td class="layui-col-xs8">{{$value.name}}</td>
+						<td class="layui-col-xs2">{{$value.pre}}</td>
+					</tr>
+					{{/each}}
+			</table>
+		</div>
+	</script>
+	<script>
+		var dataBefore = [{
+			index: 1,
+			value: 15,
+			pre: 48,
+			name: '预研项目',
+			color: '#2C4EA5'
+		}, {
+			index: 2,
+			value: 15,
+			pre: 15,
+			name: '批产项目',
+			color: '#F8B543'
+		}, {
+			index: 3,
+			value: 15,
+			pre: 10,
+			name: '研制项目',
+			color: '#67C1C8'
+		}, {
+			index: 4,
+			value: 15,
+			pre: 22,
+			name: '装备保障',
+			color: '#806BF1'
+		}, {
+			index: 5,
+			value: 15,
+			pre: 48,
+			name: '其他项目',
+			color: '#3FBAFC'
+		}]
+		var data = []
+		for (var i = 0; i < dataBefore.length; i++) {
+			data.push({
+				value: dataBefore[i].pre,
+				name: dataBefore[i].name,
+				itemStyle: {
+					color: dataBefore[i].color
+				}
+			})
+		}
+		let echartsList1 = template('echartsList1-template', {
+			data: dataBefore
+		})
+		$('#echartsList1').append(echartsList1);
+		$('#echartsList2').append(echartsList1);
+		var data2Before = [{
+			pre: 303,
+			name: '巡检',
+			color: '#FEA726'
+		}]
+		var data3Before = [{
+			pre: 25,
+			name: '整改',
+			color: '#5C6BC0'
+		}]
+		var data4Before = [{
+			pre: 23,
+			name: '复核',
+			color: '#9CCD65'
+		}]
+		var data5Before = [{
+			pre: 23,
+			name: '复核',
+			color: '#9CCD65'
+		}]
+		var data6Before = [{
+			pre: 23,
+			name: '复核',
+			color: '#9CCD65'
+		}]
+		var data7Before = [{
+			pre: 23,
+			name: '复核',
+			color: '#9CCD65'
+		}]
+		var data8Before = [{
+			value: 15,
+			pre: 48,
+			name: '预研项目',
+			color: '#2C4EA5'
+		}, {
+			value: 15,
+			pre: 15,
+			name: '批产项目',
+			color: '#F8B543'
+		}, {
+			value: 15,
+			pre: 10,
+			name: '研制项目',
+			color: '#67C1C8'
+		}, {
+			value: 15,
+			pre: 22,
+			name: '装备保障',
+			color: '#806BF1'
+		}, {
+			value: 15,
+			pre: 48,
+			name: '其他项目',
+			color: '#3FBAFC'
+		}]
+
+
+		var pre2Data = []
+		for (var i = 0; i < data2Before.length; i++) {
+			pre2Data.push({
+				value: data2Before[i].pre,
+				name: data2Before[i].name,
+				itemStyle: {
+					color: data2Before[i].color
+				}
+			})
+		}
+		var pre3Data = []
+		for (var i = 0; i < data3Before.length; i++) {
+			pre3Data.push({
+				value: data3Before[i].pre,
+				name: data3Before[i].name,
+				itemStyle: {
+					color: data3Before[i].color
+				}
+			})
+		}
+		var pre4Data = []
+		for (var i = 0; i < data4Before.length; i++) {
+			pre4Data.push({
+				value: data4Before[i].pre,
+				name: data4Before[i].name,
+				itemStyle: {
+					color: data4Before[i].color
+				}
+			})
+		}
+		var pre5Data = []
+		for (var i = 0; i < data5Before.length; i++) {
+			pre5Data.push({
+				value: data5Before[i].pre,
+				name: data5Before[i].name,
+				itemStyle: {
+					color: data5Before[i].color
+				}
+			})
+		}
+		var pre6Data = []
+		for (var i = 0; i < data6Before.length; i++) {
+			pre6Data.push({
+				value: data6Before[i].pre,
+				name: data6Before[i].name,
+				itemStyle: {
+					color: data6Before[i].color
+				}
+			})
+		}
+		var pre7Data = []
+		for (var i = 0; i < data7Before.length; i++) {
+			pre7Data.push({
+				value: data7Before[i].pre,
+				name: data7Before[i].name,
+				itemStyle: {
+					color: data7Before[i].color
+				}
+			})
+		}
+		var pre8Data = []
+		for (var i = 0; i < data8Before.length; i++) {
+			pre8Data.push({
+				value: data8Before[i].pre,
+				name: data8Before[i].name,
+				itemStyle: {
+					color: data8Before[i].color
+				}
+			})
+		}
+		layui.use(function () {
+			var layer = layui.layer,
+				form = layui.form,
+				laypage = layui.laypage,
+				element = layui.element,
+				laydate = layui.laydate,
+				util = layui.util;
+			radarInit()
+		});
+	</script>
+</body>
+
+</html>

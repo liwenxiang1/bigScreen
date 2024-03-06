@@ -1,0 +1,970 @@
+.home {
+    background-color: #EEF2F9;
+    position: relative;
+    /* margin: 20px; */
+}
+
+/* 头部 */
+.home-top {
+    margin-bottom: 22.5px;
+}
+
+.home-top-item {
+    height: 160px;
+    max-width: 542px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin: 0 auto;
+    padding: 35px 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-top .layui-col-md4:first-of-type .home-top-item {
+    background: url('../images/user-bg.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.home-top .layui-col-md4:nth-of-type(2) .home-top-item {
+    background: url('../images/visiting-all-bg.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.home-top .layui-col-md4:nth-of-type(3) .home-top-item {
+    background: url('../images/visiting-day-bg.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.home-top-item-icon {
+    width: 90px;
+    height: 90px;
+}
+
+.left-num {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.left-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* 第二块 */
+.layui-tab-home {
+    margin-top: 0;
+}
+
+.layui-tab-home .layui-tab-title-er {
+    height: 68px;
+}
+
+.layui-tab-home .layui-tab-title-er li {
+    height: 68px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #131313;
+    line-height: 68px;
+    border-right: 1px solid #EEEEEE;
+
+}
+
+.layui-tab-home .layui-tab-title-er .layui-this {
+    color: #2B90FA;
+    font-size: 20px;
+    font-weight: 600;
+    /* border-bottom-color: #FFFFFF; */
+}
+
+.layui-tab-home .layui-tab-title-er .layui-this::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 100%;
+    height: 69px;
+    border-top: 4px solid #2B90FA;
+    border-bottom-color: #FFFFFF;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+/* 标签内容 */
+.layui-tab-content-home {
+    padding: 26px 33px;
+}
+
+.layui-panel-tab {
+    height: 140px;
+    background: #FFFFFF;
+    border: 1px solid #D7DAE2;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px #fff;
+    padding: 0 40px 0 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.layui-panel-tab6 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
+
+.layui-panel-tab6-left {
+    position: relative;
+}
+
+.wall {
+    width: 100px;
+}
+
+.layui-panel-tab6-left::after {
+    content: "";
+    width: 1px;
+    height: 120px;
+    position: absolute;
+    right: -50px;
+    border-right: 1px dotted #D7DAE2;
+}
+
+/* .gszl:link {
+    color: #2B90FA;
+    border: 1px solid #00AAFF;
+    box-shadow: 0px 4px 13px 0px rgba(160, 170, 199, 0.2);
+} */
+
+.layui-panel-tab:hover {
+    color: #2B90FA;
+    border: 1px solid #00AAFF;
+    box-shadow: 0px 4px 13px 0px rgba(160, 170, 199, 0.2);
+}
+
+.tab-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tab-left-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.tab-left-num {
+    font-size: 30px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.tab-left-sub-title {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #999999;
+}
+
+.tab-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.details-box {
+    color: #00AAFF;
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    cursor: pointer;
+    width: 60px;
+    height: 25px;
+    background: #2B90FA13;
+    border-radius: 10px 0px 0px 10px;
+    padding-left: 12px;
+    line-height: 25px;
+
+}
+
+.details-box-img {
+    width: 12px;
+    height: 15px;
+}
+
+.layui-panel-tab:hover .tab-left-num {
+    color: #2B90FA;
+}
+
+.xmxt {
+    background: url('../images/icon/项目系统.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .xmxt {
+    background: url('../images/icon/项目系统-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.sjk {
+    background: url('../images/icon/数据库.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjk {
+    background: url('../images/icon/数据库-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.schema {
+    background: url('../images/icon/schema.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .schema {
+    background: url('../images/icon/schema-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.sjb {
+    background: url('../images/icon/数据表.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjb {
+    background: url('../images/icon/数据表-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.zd {
+    background: url('../images/icon/字段.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .zd {
+    background: url('../images/icon/字段-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.yba {
+    background: url('../images/icon/已备案.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .yba {
+    background: url('../images/icon/已备案-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.wba {
+    background: url('../images/icon/未备案.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .wba {
+    background: url('../images/icon/未备案-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+/* 大数据平台 */
+.layui-tab-data {
+    margin-top: 0px;
+}
+
+.layui-tab-title-pingtai {
+    width: fit-content;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid #D7DBE2;
+    border-radius: 6px;
+}
+
+.layui-tab-title-pingtai li {
+    height: 100%;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #191919;
+    border-right: 1px solid #EEEEEE;
+}
+
+.layui-tab-title-pingtai .layui-this {
+    background: #2B90FA13;
+    color: #2B90FA !important;
+    font-weight: 600;
+}
+
+.layui-tab-title-pingtai .layui-this::after {
+    border: 0 !important;
+    content: "";
+}
+
+.layui-tab-title-echarts {
+    height: 40px;
+    position: absolute;
+    top: 17px;
+    left: calc(100% - 210px);
+}
+
+.layui-tab-title-echarts li {
+    height: 100%;
+    line-height: 40px;
+}
+
+.layui-tab-title-echarts .layui-this {
+    position: relative;
+}
+
+.layui-tab-title-echarts .layui-this::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 2px);
+    height: 100%;
+    top: 0;
+    border: 1px solid #2B90FA !important;
+}
+
+
+.sjzl {
+    background: url('../images/icon/数据总量.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjzl {
+    background: url('../images/icon/数据总量-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.sjccl {
+    background: url('../images/icon/数据存储量.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjccl {
+    background: url('../images/icon/数据存储量-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+.sjccsyl {
+    background: url('../images/icon/数据使用率.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjccsyl {
+    background: url('../images/icon/数据使用率-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.xmxt3 {
+    background: url('../images/icon/项目系统3.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .xmxt3 {
+    background: url('../images/icon/项目系统3-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.sjb3 {
+    background: url('../images/icon/数据表3.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjb3 {
+    background: url('../images/icon/数据表3-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.wlqy {
+    background: url('../images/icon/物流企业.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .wlqy {
+    background: url('../images/icon/物流企业-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.zfbm {
+    background: url('../images/icon/政府部门.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .zfbm {
+    background: url('../images/icon/政府部门-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.jrjg {
+    background: url('../images/icon/金融机构.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .jrjg {
+    background: url('../images/icon/金融机构-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.dsfpt {
+    background: url('../images/icon/第三方平台.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .dsfpt {
+    background: url('../images/icon/第三方平台-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.ywxt {
+    background: url('../images/icon/业务系统.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .ywxt {
+    background: url('../images/icon/业务系统-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.ywpz {
+    background: url('../images/icon/业务单证.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .ywpz {
+    background: url('../images/icon/业务单证-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.ztk {
+    background: url('../images/icon/主题库.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .ztk {
+    background: url('../images/icon/主题库-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.sjxq {
+    background: url('../images/icon/数据需求.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjxq {
+    background: url('../images/icon/数据需求-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.sjfw {
+    background: url('../images/icon/数据服务.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjfw {
+    background: url('../images/icon/数据服务-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.sjcp {
+    background: url('../images/icon/数据产品.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjcp {
+    background: url('../images/icon/数据产品-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.hxzc {
+    background: url('../images/icon/核心资产.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .hxzc {
+    background: url('../images/icon/核心资产-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.zyzc {
+    background: url('../images/icon/重要资产.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .zyzc {
+    background: url('../images/icon/重要资产-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.sjst {
+    background: url('../images/icon/数据实体.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjst {
+    background: url('../images/icon/数据实体-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.sjmx {
+    background: url('../images/icon/数据模型.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .sjmx {
+    background: url('../images/icon/数据模型-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.jcbz {
+    background: url('../images/icon/基础标准.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .jcbz {
+    background: url('../images/icon/基础标准-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.zbbz {
+    background: url('../images/icon/指标标准.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .zbbz {
+    background: url('../images/icon/指标标准-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.bwbz {
+    background: url('../images/icon/报文标准.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.layui-panel-tab:hover .bwbz {
+    background: url('../images/icon/报文标准-active.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+/* echarts模块 */
+/* //外层容器 类名 layui-row */
+.mr10 {
+    margin-right: 10px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.layui-col-space20-wai {
+    margin: 0;
+}
+
+.layui-col-md6-echarts:nth-of-type(odd) {
+    padding-left: 0;
+}
+
+.layui-col-md6-echarts:nth-of-type(even) {
+    padding-right: 0;
+}
+
+.layui-col-md6-echarts {
+    margin-top: 13px;
+    padding-bottom: 0;
+}
+
+.layui-col-md6-echarts .layui-panel {
+    height: 390px;
+    background: #FFFFFF;
+    border: 1px solid #EBEDF3;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.echarts-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.echarts-top-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+    line-height: 48px;
+}
+
+.select {
+    width: 94px;
+    height: 40px;
+    border: 2px solid #66666630;
+    border-radius: 4px;
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.echarts {
+    width: 100%;
+    flex: 1;
+}
+
+.echarts-pro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.progress-box {
+    width: 46%;
+    height: 20%;
+    height: 62px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-box:first-of-type .progress-sort {
+    background: #EDF5FF;
+    color: #258DFF;
+}
+
+.progress-box:nth-of-type(2) .progress-sort {
+    background: #E7FCF4;
+    color: #5CD7A1;
+}
+
+.progress-box:nth-of-type(3) .progress-sort {
+    background: #F9EFFF;
+    color: #B947F7;
+}
+
+.progress-sort {
+    width: 60px;
+    height: 36px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 36px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 18px;
+    color: #333333;
+}
+
+.progress-content {
+    flex: 1;
+}
+
+.progress-title {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.progress-title .name {
+    color: #333333;
+}
+
+.progress-title .num {
+    color: #999999;
+}
+
+.progress-content .layui-progress-bar {
+    background-color: #258DFF;
+}
+
+.progress-content .layui-progress {
+    background-color: #F0F3F9;
+}
+
+.layui-progress-myself {
+    height: 7px;
+}
+
+.layui-progress-myself .layui-progress-bar {
+    height: 7px;
+}
+
+.layui-tab-data-echarts {
+    /* height: 100%;
+    background-color: red; */
+}
+
+.layui-tab-title-echarts3 {
+    left: calc(100% - 330px);
+}
+
+.layui-tab-data-echartsS {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.dataStandard {
+    height: 100%;
+}
+
+.quality-box {
+    /* width: 377px; */
+    height: 120px !important;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    padding: 0 25px;
+    color: #248FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quality-num {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.quality-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quality-icon {
+    width: 44px;
+    height: 44px;
+    margin-right: 21px;
+}
+
+.quality-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quality-big-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+
+}
+
+.quality-small-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #999999;
+
+}
+
+.quality-box-row {
+    margin-top: 30px;
+}
+
+/* 详细弹框 */
+.pop-box {
+    position: absolute;
+    z-index: 10;
+    width: 784px;
+    height: calc(535px - 57px);
+    background: #FFFFFF;
+    box-shadow: 0px 1px 38px 0px rgba(34, 51, 81, 0.2);
+    /* background-color: red; */
+    display: none;
+    padding-top: calc(57px - 12.5px);
+}
+.pop-back{
+    width: 82px;
+    height: 34px;
+    background: #EBECF2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+}
+.pop-back-left{
+    border-radius: 0px 16px 16px 0px;
+}
+
+.pop-back-right{
+    border-radius: 16px 0px 0px 16px;
+    right: 0;
+}
+.pop-back-icon{
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+.pop-back-text{
+    font-size: 16px;
+    font-weight: 600;
+    color: #8C9CAF;
+
+}
+
+.pop-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+#popEcharts{
+    flex: 1;
+}
+
+.card-box {
+    flex: 1;
+    padding: 0 12px;
+}
+.card-b{
+    margin: 12.5px 15px;
+    background-color: green;
+    height: 120px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 18px 0px rgba(34, 51, 81, 0.16);
+    border-radius: 4px;
+    padding-left: 19px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.card-b-title{
+    font-size: 18px;
+    font-weight: 600;
+    color: #8C9CAF;
+}
+.card-b-sum{
+    font-size: 24px;
+    font-weight: 600;
+    color: #07215A;
+}
+
+#laypage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -12.5px;
+}
+
+#laypage .layui-laypage {
+    border: 0;
+    display: flex;
+}
+
+#laypage .layui-laypage a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #999999;
+    border: 0;
+}
+
+#laypage .layui-laypage .layui-laypage-curr em {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+}
+
+#laypage .layui-laypage-em {
+    display: none;
+}
+
+#laypage .layui-laypage span {
+    border: 0;
+    background-color: #ffffff00;
+}
+
+.layui-laypage-prev,
+.layui-laypage-next {
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border: 1px solid #D6D6D7 !important;
+    border-radius: 4px;
+    padding: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    margin-right: 2px !important;
+}
+.pop-right-small-view{
+    width: 660px;
+}
+.pop-mask{
+    width: 100%;
+    height: 100%;
+    background-color: #00000030;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+.tooltip-box{
+    position: absolute;
+    top: 0;
+    display: none;
+    z-index: 1;
+    width: 100px;
+    height:100px;
+}
+.triangle{
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 6px;
+    bottom: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #30313380;
+}
+.tooltipText{
+    position: absolute;
+    left: 0;
+    bottom: 6px;
+    border-radius: 8px;
+    padding: 10px;
+    line-height: 20px;
+    color: #ffffff;
+    background-color: #30313380;
+}
+.indexed {
+    margin: 20px 0 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.homeLoading{
+    width: 100%;
+    min-height: 100%;
+    background-color: #00000030;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+}
+.loadingImg{
+    width: 100px;
+}
+.viewLoading{
+    align-items: flex-start;
+}
+.viewLoadingImg{
+    position: relative;
+    top:50vh ;
+}

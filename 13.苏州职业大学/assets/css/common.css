@@ -1,0 +1,408 @@
+/* @font-face {
+	font-family: 'iconfont';
+	src: url('./../font/iconfont.eot');
+	src: url('./../font/iconfont.eot?#iefix') format('embedded-opentype'),
+		url('./../font/iconfont.woff2') format('woff2'),
+		url('./../font/iconfont.woff') format('woff'),
+		url('./../font/iconfont.ttf') format('truetype'),
+		url('./../font/iconfont.svg#iconfont') format('svg');
+}
+ */
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 12px;
+	width: 100%;
+	height: 100%;
+	/* background-color: rgba(255, 255, 255, 1); */
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	box-sizing: border-box;
+}
+
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+textarea {
+	resize: vertical;
+}
+
+a,
+a:focus,
+a:hover {
+	cursor: pointer;
+	color: inherit;
+	outline: none;
+	text-decoration: none;
+}
+
+div:focus {
+	outline: none;
+}
+
+a:focus,
+a:active {
+	outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+	cursor: pointer;
+	color: inherit;
+	text-decoration: none;
+}
+
+p,
+ul {
+	margin: 0;
+}
+
+ol,
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+button {
+	border: 1px solid transparent;
+	outline: none;
+}
+
+input,
+button,
+textarea {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	/*-webkit-appearance:none;*/
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.clearfix:after,
+.clearfix:before {
+	content: '';
+	display: table
+}
+
+.clearfix:after {
+	clear: both;
+	display: block
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+::-webkit-input-placeholder {
+	/* WebKit browsers */
+	color: #999 !important;
+}
+
+:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #999 !important;
+}
+
+::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #999 !important;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10+ */
+	color: #999 !important;
+}
+
+.num-tip {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	line-height: 22px;
+	background-color: red;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 900;
+	-webkit-transform: scale(0.6);
+	transform: scale(0.6);
+	text-align: center;
+	overflow: hidden;
+}
+
+/* 暂无数据 */
+#none-data {
+	display: none;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	font-size: 0.26rem;
+	color: #ddd;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+/* header样式   开始 */
+.layui-header {
+	height: 80px;
+	line-height: 80px;
+	background-color: #FFFFFF !important;
+	background-size: cover;
+	padding: 0 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* header样式   结束 */
+.layui-body {
+	left: 0;
+}
+
+.layui-layout-admin .layui-logo {
+	top: 15%;
+	left: 70px;
+	line-height: inherit;
+}
+
+.layui-nav .layui-nav-item {
+	line-height: 75px;
+}
+
+.layui-nav .layui-nav-item a {
+	padding: 0 15px;
+	color: #FFFFFF;
+	font-size: 18px;
+}
+
+.layui-layout-admin .layui-footer {
+	left: 0;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.layui-layout-admin .layui-footer {
+	color: #666666;
+	font-size: 14px;
+}
+
+.layui-layout-admin {
+	height: 100%;
+}
+
+.top-bg-img {
+	position: absolute;
+	top: 0;
+}
+
+.layui-header {
+	background-color: transparent !important;
+}
+
+.layui-nav {
+	margin-left: 400px;
+}
+
+.layui-nav .iconfont {
+	font-size: 18px;
+	margin-right: 5px;
+}
+
+.layui-layout-right {
+	right: 70px;
+}
+
+.layui-layout-right li {
+	float: left;
+	padding: 0 5px;
+}
+
+.destroy:hover {
+	text-decoration: underline;
+	color: #3EF1D4;
+}
+
+.userCenter {
+	background: rgba(28, 174, 150, 0.3);
+	border: 1px solid #1CAE96;
+	border-radius: 10px;
+	padding: 5px 10px;
+}
+
+.top-bg .name {
+	font-size: 50px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 103px;
+	text-shadow: 0px 9px 3px #000000;
+	position: absolute;
+	top: 20%;
+	text-align: center;
+	width: 100%;
+}
+
+.layui-layout-admin .layui-body {
+	top: 30%;
+	/* min-height: calc(70% - 80px); */
+	min-height: 62%;
+}
+
+.layui-body-admin {
+	/* background: #FFFFFF; */
+	width: 90%;
+	margin: auto;
+	padding: 10px 40px;
+}
+
+.qita {
+	background: url(../imgs/bg.png);
+	background-size: cover;
+	padding: 0 150px;
+	height: 600px;
+	background-repeat: no-repeat;
+	bottom: 0;
+	width: 100%;
+	z-index: -1;
+	position: absolute;
+}
+
+.qita .geren-card,
+.qita .layui-card-header {
+	background: transparent;
+}
+
+.qita .layui-card-body {
+	padding: 10px 0;
+}
+
+.footer {
+
+	height: 80px;
+	background-color: rgba(0, 0, 0, .75);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* position: absolute; */
+	width: 100%;
+	bottom: 0;
+	text-align: center;
+	line-height: 80px;
+}
+
+.footer .title {
+	color: #FFFFFF;
+	padding: 0 20px;
+}
+
+.layui-tab-title li {
+	font-size: 18px;
+	color: #333333;
+	padding-right: 150px;
+}
+
+.layui-tab-brief>.layui-tab-more li.layui-this:after,
+.layui-tab-brief>.layui-tab-title .layui-this:after {
+	border: none;
+	border-radius: 0;
+	border-bottom: none;
+}
+
+.layui-tab-brief>.layui-tab-more li.layui-this:after,
+.layui-tab-brief>.layui-tab-title .layui-this span {
+	border-bottom: 2px solid #1CAE97;
+	padding: 15px 0;
+
+}
+
+.layui-tab-brief>.layui-tab-title .layui-this {
+	color: #000000;
+}
+
+.layui-tab-brief>.layui-tab-title .layui-badge {
+	width: 26px;
+	height: 17px;
+	background: #DEB06A;
+	border-radius: 6px 6px 6px 0px;
+}
+.layui-laypage a, .layui-laypage .layui-laypage-count{
+	background-color: transparent;
+}
+.layui-laypage .layui-laypage-skip{
+	background-color: transparent;
+}
+@media screen and (min-width: 1366px) and (max-width: 1366px) {
+	.top-bg .name {
+		font-size: 36px;
+	}
+	.top-bg-img{
+		height: 450px;
+	}
+
+}
+
+@media screen and (min-width: 1367px) and (max-width: 1600px) {
+
+	.qita {
+		padding: 0 140px;
+	}
+	.top-bg-img{
+		height: 500px;
+	}
+}

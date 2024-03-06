@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>月报</title>
+	<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+	<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+	<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="../css/animate.min.css" rel="stylesheet">
+	<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+	<link href="../css/common.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid form-div animated fadeInRight">
+		<form id="form1" class="form-horizontal">
+			<input type="hidden" name="id"/> <!-- 主键Id 必须 -->
+			<div class="form-group">
+				<label class="col-xs-2 control-label">月报类型:</label>
+				<div class="col-xs-2">
+					<input type="text" class="form-control" name="name" required value="主要经济指标月报" />
+				</div>
+				<label class="col-xs-2 control-label">年份:</label>
+				<div class="col-xs-2">
+					<select class="form-control" name="sex" required >
+						<option>2016年</option>
+						<option>2017年</option>
+						<option>2018年</option>
+						<option>2019年</option>
+						<option>2020年</option>
+						<option>2021年</option>
+					</select>
+				</div>
+				<label class="col-xs-2 control-label">月份:</label>
+				<div class="col-xs-2">
+					<select class="form-control" name="sex" required >
+						<option>1月</option>
+						<option>2月</option>
+						<option>3月</option>
+						<option>4月</option>
+						<option>5月</option>
+						<option>6月</option>
+						<option>7月</option>
+						<option>8月</option>
+						<option>9月</option>
+						<option>10月</option>
+						<option>11月</option>
+						<option>12月</option>
+					</select>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-xs-2 control-label">月报内容:</label>
+				<div class="col-xs-4">
+					<a href="javascript:;">点击查看</a>
+				</div>
+				<label class="col-xs-2 control-label">下发单位:</label>
+				<div class="col-xs-4">
+					<select class="form-control" name="sex" required >
+						<option>中国核工业中原建设有限公司</option>
+						<option>中国核工业第二二建设有限公司</option>
+						<option>中国核工业二三建设有限公司</option>
+						<option>中国核工业二四建设有限公司</option>
+						<option>中国核工业华兴建设有限公司</option>
+					</select>
+				</div>
+			</div>
+			<div class="hr-line-dashed"></div>
+			<div class="form-group">
+				<label class="col-xs-2 control-label">填报开始时间:</label>
+				<div class="col-xs-4">
+					<input type="datetime-local" class="form-control boot-date" data-format="YYYY-MM-DD" name="entryTime" required />
+				</div>
+				<label class="col-xs-2 control-label">填报结束时间:</label>
+				<div class="col-xs-4">
+					<input type="datetime-local" class="form-control boot-date" data-format="YYYY-MM-DD" name="entryTime" required />
+				</div>
+			</div>
+			<div class="subButt">
+				<button type="button" onclick="layerEnd('月报下发成功')" class="btn btn-info">
+				<span class="glyphicon glyphicon-ok"></span>月报下发</button>
+				<button type="button" onclick="layerEnd('保存成功')" class="btn btn-info">
+				<span class="glyphicon glyphicon-ok"></span>暂存</button>
+				<button type="button" onclick="cancel()" class="btn btn-default">
+				<span class="glyphicon glyphicon-remove"></span>取消</button>
+			</div>
+		</form>
+	</div>
+	<script src="../js/jquery.min.js?v=2.1.4"></script>
+	<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+	<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="common.js"></script>
+	<script type="text/javascript">
+	function setData(data,mode){//写入数据方法，父页面调用
+		$('#form1').setForm(data);//写入主表数据
+		if(data.testResumes){//写入从表数据
+			$('#table').bootstrapTable('load',JSON.parse(JSON.stringify(data.testResumes)));
+		}
+		if(mode){//查看详情全部设置为文本并且移除保存按钮
+			$('#table').bootstrapTable('hideColumn', 'delMode');//隐藏删除列
+			$('.subButt,.edit-tfoot').remove();
+			$(':input').prop('disabled',true);
+			$('.control-label span').remove();
+		}
+	}
+	</script>
+</body>
+</html>

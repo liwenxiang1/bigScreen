@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>JYK目标监控</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+		<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<link href="../css/plugins/jsTree/style.min.css" rel="stylesheet">
+		<link href="../css/common.css" rel="stylesheet">
+		<style type="text/css">
+			.tree-div:after {content: " ";position: absolute;right: 10px;top: 0;height: 100vh;border-left: 1px solid #9E9E9E;}
+			.bootstrap-table .table>tbody>tr.detail-view>td {
+			    padding: 3px!important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid animated fadeInRight search-content">
+			<div class="row">
+				<div class="col-xs-3 tree-div">
+					<div id="tree1"></div>
+				</div>
+				<div class="col-xs-9">
+					<div class="col-sm-12" style="padding: 5px 15px;">
+						<div data-toggle="buttons" class="btn-group">
+							<label class="btn btn-sm btn-white active">
+								<input type="radio" id="option1" name="options">在建合同储备</label>
+							<label class="btn btn-sm btn-white">
+								<input type="radio" id="option2" name="options">海外机构经营表</label>
+							<label class="btn btn-sm btn-white">
+								<input type="radio" id="option3" name="options">重大合同签约表</label>
+							<label class="btn btn-sm btn-white">
+								<input type="radio" id="option4" name="options">境内海外公司业务表</label>
+						</div>
+					</div>
+					<table id="table" data-toggle="table" data-detail-view="true" data-detail-formatter="toTable">
+						<thead>
+							<tr>
+								<th data-formatter="thIndex" data-align="center" data-width="3%">序号</th>
+								<th data-field="name" data-align="center">指标名称</th>
+								<th data-field="no" data-align="center">指标代码</th>
+								<th data-field="v1" data-align="center">本月实际</th>
+								<th data-field="v2" data-align="center">本月止累计</th>
+								<th data-field="v3" data-align="center">去年同期</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+		<!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+		<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="../js/plugins/layer/layer.js"></script>
+		<script src="../js/plugins/jsTree/jstree.min.js"></script>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+			var $table = $('#table');
+			var dataObj = {
+				'工业总产值(现价)':['天然铀','铀纯化','核燃料','铀转化','压水堆燃料元件','重水堆燃料元件','海外生产天然铀','其他'],
+				'民品产值':['核电产值','核仪器设备产值','同位素及其制品产值','辐射加工产值','其他技术','化工类产品产值','冶金类产品产值','食品医药类产品产值','仪器设备类产品产值','其它相关技术'],
+				'总产值':['工业企业工业总产值','出口产品产值','新产品产值','工业销售产值'],
+				'建筑业施工产值':['民用工程','军用工程'],
+				'第三产业总产出':['科技研究、服务产出','地质勘查业','批发零售贸易业','内贸销售','集团外出口','医疗卫生业','科学与工程技术研究业','综合技术服务业','软件和信息技术服务费产业','其他第三产业'],
+				'单位月末从业人员人数':['在岗职工人数','劳务派遣','其他从业人员']
+			};
+			function setDatas(){
+				var datas = [];
+				var no = 1000;
+				$.each(dataObj,function(key,val){
+					no++;
+					var obj = {name:key,no:no,datas:getDatas(val,no)};
+					$(['v1','v2','v3']).each(function(a,b){
+						var val = Math.floor(Math.random()*800000)+40000;
+						obj[b] = val;
+					});
+					datas.push(obj);
+				});
+				$table.bootstrapTable('load', datas);
+			}
+			function getDatas(ds,pno){
+				var datas = [];
+				var no = 1;
+				$.each(ds,function(i,e){
+					var obj = {name:e,no:pno+'—'+(no++)};
+					$(['v1','v2','v3']).each(function(a,b){
+						var val = Math.floor(Math.random()*800000)+40000;
+						obj[b] = val;
+					});
+					datas.push(obj);
+				});
+				return datas;
+			}
+			
+			function toTable(index,row,e){
+				buildTable(e.html('<table></table>').find('table'), row)
+			}
+			function buildTable($e, row) {
+				//这里请求ajax 获取子表数据
+				$e.bootstrapTable({
+					columns:[
+						{field:'name',title:'指标名称'},
+						{field:'no',title:'指标代码'},
+						{field:'v1',title:'本月实际'},
+						{field:'v2',title:'本月止累计'},
+						{field:'v3',title:'去年同期'},
+					],
+					data:row.datas//写入子表数据
+				});
+			}
+			
+			$('.btn-white').click(setDatas);
+			$(function() {
+				var trees = [//此为数据格式,更多结构请参考api文档
+					{text:"集团总部",type:'top',state:{opened:true},children:[
+						{text:"中核中原",type:'mid'},
+						{text:"中核二二",type:'mid',children:[
+							{text:"华中区域公司",type:'bot'},
+							{text:"华东区域公司",type:'bot'},
+							{text:"华南区域公司",type:'bot'},
+							{text:"西北区域公司",type:'bot'},
+							{text:"西南区域公司",type:'bot'}
+						]},
+						{text:"中核二三",type:'mid'},
+						{text:"中核二四",type:'mid'},
+						{text:"中核华兴",type:'mid'},
+						{text:"中核华辰",type:'mid'},
+						{text:"中核机械",type:'mid'},
+						{text:"中核五建",type:'mid'},
+						{text:"中核检修",type:'mid',children:[
+							{text:"中核检修深圳分公司",type:'bot'},
+							{text:"中核检修海盐分公司",type:'bot'},
+							{text:"中核检修连云港分公司",type:'bot'},
+							{text:"中核检修大连分公司",type:'bot'},
+							{text:"中核检修福鼎分公司",type:'bot'}
+						]}
+					]}
+				];
+				$('#tree1').jstree({core : {data : trees}}).on('select_node.jstree',function(a,b,c){
+					console.log(a,b,c);
+					setDatas();
+				});
+				//setDatas();
+			});
+			
+
+			function search() { //查询方法
+				$table.bootstrapTable('refresh');
+			}
+
+			function toM(val) {
+				if(val == '未开始')return '<a href="javascript:layer.msg(\'激活成功\');">激活</a> | <a href="javascript:edit(1);">修改</a>';
+				else return '<a href="javascript:edit(2);">查看</a>';
+			}
+
+			function edit(a) { //编辑方法(推荐)
+				layer.open({
+					type: 2,
+					title: '数据采集信息',
+					content: "form_2.1.html",
+					shadeClose: false,
+					area: ['90%', '90%'],
+					maxmin: true,
+					success: function(layero, index) { //子页面加载完后执行
+						var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象
+						iframeWin.setData(a); //执行子页面写入数据方法
+					}
+				});
+			}
+
+			function edit2() { //添加方法(推荐)
+				layer.open({
+					type: 2,
+					title: '数据填报',
+					content: "table_1.2.html",
+					shadeClose: false,
+					area: ['90%', '90%'],
+					maxmin: true
+				});
+			}
+
+			function edit3() { //添加方法(推荐)
+				layer.open({
+					type: 1,
+					title: '数据填报',
+					content: "<img src='img/lc-img.png'></img>",
+					shadeClose: false,
+					area: ['90%', '90%'],
+					maxmin: true
+				});
+			}
+
+			function getSelections() { //获取所选行方法
+				return $table.bootstrapTable('getSelections');
+			}
+
+			function toDetail(val, row) {
+				return '<a href="javascript:;" onclick="openDetail(this)">详情</a>';
+			}
+
+			function openDetail(e) {
+				var index = $(e).parents('tr').data('index');
+				var data = $table.bootstrapTable('getData')[index];
+				layer.open({
+					type: 2,
+					title: '员工信息详情',
+					content: contextPath + "/demo/testUserinfoForm.jsp",
+					shadeClose: false,
+					area: ['90%', '90%'],
+					maxmin: true,
+					success: function(layero, index) { //子页面加载完后执行
+						var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象
+						iframeWin.setData(data, 'read'); //执行子页面写入数据方法
+					}
+				});
+			}
+
+			function remove() { //删除方法
+				var selRows = getSelections();
+				if (selRows.length == 0) {
+					sweetAlert("错误", "请先选择行", "error");
+					return;
+				}
+				layer.confirm('删除所选项？', {
+					btn: ['删除', '取消'] //按钮
+				}, function() {
+					$({
+						datas: selRows
+					}).post('com.primeton.demo.test.deleteTestUserinfos.biz.ext', function(h) {
+						if (h.exception == null) {
+							layer.msg('删除成功');
+							$table.bootstrapTable('refresh');
+						} else {
+							layer.msg('删除失败');
+						}
+					});
+				});
+			}
+
+			function exports() {
+				$('.export li[data-type=xlsx]').click();
+			}
+		</script>
+	</body>
+</html>

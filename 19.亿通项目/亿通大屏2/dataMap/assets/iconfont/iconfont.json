@@ -1,0 +1,65 @@
+{
+  "id": "2786891",
+  "name": "数据地图",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "201666",
+      "name": "3.1 返回1",
+      "font_class": "31fanhui1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "24074617",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "24074594",
+      "name": "回到顶部",
+      "font_class": "huidaodingbu",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "24074595",
+      "name": "数据 (4)",
+      "font_class": "a-shuju4",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "24073980",
+      "name": "货物",
+      "font_class": "huowu",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "24073981",
+      "name": "飞机 (1)",
+      "font_class": "a-feiji1",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "24073982",
+      "name": "船 (1)",
+      "font_class": "a-chuan1",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "24073983",
+      "name": "区域",
+      "font_class": "quyu",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    }
+  ]
+}

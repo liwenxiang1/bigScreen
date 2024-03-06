@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国核工业建设·任务管理</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid overall-panel animated fadeInRight search-content">
+        <div id="toolbar">
+            <button class="btn btn-default" onclick="add()">新增任务</button>
+        </div>
+        <table id="table"></table>
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../js/plugins/layer/layer.js"></script>
+    <script src="../js/hplus.min.js?v=4.0.0"></script>
+    <script type="text/javascript" src="../js/contabs.min.js"></script>
+    <script src="common.js"></script>
+    <script type="text/javascript">
+        function buildTable($el,type=null, columns, data) {
+            $el.bootstrapTable({
+                columns: columns,
+                data: data,
+                toolbar: type === 'parent'?'#toolbar':false,
+                pagination: true,  
+                pageSize: 10,
+                pageList: [20, 50, 100],
+                showColumns: false,  //是否显示所有的列
+                showRefresh: type === 'parent'?true:false,  //是否显示刷新按钮
+                detailView: data.length > 0 && type === 'parent',
+                detailFilter: (index)=>{
+                    return data && !!data[index].children && data[index].children.length>0
+                },
+                showColumns:  type === 'parent'?true:false, // 开启自定义列显示功能
+                paginationLoop: false,
+                paginationPreText: "上一页",
+                paginationNextText: "下一页",
+                onExpandRow: function (index, row, $detail) {
+                    /* eslint no-use-before-define: ["error", { "functions": false }]*/
+                    expandTable(row, $detail)
+                }
+            })
+        }
+        $(function () {
+            // <th data-field="mapActions" data-formatter="operateFormatter"
+            //                         data-events="operateEvents" data-align="center">操作</th>
+            const tableColumns = [{
+                title: '任务编号',
+                field: 'code',
+                align: 'center',
+            }, {
+                title: '操作',
+                field: 'mapActions',
+                align: 'center',
+                formatter: (value, row, index) => {
+                    return '<a class="addChild" href="javascript:void(0)" title="addChild">添加子项</a>'
+                },
+                events: operateEvents
+            }, {
+                title: '重点工作任务',
+                field: 'importantTask',
+                align: 'center',
+            }, {
+                title: '计划开始时间',
+                field: 'startTime',
+                align: 'center',
+            }, {
+                title: '计划结束时间',
+                field: 'endTime',
+                align: 'center',
+            }, {
+                title: '分管领导',
+                field: 'taskLeader',
+                align: 'center',
+            }, {
+                title: '目标描述',
+                field: 'description',
+                align: 'center',
+            }]
+            const tableData = [{
+                code: 'D1',
+                importantTask: '推进重大军工项目，完成军品考核任务',
+                startTime: '2020/1/1',
+                endTime: '2020/10/1',
+                taskLeader: '张三',
+                description: '华龙一号持续优化造价水平，海南二期初步设计概算下降2',
+                children: [{
+                    planCode: 'D2-2-1',
+                    planLeader: '马冬梅',
+                    description: '配合中国核电和中核能源做好设计优化工作',
+                    startTime: '2020/1/1',
+                    endTime: '2020/10/1',
+                    orgs: '计划部'
+                },{
+                    planCode: 'D2-2-2',
+                    planLeader: '王二小',
+                    description: '配合中国核电和中核能源做好设计优化工作',
+                    startTime: '2020/1/1',
+                    endTime: '2020/10/1',
+                    orgs: '计划部'
+                }]
+            },{
+                code: 'D2',
+                importantTask: '推进重大军工项目，完成军品考核任务',
+                startTime: '2020/1/1',
+                endTime: '2020/10/1',
+                taskLeader: '张三',
+                description: '华龙一号持续优化造价水平，海南二期初步设计概算下降2'
+            },{
+                code: 'D3',
+                importantTask: '推进重大军工项目，完成军品考核任务',
+                startTime: '2020/1/1',
+                endTime: '2020/10/1',
+                taskLeader: '张三',
+                description: '华龙一号持续优化造价水平，海南二期初步设计概算下降2',
+                children: [{
+                    planCode: 'D2-2-1',
+                    planLeader: '马冬梅',
+                    description: '配合中国核电和中核能源做好设计优化工作',
+                    startTime: '2020/1/1',
+                    endTime: '2020/10/1',
+                    orgs: '计划部'
+                },{
+                    planCode: 'D2-2-2',
+                    planLeader: '王二小',
+                    description: '配合中国核电和中核能源做好设计优化工作',
+                    startTime: '2020/1/1',
+                    endTime: '2020/10/1',
+                    orgs: '计划部'
+                }]
+            },{
+                code: 'D4',
+                importantTask: '推进重大军工项目，完成军品考核任务',
+                startTime: '2020/1/1',
+                endTime: '2020/10/1',
+                taskLeader: '张三',
+                description: '华龙一号持续优化造价水平，海南二期初步设计概算下降2',
+                children: [{
+                    planCode: 'D2-2-1',
+                    planLeader: '马冬梅',
+                    description: '配合中国核电和中核能源做好设计优化工作',
+                    startTime: '2020/1/1',
+                    endTime: '2020/10/1',
+                    orgs: '计划部'
+                },{
+                    planCode: 'D2-2-2',
+                    planLeader: '王二小',
+                    description: '配合中国核电和中核能源做好设计优化工作',
+                    startTime: '2020/1/1',
+                    endTime: '2020/10/1',
+                    orgs: '计划部'
+                }]
+            },{
+                code: 'D5',
+                importantTask: '推进重大军工项目，完成军品考核任务',
+                startTime: '2020/1/1',
+                endTime: '2020/10/1',
+                taskLeader: '张三',
+                description: '华龙一号持续优化造价水平，海南二期初步设计概算下降2'
+            }]
+            buildTable($('#table'), 'parent', tableColumns, tableData)
+        })
+
+        window.operateEvents = {
+            'click .addChild': function (e, value, row, index) {
+                layer.open({
+                    type: 2,
+                    title: '添加子项-子项计划',
+                    maxmin: true,
+                    shadeClose: true, //点击遮罩关闭层
+                    area : ['90%' , '90%'],
+                    content: 'add_child_form.html',
+                    success: function(layero, index) {//可选方法,用于设定弹出页面是否可编辑
+                        console.log("layero, index", layero, index)
+                        // var iframeWin = window[layero.find('iframe')[0]['name']];//得到iframe页的窗口对象
+                        // iframeWin.setData(selRow);//执行子页面写入数据方法
+                    }
+                });
+                
+                // alert('添加子项')
+                // $table.bootstrapTable('remove', {
+                //     field: 'id',
+                //     values: [row.id]
+                // })
+            }
+        }
+
+
+        function expandTable(row, $detail) {
+            const tableColumns = [{
+                title:'计划编号',
+                field: 'planCode',
+                align: 'center'
+            },{
+                title:'分管领导',
+                field: 'planLeader',
+                align: 'center'
+            },{
+                title:'计划描述',
+                field: 'description',
+                align: 'center'
+            },{
+                title:'计划开始时间',
+                field: 'startTime',
+                align: 'center'
+            },{
+                title:'计划结束时间',
+                field: 'endTime',
+                align: 'center'
+            },{
+                title:'配合单位',
+                field: 'orgs',
+                align: 'center'
+            }];
+            const tableData = row.children;
+            buildTable($detail.html('<table></table>').find('table'), 'child', tableColumns, tableData);
+        }
+
+
+
+
+        // $(document).ready(() => {
+        //     var $table = $('#table');
+        //     let tableData = [{
+
+        //     }]
+        //     tableData = [tableData, ...tableData, ...tableData]
+        //     $table.bootstrapTable({
+        //         data: tableData,
+        //         undefinedText: '-',
+        //         detailView: cells > 1,
+        //         onExpandRow: function (index, row, $detail) {
+        //             expandTable($detail, cells - 1)
+        //         },
+        //     });
+        // })
+
+        // function expandTable($detail, cells) {
+        //     buildTable($detail.html('<table></table>').find('table'), cells, 1)
+        // }
+
+        function add() {
+            var obj = $('#table');
+            obj.bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    code: 0,
+                    importantTask: '新增',
+                    startTime: '2020/1/1',
+                    endTime: '2020/10/1',
+                    taskLeader: '小新',
+                    description: '新增的'
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

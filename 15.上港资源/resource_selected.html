@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/resource_selected.css">
+    <link rel="stylesheet" href="js/layui/css/layui.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"> -->
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="上港资源" />
+    <meta name="description" content="上港资源" />
+    <title>上港资源-已选资源</title>
+</head>
+
+<body>
+    <script src="js/browser.min.js"></script>
+    <script src="js/browser-polyfill.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/layui/layui.all.js"></script>
+    <script type="text/babel">
+
+        let queryModel = {
+          pageIndex: 0, // 当前页码
+          pageSize: 10, // 每页显示数量
+          total: 0 // 总数
+        }
+
+        $(document).ready(() => {
+            loadSelecedData()
+        })
+        
+        // 字段数据查询
+        function loadSelecedData (){
+          // $.ajax({
+          //       url: '',
+          //       type: 'GET',
+          //       dataType: "json",
+          //       data: {
+          //           'pageIndex': queryModel.pageIndex,
+          //           'pageSize': queryModel.pageSize,
+          //           'keywords': queryModel.keywords,
+          //       },
+          //       success: function (res) {
+          //           // 结果数据数量
+          //           queryModel.total = res.total || 0
+          //           selectedPaginationInit()
+          //           selectedTableInit(res.datas, '0')
+          //       },
+          //       error: function (err) {
+          //           //请求出错处理
+          //           console.log('err ==>', err);
+          //       }
+          //   })
+
+          let data = [{
+                  id: '1',
+                  sort: '1',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '1',
+                  sort: '1',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '2',
+                  sort: '2',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '3',
+                  sort: '3',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }, {
+                  id: '4',
+                  sort: '4',
+                  theme: '海运',
+                  system: '海巡系统',
+                  table_name: 'HX_TABLE',
+                  table_zh_name: '航线信息表',
+                  field_name: 'HXMC',
+                  field_description: '航线名称',
+                  field_type: 'Chart',
+                  share_level: '1',
+                }]
+          
+          // 结果数据数量
+          // queryModel.total = res.total || 0
+          queryModel.total = data.length
+          selectedPaginationInit()
+          selectedTableInit(data)
+        }
+        // 字段列表渲染
+        function selectedTableInit (data){
+          layui.use('table', function () {
+                let table = layui.table;
+                // 当前页数据
+                table.render({
+                    elem: '#selected-table',
+                    limit: 15,
+                    // page: true,
+                    cols: [
+                        [{
+                            title: '序号',
+                            type:'numbers'
+                        }, {
+                            field: 'theme',
+                            title: '所属主题',
+                            templet: d => {
+                                return `<span style="color: #F5882D">${d.theme}</span>`
+                            }
+                        }, {
+                            field: 'system',
+                            title: '所属系统',
+                            sort: false
+                        }, {
+                            field: 'table_name',
+                            title: '表名',
+                            templet: d => {
+                                return `<span style="color: #F5882D">${d.table_name}</span>`
+                            }
+                        }, {
+                            field: 'table_zh_name',
+                            title: '表中文名',
+                            align: 'right',
+                            templet: d => {
+                                return `<span style="color: #F5882D">${d.table_zh_name}</span>`
+                            }
+                        }, {
+                            field: 'field_name',
+                            title: '字段名称',
+                            sort: false
+                        }, {
+                            field: 'field_description',
+                            title: '字段中文描述',
+                            templet: d => {
+                                return `<span style="color: #F5882D">${d.field_description}</span>`
+                            }
+                        }, {
+                            field: 'field_type',
+                            title: '字段类型',
+                            sort: false
+                        }, {
+                            field: 'share_level',
+                            title: '共享级别',
+                            sort: false
+                        }]
+                    ],
+                    data: data || [],
+                    done: function (res, curr, count) {
+                      // selectedPaginationInit()
+                    }
+                });
+            });
+          }
+        // 字段列表分页检索
+        function selectedPaginationInit (){
+            layui.use('laypage', function () {
+                let laypage = layui.laypage;
+                laypage.render({
+                    elem: 'selected-pages',
+                    count: queryModel.total,
+                    limit: queryModel.pageSize,
+                    curr: queryModel.pageIndex + 1,
+                    layout: ['prev', 'page', 'next', 'skip'],
+                    prev: '上一页',
+                    next: '下一页',
+                    skip: 'Go',
+                    jump: function (obj, first) {
+                        // 当前页
+                        queryModel.pageIndex = obj.curr - 1
+                        // console.log(obj.limit); //得到每页显示的条数
+                        //首次不执行
+                        if (!first) {
+                            // 加载当前页数据
+                            console.log('************************', queryModel.pageIndex)
+                            loadSelecedData()
+                            //do something
+                        }
+                    }
+                });
+            });
+          }
+    
+    </script>
+    <div class="resource-selected clearfix">
+      <div class="action-bar">
+        <div class="label-line pull-left">关联的字段</div>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal">
+          <i class="iconfont">&#xe615;</i> 移除资源
+        </button>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal">
+          <i class="iconfont">&#xe601;</i> 返回
+        </button>
+      </div>
+      <div class="selected-table-wrapper">
+        <!-- <div class="label-line">关联的字段</div> -->
+        <!-- <div class="search-bar clearfix">
+          <div class="search-row pull-left">
+              <input type="text" name="keyword" value="" placeholder="字段中文名称">
+              <div class="search-btn">
+                  <span>检索</span>
+                  <i class="iconfont">&#xe690;</i>
+              </div>
+          </div>
+        </div> -->
+        <table id="selected-table" lay-filter="selected-table"></table>
+        <div id="selected-pages"></div>
+      </div>
+    </div>
+</body>
+
+</html>

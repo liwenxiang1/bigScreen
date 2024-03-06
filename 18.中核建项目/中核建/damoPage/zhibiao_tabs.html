@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指标详情</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <style type="text/css">
+        p,
+        ul,
+        li {
+            margin: 0;
+            list-style: none;
+        }
+
+        h2 {
+            text-align: center;
+            /* margin: 20px 0 0 0; */
+            font-weight: 500;
+        }
+        html,
+        body {
+            height: 100%;
+        }
+        .zhibiao-tabs {
+            height: 100%;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .top {
+            position: absolute;
+            top: 0;
+            left: 15px;
+            width: calc(100% - 30px);
+            padding-top: 20px;
+            background-color: #fff;
+            z-index: 9;
+        }
+
+        .content {
+            height: 100%;
+            padding: 151px 15px 0 15px;
+            overflow: auto;
+        }
+
+        .data-tabs {
+            margin: 15px 0 0 0;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+        }
+
+        .data-tabs .tab {
+            position: relative;
+            float: left;
+            margin: 0 60px 0 0;
+            padding: 0 5px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #4D4D4D;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        .data-tabs .tab::after {
+            position: absolute;
+            content: '';
+            left: 0;
+            bottom: 2px;
+            width: 0;
+            height: 3px;
+            background-color: #fff;
+            -webkit-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .data-tabs .tab:hover {
+            color: #03A9F4;
+        }
+
+        .data-tabs .tab.active {
+            color: #03A9F4;
+        }
+
+        .data-tabs .tab.active::after {
+            width: 100%;
+            background-color: #03A9F4;
+        }
+
+        #item1 {
+            margin: 15px 0;
+        }
+
+        #item1 #myChart1,
+        #item2 #myChart2 {
+            margin: 15px 0;
+            width: 100%;
+            height: 400px;
+        }
+
+        #item3 #myChart3 {
+            margin: 15px 0;
+            width: 100%;
+            height: 500px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+        }
+
+        #item2,
+        #item3,
+        #item4 {
+            display: none;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="zhibiao-tabs container-fluid animated fadeInRight search-content">
+        <div class="top">
+            <h2>后面11个指标同理</h2>
+            <ul class="data-tabs shadow-sm clearfix">
+                <li class="tab active">指标概述</li>
+                <li class="tab">指标详情</li>
+                <li class="tab">指标分解</li>
+                <li class="tab">十年增长计划</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="item1">
+                <table id="table"></table>
+                <div id="myChart1"></div>
+                <div class="info-area clearfix">
+                    <div class="info-item description">
+                        <p class="info-title t-tag">完成情况说明</p>
+                        <p class="info">
+                            描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明
+                        </p>
+                    </div>
+                    <div class="info-item measures">
+                        <p class="info-title t-tag">改进措施</p>
+                        <p class="info">
+                            改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="item2">
+                <div id="myChart2"></div>
+                <table id="table2"></table>
+            </div>
+            <div id="item3">
+                <table id="table3"></table>
+                <div id="myChart3"></div>
+            </div>
+            <div id="item4"></div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/plugins/layer/layer.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts-en.min.js"></script> -->
+    <script src="../js/plugins/echarts/echarts.min.js"></script>
+    <script src="common.js"></script>
+    <script type="text/javascript">
+        const $item1 = $('#item1')
+        const $item2 = $('#item2')
+        const $item3 = $('#item3')
+        const $item4 = $('#item4')
+        $(function () {
+            dataTabInit()
+            // 默认显示第一个tab页
+            $('.data-tabs .active').trigger("click");
+        });
+
+        function dataTabInit() {
+            $('.zhibiao-tabs .data-tabs').on('click', '.tab', function (e) {
+                const index = $(this).index()
+                tabChange(index + 1)
+                const isActive = $(e.currentTarget).hasClass('active')
+                if (isActive) {
+                    return
+                } else {
+                    $('.zhibiao-tabs .data-tabs .active').removeClass('active')
+                    $(e.currentTarget).addClass('active')
+                }
+            })
+        }
+
+        function hideAll() {
+            for (let i = 1; i < 5; i++) {
+                $('#item' + i).css('display', 'none')
+            }
+        }
+
+        function tabChange(index) {
+            hideAll()
+            $('#item' + index).css('display', 'block')
+            if (index === 1) {
+                table1Init()
+                chart1Init()
+            } else if (index === 2) {
+                table2Init()
+                chart2Init()
+            } else if (index === 3) {
+                table3Init()
+                chart3Init()
+            } else {
+                // table4Init()
+                // chart4Init()
+            }
+        }
+
+        function table1Init() {
+            const $table = $('#table')
+            const tableColumns = [{
+                title: '指标编号',
+                field: 'code',
+                align: 'center',
+            }, {
+                title: '指标名称',
+                field: 'name',
+                align: 'center',
+                formatter: (value, row, index) => {
+                    return '<a class="col-name" href="javascript:void(0)" onclick="getInfo('+value+')" title="点击查看详情">'+ value + '</a>'
+                }
+            }, {
+                title: '更新频率',
+                field: 'frequency',
+                align: 'center',
+            }, {
+                title: '单位',
+                field: 'unit',
+                align: 'center',
+            }, {
+                title: '去年完成',
+                field: 'lastyear',
+                align: 'center',
+            }, {
+                title: '全年计划',
+                field: 'fullyear',
+                align: 'center',
+            }, {
+                title: '当前完成',
+                field: 'current',
+                align: 'center',
+            }, {
+                title: '全年计划完成率',
+                field: 'rote',
+                align: 'center',
+            }]
+            const tableData = [{
+                id: '1',
+                code: 'E1',
+                name: '营业收入',
+                frequency: '月',
+                unit: '万元',
+                lastyear: '44,294.292.00',
+                fullyear: '227,400,231.00',
+                current: '82,923,234.00',
+                rote: '45.34%'
+            }]
+            $table.bootstrapTable({
+                columns: tableColumns,
+                data: tableData
+            })
+        }
+
+        function table2Init() {
+            const $table = $('#table2')
+            const tableColumns = [{
+                title: '序号',
+                align: 'center',
+                formatter: thIndex
+            }, {
+                title: '单位名称',
+                field: 'orgName',
+                align: 'center',
+                formatter: (value, row, index) => {
+                    return '<span style="color:#03A9F4">' + value + '</span>'
+                },
+                footerFormatter: (data) => {
+                    return '<span style="font-size:14px;font-weight:500">总计</span>'
+                }
+            }, {
+                title: '年度计划（万元）',
+                field: 'ndjh',
+                align: 'center',
+                footerFormatter: function (data) {
+                    var field = this.field
+                    return data.map(function (row) {
+                        return row[field]
+                    }).reduce(function (sum, i) {
+                        return sum + i
+                    }, 0)
+                }
+            }, {
+                title: '累计月度分析',
+                field: 'ljydfx',
+                align: 'center',
+                footerFormatter: function (data) {
+                    var field = this.field
+                    return data.map(function (row) {
+                        return row[field]
+                    }).reduce(function (sum, i) {
+                        return sum + i
+                    }, 0)
+                }
+            }, {
+                title: '本月实际',
+                field: 'bysj',
+                align: 'center',
+                footerFormatter: function (data) {
+                    var field = this.field
+                    return data.map(function (row) {
+                        return row[field]
+                    }).reduce(function (sum, i) {
+                        return sum + i
+                    }, 0)
+                }
+            }, {
+                title: '累计月度完成',
+                field: 'ljydwc',
+                align: 'center',
+                footerFormatter: function (data) {
+                    var field = this.field
+                    return data.map(function (row) {
+                        return row[field]
+                    }).reduce(function (sum, i) {
+                        return sum + i
+                    }, 0)
+                }
+            }, {
+                title: '累计月度完成率',
+                field: 'ljydwcl',
+                align: 'center',
+            }, {
+                title: '月累计计划排名',
+                field: 'yljjhpm',
+                align: 'center',
+            }, {
+                title: '全年计划完成率',
+                field: 'qnjhwcl',
+                align: 'center',
+            }, {
+                title: '同比',
+                field: 'tongbi',
+                align: 'center',
+            }, {
+                title: '同比计划排名',
+                field: 'tbjhpm',
+                align: 'center',
+            }]
+            const tableData = [{
+                id: '1',
+                orgName: '中核二二',
+                ndjh: 299239120.00,
+                ljydfx: 34233123.00,
+                bysj: 1232121.00,
+                ljydwc: 35234332.00,
+                ljydwcl: '110%',
+                yljjhpm: '1',
+                qnjhwcl: '34%',
+                tongbi: '98%',
+                tbjhpm: '2'
+            }, {
+                id: '1',
+                orgName: '中核二三',
+                ndjh: 299239120.00,
+                ljydfx: 34233123.00,
+                bysj: 1232121.00,
+                ljydwc: 35234332.00,
+                ljydwcl: '110%',
+                yljjhpm: '1',
+                qnjhwcl: '34%',
+                tongbi: '98%',
+                tbjhpm: '2'
+            }, {
+                id: '1',
+                orgName: '中核二四',
+                ndjh: 299239120.00,
+                ljydfx: 34233123.00,
+                bysj: 1232121.00,
+                ljydwc: 35234332.00,
+                ljydwcl: '110%',
+                yljjhpm: '1',
+                qnjhwcl: '34%',
+                tongbi: '98%',
+                tbjhpm: '2'
+            }, {
+                id: '1',
+                orgName: '中核第五',
+                ndjh: 299239120.00,
+                ljydfx: 34233123.00,
+                bysj: 1232121.00,
+                ljydwc: 35234332.00,
+                ljydwcl: '110%',
+                yljjhpm: '1',
+                qnjhwcl: '34%',
+                tongbi: '98%',
+                tbjhpm: '2'
+            }, {
+                id: '1',
+                orgName: '中核华兴',
+                ndjh: 299239120.00,
+                ljydfx: 34233123.00,
+                bysj: 1232121.00,
+                ljydwc: 35234332.00,
+                ljydwcl: '110%',
+                yljjhpm: '1',
+                qnjhwcl: '34%',
+                tongbi: '98%',
+                tbjhpm: '2'
+            }]
+            $table.bootstrapTable({
+                columns: tableColumns,
+                data: tableData,
+                showFooter: true
+            });
+        }
+
+        function table3Init() {
+            const $table = $('#table3')
+            const tableColumns = [{
+                title: '指标编号',
+                field: 'code',
+                align: 'center',
+            }, {
+                title: '指标名称',
+                field: 'name',
+                align: 'center',
+                formatter: (value, row, index) => {
+                    return '<a class="col-name" href="javascript:void(0)" onclick="getInfo(' + value + ')" title="点击查看详情">' + value + '</a>'
+                }
+            }, {
+                title: '更新频率',
+                field: 'frequency',
+                align: 'center',
+            }, {
+                title: '单位',
+                field: 'unit',
+                align: 'center',
+            }, {
+                title: '去年完成',
+                field: 'lastyear',
+                align: 'center',
+            }, {
+                title: '全年计划',
+                field: 'fullyear',
+                align: 'center',
+            }, {
+                title: '当前完成',
+                field: 'current',
+                align: 'center',
+            }, {
+                title: '全年计划完成率',
+                field: 'rote',
+                align: 'center',
+            }]
+            const tableData = [{
+                id: '1',
+                code: 'E1',
+                name: '营业收入',
+                frequency: '月',
+                unit: '万元',
+                lastyear: '44,294.292.00',
+                fullyear: '227,400,231.00',
+                current: '82,923,234.00',
+                rote: '45.34%'
+            }]
+            $table.bootstrapTable({
+                columns: tableColumns,
+                data: tableData
+            })
+        }
+
+        function getInfo(name) {
+            layer.open({
+                type: 2,
+                title: name,
+                maxmin: true,
+                shadeClose: true, //点击遮罩关闭层
+                area: ['90%', '90%'],
+                content: '',
+                success: function (layero, index) { //可选方法,用于设定弹出页面是否可编辑
+                    console.log("layero, index", layero, index)
+                    // var iframeWin = window[layero.find('iframe')[0]['name']];//得到iframe页的窗口对象
+                    // iframeWin.setData(selRow);//执行子页面写入数据方法
+                }
+            });
+        }
+
+        function chart1Init() {
+            const myChart1 = echarts.init(document.getElementById('myChart1'));
+            myChart1.setOption({
+                color: ['#27727b', '#22c3aa', '#59c4e6', '#ffb248', '#d87a80', '#c4ebad'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['累计计划值', '累计实际值', '当月计划值', '当月累计值', '去年同期值']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+                }],
+                yAxis: [{
+                    type: 'value',
+                    name: '万元'
+                }],
+                series: [{
+                        name: '累计计划值',
+                        type: 'bar',
+                        data: [320, 332, 301, 334, 390, 330, 320, 132, 101, 90, 230, 210]
+                    },
+                    {
+                        name: '累计实际值',
+                        type: 'bar',
+                        data: [120, 132, 101, 134, 90, 230, 210, 110, 320, 210, 90, 80]
+                    },
+                    {
+                        name: '当月计划值',
+                        type: 'bar',
+                        data: [220, 182, 191, 234, 290, 330, 310, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name: '当月累计值',
+                        type: 'bar',
+                        data: [150, 232, 201, 154, 190, 330, 182, 191, 234, 290, 330, 310, 410]
+                    },
+                    {
+                        name: '去年同期值',
+                        type: 'bar',
+                        data: [862, 1018, 964, 1026, 1679, 1600, 1570, 1000, 1200, 1100, 800, 900]
+                    }
+                ]
+            })
+
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                myChart1.resize()
+            });
+        }
+
+        function chart2Init() {
+            const myChart2 = echarts.init(document.getElementById('myChart2'));
+            myChart2.setOption({
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                grid: {
+                    x: 0,
+                    y: 70,
+                    height: '75%',
+                    containLabel: true
+                },
+                legend: {
+                    show: false
+                },
+                xAxis: {
+                    type: 'category',
+                    axisLabel: {
+                        color: '#333',
+                        fontWeight: 'bold'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: "#ccc"
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    data: ['中核二二', '中核二三', '中核二四', '中核第五', '中核华兴']
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '万元',
+                    axisLabel: {
+                        color: '#333',
+                        fontWeight: 'bold'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: "#ccc"
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                },
+                series: [{
+                    name: '营业收入值',
+                    data: [60, 100, 80, 20, 30, 70, 80],
+                    type: 'bar',
+                    barMaxWidth: 35,
+                    color: '#2ec7c9',
+                    markLine: {
+                        data: [{
+                            type: 'average',
+                            name: '平均值'
+                        }],
+                        lineStyle: {
+                            color: '#5ab1ef'
+                        }
+                    }
+                }]
+            })
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                myChart2.resize()
+            });
+        }
+
+        function chart3Init() {
+            const myChart3 = echarts.init(document.getElementById('myChart3'));
+            const treeData = [{
+                name: "父指标",
+                label: {
+                    backgroundColor: '#5accff',
+                    borderColor: '#49A9EE'
+                },
+                children: [{ //子集
+                    name: "子指标01",
+                    children: [{ //子集
+                        name: "子指标01-01"
+                    }]
+                }, {
+                    name: "子指标02",
+                    children: [{
+                        name: "子指标02-01"
+                    }, {
+                        name: "子指标02-02"
+                    }, {
+                        name: "子指标02-03"
+                    }]
+                }, {
+                    name: "子指标03",
+                    children: [{
+                        name: "子指标03-01"
+                    }]
+                }]
+            }];
+            myChart3.setOption({
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{b}'
+                },
+                title: {
+                    text: '指标关系图'
+                },
+                backgroundColor: '#f9f9f9',
+                series: [{
+                    type: 'tree',
+                    name: '自然资源厅',
+                    edgeShape: 'polyline', //链接线是折现还是曲线
+                    data: treeData,
+                    top: '1%',
+                    left: '1%',
+                    symbolSize: 1,
+                    initialTreeDepth: 10,
+                    label: {
+                        normal: {
+                            position: 'center',
+                            verticalAlign: 'middle',
+                            align: 'left',
+                            color: '#fff',
+                            padding: 3,
+                            borderRadius: 5,
+                            borderWidth: 2,
+                            backgroundColor: '#99d97c',
+                            borderColor: '#2ED97C',
+                            formatter: [
+                                '{box|{b}}'
+                            ].join('\n'),
+                            rich: {
+                                box: {
+                                    height: 30,
+                                    fontSize: 16,
+                                    color: '#fff',
+                                    padding: [5, 10],
+                                    align: 'center'
+                                }
+                            }
+                        }
+                    },
+                    leaves: {
+                        label: {
+                            normal: {
+                                position: 'center',
+                                verticalAlign: 'middle',
+                                align: 'left',
+                                backgroundColor: '#f3857c',
+                                borderColor: '#F3147C',
+                                formatter: [
+                                    '{box|{b}}'
+                                ].join('\n'),
+                                rich: {
+                                    box: {
+                                        height: 18,
+                                        color: '#fff',
+                                        padding: [5, 10],
+                                        align: 'center'
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    expandAndCollapse: true,
+                    animationDuration: 550,
+                    animationDurationUpdate: 750
+                }]
+            })
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                myChart3.resize()
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 1000,
+	"data": [
+		{
+			"id": 10000,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 1,
+			"type": 1
+		},
+		{
+			"id": 10001,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 1,
+			"type": 1
+		},
+		{
+			"id": 10002,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10003,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10004,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10001,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 1,
+			"type": 1
+		},
+		{
+			"id": 10002,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10003,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10004,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10001,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 1,
+			"type": 1
+		},
+		{
+			"id": 10002,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10003,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10004,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10001,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 1,
+			"type": 1
+		},
+		{
+			"id": 10002,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10003,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10004,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10001,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 1,
+			"type": 1
+		},
+		{
+			"id": 10002,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10003,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10004,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10001,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 1,
+			"type": 1
+		},
+		{
+			"id": 10002,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10003,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		},
+		{
+			"id": 10004,
+			"username": "赵晓霞",
+			"code": "123321",
+			"phone": "13678789898",
+			"status": 0,
+			"type": 2
+		}
+	]
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/baseinfo.css">
+    <link href="" rel="stylesheet">
+    <meta name="author" content="wubo, boommax8941@gmail.com"/>
+    <meta name="keywords" content="科协应用平台"/>
+    <title>基本信息</title>
+</head>
+<body onload="init()">
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        function init(){
+            $("#orgname-inputs").bind('input propertychange',function(e){
+                if($(this).val() !== ''){
+                    $('#code-line').css('display', 'block')
+                } else {
+                    $('#code-line').css('display', 'none')
+                }
+            })
+        }
+        function saveBaseInfo(){
+            window.location.href = '/index.html'
+        }
+    </script>
+    <div class="baseinfo platform">
+        <div class="navbar clearfix">
+            <img class="navbar-back" src="./static/back.png" onclick="goback()" alt="">
+            <p class="navbar-title">基本信息</p>
+        </div>
+        <div class="content">
+            <div class="user-info clearfix">
+                <p class="name">
+                    <span class="label">填报人：</span>
+                    <span class="value">张某某</span>
+                </p>
+                <p class="time">
+                    <span class="label">填报时间：</span>
+                    <span class="value">2020-04-10 11:30</span>
+                </p>
+            </div>
+            <div class="li-block">
+                <span class="label">单位名称</span>
+                <input id="orgname-inputs" type="text" value="" placeholder="请输入关键字">
+            </div>
+            <div id="code-line" class="code-line">
+                <span class="label">单位编码</span>
+                <input type="text" value="100101" placeholder="请输入关键字" readonly>
+            </div>
+            <div class="li-block">
+                <span class="label">受访对象</span>
+                <input type="text" value="" placeholder="请输入受访对象">
+            </div>
+            <ul class="list">
+                <li class="list-item" onclick="linkTo('publicity.html')">
+                    <div class="icon">
+                        <img src="./static/xuanchuanpingtai.png" alt="">
+                    </div>
+                    <p class="label">宣传平台</p>
+                    <img class="arrow-right" src="./static/arrow-right.png" alt="">
+                </li>
+                <li class="list-item" onclick="linkTo('application.html')">
+                    <div class="icon">
+                        <img src="./static/yingyongpingtai.png" alt="">
+                    </div>
+                    <p class="label">应用平台</p>
+                    <img class="arrow-right"  src="./static/arrow-right.png" alt="">
+                </li>
+                <li class="list-item" onclick="linkTo('cyber_security.html')">
+                    <div class="icon">
+                        <img src="./static/wangluoanquan.png" alt="">
+                    </div>
+                    <p class="label">网络安全</p>
+                    <img class="arrow-right"  src="./static/arrow-right.png" alt="">
+                </li>
+                <li class="list-item" onclick="linkTo('basic_settings.html')">
+                    <div class="icon">
+                        <img src="./static/jichushezhi.png" alt="">
+                    </div>
+                    <p class="label">基础设置</p>
+                    <img class="arrow-right"  src="./static/arrow-right.png" alt="">
+                </li>
+                <li class="list-item" onclick="linkTo('informatization_team.html')">
+                    <div class="icon">
+                        <img src="./static/xinxihuaduiwu.png" alt="">
+                    </div>
+                    <p class="label">信息化队伍</p>
+                    <img class="arrow-right"  src="./static/arrow-right.png" alt="">
+                </li>
+                <li class="list-item" onclick="linkTo('information_needs.html')">
+                    <div class="icon">
+                        <img src="./static/XINXIHUAXUQIU.png" alt="">
+                    </div>
+                    <p class="label">信息化需求</p>
+                    <img class="arrow-right"  src="./static/arrow-right.png" alt="">
+                </li>
+            </ul>
+            <div class="save-button" onclick="saveBaseInfo()">保存</div>
+        </div>
+    </div>
+</body>
+</html>

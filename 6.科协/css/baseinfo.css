@@ -1,0 +1,129 @@
+.platform {
+    width: 100%;
+    height: auto;
+}
+
+.platform .content {
+    width: 100%;
+    padding: 0.5rem 0.15rem;
+}
+
+.platform .content .user-info {
+    width: 100%;
+    padding: 0 0.3rem;
+    font-size: 0.24rem;
+    color: #6F6F6F;
+}
+
+.platform .content .user-info .name,
+.platform .content .user-info .time {
+    float: left;
+    width: 50%;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.platform .content .li-block {
+    width: 100%;
+    height: 1rem;
+    margin: 0.3rem 0 0 0;
+    padding: 0.3rem 0.23rem;
+    line-height: 0.4rem;
+    font-size: 0.28rem;
+    background-color: #fff;
+    border-radius: 0.05rem;
+}
+.platform .content .code-line {
+    display: none;
+    width: 100%;
+    height: 1rem;
+    margin: 0;
+    padding: 0.3rem 0.23rem;
+    line-height: 0.4rem;
+    font-size: 0.28rem;
+    background-color: #E9E9E9;
+    border-radius: 0.05rem;
+}
+
+.platform .content .li-block .label,
+.platform .content .code-line .label {
+    width: 1.2rem;
+    margin-right: 0.1rem;
+    color: #333;
+    font-size: 0.28rem;
+    font-weight: 500;
+}
+
+.platform .content .li-block input,
+.platform .content .code-line input {
+    width: calc(100% - 1.4rem);
+    height: 100%;
+    line-height: 0.4rem;
+    color: #333;
+    font-size: 0.26rem;
+    vertical-align:baseline;
+}
+
+.platform .content .list {
+    width: 100%;
+    margin: 0.3rem 0 0 0;
+    background-color: #fff;
+    border-radius: 0.05rem;
+}
+.platform .content .list li {
+    position: relative;
+    height: 1rem;
+    width: 100%;
+    padding: 0 0.3rem 0 0.18rem;
+    font-size: 0.28rem;
+    color: #333;
+    text-align: left;
+    transition: all 0.3s;
+}
+.platform .content .list li::after {
+    content: "";
+    position: absolute;
+    width: calc(100% - 0.48rem);
+    height: 0;
+    left: 0.18rem;
+    bottom: 0;
+    border-bottom: 1px solid #E6E6E6;
+}
+.platform .content .list li:last-of-type::after {
+    border-bottom: none;
+}
+.platform .content .list li .icon {
+    float: left;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin: 0.2rem 0;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.platform .content .list li .icon img {
+    width: 100%;
+    height: 100%;
+}
+.platform .content .list li .label {
+    float: left;
+    width: 3rem;
+    margin: 0 0 0 0.1rem;
+    line-height: 1rem;
+}
+.platform .content .list li .arrow-right {
+    float: right;
+    height: 0.26rem;
+    margin: 0.37rem 0;
+}
+/* .platform .content .list li::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid #E6E6E6;
+} */

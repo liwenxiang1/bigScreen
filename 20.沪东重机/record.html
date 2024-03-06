@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>沪东重机</title>
+	<link rel="stylesheet" href="./mainview/layui/css/layui.css">
+	<link rel="stylesheet" href="./mainview/css/index.css">
+</head>
+
+<body>
+
+	<div>
+		<div class="layui-row leftNav">
+			<div class="rightContent">
+				<div class="layui-row pr25">
+					<div class="wd5">
+						<div class="todo bg-FF5621 ">
+							<div class="todoTitle">
+								填报记录
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/fill.png">
+							</div>
+							<div class="todoNum">603</div>
+						</div>
+					</div>
+
+					<div class="wd5">
+						<div class="todo bg-29447F">
+							<div class="todoTitle">
+								任务总数
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/programme.png">
+							</div>
+							<div class="todoNum">1569</div>
+						</div>
+					</div>
+
+					<div class="wd5">
+						<div class="todo bg-B5A151">
+							<div class="todoTitle">
+								提前
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/clock.png">
+							</div>
+							<div class="todoNum">62</div>
+						</div>
+					</div>
+
+					<div class="wd5">
+						<div class="todo bg-29447F">
+							<div class="todoTitle">
+								正常
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/clock.png">
+							</div>
+							<div class="todoNum">1483</div>
+						</div>
+					</div>
+
+					<div class="wd5 pr0">
+						<div class="todo bg-E31A1F">
+							<div class="todoTitle">
+								逾期
+							</div>
+							<div class="num">
+								<img class="numIn" src="./mainview/images/countdown.png">
+							</div>
+							<div class="todoNum">24</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-row">
+					<div class="layui-col-xs4 border-168">
+						<div class="label bg-0C1C34">
+							<div id="recordDataList">
+							</div>
+						</div>
+					</div>
+					<div class="layui-col-xs8">
+						<div class="layui-col-xs4 border-168">
+							<div class="layui-col-xs12 node">
+								<div class="node-title">重要节点</div>
+								<div class="node-label">
+									<div class="node-label-item">
+										<div class="node-label-item-color bg-green"></div>
+										<div class="node-label-item-name">提前<span class="color-green">14</span></div>
+									</div>
+									<div class="node-label-item">
+										<div class="node-label-item-color bg-blue"></div>
+										<div class="node-label-item-name">正常<span class="color-blue">14</span></div>
+									</div>
+									<div class="node-label-item">
+										<div class="node-label-item-color bg-E31A1F"></div>
+										<div class="node-label-item-name">逾期<span class="color-E31A1F">14</span></div>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+							<div class="node-content">
+								<div id="flightDataList">
+								</div>
+							</div>
+						</div>
+						<div class="layui-col-xs8 border-168 height100">
+							<div id="recordDiv"></div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-row">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./mainview/js/template-web.js"></script>
+	<script src="./mainview/js/jquery1.8.1.min.js"></script>
+	<script src="./mainview/js/echarts.min.js"></script>
+	<script src="./mainview/js/recordEcharts.js"></script>
+	<script src="./mainview/layui/layui.js"></script>
+	<script id="recordDataList-template" type="text/html">
+		{{each data}}
+		<div class="label-item-record">
+			<div class="label-img-record">
+				<img class="" src="./mainview/images/record.png">
+			</div>
+			<div class="label-title-record">
+				<div class="label-title-record-name">{{$value.name}}<span><img
+							src="./mainview/images/tips.png">任务总数：{{$value.count}}</span></div>
+				<div class="label-title-record-strip">
+					<div class="label-title-record-content">
+						完成度：{{$value.currentProgress}}/{{$value.AllProgress}}
+					</div>
+					<div class="label-title-record-bg"></div>
+					<div class="label-title-record-color" style="width: {{$value.currentProgress/$value.AllProgress*100+'%'}}">
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+	<script id="flightDataList-template" type="text/html">
+		{{each data}}
+		<div class="node-content-item">
+			<span class="color-green fl">{{$value[4]}}</span>
+			<span class="fl">{{$value[5]}}</span>
+			<span class="color-E31A1F fr">{{$value[7]}}</span>
+			<span class="fr">/</span>
+			<span class="color-green fr">{{$value[6]}}</span>
+		</div>
+		{{/each}}
+	</script>
+	<script>
+		//'开始时间', '当前进度', '计划结束时间','序号','名称','当前进度数量','全部数量'
+		var flightData = [
+			["2020-1-1", "2020-1-2", "2020-2-4", "1.1", "施工准备", "0", "5"],
+			["2020-1-1", "2020-1-2", "2020-1-10", "1.2", "桩基施工", "2", "5"],
+			["2020-1-1", "2020-1-20", "2020-1-31", "1.3", "现浇结构施工", "0", "5"],
+			["2020-2-1", "2020-4-30", "2020-4-30", "1.4", "满水试验", "10", "50"],
+			["2020-5-1", "2020-5-31", "2020-6-30", "1.5", "室外总体施工", "10", "15"],
+			["2020-6-1", "2020-6-30", "2020-7-15", "1.6", "挖土施工", "3", "13"],
+			["2020-7-1", "2020-7-15", "2020-7-23", "1.7", "降水施工", "0", "5"],
+			["2020-7-16", "2020-7-31", "2020-9-23", "1.8", "预制结构施工", "12", "25"],
+			["2020-8-1", "2020-8-31", "2020-10-23", "1.9", "具备通水条件", "0", "5"],
+		]
+		for (let index = 0; index < flightData.length; index++) {
+			flightData[index].unshift(22 - index)
+		}
+		let flightDataList = template('flightDataList-template', {
+			data: flightData
+		})
+		$('#flightDataList').append(flightDataList);
+		var recordData = [{
+			name: 'ZYSQ1.1标',
+			count: '150',
+			currentProgress: '50',
+			AllProgress: '100',
+		}, {
+			name: 'ZYSQ1.2标',
+			count: '250',
+			currentProgress: '20',
+			AllProgress: '100',
+		}, {
+			name: 'ZYSQ1.3标',
+			count: '350',
+			currentProgress: '70',
+			AllProgress: '100',
+		}, {
+			name: 'ZYSQ1.4标',
+			count: '170',
+			currentProgress: '30',
+			AllProgress: '100',
+		}, {
+			name: 'ZYSQ1.5标',
+			count: '190',
+			currentProgress: '10',
+			AllProgress: '100',
+		}, ]
+		let recordDataList = template('recordDataList-template', {
+			data: recordData
+		})
+		$('#recordDataList').append(recordDataList);
+
+
+		layui.use(function () {
+			var layer = layui.layer,
+				form = layui.form,
+				laypage = layui.laypage,
+				element = layui.element,
+				laydate = layui.laydate,
+				util = layui.util;
+			radarInit()
+		});
+	</script>
+</body>
+
+</html>

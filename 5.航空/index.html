@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/page.css">
+		<style>
+			body {
+				font-family: "microsoft yahei";
+			}
+		</style>
+	</head>
+	<body>
+		<div class="body">
+			<div class="title">八部流程统一入口</div>
+			<div class="header">
+				<div class="ovetop">
+					<img class="fL imgIcon" src="./icon/img15.png" alt="">
+					<div class="fL colorBlue">待办事项<span style="color: #929292;">（共<span style="color: #054e99;font-size: 20px;"> 15
+							</span>条）</span></div>
+					<a href="">
+						<div class="fR colorBlue">更多>></div>
+					</a>
+				</div>
+
+				<div style="padding: 10px 2px;">
+					<table border="0" cellspacing="0" style="width: 100%;" rules="rows">
+						<tr style="text-align: center;background: #eceff4;">
+							<td style="width: 10%;">序号</td>
+							<td style="width: 25%;">流程名称</td>
+							<td style="width: 25%;">环节名称</td>
+							<td style="width: 20%;">创建日期</td>
+							<td style="width: 20%;">操作</td>
+						</tr>
+
+						<tr>
+							<td style="text-align: center;">1</td>
+							<td>row 2, cell 2</td>
+							<td>row 2, cell 1</td>
+							<td>row 2, cell 2</td>
+							<td><a style="text-decoration: none;color: #054e99;" href=""><img class="zhixing" src="./images/start.png" alt="">
+									执行</a></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;">1</td>
+							<td>row 2, cell 2</td>
+							<td>row 2, cell 1</td>
+							<td>row 2, cell 2</td>
+							<td><a style="text-decoration: none;color: #054e99;" href=""><img class="zhixing" src="./images/start.png" alt="">
+									执行</a></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;">1</td>
+							<td>row 2, cell 2</td>
+							<td>row 2, cell 1</td>
+							<td>row 2, cell 2</td>
+							<td><a style="text-decoration: none;color: #054e99;" href=""><img class="zhixing" src="./images/start.png" alt="">
+									执行</a></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;">1</td>
+							<td>row 2, cell 2</td>
+							<td>row 2, cell 1</td>
+							<td>row 2, cell 2</td>
+							<td><a style="text-decoration: none;color: #054e99;" href=""><img class="zhixing" src="./images/start.png" alt="">
+									执行</a></td>
+						</tr>
+						<tr>
+							<td style="text-align: center;">1</td>
+							<td>row 2, cell 2</td>
+							<td>row 2, cell 1</td>
+							<td>row 2, cell 2</td>
+							<td><a style="text-decoration: none;color: #054e99;" href=""><img class="zhixing" src="./images/start.png" alt="">
+									执行</a></td>
+						</tr>
+
+					</table>
+
+				</div>
+			</div>
+			<div class="grey boxDaohang" id="boxDaohang">
+
+			</div>
+			<div class="grey ">
+				<div class="boxbo">
+					<div class="hgrey ovetop">
+						<img class="fL imgIcon" src="./icon/img14.png" alt="">
+						<div class="fL colorBlue">常用流程<span style="color: #929292;">（共<span style="color: #054e99;font-size: 20px;"> 15
+								</span>条）</span></div>
+						<div style="fR">
+							<button class="fR mL20 mR20 search" onclick="check()">搜索</button>
+							<input class="fR mL20 inputBox" type="text">
+							<span class="fR mL20 keyword">关键字</span>
+						</div>
+					</div>
+					<div class="boxW" id="cyList">
+
+					</div>
+				</div>
+				<div id="list"></div>
+			</div>
+		</div>
+		<div id="menu" style="display:none;">
+			<ul style="margin: 0;">
+				<li>详情<img style="width: 14px;position: relative;top: 11px;float: right;" src="./images/info.png" alt=""></li>
+				<li style="border-top: 1px solid #efefef;" class="add">添加到常用流程<img style="width: 14px;position: relative;top: 11px;float: right;"
+					 src="./images/add.png" alt=""></li>
+
+			</ul>
+		</div>
+		<div id="menu2" style="display:none;">
+			<ul style="margin: 0;">
+				<li>详情<img style="width: 14px;position: relative;top: 11px;float: right;" src="./images/info.png" alt=""></li>
+				<li style="border-top: 1px solid #efefef;" class="add">删除<img style="width: 14px;position: relative;top: 11px;float: right;"
+					 src="./images/delete.png" alt=""></li>
+
+			</ul>
+		</div>
+		<img id="totop" class="totop" src="./images/top.png" alt="">
+	</body>
+</html>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>-->
+<script type="text/javascript" src="./js/es5-shim.min.js"></script>
+<script type="text/javascript" src="./js/es5-sham.min.js"></script>
+<script type="text/javascript" src="./js/json3.min.js"></script>
+<script type="text/javascript" src="./js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="./js/template-web.js"></script>
+<script id="list-template" type="text/html">
+	{{each resultdata}}
+				<div class="louti boxbo mt10">
+					<div class="ovetop">
+						<img class="fL imgIcon" src="./icon/img{{$index+1}}.png" alt="">
+						<div class="fL colorBlue">
+							{{$value.businessname}}<span style="color: #929292;">（共<span style="color: #054e99;font-size: 20px;"> {{$value.flowlist.length}}
+								</span>条）</span>
+						</div>
+						<div class="fR colorBlue cur">更多>></div>
+								
+					</div>
+					<div class="boxW">
+						
+						{{each $value.flowlist}}
+							{{if $index<10}}
+						<div  class="item" aaadata="{{$value}}">
+							<div style="width: 100px;height: 100px;margin: 20px auto;">
+								<img style="width: 100px;" src="{{$value.flowicon}}" title="{{$value.sysname}}">
+							</div>
+							<div style="text-align: center;">{{$value.processname}}</div>
+						</div>
+						{{/if}}
+						{{if $index>9}}
+						<div  class="item nine displayNone" aaadata="{{$value}}">
+							<div style="width: 100px;height: 100px;margin: 20px auto;">
+								<img style="width: 100px;" src="{{$value.flowicon}}" title="{{$value.sysname}}">
+							</div>
+							<div style="text-align: center;">{{$value.processname}}</div>
+						</div>
+						{{/if}}
+						{{/each}}
+					</div>
+				</div>
+			{{/each}}
+		</script>
+<script id="cylist-template" type="text/html">
+	{{each flowlist}}
+		<div class="item"  aaadata="{{$value}}">
+			<div style="width: 100px;height: 100px;margin: 20px auto;">
+			<img style="width: 100px;" src="{{$value.flowicon}}" title="{{$value.sysname}}"></div>
+			<div style="text-align: center;">{{$value.processname}}</div>
+		</div>
+	{{/each}}
+</script>
+<script id="daolist-template" type="text/html">
+	{{each resultdata}}
+		<div class="fL smallTitle">{{$value.businessname}}</div>
+	{{/each}}
+</script>
+<script type="text/javascript">
+	var thisdata;
+	var cydata = {
+		"flowlist": [{
+				"processname": '困难职工帮扶',
+				"processdef": 'xxxxx',
+				"sysname": '党建信息系统',
+				"flowicon": './images/img1.png'
+			},
+			{
+				"processname": '职工代表提案',
+				"processdef": 'xxxxx',
+				"sysname": '党建信息系统',
+				"flowicon": './images/img1.png'
+			}
+		]
+	}
+	var data = {
+		"resultdata": [{
+			"businessname": '党群工作',
+			"flowlist": [{
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}, {
+					"processname": '困难职工帮扶',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				},
+				{
+					"processname": '职工代表提案',
+					"processdef": 'xxxxx',
+					"sysname": '党建信息系统',
+					"flowicon": './images/img1.png'
+				}
+			]
+		}, {
+			"businessname": '人力资源',
+			'flowlist': [{
+					"processname": '入职流程',
+					"processdef": 'xxxxx',
+					"sysname": '八部综合管控系统',
+					"flowicon": './images/img1.png'
+				},
+				{
+					"processname": '人员调动流程',
+					"processdef": 'xxxxx',
+					"sysname": '八部综合管控系统',
+					"flowicon": './images/img1.png'
+				}
+			]
+		}]
+	}
+	console.log(data)
+	console.log("278")
+	var html = template('list-template', data);
+	document.getElementById('list').innerHTML = html;
+	var html3 = template('daolist-template', data);
+	document.getElementById('boxDaohang').innerHTML = html3;
+
+	var html2 = template('cylist-template', cydata);
+	console.log(html2)
+	document.getElementById('cyList').innerHTML = html2;
+	document.oncontextmenu = function(event) {
+		if (window.event) {
+			event = window.event;
+		}
+		try {
+			var the = event.srcElement;
+			if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+				return false;
+			}
+			return true;
+		} catch (e) {
+			return false;
+		}
+	}
+	$("#list .item").mousedown(function(e) { //2右键
+		if (e.button == 2) {
+			$('#menu').hide();
+			$('#menu2').hide();
+			//兼容IE写法
+			if($.browser.msie && parseInt($.browser.version) == 8) {
+				thisdata = JSON.parse(e.currentTarget.aaadata);
+			}else {
+				thisdata = JSON.parse(e.currentTarget.attributes.aaadata.textContent);
+			}
+			$('#menu').show().css({
+				'top': $(this).context.offsetTop + $(this).context.offsetHeight / 2 + 'px', //获取右键点击坐标
+				'left': $(this).context.offsetLeft + $(this).context.offsetWidth / 2 + 'px' //获取右键点击坐标
+			});
+
+		}
+
+	})
+	var initDom = function() {
+		$("#cyList .item").mousedown(function(e) { //2右键
+			if (e.button == 2) {
+				$('#menu').hide();
+				$('#menu2').hide();
+				thisdata = JSON.parse(e.currentTarget.attributes.aaadata.textContent);
+				$('#menu2').show().css({
+					'top': $(this).context.offsetTop + $(this).context.offsetHeight / 2 + 'px', //获取右键点击坐标
+					'left': $(this).context.offsetLeft + $(this).context.offsetWidth / 2 + 'px' //获取右键点击坐标
+				});
+			}
+		})
+		var $loutili = $('#boxDaohang smallTitle');
+		$loutili.click(function() {
+			var $loutitop = $('.louti').eq($(this).index()).offset().top;
+			//获取每个楼梯的offsetTop值
+			$('html,body').animate({ //$('html,body')兼容问题body属于chrome
+				scrollTop: $loutitop
+			})
+		});
+	}
+	initDom();
+	//列表消失
+	$(document).click(function() {
+		$('#menu').hide();
+		$('#menu2').hide();
+	})
+	$(".grey .hgery button").click(function() {
+
+	})
+	//搜索
+	function check() {
+		console.log($(".grey .hgrey input").val());
+		var keyWord = $(".grey .hgrey input").val();
+		if (keyWord == '') {
+			var html2 = template('cylist-template', cydata);
+			console.log(html2)
+			document.getElementById('cyList').innerHTML = html2;
+			initDom();
+		} else {
+			var reg = new RegExp(keyWord);
+			var listone = data.resultdata;
+			console.log(listone.length)
+			var checkList = {
+				"flowlist": []
+			}
+			for (var i = 0; i < listone.length; i++) {
+				for (var j = 0; j < listone[i].flowlist.length; j++) {
+					if (listone[i].flowlist[j].processname.match(reg)) {
+						console.log("tttttt")
+						checkList.flowlist.push(listone[i].flowlist[j])
+					} else {
+						console.log("fffff")
+					}
+				}
+
+			}
+			var html2 = template('cylist-template', checkList);
+			document.getElementById('cyList').innerHTML = html2;
+		}
+
+	}
+	$("#menu .add").click(function() {
+		var flag = false;
+		for (var i = 0; i < cydata.flowlist.length; i++) {
+			if (cydata.flowlist[i].processname == thisdata.processname) {
+				flag = true;
+			}
+		}
+		if (!flag) {
+			cydata.flowlist.push(thisdata);
+			var html2 = template('cylist-template', cydata);
+			document.getElementById('cyList').innerHTML = html2;
+			alert("添加成功！")
+			initDom();
+		} else {
+			alert("您的常用流程里已经有该流程！");
+			flag = true;
+		}
+	})
+	$("#menu2 .add").click(function() {
+		for (var i = 0; i < cydata.flowlist.length; i++) {
+
+			if (cydata.flowlist[i].processname == thisdata.processname) {
+				console.log(i)
+				cydata.flowlist.splice(i, 1);
+			}
+		}
+		var html2 = template('cylist-template', cydata);
+		document.getElementById('cyList').innerHTML = html2;
+		initDom();
+	})
+	$("#totop").click(function() {
+		if ($('html').scrollTop()) {
+			$('html').animate({
+				scrollTop: 0
+			}, 1000);
+			return false;
+		}
+		$('body').animate({
+			scrollTop: 0
+		}, 1000);
+		return false;
+		// document.body.scrollTop = 0;
+		// document.documentElement.scrollTop = 0;
+	})
+	$("#boxDaohang .smallTitle").click(function() {
+		console.log("!@!")
+	})
+	var $loutili = $('#boxDaohang .smallTitle');
+	$loutili.click(function() {
+		var $loutitop = $('.louti').eq($(this).index()).offset().top;
+		//获取每个楼梯的offsetTop值
+		$('html,body').animate({ //$('html,body')兼容问题body属于chrome
+			scrollTop: $loutitop
+		})
+	});
+	$(".cur").click(function() {
+		if ($(this).html() == "收起") {
+			$(this).parents(".louti").find(".nine").addClass("displayNone");
+			$(this).html("更多>>");
+		} else {
+			$(this).parents(".louti").find(".nine").removeClass("displayNone");
+			$(this).html("收起");
+		}
+
+	})
+</script>

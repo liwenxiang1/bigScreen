@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="./assets/css/dataSource.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<meta name="keywords" content="数据地图" />
+		<meta name="description" content="数据地图" />
+		<title>数据地图</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<div class="layui-logo"><a href="javascript:;"><img class="logo-img" src="assets/imgs/logo.png" alt="logo"></a></div>
+
+				<ul class="layui-nav" lay-filter="">
+					<li class="layui-nav-item"><a href="javascript:;">首页</a></li>
+					<li class="layui-nav-item"><a href="businessTopic.html">业务主题</a></li>
+					<li class="layui-nav-item layui-this"><a href="dataSource.html">数据来源</a></li>
+					<li class="layui-nav-item"><a href="proSystem.html">项目系统</a></li>
+					<li class="layui-nav-item"><a href="messageStandard.html">报文标准</a></li>
+				</ul>
+				<div class="search-div">
+					<input type="text" name="title" autocomplete="off" placeholder="请输入关键词" class="search-input">
+					<i class="iconfont icon-sousuo"></i>
+				</div>
+
+				<button type="button" class="layui-btn search-button">搜索</button>
+				<a class="refData" href="javascript:;"><i class="iconfont icon-a-shuju4"></i>参考数据</a>
+			</div>
+			<div class="layui-body">
+				<div id="badgeList" class="badge-list"></div>
+				<div class="layui-tab">
+					<ul class="layui-tab-title" id="tab-titles">
+					</ul>
+					<div class="layui-tab-content">
+						<div class="layui-tab-item layui-show">
+							<div class="layui-row" id="system-div">
+
+							</div>
+							<div id="laypage" class="laypage"></div>
+							<div id="systemTableDiv">
+								<div><button type="button" class="back-btn"><i class="iconfont icon-31fanhui1"></i>返回</button></div>
+								<div id='systemName' class="systemName"></div>
+								<table class="layui-hide" id="systemTable"></table>
+								<div id="laypage-table" class="laypage"></div>
+							</div>
+						</div>
+						<div class="layui-tab-item">内容2</div>
+						<div class="layui-tab-item">内容3</div>
+						<div class="layui-tab-item">内容4</div>
+						<div class="layui-tab-item">内容5</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+			<!--[if lt IE 9]>
+			  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+			  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+		</div>
+		<script src="./assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/template-web.js"></script>
+		<script id="badge-template" type="text/html">
+			<span class="badge-label">数据来源:</span>
+			{{each list}}
+				<div class="item-div">
+					<button type="text">{{$value.name}}</button>
+				</div>
+			{{/each}}
+			<button type="text" class="btn-more">更多</button>
+		</script>
+		<script id="tabTitle-template" type="text/html">
+			{{each list}}
+			{{if $index === 0}}
+				<li class="layui-this">{{$value.name}}({{$value.num}})</li>
+			{{else}}
+				<li>{{$value.name}}({{$value.num}})</li>
+			 {{/if}}
+			{{/each}}
+		</script>
+		<script id="system-template" type="text/html">
+			{{each list}}
+				<div class="layui-col-xs3">
+				  <div class="grid-demo grid-demo-bg1">{{$value.name}}</div>
+				</div>
+			{{/each}}
+		</script>
+		<script type="text/html" id="checkboxTpl">
+		  <span class="level">安全-{{d.num}}级</span>
+		</script>
+		<script>
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use(['element', 'laypage', 'table', 'util'], function() {
+				var util = layui.util
+				//固定块
+				util.fixbar({
+					top:true
+					, css: { right: 30, bottom: 35 }
+					, bgcolor: '#2a96ff !important;display:block;'
+					,showHeight:100
+					, click: function (type) {
+						if (type === 'top') {
+							$('.layui-body').animate({//主要代码
+								scrollTop: 0
+							}, 200);
+						}
+					}
+				});
+				
+				var element = layui.element;
+				var laypage = layui.laypage;
+				var table = layui.table;
+				$(function() {
+					initBadge()
+					initTabTitles()
+					initSystem()
+				})
+
+				function initBadge() {
+					var list = [{
+						name: '全部',
+					}, {
+						name: '海关',
+					}, {
+						name: '海事',
+					}, {
+						name: '码头',
+					}, {
+						name: '货代',
+					}, {
+						name: '船代',
+					}]
+					var html = template('badge-template', {
+						list: list
+					})
+					$('#badgeList').append(html);
+					// 将第一个设置为选中状态
+					$($('#badgeList').children("div").get(0)).addClass("active")
+					// 设置切换效果
+					$(".item-div").click(function() {
+						$(this).siblings('.item-div').removeClass('active'); // 删除其他子元素的样式
+						$(this).addClass('active'); // 添加当前元素的样式
+					});
+				}
+
+				function initTabTitles() {
+					var listTitles = [{
+						name: '业务系统',
+						num: '10'
+					}, {
+						name: '外部采集',
+						num: '9'
+					}, {
+						name: '第三方共享',
+						num: '16'
+					}, {
+						name: '单证交换',
+						num: '63'
+					}]
+					var html = template('tabTitle-template', {
+						list: listTitles
+					})
+					$('#tab-titles').append(html);
+				}
+
+				function initSystem() {
+					var systemList = [{
+						name: '单一窗口'
+					}, {
+						name: '装箱单系统'
+					}, {
+						name: '订舱系统'
+					}, {
+						name: '单一窗口'
+					}, {
+						name: '装箱单系统'
+					}, {
+						name: '订舱系统'
+					}, {
+						name: '单一窗口'
+					}, {
+						name: '单一窗口'
+					}, {
+						name: '单一窗口'
+					}, {
+						name: '单一窗口'
+					}, {
+						name: '单一窗口'
+					}]
+					var html = template('system-template', {
+						list: systemList
+					})
+					$('#system-div').append(html);
+					laypage.render({
+						elem: 'laypage' //注意，这里的 test1 是 ID，不用加 # 号
+							,
+						count: 50 //数据总数，从服务端得到
+					});
+					$('#system-div div').click(function(e) {
+						$('#systemTableDiv').show()
+						$('#system-div').hide()
+						$('#laypage').hide()
+						$('#systemName').html(e.currentTarget.innerHTML)
+						initTable()
+					})
+					$('.back-btn').click(function(e) {
+						$('#systemTableDiv').hide()
+						$('#system-div').show()
+						$('#laypage').show()
+						$('#systemName').html('')
+					})
+					$('.layui-tab-title .layui-this').click(function(e) {
+						if($('#systemTableDiv').css('display') == 'block'){
+							$('#systemTableDiv').hide()
+							$('#system-div').show()
+							$('#laypage').show()
+							$('#systemName').html('')
+						}
+					})
+				}
+
+				function initTable() {
+					let obj = {
+						username:'临港企业名录',
+						num:2
+					}
+					let tableData = []
+					for(var i = 0;i< 10;i++){
+						tableData.push(obj)
+					}
+					table.render({
+						elem: '#systemTable'
+							// ,url:'/demo/table/user/'
+							,data:tableData,
+						cellMinWidth: 80,
+						cols: [
+							[{
+								title: '序号',
+								type: 'numbers'
+							}, {
+								field: 'username',
+								title: '表英文名',
+							}, {
+								field: 'username',
+								title: '表中文名',
+								templet: '#usernameTpl'
+							}, {
+								field: 'username',
+								title: '健康度'
+							}, {
+								field: 'username',
+								title: '生效时间',
+							}, {
+								field: 'username',
+								title: '表状态',
+							}, {
+								field: 'username',
+								title: '表空间',
+							}, {
+								field: 'username',
+								title: '说明',
+							}, {
+								field: 'username',
+								title: '上下文路径',
+							}, {
+								field: 'username',
+								title: '系统分类路径',
+							}, {
+								field: 'username',
+								title: '标签',
+								templet: '#checkboxTpl',
+								width:100
+							}]
+						],
+					});
+					laypage.render({
+						elem: 'laypage-table' //注意，这里的 test1 是 ID，不用加 # 号
+							,
+						count: 50 //数据总数，从服务端得到
+					});
+				}
+			});
+		</script>
+	</body>
+
+</html>

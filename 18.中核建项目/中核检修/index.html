@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- <link rel="icon" href="./favicon.ico"> -->
+		<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="lib/layui/css/layui.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/process.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="lib/download/iconfont.css">
+
+
+		<title>发出申请</title>
+	</head>
+
+	<body>
+		<div class="process clearfix">
+			<div class="nav-menu">
+				<div class="div-search">
+					<form class="layui-form" action="">
+						<input type="radio" name="type" value="1" title="按流程分类">
+						<input type="radio" name="type" value="2" title="按模块名称" checked="">
+						<div class="nav-search">
+							<i class="iconfont icon-search"></i>
+							<input type="text" name="search" lay-verify="search" autocomplete="off" placeholder="输入搜索内容" class="layui-input">
+
+						</div>
+					</form>
+				</div>
+
+				<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;"><i class="iconfont icon-4"></i>行政办公</a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;">工作餐申请流程</a></dd>
+							<dd><a href="javascript:;">后勤维修申请流程</a></dd>
+							<dd><a href="javascript:;">用印申请流程</a></dd>
+							<dd><a href="javascript:;">IT设备维修申请流程</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;"><i class="iconfont icon-caiwu"></i>财务</a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;">移动模块</a></dd>
+							<dd><a href="javascript:;">后台模版</a></dd>
+							<dd><a href="javascript:;">电商平台</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item"><a href="javascript:;"><i class="iconfont icon-caiwujiesuan"></i>资产</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><i class="iconfont icon-yuangong"></i>员工</a></li>
+				</ul>
+			</div>
+			<div class="content">
+				<ol class="breadcrumb">
+					<li><a href="#">流程管理</a></li>
+					<li class="active">发出申请</li>
+				</ol>
+				<div class="query-row clearfix">
+					<p class="label-line">查询条件</p>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<label class="query-label">任务描述</label>
+							<i class="iconfont icon-search"></i>
+							<input id="taskDescription" type="text" placeholder="请输入查询内容">
+
+						</div>
+						<span id="super-search-btn" class="search-btn" onclick="superSearch">高级查询</span>
+						<span id="search-btn" class="search-btn" onclick="search">查询</span>
+					</form>
+					<!-- <div class="form-group">
+          <div class="col-xs-10">
+              <input class="query-value" id="code" placeholder="请输入任务描述">
+          </div>
+      </div> -->
+				</div>
+				<div class="result-row clearfix">
+					<p class="label-line">流程列表
+						<input type="radio" id="usually" name="type" checked="checked"><label class="radio-label" for="usually">常用</label>
+						<input type="radio" id="all" name="type"><label class="radio-label" for="all">全部</label>
+						<span class="model-span">
+							<button type="button" class="layui-btn layui-btn-primary layui-this"><i class="iconfont icon-lubiaosignpost3"></i>向导模式</button>
+							<button type="button" class="layui-btn layui-btn-primary"><i class="iconfont icon-dengchu"></i>退出</button>
+						</span>
+					</p>
+					<table class="layui-hide" id="table"></table>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/browser.min.js"></script>
+	<script src="js/browser-polyfill.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="lib/layui/layui.all.js"></script>
+	<script type="text/html" id="barDemo">
+	  <a class="layui-btn layui-btn-xs btn-nobg" lay-event="edit">
+		<i class="iconfont icon-chakan"></i>
+	  </a>
+	  <a class="layui-btn layui layui-btn-xs btn-nobg" lay-event="del">
+		  <i class="iconfont icon-bianji"></i>
+	  </a>
+	</script>
+	<script>
+		layui.use(['element', 'table'], function() {
+			var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+			var table = layui.table;
+			var tableData = []
+			for(let i = 0;i<10;i++){
+				tableData.push({
+						typeName:'公司总部',
+						name:'【检修】01非正式文件请示/报告',
+						desc:'tp-mp-3001计算机管理程序',
+						updateTime:'2020-03-19'
+					})
+			}
+			//监听导航点击
+			element.on('nav(navTree)', function(elem) {
+				//console.log(elem)
+				layer.msg(elem.text());
+			});
+			 table.render({
+			    elem: '#table'
+			    // ,url:'/demo/table/user/'
+			    // ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+			    ,cols: [[
+			       {type:'numbers',title: '序号', align:'center'}
+			      ,{field:'typeName',  title: '流程类型', align:'center'}
+			      ,{field:'name',  title: '流程名称', align:'center'}
+			      ,{field:'desc', title: '流程说明', align:'center'}
+			      ,{field:'updateTime', title: '更新日期', align:'center'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+				   ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150, align:'center'}
+			    ]]
+				,page: true
+				,data:tableData
+				,skin: 'row', even: true
+			  });
+		});
+		 $(".layui-nav li").click(function() {
+		        $(this).siblings('li').removeClass('layui-nav-itemed');  // 删除其他兄弟元素的样式
+		        $(this).addClass('layui-nav-itemed');                            // 添加当前元素的样式
+		    })
+			$(".model-span .layui-btn").click(function() {
+		        $(this).siblings('.layui-btn').removeClass('layui-this');  // 删除其他兄弟元素的样式
+		        $(this).addClass('layui-this');                            // 添加当前元素的样式
+		    })
+	</script>
+</html>

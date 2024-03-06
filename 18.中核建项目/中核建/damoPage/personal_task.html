@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国核工业建设·个人任务列表</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid personal-task animated fadeInRight search-content">
+        <!-- <div id="toolbar">
+            <button class="btn btn-default" onclick="add()">新增任务</button>
+        </div> -->
+        <div class="tabs-wrapper clearfix">
+            <span class="slid-left glyphicon glyphicon-chevron-left"></span>
+            <div data-toggle="buttons" id="tabs-group" class="btn-group">
+                <label class="btn btn-sm btn-white active">
+                    <input type="radio" id="d1" name="options">D1推进重大军工项目，完成军品考核任务</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d2" name="options">D2增强科技创新能力，提升核心竞争力</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d3" name="options">D3................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d4" name="options">D4................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d5" name="options">D5................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d6" name="options">D6................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d7" name="options">D7................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d8" name="options">D8................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d9" name="options">D9................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d10" name="options">D10................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d11" name="options">D11................</label>
+                <label class="btn btn-sm btn-white">
+                    <input type="radio" id="d12" name="options">D12................</label>
+            </div>
+            <span class="slid-right glyphicon glyphicon-chevron-right"></span>
+        </div>
+        <table id="table"></table>
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../js/plugins/layer/layer.js"></script>
+    <script src="../js/hplus.min.js?v=4.0.0"></script>
+    <script type="text/javascript" src="../js/contabs.min.js"></script>
+    <script src="common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // console.log("$('#tabs-width').width()", $('#tabs-width').width())
+            let btnsWidth = 0;
+            let btnsWrapperWidth = $('.tabs-wrapper').outerWidth();
+            let btnsWidthArr = [];
+            $('.tabs-wrapper .btn-group label').each((index, el) => {
+                btnsWidthArr.push($(el).outerWidth())
+                btnsWidth += $(el).outerWidth()
+            })
+            $('#tabs-group').width(btnsWidth)
+            if (btnsWrapperWidth < btnsWidth) {
+                $('.slid-left').css('display', 'block')
+                $('.slid-right').css('display', 'block')
+            }
+            let minWidthBtn = Math.min(...btnsWidthArr)
+            $('.slid-left').click(() => {
+                let leftValue = $('#tabs-group').css('left');
+                leftValue = Number(leftValue.split('px')[0])
+                $('#tabs-group').css('left', leftValue >= 30? 30 : (leftValue + minWidthBtn) + 'px')
+            })
+            $('.slid-right').click(() => {
+                let leftValue = $('#tabs-group').css('left');
+                leftValue = Number(leftValue.split('px')[0])
+                $('#tabs-group').css('left',
+                    leftValue <= (0 - (btnsWidth - btnsWrapperWidth))? (0 - (btnsWidth - btnsWrapperWidth + 30)) : (leftValue - minWidthBtn) + 'px'
+                    )
+            })
+
+            const tableColumns = [{
+                title: '行动计划部门',
+                field: 'orgs',
+                align: 'center',
+            }, {
+                title: '行动计划编号',
+                field: 'code',
+                align: 'center',
+            }, {
+                title: '行动计划名称',
+                field: 'name',
+                align: 'center',
+            }, {
+                title: '子行动编号',
+                field: 'childCode',
+                align: 'center',
+            }, {
+                title: '计划结束时间',
+                field: 'endTime',
+                align: 'center',
+            }, {
+                title: '完成状态',
+                field: 'status',
+                align: 'center',
+                formatter: (val, row, c) => {
+                    let color = ''
+                    if (val === '已完成') {
+                        color = '#1ABF76'
+                    } else {
+                        color = '#DD4E43'
+                    }
+                    return '<span style="color:'+ color +'">'+ val +'</span>'
+                }
+            }, {
+                title: '子行动计划目标描述',
+                field: 'description',
+                align: 'center',
+            }, {
+                title: '子行动计划完成情况',
+                field: 'completion',
+                align: 'center',
+            }]
+            const tableData = [{
+                orgs: '中核建',
+                code: 'D2-2',
+                name: '核电设计优化',
+                childCode: 'D2-2-2-1',
+                endTime: '2020/3/31',
+                status: '已完成',
+                description: '配合中国核电和中核能源做好设计优化工作',
+                completion: '根据集团安排推进工作'
+            },{
+                orgs: '中核建',
+                code: 'D2-2',
+                name: '核电设计优化',
+                childCode: 'D2-2-2-2',
+                endTime: '2020/3/31',
+                status: '已完成',
+                description: '做好核电设计优化课题和核建股份相关前期调研工作',
+                completion: '根据集团安排推进工作'
+            },{
+                orgs: '中核建',
+                code: 'D2-2',
+                name: '核电设计优化',
+                childCode: 'D2-2-2-3',
+                endTime: '2020/3/31',
+                status: '未完成',
+                description: '牵头开展核电优化设计',
+                completion: '牵头开展核电优化设计'
+            },{
+                orgs: '中核建',
+                code: 'D2-2',
+                name: '核电设计优化',
+                childCode: 'D2-2-2-4',
+                endTime: '2020/3/31',
+                status: '未完成',
+                description: '继续牵头开展核电优化设计',
+                completion: '继续牵头开展核电优化设计'
+            },]
+            var $table = $('#table');
+            $table.bootstrapTable({
+                columns: tableColumns,
+                data: tableData,
+                pagination: true,
+                pageSize: 10,
+                pageList: [20, 50, 100],
+                showColumns: false, //是否显示所有的列
+                showColumns: true, // 开启自定义列显示功能
+                paginationLoop: false,
+                paginationPreText: "上一页",
+                paginationNextText: "下一页",
+                showRefresh: true,
+                onDblClickRow: function (row) {
+                    layer.open({
+                        type: 2,
+                        title: '任务填报',
+                        maxmin: true,
+                        shadeClose: true, //点击遮罩关闭层
+                        area : ['90%' , '90%'],
+                        content: 'task-report.html',
+                        success: function(layero, index) {//可选方法,用于设定弹出页面是否可编辑
+
+                        }
+                    });
+                }
+            })
+            $table.bootstrapTable('mergeCells', {index: 0, field: 'orgs', colspan: 1, rowspan: 10});
+            $table.bootstrapTable('mergeCells', {index: 0, field: 'code', colspan: 1, rowspan: 10});
+            $table.bootstrapTable('mergeCells', {index: 0, field: 'name', colspan: 1, rowspan: 10});
+        })
+    </script>
+</body>
+
+</html>

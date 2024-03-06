@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>项目看板(产值分析)</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet">
+		<link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+		<style>
+			.ibox-title {
+				border: 0;
+				min-height: 40px;
+			}
+
+			.ibox-title h5 {
+				margin: 0;
+			}
+
+			.row>div {
+				padding: 3px;
+			}
+
+			.ibox {
+				margin-bottom: 0px;
+				border-radius: 3px;
+				overflow: hidden;
+			}
+
+			.wrapper-content {
+				padding: 3px 18px;
+			}
+
+			.ibox-content {
+				padding: 15px;
+			}
+
+			.box-item {
+				height: 101px;
+				background: #EF5350;
+				color: #eee;
+				padding: 20px;
+				border-radius: 3px;
+				position: relative;
+			}
+
+			.box-item+.box-item {
+				margin-top: 3px;
+			}
+
+			.box-item p {
+				margin: 0;
+			}
+
+			.box-item p>span {
+				font-size: 25px;
+				margin-right: 5px;
+			}
+
+			span.icon {
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				bottom: 5px;
+				right: 5px;
+				background-image: url(img/产值.png);
+				background-size: 100% 100%;
+			}
+		</style>
+	</head>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>项目完工情况</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-1"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>项目竣工占比</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-2"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>项目进度体验分析</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>完工情况趋势</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-4"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>未核工作量分析</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-5"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>产值趋势分析</h5>
+						</div>
+						<div class="ibox-content">
+							<table id="test_table" data-pagination="true">
+								<thead>
+									<tr>
+										<th data-field="index">序号</th>
+										<th data-field="year">年</th>
+										<th data-field="month">月</th>
+										<th data-field="v1">公司</th>
+										<th data-field="v2">所属区域</th>
+										<th data-field="v3">项目规则</th>
+										<th data-field="v4">承揽合同数</th>
+										<th data-field="v5">未核工作量</th>
+										<th data-field="v6">累计计算量</th>
+										<th data-field="v7">未结算</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="js/plugins/echarts/echarts.min.js"></script>
+		<script>
+			var tableDatas = [],v2_obj={0:'东城区',1:'西城区',2:'北城区',3:'南城区'},v3_obj={0:'千亿级',1:'百亿级'};
+			for (var i = 0; i < 99; i++) {
+				var row = {index:i+1,year:2017,month:i%12+1,v1:'演示公司',v2:v2_obj[i%4],v3:v3_obj[i%2],v4:getR(),v5:getR(),v6:getR(),v7:getR()};
+				tableDatas.push(row);
+			}
+			function getR(){
+				return Math.floor(Math.random() * 2600 + 1400);
+			}
+			$("#test_table").bootstrapTable({}).bootstrapTable('load',tableDatas);
+			var colors = ['#EF5350','#2196F3','#607D8B','#ffb74d','#4caf50','#009688','#673ab7'];
+			var obj = {
+				d1: {
+					legend: ['承揽合同数','结算值'],
+					xData: ['项目1','项目2','项目3','项目4','项目5'],
+					data1: [120,100,95,93,96],
+					data2: [33.51,31.47,23.42,13.54,15.48]
+				},
+				d2: {
+					vals: {
+						'验收通过': 33.51,
+						'项目竣工': 31.47,
+						'项目开工': 23.42
+					},
+					legend: [],
+					data: []
+				},
+				d3: {
+					vals: {
+						'项目1': 33.51,
+						'项目2': 31.47,
+						'项目3': 23.42,
+						'项目4': 13.54,
+						'项目5': 15.48,
+					},
+					legend: ['总费用'],
+					data: [],
+					data2: [0],
+					total: 0
+				},
+				d4: {
+					legend: ['结算值','承揽合同数'],
+					xData: ['01','02','03','04','05'],
+					data1: [33.51,31.47,23.42,13.54,15.48],//结算值
+					data3: [120,100,95,93,96],//承揽合同数
+				},
+				d5: {
+					legend: ['未核工作量'],
+					xData: ['01','02','03','04','05'],
+					data1: [33.51,31.47,23.42,13.54,15.48],//本期累计
+				}
+			}
+			$.each(obj.d2.vals, function(key, val) { //处理项目产值占比数据
+				obj.d2.legend.push(key);
+				obj.d2.data.push({
+					value: val,
+					name: key
+				});
+			});
+
+			$.each(obj.d3.vals, function(key, val) {
+				obj.d3.total += val;
+			});
+			obj.d3.data.push(obj.d3.total);
+			$.each(obj.d3.vals, function(key, val) { //处理当月产值分析数据
+				obj.d3.legend.push(key);
+				obj.d3.data.push(val);
+				obj.d3.total -= val;
+				obj.d3.data2.push(obj.d3.total);
+			});
+
+			var options = [{//项目累计产值分析   1
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'shadow'
+					}
+				},
+				grid: {
+					top: '12%',
+					left: '10%',
+					right: '8%',
+					bottom: '8%'
+				},
+				legend: {
+					data: obj.d1.legend
+				},
+				xAxis: [{
+					type: 'category',
+					axisTick: {
+						alignWithLabel: true
+					},
+					data: obj.d1.xData
+				}],
+				yAxis: [{
+						type: 'value',
+						name: '承揽合同数',
+						position: 'left',
+						axisLabel: {
+							formatter: '{value} 个'
+						},
+						splitLine: {
+							show: false
+						}
+					},{
+						type: 'value',
+						name: '结算值:千万',
+						position: 'right'
+					}
+					
+				],
+				series: [{
+						name: '承揽合同数',
+						type: 'bar',
+						data: obj.d1.data1,
+					},
+					{
+						name: '结算值',
+						type: 'bar',
+						data: obj.d1.data2,
+						yAxisIndex: 1,
+					}
+				]
+			}, { //月产值占比   2
+				tooltip: {
+					trigger: 'item',
+					formatter: '{a} <br/>{b} : {c}千万 ({d}%)'
+				},
+				legend: {
+					type: 'scroll',
+					orient: 'vertical',
+					right: 10,
+					top: 0,
+					bottom: 20,
+					data: obj.d2.legend,
+					formatter: function(a) {
+						return obj.d2.vals[a] + '千万 ' + a;
+					},
+					selected: obj.d2.selected
+				},
+				series: [{
+					name: '项目竣工占比',
+					type: 'pie',
+					radius: '80%',
+					center: ['40%', '50%'],
+					data: obj.d2.data,
+					emphasis: {
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}]
+			}, {//  3
+				tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+								type: 'shadow'
+						}
+				},
+				legend: {
+						data: ['承揽合同数']
+				},
+				grid: {
+						left: '3%',
+						right: '16%',
+						bottom: '3%',
+						containLabel: true
+				},
+				xAxis: {
+						type: 'value',
+						name:'单位:千万'
+				},
+				yAxis: {
+						type: 'category',
+						data: ['非常满意','满意']
+				},
+				series: [
+						{
+								name: '承揽合同数',
+								type: 'bar',
+								data: [49.72,13.44],
+								barWidth:40
+						}
+				]
+		}, {//项目累计产值分析   4
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'cross'
+					}
+				},
+				grid: {
+					top: '12%',
+					left: '5%',
+					right: '9%',
+					bottom: '8%'
+				},
+				legend: {
+					data: obj.d4.legend
+				},
+				xAxis: [{
+					type: 'category',
+					axisTick: {
+						alignWithLabel: true
+					},
+					data: obj.d4.xData
+				}],
+				yAxis: [{
+						type: 'value',
+						name: '单位:千万',
+						position: 'left'
+					},
+					{
+						type: 'value',
+						name: '承揽合同数',
+						position: 'right',
+						axisLabel: {
+							formatter: '{value} 个'
+						},
+						splitLine: {
+							show: false
+						}
+					}
+				],
+				series: [{
+						name: '承揽合同数',
+						type: 'line',
+						data: obj.d4.data1,
+						barWidth:40
+					},
+					{
+						name: '结算值',
+						type: 'line',
+						data: obj.d4.data3,
+						yAxisIndex: 1,
+						barWidth:40
+					}
+				]
+			},{//项目产值分析   5
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'shadow'
+					}
+				},
+				grid: {
+					top: '12%',
+					left: '5%',
+					right: '5%',
+					bottom: '8%'
+				},
+				legend: {
+					data: obj.d5.legend
+				},
+				xAxis: [{
+					type: 'category',
+					axisTick: {
+						alignWithLabel: true
+					},
+					data: obj.d5.xData
+				}],
+				yAxis: [{
+						type: 'value',
+						name: '单位:千万',
+						position: 'left'
+					}
+				],
+				series: [{
+						name: '未核工作量',
+						type: 'bar',
+						data: obj.d5.data1,
+						barWidth:30
+					}
+				]
+			}];
+
+			$.each(options, function(i, e) {
+				e.color = colors;
+				var index = i + 1;
+				var myChart = echarts.init(document.getElementById('echarts-' + index));
+				myChart.setOption(e);
+			});
+		</script>
+	</body>
+</html>

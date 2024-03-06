@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://www.jq22.com/jquery/bootstrap-4.2.1.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jq22.com/jquery/font-awesome.4.7.0.css">
+    <link href="bootstrap-table.min.css" rel="stylesheet">
+    <link href="./tranfer.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="transferContainer" class="row" style="height: 700px;width: 950px;"></div>
+</body>
+
+</html>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="https://www.jq22.com/jquery/bootstrap-4.2.1.js"></script>
+<script src="bootstrap-table.min.js"></script>
+<script src="bootstrap-table-zh-CN.min.js"></script>
+<script src="transfer-plus.js"></script>
+<script type="text/javascript">
+    var data = [{
+        "importUnitId": "1",
+        "importUnitName": "微信应用配置1",
+        "flag": false,
+
+    }, {
+        "importUnitId": "2",
+        "importUnitName": "微信应用配置2",
+        "flag": false,
+    }, {
+        "importUnitId": "3",
+        "importUnitName": "微信应用配置3",
+        "flag": false,
+    }, {
+        "importUnitId": "4",
+        "importUnitName": "微信应用配置4",
+        "flag": false,
+    }, {
+        "importUnitId": "5",
+        "importUnitName": "微信应用配置5",
+        "flag": false,
+    }, {
+        "importUnitId": "6",
+        "importUnitName": "微信应用配置6",
+        "flag": false,
+    }, {
+        "importUnitId": "7",
+        "importUnitName": "微信应用配置7",
+        "flag": false,
+    }, {
+        "importUnitId": "8",
+        "importUnitName": "微信应用配置8",
+        "flag": false,
+    }, {
+        "importUnitId": "9",
+        "importUnitName": "微信应用配置9",
+        "flag": false,
+    }]
+    var selectdData = [ {
+        "importUnitId": "10",
+        "importUnitName": "微信应用配置10",
+        "flag": false,
+    }, {
+        "importUnitId": "11",
+        "importUnitName": "微信应用配置11",
+        "flag": false,
+    }, {
+        "importUnitId": "12",
+        "importUnitName": "微信应用配置12",
+        "flag": false,
+    }, {
+        "importUnitId": "13",
+        "importUnitName": "微信应用配置13",
+        "flag": false,
+    }, {
+        "importUnitId": "14",
+        "importUnitName": "微信应用配置14",
+        "flag": false,
+    }, {
+        "importUnitId": "15",
+        "importUnitName": "微信应用配置15",
+        "flag": false,
+    }, {
+        "importUnitId": "16",
+        "importUnitName": "微信应用配置16",
+        "flag": false,
+    }, {
+        "importUnitId": "17",
+        "importUnitName": "微信应用配置17",
+        "flag": false,
+    }]
+
+
+    $('#transferContainer').transfer({
+        titles: ['可选链接', '已选链接'],
+        search: true,
+        uniqueId: "importUnitId", //唯一id
+        dataSource: data,
+        selectdataSource: selectdData,
+        maxSelect: 10,
+        diffKey: 'flag',
+        unselectColumns: [
+            {
+                align: "center",
+                formatter: function (value, row, index) {
+                    return index + 1;
+                }
+            },
+            {
+                field: 'flag',
+                align: "center",
+                checkbox: true
+            }, {
+                field: 'importUnitName',
+                title: '可选链接'
+            }],
+        selectColumns: [
+            {
+                align: "center",
+                formatter: function (value, row, index) {
+                    return index + 1;
+                }
+            }, {
+                field: 'flag',
+                checkbox: true
+            }, {
+                field: 'importUnitName',
+                title: '已选链接'
+            }]
+    });
+
+    $('#btn').click(function () {
+        var data = $('#transferContainer').transfer('getData', 'selectData', 'importUnitId');
+        console.log(data)
+    })
+
+    $('#refresh').click(function () {
+        $('#transferContainer').transfer('refresh', data)
+    })
+</script>

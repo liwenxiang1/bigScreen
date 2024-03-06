@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>指标下发</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+		<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<link href="../css/plugins/jsTree/style.min.css" rel="stylesheet">
+		<link href="../css/common.css" rel="stylesheet">
+		<style type="text/css">
+			.tree-div:after {content: " ";position: absolute;right: 10px;top: 0;height: 100vh;border-left: 1px solid #9E9E9E;}
+			.bootstrap-table .table>tbody>tr.detail-view>td {
+			    padding: 3px!important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="zhibiao-issue container-fluid animated fadeInRight search-content">
+			<div class="row">
+				<div class="col-xs-3 tree-div">
+                    <p class="page-title t-tag" style="margin: 15px 0;font-size:16px;">组织机构</p>
+					<div id="org-tree"></div>
+				</div>
+				<div class="col-xs-9">
+                    <button type="button" class="copy-btn btn btn-primary" onclick="copy()">复制</button>
+                    <div class="year-panel">
+                        <a href="#" id="pre-year">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                        </a>
+                        <span id="year-title">2020</span>
+                        <a href="#" id="next-year">
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                        </a>
+                    </div>
+                    <div id="toolbar" data-toggle="buttons" class="btn-group">
+                        <label class="btn btn-sm btn-white active">
+                            <input type="radio" id="option1" name="options">主要经济指标</label>
+                        <label class="btn btn-sm btn-white">
+                            <input type="radio" id="option2" name="options">运营管理指标</label>
+                        <label class="btn btn-sm btn-white">
+                            <input type="radio" id="option3" name="options">市场开发</label>
+                        <label class="btn btn-sm btn-white">
+                            <input type="radio" id="option4" name="options">采购</label>
+                        <label class="btn btn-sm btn-white">
+                            <input type="radio" id="option5" name="options">人力</label>
+                    </div>
+					<table id="table" data-toggle="table" data-toolbar="#toolbar" data-pagination="true" data-page-size="10" data-pagination-loop="false"
+                    data-pagination-pre-text="上一页" data-pagination-next-text="下一页">
+						<thead>
+							<tr>
+								<th data-formatter="thIndex" data-align="center" data-width="3%">序号</th>
+								<th data-field="code" data-align="center">指标编号</th>
+								<th data-field="name" data-align="center">指标名称</th>
+								<th data-field="isCheck" data-align="center" data-formatter="formatter">是否考核</th>
+								<th data-field="yearValue" data-align="center">年度计划值</th>
+								<th data-field="principal" data-align="center" data-formatter="formatterPerson">责任人</th>
+								<th data-field="orgs" data-align="center">责任单位</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+		<!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+		<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="../js/plugins/layer/layer.js"></script>
+		<script src="../js/plugins/jsTree/jstree.min.js"></script>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+            var $table = $('#table');
+            var date = new Date();
+            curYear = date.getFullYear()
+            $('#year-title').text(curYear)
+
+            $('#pre-year').click(()=>{
+                curYear -= 1
+                $('#year-title').text(curYear)
+                setDatas()
+            })
+            $('#next-year').click(()=>{
+                curYear += 1
+                $('#year-title').text(curYear)
+                setDatas()
+            })
+
+			$(function() {
+				var trees = [//此为数据格式,更多结构请参考api文档
+					{text:"集团总部",type:'top',state:{opened:true},children:[
+						{text:"中核中原",type:'mid'},
+						{text:"中核二二",type:'mid',children:[
+							{text:"华中区域公司",type:'bot'},
+							{text:"华东区域公司",type:'bot'},
+							{text:"华南区域公司",type:'bot'},
+							{text:"西北区域公司",type:'bot'},
+							{text:"西南区域公司",type:'bot'}
+						]},
+						{text:"中核二三",type:'mid'},
+						{text:"中核二四",type:'mid'},
+						{text:"中核华兴",type:'mid'},
+						{text:"中核华辰",type:'mid'},
+						{text:"中核机械",type:'mid'},
+						{text:"中核五建",type:'mid'},
+						{text:"中核检修",type:'mid',children:[
+							{text:"中核检修深圳分公司",type:'bot'},
+							{text:"中核检修海盐分公司",type:'bot'},
+							{text:"中核检修连云港分公司",type:'bot'},
+							{text:"中核检修大连分公司",type:'bot'},
+							{text:"中核检修福鼎分公司",type:'bot'}
+						]}
+					]}
+				];
+				$('#org-tree').jstree({core : {data : trees}}).on('select_node.jstree',function(a,b,c){
+					console.log(a,b,c);
+					setDatas();
+				});
+                //setDatas();
+                $('.btn-group .btn').click(setDatas);
+                $('.btn-group .active').click();
+			});
+			function setDatas(){
+                var datas = [];
+                const nameArr = ['营业收入', '利润总额','净利润','EVA','成本费用占营收比例（%）','营业成本','销售费用','财务费用','应收账款','管理成本']
+                for(i=1;i<=50;i++){
+                    datas.push({
+                        id: i,
+                        code: 'E1-' + i,
+						name: nameArr[i-1],
+                        isCheck: i%2 === 0,
+                        yearValue: Math.floor(Math.random()*800000)+40000,
+                        principal: '张静梅',
+                        orgs: '中核二二'
+                    })
+                }
+			    $table.bootstrapTable('load', datas);
+            }
+
+            function formatter(val,row,c){
+                if(val){
+                    return `<span style="color:#1ABF76">是</span>`
+                }else {
+                    return `<span style="color:#DD4E43">否</span>`
+                }
+            }
+            function formatterPerson(val,row,c){
+                return '<a href="javascript:void(0)" onclick="choosePerson('+ row.id +')" title="点击选择人员">'+ val +'</a>'
+            }
+
+            function choosePerson(row) { //编辑方法(推荐)
+				layer.open({
+					type: 2,
+					title: '数据采集信息',
+					content: "person_tree.html",
+					shadeClose: false,
+					area: ['350px', '250px']
+				});
+            }
+            function copy(){
+                layer.confirm('复制'+ curYear +'年的数据到'+ (curYear + 1) +'年', {
+                    btn: ['确定','取消'] //按钮
+                    }, function(){
+                        layer.msg('成功复制');
+                    }, function(){
+                });
+            }
+
+			function search() { //查询方法
+				$table.bootstrapTable('refresh');
+			}
+		</script>
+	</body>
+</html>

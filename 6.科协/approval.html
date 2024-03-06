@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/platform.css">
+    <link rel="stylesheet" href="css/approval.css">
+    <link href="" rel="stylesheet">
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="科协应用平台" />
+    <title>请假</title>
+</head>
+
+<body onload="init()">
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        // 保存
+        let arrList = []
+
+        function init() {
+            stepList = [{
+                id: '1',
+                name: '马冬梅',
+                imgUrl: ''
+            }, {
+                id: '2',
+                name: '马什么',
+                imgUrl: ''
+            }, {
+                id: '3',
+                name: '什么梅',
+                imgUrl: ''
+            }]
+            showStepLine()
+        }
+
+        function showStepLine(item) {
+            const len = stepList.length
+            for (let i = 0; i < len; i++) {
+                addStep(stepList[i], i)
+            }
+        }
+
+        function addStep(item, index) {
+            if (!item) {
+                const len = stepList.length
+                item = {
+                    id: len.toString(),
+                    name: (len + 1).toString(),
+                    imgUrl: ''
+                }
+                stepList.push(item)
+            }
+            const PersonBlock =
+                `<div id="one-step-${item.id}" class="one-step">
+                    <div class="person-block">
+                        ${item.name || '某某'}
+                        <i id="del-icon" valueid="${item.id}" class="iconfont">&#xe600;</i>
+                    </div>
+                    <p class="arrow iconfont">&#xe63b;</p>
+                </div>`
+            if (index === 0) {
+                $('.step-line').on('click', '#del-icon', function (e) {
+                    delStep(e.target.getAttribute('valueid'))
+                })
+            }
+            $('.approval .step-line .add-step').before(PersonBlock)
+        }
+
+        function delStep(id) {
+            // 按id来遍历数据，是删除数据与对应dom节点，不用index可避免重绘dom树
+            const index = stepList.findIndex(item => {
+                return item.id == id
+            })
+            if (index !== -1) {
+                stepList.splice(index, 1)
+                $(`#one-step-${id}`).remove()
+            } else {
+                return
+            }
+        }
+
+        function submitApplication() {
+            // 提交申请
+        }
+    </script>
+
+    <div class="approval platform clearfix">
+        <div class="navbar clearfix">
+            <img class="navbar-back" src="./static/back.png" onclick="goback()" alt="">
+            <p class="navbar-title">请假</p>
+        </div>
+        <div class="bg-block">
+            <div class="bg-line"></div>
+        </div>
+        <div class="content clearfix">
+            <div class="approval">
+                <div class="sim-box">
+                    <p class="title">审批人 <span class="required">*</span></p>
+                    <div class="step-line clearfix">
+                        <!--js-->
+                        <div class="add-step iconfont" onclick="addStep()">&#xe60f;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="save-button" onclick="submitApplication()">提交</div>
+        </div>
+    </div>
+</body>
+
+</html>

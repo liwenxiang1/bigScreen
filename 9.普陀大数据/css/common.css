@@ -1,0 +1,686 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('./../font/iconfont.eot');
+    src: url('./../font/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('./../font/iconfont.woff2') format('woff2'),
+        url('./../font/iconfont.woff') format('woff'),
+        url('./../font/iconfont.ttf') format('truetype'),
+        url('./../font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+    background-color: #D9E1EC;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+a,
+a:focus,
+a:hover {
+    cursor: pointer;
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+}
+
+div:focus {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+p,
+ul {
+    margin: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+button {
+    border: 1px solid transparent;
+    outline: none;
+}
+
+input,
+button,
+textarea {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    /*-webkit-appearance:none;*/
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: '';
+    display: table
+}
+
+.clearfix:after {
+    clear: both;
+    display: block
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #999 !important;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999 !important;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999 !important;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #999 !important;
+}
+
+.num-tip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 22px;
+    background-color: red;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 900;
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    text-align: center;
+    overflow: hidden;
+}
+
+/* 暂无数据 */
+#none-data {
+    display: none;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    font-size: 0.26rem;
+    color: #ddd;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+
+/* btn  hover动画效果 */
+.btn-hover-animate {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover-animate::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    padding-top: 100%;
+    background: transparent;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes ripple {
+    from {
+        transform: translate(-50%, -50%) scale(0);
+        /**由于我们默认写了变换属性，所以这里要补上translate(-50%,-50%)，不然就会被替换了**/
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1.2);
+        background: transparent;
+    }
+}
+
+.btn-hover-animate:hover::after {
+    animation: ripple 1s ease-out !important;
+}
+
+
+
+
+
+
+
+.navbar-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: background-color .3s;
+    z-index: 2;
+}
+
+.navbar-wrapper.logged {
+    background-color: #fff;
+}
+
+.navbar-wrapper.logged .login-bar,
+.navbar-wrapper .navbar {
+    display: none;
+}
+
+.navbar-wrapper .login-bar,
+.navbar-wrapper.logged .navbar {
+    display: block;
+}
+
+.navbar-wrapper .login-bar {
+    float: right;
+    height: 100%;
+    margin: 0 100px 0 0;
+}
+
+.navbar-wrapper .login-bar span {
+    display: inline-block;
+    margin: 20px 0 20px 20px;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: all .2s;
+}
+
+.navbar-wrapper .login-bar span:hover {
+    color: #FDA528;
+}
+
+
+.navbar-wrapper .navbar {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.navbar-wrapper .navbar .logo {
+    float: left;
+    height: 40px;
+    margin: 5px 0 5px 60px;
+}
+
+.navbar-wrapper .navbar .menu-list {
+    float: left;
+    height: 100%;
+    margin: 0 0 0 20px;
+}
+
+.navbar-wrapper .navbar .menu-list .menu-item {
+    float: left;
+    height: 100%;
+    margin: 0 35px;
+    padding: 0 5px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0B2248;
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s;
+}
+
+.navbar-wrapper .navbar .menu-list .menu-item:hover {
+    color: #FDA528;
+}
+
+.navbar-wrapper .navbar .menu-list .menu-item.active {
+    border-bottom: 5px solid #FDA528;
+}
+
+.navbar-wrapper .navbar .user-info {
+    height: 100%;
+    float: right;
+    margin: 0 100px 0 0;
+    line-height: 50px;
+}
+
+.navbar-wrapper .navbar .user-info .user-name,
+.navbar-wrapper .navbar .user-info .logout {
+    float: left;
+    font-size: 13px;
+    font-weight: 400;
+    color: #666;
+    cursor: pointer;
+}
+
+.navbar-wrapper .navbar .user-info .avatar {
+    float: left;
+    margin: 5px 0 5px 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.navbar-wrapper .navbar .user-info .avatar img {
+    display: block;
+    height: 100%;
+    cursor: pointer;
+}
+
+.navbar-wrapper .navbar .user-info .message {
+    position: relative;
+    float: left;
+    margin: 13px 0 13px 15px;
+    width: 24px;
+    height: 24px;
+}
+
+.navbar-wrapper .navbar .user-info .message.new::after {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.navbar-wrapper .navbar .user-info .message img {
+    display: block;
+    height: 100%;
+    cursor: pointer;
+}
+
+.navbar-wrapper .navbar .user-info .logout {
+    margin: 0 0 0 15px;
+    transition: color .3s;
+}
+
+.navbar-wrapper .navbar .user-info .logout:hover {
+    color: #FDA528;
+}
+
+
+.login-dialog-content {
+    border-radius: 6px;
+}
+
+.login-dialog-title .login-logo {
+    display: block;
+    height: 45px;
+    margin: 45px auto 0 auto;
+}
+
+.login-dialog-content .modal-body {
+    padding: 45px 10%;
+}
+
+.login-dialog-content .modal-body .form-group {
+    position: relative;
+}
+
+.login-dialog-content .modal-body .form-group input {
+    height: 55px;
+    line-height: 55px;
+    padding-left: 55px;
+    font-size: 20px;
+}
+
+.login-dialog-content .modal-body .form-group:nth-of-type(2) {
+    margin-top: 30px;
+}
+
+.login-dialog-content .modal-body .form-group img {
+    position: absolute;
+    width: 22px;
+    left: 16.5px;
+    top: 16.5px;
+}
+
+.login-dialog-content .login-btn {
+    width: 100%;
+    height: 55px;
+    margin-top: 50px;
+    background: linear-gradient(-87deg, rgba(253, 159, 39, 1) 0%, rgba(253, 149, 64, 1) 99%);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 55px;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+}
+
+
+@media screen and (min-width: 576px) {
+    #login-dialog .modal-dialog {
+        max-width: 650px !important;
+        width: 30% !important;
+        margin-top: 100px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1440px) {
+
+    #login-dialog .modal-dialog {
+        max-width: 650px !important;
+        width: 30% !important;
+        margin-top: 100px;
+    }
+
+    #login-dialog .login-dialog-title .login-logo {
+        height: 40px;
+        margin: 30px auto 0 auto;
+    }
+
+    #login-dialog .login-dialog-content .modal-body {
+        padding: 30px 10%;
+    }
+
+
+    .login-dialog-content .modal-body .form-group input {
+        height: 40px;
+        line-height: 40px;
+        padding-left: 40px;
+        font-size: 16px;
+    }
+
+    .login-dialog-content .modal-body .form-group:nth-of-type(2) {
+        margin-top: 20px;
+    }
+
+    .login-dialog-content .modal-body .form-group img {
+        width: 18px;
+        top: 11px;
+        left: 11px;
+    }
+
+    .login-dialog-content .login-btn {
+        height: 40px;
+        margin-top: 30px;
+        font-size: 18px;
+        line-height: 40px;
+    }
+}
+
+.footer {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+}
+
+/* 循环滚动公告 */
+.notice-scroll {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.notice-scroll ul {
+    transform: translateY(0);
+}
+
+.animate-out {
+    transition: all .5s ease-out;
+}
+
+.notice-scroll li {
+    overflow: hidden;
+    display: box;
+    margin-left: 10px;
+    width: 90%;
+    height: 100%;
+    line-height: 34px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+
+/*面包屑*/
+
+
+.breadcrumbs {
+    width: 100%;
+    color: #666;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.breadcrumbs .clickable {
+    font-weight: 800;
+    color: #0B2248;
+    cursor: pointer;
+}
+
+.breadcrumbs .clickable:hover {
+    color: #FF7300;
+    text-decoration: underline;
+}
+
+
+/* 侧边栏菜单 */
+.sidebar {
+    float: left;
+    width: 230px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.sidebar .menu {
+    width: 100%;
+    margin: 0;
+    user-select: none;
+}
+
+.sidebar .menu .menu-item {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin: 0;
+    /* overflow: hidden; */
+}
+
+.sidebar .menu .menu-item.active .menu-name {
+    color: #FF7300;
+}
+.sidebar .menu .menu-item.has-children .menu-name::before {
+    font-family: "iconfont";
+    content: '\e600';
+    position: absolute;
+    top: 2px;
+    right: 35px;
+    font-size: 15px;
+    transform: rotate(-180deg);
+    transition: all .3s;
+}
+.sidebar .menu .menu-item.has-children .menu-name.collapsed::before {
+    transform: rotate(0);
+}
+
+.sidebar .menu .menu-item.active .menu-name::after {
+    position: absolute;
+    content: '';
+    width: 5px;
+    height: 40px;
+    right: 0;
+    top: 20px;
+    background-color: #FF7300;
+}
+
+.sidebar .menu .menu-item .menu-name {
+    width: 100%;
+    /* height: 80px; */
+    padding: 0 40px;
+    line-height: 80px;
+    color: #333;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.sidebar .menu .menu-item .menu-name:hover,
+.sidebar .menu .menu-item .menu-name:active {
+    color: #FF7300;
+}
+
+.sidebar .menu .menu-item .menu-name .menu-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    font-size: 22px;
+}
+
+.sidebar .menu .menu-item .menu-name .menu-label {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 50px);
+    margin: 0 0 0 20px;
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar .menu .menu-item .menu-childrens {
+    width: 100%;
+    padding: 0 15px;
+    background-color: #F9F9F9;
+}
+
+.sidebar .menu .menu-item .menu-childrens .chid-menu {
+    float: left;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 10px;
+    color: #535353;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.sidebar .menu .menu-item .menu-childrens .chid-menu:nth-of-type(1) {
+    margin-top: 10px;
+}
+
+.sidebar .menu .menu-item .menu-childrens .chid-menu:nth-last-of-type(1) {
+    margin-bottom: 10px;
+}
+
+.sidebar .menu .menu-item .menu-childrens .chid-menu:hover,
+.sidebar .menu .menu-item .menu-childrens .chid-menu:active {
+    color: #FF7300;
+}
+
+.sidebar .menu .menu-item .menu-childrens .chid-menu.active {
+    background: linear-gradient(130deg, rgba(255, 156, 37, 1), rgba(255, 156, 36, 1));
+    color: #fff;
+}

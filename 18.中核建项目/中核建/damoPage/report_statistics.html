@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>上报统计</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+		<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<link href="../css/plugins/jsTree/style.min.css" rel="stylesheet">
+		<link href="../css/common.css" rel="stylesheet">
+		<style type="text/css">
+			.tree-div:after {content: " ";position: absolute;right: 10px;top: 0;height: 100vh;border-left: 1px solid #9E9E9E;}
+			.bootstrap-table .table>tbody>tr.detail-view>td {
+			    padding: 3px!important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="zhibiao-issue container-fluid animated fadeInRight search-content">
+			<div class="row">
+				<div class="col-xs-3 tree-div">
+                    <p class="page-title t-tag" style="margin: 15px 0;font-size:16px;">股份公司</p>
+					<div id="org-tree"></div>
+                </div>
+				<div class="col-xs-9">
+                    <div class="clearfix">
+                        <button id="exportData" style="float: right;margin-left: 15px;" onclick="exportData()" type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+                        </button>
+                        <button id="importData" style="float: right;" onclick="importData()" type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-import" aria-hidden="true"></span>导入
+                        </button>
+                    </div>
+                    <div id="toolbar" data-toggle="buttons" class="btn-group">
+                        <label class="btn btn-sm btn-white active">
+                            <input type="radio" id="option1" name="options">主要经济指标</label>
+                        <label class="btn btn-sm btn-white">
+                            <input type="radio" id="option2" name="options">运营管理指标</label>
+                        <label class="btn btn-sm btn-white">
+                            <input type="radio" id="option3" name="options">市场开发</label>
+                        <label class="btn btn-sm btn-white">
+                            <input type="radio" id="option4" name="options">采购</label>
+                        <label class="btn btn-sm btn-white">
+                            <input type="radio" id="option5" name="options">人力</label>
+                    </div>
+
+
+                    <table id="table"></table>
+                    
+                    <div class="subButt">
+                        <button type="button" onclick="saveForm('提交')" class="btn btn-info">
+                            <span class="glyphicon glyphicon-ok"></span>提交</button>
+                        <button type="button" onclick="saveForm('暂存')" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-ok"></span>暂存</button>
+                        <button type="button" onclick="closeDialog()" class="btn btn-default">
+                            <span class="glyphicon glyphicon-remove"></span>取消</button>
+                    </div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+		<!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+		<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="../js/plugins/layer/layer.js"></script>
+		<script src="../js/plugins/jsTree/jstree.min.js"></script>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+            var $table = $('#table');
+            var date = new Date();
+            curYear = date.getFullYear()
+            $('#year-title').text(curYear)
+
+            $('#pre-year').click(()=>{
+                curYear -= 1
+                $('#year-title').text(curYear)
+                setDatas()
+            })
+            $('#next-year').click(()=>{
+                curYear += 1
+                $('#year-title').text(curYear)
+                setDatas()
+            })
+
+			$(function() {
+				var trees = [//此为数据格式,更多结构请参考api文档
+					{text:"集团总部",type:'top',state:{opened:true},children:[
+						{text:"中核中原",type:'mid'},
+						{text:"中核二二",type:'mid',children:[
+							{text:"华中区域公司",type:'bot'},
+							{text:"华东区域公司",type:'bot'},
+							{text:"华南区域公司",type:'bot'},
+							{text:"西北区域公司",type:'bot'},
+							{text:"西南区域公司",type:'bot'}
+						]},
+						{text:"中核二三",type:'mid'},
+						{text:"中核二四",type:'mid'},
+						{text:"中核华兴",type:'mid'},
+						{text:"中核华辰",type:'mid'},
+						{text:"中核机械",type:'mid'},
+						{text:"中核五建",type:'mid'},
+						{text:"中核检修",type:'mid',children:[
+							{text:"中核检修深圳分公司",type:'bot'},
+							{text:"中核检修海盐分公司",type:'bot'},
+							{text:"中核检修连云港分公司",type:'bot'},
+							{text:"中核检修大连分公司",type:'bot'},
+							{text:"中核检修福鼎分公司",type:'bot'}
+						]}
+					]}
+				];
+				$('#org-tree').jstree({core : {data : trees}}).on('select_node.jstree',function(a,b,c){
+					console.log(a,b,c);
+					setDatas();
+                });
+                
+                const tableColumns = [{
+                    title: '指标名称',
+                    field: 'name',
+                    align: 'center',
+                },{
+                    title: '序号',
+                    align: 'center',
+                    formatter: thIndex
+                },{
+                    title: '年度计划',
+                    field: 'yearPlan',
+                    align: 'center',
+                },{
+                    title: '-3月累计完成',
+                    field: 'monthNum',
+                    align: 'center',
+                },{
+                    title: '当期累计',
+                    field: 'total',
+                    align: 'center',
+                    formatter: thInput
+                },{
+                    title: '修订值',
+                    field: 'editValue',
+                    align: 'center',
+                    formatter: thInput
+                },{
+                    title: '去年同期',
+                    field: 'preYearValue',
+                    align: 'center',
+                },{
+                    title: '同比增加',
+                    field: 'growValue',
+                    align: 'center',
+                },{
+                    title: '年度计划完成率',
+                    field: 'planRate',
+                    align: 'center',
+                },{
+                    title: '与序时进度比',
+                    field: 'progressRatio',
+                    align: 'center'
+                }]
+                
+                $table.bootstrapTable({
+                    columns: tableColumns,
+                    data: [],
+                    pagination: true,
+                    pageSize: 10,
+                    pageList: [20, 50, 100],
+                    showColumns: false, //是否显示所有的列
+                    showColumns: true, // 开启自定义列显示功能
+                    paginationLoop: false,
+                    paginationPreText: "上一页",
+                    paginationNextText: "下一页",
+                    showRefresh: true,
+                    toolbar: '#toolbar'
+                })
+                setDatas();
+                $('.btn-group .btn').click(setDatas);
+                $('.btn-group .active').click();
+			});
+			function setDatas(){
+                const nameArr = ['营业收入', '利润总额','净利润','EVA','成本费用占营收比例（%）','营业成本','销售费用','财务费用','应收账款','管理成本']
+                var datas = [];
+                for(i=1;i<=10;i++){
+                    datas.push({
+                        id: i,
+                        name: nameArr[i-1],
+                        yearPlan: Math.floor(Math.random()*800000)+40000,
+                        monthNum: Math.floor(Math.random()*800000)+40000,
+                        total: Math.floor(Math.random()*8000)+300,
+                        editValue: Math.floor(Math.random()*8000)+300,
+                        preYearValue: 'xxxx',
+                        growValue: 'xxx',
+                        planRate: 'xxxxx',
+                        progressRatio: 'xxxxx'
+                    })
+                }
+			    $table.bootstrapTable('load', datas);
+            }
+
+			function search() { //查询方法
+				$table.bootstrapTable('refresh');
+            }
+            function closeDialog(){
+                console.log('关闭')
+            }
+            function saveForm(){
+                // layer.close(layer.index)
+                console.log('保存')
+            }
+            function exportData(){
+                console.log('导出')
+            }
+            function importData(){
+                console.log('导入')
+            }
+		</script>
+	</body>
+</html>

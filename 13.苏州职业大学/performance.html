@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<link rel="stylesheet" href="./assets/css/performance.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<meta name="keywords" content="苏州职业大学" />
+		<meta name="description" content="苏州职业大学" />
+		<title>苏州职业大学</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="top-bg">
+				<img class="top-bg-img" src="assets/imgs/top.png" />
+				<p class="name">苏州职业大学绩效管理平台</p>
+				<div class="layui-header">
+					<!-- 头部区域（可配合layui已有的水平导航） -->
+					<div class="layui-logo"><a href="javascript:;"><img src="assets/imgs/logo1.png" alt="logo"></a></div>
+					<ul class="layui-nav">
+						<li class="layui-nav-item"><a href="index.html"><i class="iconfont icon-yuanxiao"></i>首页</a></li>
+						<li class="layui-nav-item">
+							<a href="javascript:;"><i class="iconfont icon-zhibiao"></i> 指标配置</a>
+						</li>
+						<li class="layui-nav-item layui-this"><a href="#"><i class="iconfont icon-kaohe1"></i> 绩效考核</a></li>
+
+					</ul>
+					<ul class="layui-nav layui-layout-right">
+						<li>
+							<span class="img-span">
+								<img src="assets/imgs/user.png" class="layui-nav-img">
+							</span>
+
+						</li>
+						<li> <span>您好，张老师</span></li>
+						<li><a href="javascript:;" class="destroy">注销</a> </li>
+						<li><a href="javascript:;" class="userCenter">个人中心</a></li>
+
+					</ul>
+				</div>
+			</div>
+			<div class="layui-body">
+				<div class="layui-body-admin">
+					<div class="layui-card" style="background: transparent;">
+						<div class="layui-card-header">绩效考核<img src="assets/imgs/logo2.png" class="logo" /></div>
+						<div class="layui-card-body">
+							<div class="layui-tab layui-tab-brief" lay-filter="test1">
+								<ul class="layui-tab-title">
+									<li class="layui-this">
+										<span>我的流程</span></li>
+									<li><span>我的待办<span class="layui-badge">14</span></span></li>
+									<li><span>我的已办</span></li>
+								</ul>
+								<div class="layui-tab-content">
+									<div id="noData">
+										<img src="assets/imgs/noData.png" />
+										<p id="noDataText">'暂无流程~'</p>
+									</div>
+									<!-- 我的流程 -->
+									<div class="layui-tab-item  layui-show">
+										<div class="contnet">
+											<div class="views-btn">
+												<a href="javascript:;" onclick="changeCard(1)"><i class="iconfont icon-menu"></i></a>
+												<a href="javascript:;" onclick="changeCard(2)"><i class="iconfont icon-appstore"></i></a>
+											</div>
+											<div class="task-list" id="task-list">
+												<ul id="task-list-ul">
+
+												</ul>
+												<div id="laypageDiv" class="laypageDiv"></div>
+											</div>
+											<div class="task-card" id="task-card">
+												<div class="layui-row layui-col-space30" id="task-card-ul">
+
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 我的待办 -->
+									<div class="layui-tab-item">
+										<div class="contnet">
+											<ul class="layui-timeline todo" id="todoUl">
+
+											</ul>
+											<div id="laypageDivTodo" class="laypageDiv"></div>
+										</div>
+									</div>
+									<!-- 我的已办 -->
+									<div class="layui-tab-item">
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="qita">
+
+				</div>
+				<div class="footer">
+					<span>
+						<img src="assets/imgs/footer_left.png" />
+					</span>
+					<span class="title">
+						版权信息：版权所有 COPYRIGHT © 2008 苏州市职业大学 苏ICP备06022957号 苏公网安备 32050602010546号
+					</span>
+					<span>
+						<img src="assets/imgs/footer-right.png" />
+					</span>
+				</div>
+			</div>
+
+
+		</div>
+
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+		</div>
+
+		<script src="./assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/js/template-web.js"></script>
+		<script id="taskList-template" type="text/html">
+			{{each list}}
+				<li>
+					<span class="diamond"><i class="iconfont icon-lingxing"></i></span>
+					<span class="title">{{$value.title}}</span>
+					<span class="version">｜版本号：{{$value.version}}</span>
+					<button type="button" class="layui-btn layui-btn-primary layui-btn-sm">办理</button>
+				</li>
+			{{/each}}
+		</script>
+		<script id="cardList-template" type="text/html">
+			{{each list}}
+				<div class="layui-col-xs3">
+					<div class="layui-panel">
+						<div class="info">
+							<div class="icon-div"><img src="assets/imgs/{{$value.img}}.png"></img></div>
+							<div class="right">
+								<div class="title">{{$value.title}}</div>
+								<div class="desc">{{$value.desc}}</div>
+							</div>
+						</div>
+						<div class="operate">
+							<i class="iconfont icon-banli"></i>办理
+						</div>
+					</div>
+					
+				</div>
+			{{/each}}
+		</script>
+		<script id="todoList-template" type="text/html">
+			{{each list}}
+				<li class="layui-timeline-item">
+					<i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+					<div class="layui-timeline-content layui-text">
+						<span class="time">{{$value.time}}</span>
+						<span>发起人：{{$value.creator}}</span>
+						<span class="title">{{$value.title}}</span>
+						{{if $index === 0}}
+						<span class="layui-badge">最新</span>
+						{{/if}}
+					</div>
+				</li>
+			{{/each}}
+		</script>
+		<script>
+			var list = [{
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '该学院(部)教学/科研/学生工作/校地合作/综合管理/党建6个方面业绩指标考核',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}]
+			var cards = [{
+				title: '教职工绩效指标确认',
+				version: '172973667',
+				img: 'zhigong',
+				desc: '绩效管理'
+			}, {
+				title: '教职工年度绩效考核',
+				version: '172973667',
+				img: 'niandu',
+				desc: '绩效管理'
+			}]
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use(['laypage', 'layer', 'element'], function() {
+				var element = layui.element;
+				var laypage = layui.laypage,
+					layer = layui.layer;
+				taskList(laypage)
+				getTodo(laypage)
+				//监听Tab切换，以改变地址hash值
+				element.on('tab(test1)', function(data) {
+					if (data.index == 0) {
+						$('#noDataText').html('暂无流程~')
+						console.log($('#noDataText'))
+					} else if (data.index == 1) {
+						$('#noDataText').html('暂无待办~')
+					} else {
+						$('#noDataText').html('暂无已办~')
+					}
+				});
+
+			});
+
+			function taskCard() {
+				$('#task-card-ul').html('');
+				var htmlCard = template('cardList-template', {
+					list: cards
+				})
+				$('#task-card-ul').append(htmlCard);
+			}
+
+			function taskList(laypage) {
+				var html = template('taskList-template', {
+					list: list
+				})
+				$('#task-list-ul').append(html);
+				var allCount = 30
+				if (allCount == 0) {
+					$('.contnet').hide()
+					$('#noData').show()
+					return false
+				}
+				//完整功能
+				laypage.render({
+					elem: 'laypageDiv',
+					count: allCount,
+					prev: '<em><i class="iconfont icon-xiangzuo"></i></em>',
+					next: '<em><i class="iconfont icon-xiangyou"></i></em>',
+					layout: ['count', 'prev', 'page', 'next', 'skip'],
+					jump: function(obj) {
+						console.log(obj)
+					}
+				});
+			}
+
+			function changeCard(flag) {
+				if (flag === 1) {
+					$('#task-list').show()
+					$('#task-card').hide()
+				} else {
+					taskCard()
+					$('#task-list').hide()
+					$('#task-card').show()
+				}
+
+			}
+
+			function getTodo(laypage) {
+				var todoList = [{
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}, {
+					title: '年度计划考核表查询入口已经下发给个人，请认真阅读查看，年度计划考核表查询入口已经下发给个人，请认真阅读查看',
+					time: '2021-07-13 08:59:53',
+					creator: '刘莉莉'
+				}]
+				var htmlTodo = template('todoList-template', {
+					list: todoList
+				})
+				$('#todoUl').append(htmlTodo);
+				var allCountTodo = 30
+				if (allCountTodo == 0) {
+					$('.contnet').hide()
+					$('#noData').show()
+					return false
+				}
+				//完整功能
+				laypage.render({
+					elem: 'laypageDivTodo',
+					count: allCountTodo,
+					prev: '<em><i class="iconfont icon-xiangzuo"></i></em>',
+					next: '<em><i class="iconfont icon-xiangyou"></i></em>',
+					layout: ['count', 'prev', 'page', 'next', 'skip'],
+					jump: function(obj) {
+						console.log(obj)
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

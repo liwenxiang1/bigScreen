@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>人员基本信息详情页</title>
+	</head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="fonts/iconfont.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<body>
+		<div class="head" style="position: relative;">
+			<div class="breadcrumb">
+				<a href="#"><span class="glyphicon glyphicon-chevron-left"></span>返回</a>
+			</div>
+			<!-- <div class="shoucang" id="shoucang" style="position: absolute;right: 0;top: 10px;">
+				<img style="width: 16px;height: 16px;" src="icon/收藏.svg" />
+				<div style="margin-left:3px">2</div>
+			</div> -->
+		</div>
+
+		<div class="content">
+			<div class="card">
+				<div class="card-title" style="position: relative;">
+					<div class="item-span"></div>基本信息
+					<div class="shoucang" id="shoucang" style="position: absolute;right: 0;top: 5px;">
+						<!-- <img style="width: 16px;height: 16px;" src="icon/收藏.svg" /> -->
+						<button type="button" class="btn btn-default">点击收藏</button>
+						<!-- <button type="button" class="btn btn-warning">取消收藏</button> -->
+						<div style="margin-left:3px; line-height: 35px;">666</div>
+					</div>
+				</div>
+				<div class="card-content">
+					<span>实体名称：人员基本信息</span>
+					<span>更新时间：2019年10月21日10:07:37</span>
+					<span>路径：员工>员工信息</span>
+					<!-- <span>业务标签</span> -->
+					<span style="padding-right: 10px;">业务标签：</span>
+					<span class="label label-primary">敏感</span>
+					<span class="label label-warning">业务</span>
+					<span class="label label-success">GDPR</span>
+				</div>
+				<div class="card-content">
+					<span>业务定义：E-HR中包含员工的身份基本信息，包括原身份信息，学历信息，工作信息等，该实体为高密级信息，使用数据需向人力资源部申请E-HR中包含员工的身份基本信息，包括原身份信息，学历信息，工作信息等，该实体为高密级信息，使用数据需向人力资源部申请E-HR中包含员工的身份基本信息，包括原身份信息，学历信息，工作信息等，该实体为高密级信息，使用数据需向人力资源部申请</span>
+				</div>
+
+			</div>
+			<div class="card">
+				<div class="card-title">
+					<div class="item-span"></div>详细信息
+				</div>
+				<div class="card-content">
+					<div style="padding: 15px 25px;">
+						<ul id="myTab" class="nav nav-tabs">
+							<li class="active">
+								<a href="#shuxing" data-toggle="tab">
+									属性
+								</a>
+							</li>
+							<li><a href="#guanlianbiao" data-toggle="tab">关联表</a></li>
+						</ul>
+						<div id="myTabContent" class="tab-content">
+							<div class="tab-pane fade in active" id="shuxing">
+								<div style="border-bottom: 0.5px solid #E8E8E8;">
+									<table class="table table-hover table-info">
+										<thead>
+											<tr>
+												<th>描述</th>
+												<th>关联标准</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+											<tr>
+												<td>空勤技术等级(计酬)</td>
+												<td class="text-blue">T110044</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="page" style="margin-top:25px">
+									<ul class="page-menu-ul">
+										<li>
+											<div style="line-height: 34px;">共5条</div>
+										</li>
+										<li><select class="form-control">
+												<option>10条/页</option>
+												<option>20条/页</option>
+											</select></li>
+										<li>
+											<div id="pageBox">
+											</div>
+										</li>
+										<li>
+											<div>前往
+												<input class="form-control" style="width: 50px;" type="text">页</div>
+										</li>
+										<!-- <div style="clear:both"></div> -->
+									</ul>
+									<div style="clear:both"></div>
+
+
+
+								</div>
+							</div>
+							<div class="tab-pane fade" id="guanlianbiao">
+								数据服务
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var total = 50, //数据总条数
+			pageNumber = 1, //当前页
+			pageSize = 10, //每页显示的条数
+			edges = 2, //两侧显示的页码数 大于1
+			playes = 5, //主页码区显示的页码数 大于3
+			pages = Math.ceil(total / pageSize); //总页数
+		renderPageItem();
+
+		function renderPageItem() {
+			$ul = $('<ul class="pagination"></ul>');
+			var start = 1;
+			var end = pages;
+			if (playes % 2) {
+				//playes是奇数
+				start = pageNumber - Math.floor(playes / 2);
+				end = pageNumber + Math.floor(playes / 2);
+			} else {
+				//playes是偶数
+				start = pageNumber - (playes / 2 - 1);
+				end = pageNumber + playes / 2;
+			}
+
+			if (start <= edges + 1) {
+				start = 1;
+				if (end < playes && playes < pages) {
+					end = playes;
+				}
+			} else {
+				for (var i = 1; i <= edges; i++) {
+					$ul.append(renderItem(i));
+				}
+				$ul.append('<li><span>...</span></li>')
+			}
+			if (end < pages - edges) {
+				for (var i = start; i <= end; i++) {
+					$ul.append(renderItem(i));
+				}
+				$ul.append('<li><span>...</span></li>');
+				for (var i = pages - edges + 1; i <= pages; i++) {
+					$ul.append(renderItem(i));
+				}
+			} else {
+				end = pages;
+				if (start > pages - playes + 1) {
+					start = pages - playes + 1
+				}
+				for (var i = start; i <= end; i++) {
+					$ul.append(renderItem(i));
+				}
+			}
+			$ul.prepend(renderPrevItem());
+			$ul.append(renderNextItem());
+			$ul.append('<div style="clear:both"></div>')
+			$('#pageBox').empty().append($ul);
+		}
+
+		function renderItem(i) {
+			$item = $('<li><a href="#">' + i + '</a></li>');
+			if (i == pageNumber) {
+				$item.addClass('active');
+			}
+			$item.on('click', (function(i) {
+				return function() {
+					pageNumber = i;
+					renderPageItem();
+				}
+			})(i));
+			return $item
+		}
+
+		function renderPrevItem() {
+			$prev = $('<li><a href="#">&laquo;</a></li>');
+			if (pageNumber == 1) {
+				$prev.addClass('disabled');
+			} else {
+				$prev.on('click', function() {
+					pageNumber = pageNumber - 1;
+					renderPageItem();
+				})
+			}
+			return $prev;
+		}
+
+		function renderNextItem() {
+			$next = $('<li><a href="#">&raquo;</a></li>');
+			if (pageNumber == pages) {
+				$next.addClass('disabled');
+			} else {
+				$next.on('click', function() {
+					pageNumber = pageNumber + 1;
+					renderPageItem();
+				})
+			}
+			return $next;
+		}
+		$("#shoucang button").click(function() {
+			if($(this).hasClass("btn-default")){
+				$(this).html("取消收藏");
+				$(this).removeClass("btn-default").addClass("btn-warning");
+			}else {
+				$(this).html("点击收藏");
+				$(this).removeClass("btn-warning").addClass("btn-default");
+			}
+			// if ($(this).attr('src') != 'icon/收藏灰色.svg') {
+			// 	$(this).attr('src', 'icon/收藏灰色.svg');
+			// } else {
+			// 	$(this).attr('src', 'icon/收藏.svg');
+			// }
+		})
+	</script>
+</html>

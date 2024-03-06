@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/main_center.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="lib/bootstrapValidator/bootstrapValidator.min.css"> -->
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="普陀·大数据-委办局中心" />
+    <meta name="description" content="普陀·大数据-委办局中心" />
+    <title>普陀·大数据-委办局中心</title>
+</head>
+
+<body>
+    <div class="main-center">
+        <div class="navbar-wrapper clearfix">
+            <!--未登录显示-->
+            <div class="login-bar">
+                <span data-toggle="modal" data-target="#login-dialog">登录</span>
+                <span data-toggle="modal" data-target="#login-dialog">注册</span>
+            </div>
+            <!--已登录显示-->
+            <div class="navbar">
+                <img src="./static/logo.png" alt="" class="logo">
+                <ul class="menu-list">
+                    <li class="menu-item active">数据资产</li>
+                    <li class="menu-item">数据治理</li>
+                    <li class="menu-item">共享应用</li>
+                    <li class="menu-item">运维保障</li>
+                </ul>
+                <div class="user-info">
+                    <p class="user-name">您好：马冬梅</p>
+                    <div class="avatar">
+                        <img src="./static/avatar.png" alt="">
+                    </div>
+                    <div class="message new">
+                        <img src="./static/message.png" alt="">
+                    </div>
+                    <span class="logout" onclick="logout()">退出</span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="notice-bar shadow-sm">
+                <div class="notice-scroll clearfix">
+                    <div class="notice-label pull-left">
+                        <i>通知</i><i>公告：</i>
+                    </div>
+                    <ul class="pull-left">
+                        <li>关于第二轮信息系统备案要求,各种注意事项，请知悉....</li>
+                        <li>关于第二轮信息系统备案要求,各种注意事项，请知悉....</li>
+                        <li>关于第二轮信息系统备案要求,各种注意事项，请知悉....</li>
+                        <li>关于第二轮信息系统备案要求,各种注意事项，请知悉....</li>
+                    </ul>
+                    <div class="more-notice pull-left"></div>
+                    <!-- <span class="load-more">查看更多</span> -->
+                </div>
+                <div class="search-row pull-right">
+                    <input type="text" name="keyword" value="" placeholder="查询通知公告关键词">
+                    <div class="search-btn">
+                        <span>检&nbsp;&nbsp;索</span>
+                        <img src="./static/home/search.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="info-cards">
+                <div class="info-card clearfix shadow-sm">
+                    <img src="./static/home/assets.png" alt="" class="info-l">
+                    <div class="info-r">
+                        <p class="info-title">数据归集</p>
+                        <p class="info-info"><span>50条</span>已读信息 <span>50条</span>未读消息</p>
+                    </div>
+                </div>
+                <div class="info-card clearfix shadow-sm">
+                    <img src="./static/home/assets.png" alt="" class="info-l">
+                    <div class="info-r">
+                        <p class="info-title">数据共享</p>
+                        <p class="info-info"><span>50条</span>已办理 <span>20条</span>未办理</p>
+                    </div>
+                </div>
+                <div class="info-card clearfix shadow-sm">
+                    <img src="./static/home/assets.png" alt="" class="info-l">
+                    <div class="info-r">
+                        <p class="info-title">工单处理</p>
+                        <p class="info-info"><span>50条</span>已办理 <span>50条</span>未办理</p>
+                    </div>
+                </div>
+            </div>
+            <div class="line-charts">
+                <ul class="data-tabs clearfix">
+                    <li class="tab active">数据归集</li>
+                    <li class="tab">资产目录</li>
+                    <li class="tab">数据共享</li>
+                </ul>
+                <div id="all-statistics"></div>
+            </div>
+            <div class="bar-charts shadow-sm">
+                <h3 class="content-title">全区数据湖目前有<span>500GB</span>数据&nbsp;&nbsp;&nbsp;&nbsp;本月新增<span>50GB</span>数据
+                </h3>
+                <div class="awards-charts clearfix">
+                    <div class="awards-chart">
+                        <div class="awards-chart-title">
+                            <span>单位归集数据量TOP10</span>
+                        </div>
+                        <div class="chart" id="chart1"></div>
+                    </div>
+                    <div class="awards-chart">
+                        <div class="awards-chart-title">
+                            <span>近期数据归集优秀单位一览</span>
+                            <div class="dropdown pull-right">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    本周
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button">本周</button>
+                                    <button class="dropdown-item" type="button">本月</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart" id="chart2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+        <!-- 登录弹窗 -->
+        <div class="modal fade" id="login-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content login-dialog-content">
+                    <div class="login-dialog-title">
+                        <img class="login-logo" src="./static/logo.png" alt="">
+                    </div>
+                    <div class="modal-body">
+                        <form id="login-form" novalidate>
+                            <div class="form-group input-group-lg">
+                                <img src="./static/user.svg" alt="">
+                                <input id="username" type="text" required="required" name="username"
+                                    class="form-control" placeholder="请输入登录账号">
+                                <div class="invalid-feedback"><small>请输入用户名！</small></div>
+                            </div>
+                            <div class="form-group input-group-lg">
+                                <img src="./static/password.svg" alt="">
+                                <input name="password" required="required" type="password" class="form-control"
+                                    placeholder="请输入密码">
+                                <div class="invalid-feedback">请输入密码！</div>
+                            </div>
+                            <button type="submit" class="login-btn btn-hover-animate">
+                                登录
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.7.0/echarts-en.common.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+            // 本地存储中判断当前用户登录信息
+            let userInfo = localStorage.getItem('putuoUserInfo')
+            if (userInfo) {
+                userInfo = JSON.parse(userInfo)
+                if (userInfo.id) {
+                    // 如果存在登录信息，展示登录后的navbar
+                    $('.navbar-wrapper').addClass('logged')
+                }
+            }
+
+            $("#login-form").submit(function (event) {
+                if ($(this)[0].checkValidity() === false) {
+                    event.preventDefault(); // 阻止提交表单
+                    event.stopPropagation();
+                } else {
+                    // 登录接口，获取用户信息
+                    // 登陆成功后do....
+                    const params = {
+                        id: 'sysadmin',
+                        username: '马冬梅'
+                    }
+                    localStorage.setItem('putuoUserInfo', JSON.stringify(params))
+                    $('.navbar-wrapper').addClass('logged')
+                }
+                $(this).addClass("was-validated");
+            });
+            $('#login-dialog').on('show.bs.modal', function (e) {
+                // 弹窗出现回调
+            })
+            $('#login-dialog').on('shown.bs.modal', function () {
+                // 出现后焦点放到用户名输入框
+                $('#username').trigger('focus')
+            })
+            $('#login-dialog').on('hidden.bs.modal', function (e) {
+                console.log("e", e)
+                // 弹窗已关闭后回调,清除校验警告
+                $("#login-form").removeClass("was-validated");
+            })
+
+            let myChart1 = null,
+                myChart2 = null,
+                myChartAll = null
+            navbarInit()
+            chartsInit()
+            noticeScroll()
+            dropdownInit()
+            dataTabInit()
+        })
+
+        function navbarInit() {
+            $('.navbar .menu-list').on('click', '.menu-item', (e) => {
+                const isActive = $(e.currentTarget).hasClass('active')
+                if (isActive) {
+                    return
+                } else {
+                    $('.navbar .menu-list .active').removeClass('active')
+                    $(e.currentTarget).addClass('active')
+                }
+            })
+        }
+
+        function logout() {
+            localStorage.removeItem('putuoUserInfo')
+            $('.navbar-wrapper').removeClass('logged')
+        }
+
+        // <div class="line-charts">
+        //         <ul class="data-tabs clearfix">
+        //             <li class="tab">数据归集</li>
+        //             <li class="tab">资产目录</li>
+        //             <li class="tab">数据共享</li>
+        //         </ul>
+        //     </div>
+
+        function dataTabInit() {
+            $('.line-charts .data-tabs').on('click', '.tab', function (e) {
+                const index = $(this).index()
+                const isActive = $(e.currentTarget).hasClass('active')
+                if (isActive) {
+                    return
+                } else {
+                    $('.line-charts .data-tabs .active').removeClass('active')
+                    $(e.currentTarget).addClass('active')
+                    if (index === 0) {
+                        // 更新数据图
+                        myChartAll.setOption({
+                            series: [{
+                                data: [300, 500, 901, 700, 1000, 850, 750, 550, 700, 900, 1100,
+                                    1300
+                                ]
+                            }]
+                        })
+                        myChart1.setOption({
+                            series: [{
+                                data: [2300000, 2800000, 3100000, 3400000, 3800000, 4000000, 4200000, 4900000]
+                            }]
+                        })
+                        myChart2.setOption({
+                            series: [{
+                                data: [2300000, 2800000, 3100000, 3400000, 3800000]
+                            },{
+                                data: [1010000, 1000000, 1600000, 1200000, 2300000]
+                            }]
+                        })
+                        // myChartAll.series[0].data = [300, 500, 901, 700, 1000, 850, 750, 550, 700, 900, 1100, 1300]
+                    } else if (index === 1) {
+                        myChartAll.setOption({
+                            series: [{
+                                data: [100, 800, 901, 950, 1000, 850, 750, 550, 700, 1000, 1100,
+                                    1300
+                                ]
+                            }]
+                        })
+                        myChart1.setOption({
+                            series: [{
+                                data: [2000000, 2100000, 3500000, 1700000, 1500000, 1000000, 4200000, 4900000]
+                            }]
+                        })
+                        myChart2.setOption({
+                            series: [{
+                                data: [1300000, 1800000, 2100000, 3400000, 3800000]
+                            },{
+                                data: [2010000, 1000000, 1600000, 2000000, 2300000]
+                            }]
+                        })
+                        // myChartAll.series[0].data = [100, 800, 901, 950, 1000, 850, 750, 550, 700, 1000, 1100, 1300]
+                    } else {
+                        myChartAll.setOption({
+                            series: [{
+                                data: [800, 500, 901, 950, 1000, 850, 750, 650, 900, 1200, 1500,
+                                    700
+                                ]
+                            }]
+                        })
+                        myChart1.setOption({
+                            series: [{
+                                data: [1000000, 4100000, 4500000, 1700000, 2500000, 3000000, 4200000, 4900000]
+                            }]
+                        })
+                        myChart2.setOption({
+                            series: [{
+                                data: [3300000, 2800000, 1100000, 2400000, 3800000]
+                            },{
+                                data: [4010000, 3000000, 1600000, 2000000, 4300000]
+                            }]
+                        })
+                        // myChartAll.series[0].data = [800, 500, 901, 950, 1000, 850, 750, 650, 900, 1200, 1500, 700]
+                    }
+                }
+            })
+        }
+
+        function chartsInit() {
+            myChartAll = echarts.init(document.getElementById('all-statistics'));
+            myChart1 = echarts.init(document.getElementById('chart1'));
+            myChart2 = echarts.init(document.getElementById('chart2'));
+            myChartAll.setOption({
+                // grid: {
+                //     left: '0%',
+                //     containLabel: true
+                // },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line',
+                        lineStyle: {
+                            color: '#FF7300',
+                            width: 1,
+                            type: 'solid'
+                        }
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['2019-1', '2019-2', '2019-3', '2019-4', '2019-5', '2019-6', '2019-7', '2019-8',
+                        '2019-9', '2019-10', '2019-11', '2019-12'
+                    ],
+                    axisLine: {
+                        lineStyle: {
+                            color: "#999"
+                        }
+                    }
+                },
+                yAxis: [{
+                    type: 'value',
+                    splitNumber: 4,
+                    splitLine: {
+                        lineStyle: {
+                            type: 'dashed',
+                            color: '#DDD'
+                        }
+                    },
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: "#999"
+                        },
+                    },
+                    nameTextStyle: {
+                        color: "#999"
+                    },
+                    splitArea: {
+                        show: false
+                    }
+                }],
+                series: [{
+                    data: [300, 500, 901, 700, 1000, 850, 750, 550, 700, 900, 1100, 1300],
+                    type: 'line',
+                    smooth: true,
+                    // symbol: 'circle',
+                    symbolSize: 12,
+                    lineStyle: {
+                        normal: {
+                            width: 4,
+                            color: {
+                                type: 'linear',
+
+                                colorStops: [{
+                                    offset: 0,
+                                    color: '#FC8FA1' // 0% 处的颜色
+                                }, {
+                                    offset: 0.5,
+                                    color: '#FFAB58' // 100% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: '#EE6D33' // 100% 处的颜色
+                                }],
+                                globalCoord: false // 缺省为 false
+                            },
+                            // shadowColor: 'rgba(72,216,191, 0.3)',
+                            // shadowBlur: 10,
+                            // shadowOffsetY: 20
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: '#fff',
+                            borderWidth: 3,
+                            borderColor: "#FFAB58"
+                        }
+                    }
+                }]
+            })
+            myChart1.setOption({
+                // title: {
+                //     left: 'center',
+                //     text: '本月/周最受欢迎资源TOP 5',
+                // },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{b} : {c}'
+                },
+                grid: {
+                    left: '0%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value'
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['公安局', '残联', '人社局', '市监局', '财政局', '卫建委', '网格化', '生态环境局']
+                },
+                series: [{
+                    // name: '本月/周最受欢迎资源TOP 5',
+                    data: [2300000, 2800000, 3100000, 3400000, 3800000, 4000000, 4200000, 4900000],
+                    type: 'bar',
+                    barMaxWidth: 13,
+                    color: '#D37372'
+                }]
+            })
+            myChart2.setOption({
+                // title: {
+                //     left: 'center',
+                //     text: '本月/周最受欢迎资源TOP 5',
+                // },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                grid: {
+                    left: '0%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value'
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['公安局', '残联', '人社局', '市监局', '财政局']
+                },
+                series: [{
+                        name: '近一月',
+                        data: [2300000, 2800000, 3100000, 3400000, 3800000],
+                        type: 'bar',
+                        barMaxWidth: 13,
+                        color: '#D37372'
+                    },
+                    {
+                        name: '近一周',
+                        type: 'bar',
+                        data: [1010000, 1000000, 1600000, 1200000, 2300000],
+                        barMaxWidth: 13,
+                        color: '#FFAB58'
+                    }
+                ]
+            })
+
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                myChartAll.resize()
+                myChart1.resize()
+                myChart2.resize()
+            });
+        }
+
+        function dropdownInit() {
+            $('.dropdown .dropdown-menu').on('click', '.dropdown-item', e => {
+                // if($(e.currentTarget).hasClass('.active')){
+                //     return
+                // }
+                // $('.dropdown .dropdown-menu .active').removeClass('active')
+                // $(e.currentTarget).addClass('active')
+                $(e.currentTarget).parent().parent().find('.dropdown-toggle').text($(e.currentTarget).text())
+                // 刷新表格数据
+            })
+        }
+    </script>
+</body>
+
+</html>

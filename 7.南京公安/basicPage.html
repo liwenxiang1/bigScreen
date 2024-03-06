@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>派出所综合指挥室工作管理平台</title>
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="assets/style.css">
+		<link rel="stylesheet" href="./assets/basicPage.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+	</head>
+	<body>
+		<div class="layui-container">
+			<div class="layui-row items">
+				<div class="layui-col-xs2">
+					<div class="item-div">
+						<div class="left no-border">
+							<img src="assets/image/jingbao@2x.png" />
+						</div>
+						<div class="right">
+							<p class="title">46<span class="unit">条</span></p>
+							<p class="status">未签收</p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs2">
+					<div class="item-div">
+						<div class="left">
+							<img src="assets/image/shangpin@2x.png" />
+						</div>
+						<div class="right">
+							<p class="title">46<span class="unit">条</span></p>
+							<p class="status">未签收</p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs2">
+					<div class="item-div">
+						<div class="left">
+							<img src="assets/image/pinglun@2x.png" />
+						</div>
+						<div class="right">
+							<p class="title">406<span class="unit">条</span></p>
+							<p class="status">未签收</p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs2">
+					<div class="item-div">
+						<div class="left">
+							<img src="assets/image/shijian@2x.png" />
+						</div>
+						<div class="right">
+							<p class="title">24<span class="unit">条</span></p>
+							<p class="status">正在处理</p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs2">
+					<div class="item-div">
+						<div class="left">
+							<img src="assets/image/tixing@2x.png" />
+						</div>
+						<div class="right">
+							<p class="title">4<span class="unit">条</span></p>
+							<p class="status">处警超时</p>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs2">
+					<div class="item-div">
+						<div class="left">
+							<img src="assets/image/fuhao-zhuangtai-chenggong@2x.png" />
+						</div>
+						<div class="right">
+							<p class="title">4556<span class="unit">条</span></p>
+							<p class="status">已完成</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-card card-div">
+				<div class="layui-row layui-col-space10">
+					<div class="layui-col-xs5" id="map-div">
+						<div class="map-area">
+							<ul class="custom-tool clearfix">
+								<li btn-id="2">
+									<i class="iconfont icon-celiang"></i>
+									<span>测距</span>
+								</li>
+								<li btn-id="3">
+									<i class="iconfont icon-fangda"></i>
+									<span>放大</span>
+								</li>
+								<li btn-id="4">
+									<i class="iconfont icon-suoxiao"></i>
+									<span>缩小</span>
+								</li>
+								<!-- <li btn-id="5">
+							            <i class="iconfont icon-shigongmianji"></i>
+							            <span>测面积</span>
+							        </li> -->
+								<li btn-id="6">
+									<i class="iconfont icon-zhibiaozhushibiaozhu"></i>
+									<span>标注</span>
+								</li>
+								<li btn-id="7">
+									<i class="iconfont icon-unie62f"></i>
+									<span>清除</span>
+								</li>
+								<li btn-id="8">
+									<i class="iconfont icon-quantu"></i>
+									<span>全图</span>
+								</li>
+								<!-- <input type="button" class="draw-btn" value="开启测距" onclick="myDis.open()">
+							        <input type="button" class="draw-btn" value="关闭测距" onclick="myDis.close()"> -->
+							</ul>
+							<div id="map-container"></div>
+							<div class="btns">
+								<div class="floatBtn" onclick="locate()">
+									<i class="iconfont icon-map"></i>
+									地图
+								</div>
+								<div class="floatBtn" id='fullScreen'>
+									<i class="iconfont icon-fullscreen"></i>
+									全屏
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layui-col-xs7" id="list-div" style="position: relative;">
+						<div class="coslloge"><img src="assets/image/zuo.png" /></div>
+						<div class="list-div">
+							<div class="list-header">
+								<button type="button" class="layui-btn"><i class="iconfont icon-xinzeng"></i>新增接警</button>
+								<button type="button" class="layui-btn"><i class="iconfont icon-quanbu"></i>全部警情</button>
+								<button type="button" class="layui-btn yellow-btn" id="openCode"><i class="iconfont icon-erji"></i><span>我要接警</span></button>
+							</div>
+							<table class="layui-table" id='tableOut' lay-filter="tableOut">
+
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="locate-div">
+					<span>
+						<i class="iconfont icon-yisong"></i>
+					</span>
+					<span>
+						<i class="iconfont icon-fankui"></i>
+					</span>
+					<span id="changeUser">
+						<i class="iconfont icon-gerenshezhi"></i>
+					</span>
+					<span>
+						<i class="iconfont icon-dianhuashezhi"></i>
+					</span>
+					<span>
+						<i class="iconfont icon-wendang"></i>
+					</span>
+					<span>
+						<i class="iconfont icon-xiazai"></i>
+					</span>
+					<span>
+						鼓楼分局派出所...>> 当前角色：处警民警，带班领导，派警民警
+					</span>
+					<span class="span-right">
+						<i class="iconfont icon-laba"></i>
+						<span>消息服务链接状态：</span>
+						<span class="status">已连接：</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!-- 我要接警弹框 -->
+		<div id="codeDialog">
+			<div class="operate-div" id="operateDiv">
+				<a href="javascript:;">退出登录</a>
+				<a href="javascript:;">设置接警范围</a>
+				<a href="javascript:;">接警台日志</a>
+			</div>
+			<form class="layui-form" action="" lay-filter="example">
+
+				<div class="tc">
+					<img src="assets/image/denglu.png" width="100px" id="loginImg" />
+					<p class="login-title" id="loginTitle">接警台登录</p>
+				</div>
+				<div id="loginForm">
+					<div class="form-item">
+						<i class="iconfont icon-wode"></i>
+						<input type="text" name="account" autocomplete="off" lay-verify="required" lay-reqtext="请输入接警台账号" placeholder="请输入接警台账号"
+						 class="layui-input">
+					</div>
+					<div class="form-item">
+						<span class="iconfont icon-suo"></span>
+						<input type="password" name="password" autocomplete="off" lay-verify="required" lay-reqtext="请输入接警台密码"
+						 placeholder="请输入接警台密码" class="layui-input">
+					</div>
+					<div class="dialog-foot">
+						<button type="submit" class="layui-btn" lay-submit="" lay-filter="login-submit">登录</button>
+					</div>
+				</div>
+				<div id="userInfo" style="display: none;">
+					<div class="form-item">
+						<i class="iconfont icon-wode"></i>
+						<input type="text" name="name" disabled='disabled' class="layui-input">
+					</div>
+					<div class="form-item">
+						<span class="iconfont icon-IP"></span>
+						<input type="text" name="ip" disabled='disabled' class="layui-input">
+					</div>
+					<div class="form-item">
+						<span class="iconfont icon-shijian"></span>
+						<input type="text" name="time" disabled='disabled' class="layui-input">
+					</div>
+				</div>
+
+
+			</form>
+		</div>
+		<div id="selectUser">
+			<p class="change-title">切换角色</p>
+			<form class="layui-form" action="">
+
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<input type="radio" name="type" value="1" title="处警民警" checked>
+						<input type="radio" name="type" value="2" title="带班领导">
+					</div>
+				</div>
+			</form>
+		</div>
+		<script type="text/javascript" src="./js/es5-shim.min.js"></script>
+		<script type="text/javascript" src="./js/es5-sham.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/template-web.js"></script>
+		<!-- <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script> -->
+		<script type="text/javascript" src=""></script>
+		<script type="text/javascript" src="./bmap-offline/map3.0_init.js"></script>
+		<script type="text/javascript" src="./bmap-offline/map3.0.js"></script>
+		<script type="text/javascript" src="./bmap-offline/library/DistanceTool_min.js"></script>
+		<script id="list-template" type="text/html">
+			<div>
+				<div class="item-card">
+					<span class="title">流程处理日志</span><span class="num">（接警编号：J3000106008250010）</span>
+				</div>
+				<ul class="layui-timeline">
+				  <li class="layui-timeline-item">
+				    <i class="layui-icon layui-icon-circle-dot"/>
+				    <div class="layui-timeline-content layui-text">
+				      <h3 class="layui-timeline-title"><span>等审批</span><span>16:51:02</span><span>朱涛</span><span>派警</span></h3>
+				     
+				    </div>
+				  </li>
+				  <li class="layui-timeline-item">
+				    <i class="layui-icon layui-icon-circle-dot" />
+				    <div class="layui-timeline-content layui-text">
+				      <h3 class="layui-timeline-title"><span>到达</span><span>16:51:02</span><span>朱涛</span><span>派警</span></h3>
+				      
+				    </div>
+				  </li>
+				  <li class="layui-timeline-item layui-this">
+				    <i class="layui-icon layui-icon-circle-dot"/>
+				    <div class="layui-timeline-content layui-text">
+				      <h3 class="layui-timeline-title"><span>签收</span><span>16:51:02</span><span>朱涛</span><span>派警</span></h3>
+				     
+				    </div>
+				  </li>
+				  <li class="layui-timeline-item layui-before">
+				    <i class="layui-icon layui-icon-circle-dot"/>
+				    <div class="layui-timeline-content layui-text">
+				      <h3 class="layui-timeline-title"><span>已派警</span><span>16:51:02</span><span>朱涛</span><span>派警</span></h3>
+				    </div>
+				  </li>
+				</ul>  
+			</div>
+		</script>
+		<script>
+			var map = new BMap.Map("map-container"); // 创建Map实例
+			layui.use(['element', 'jquery', 'table', 'layer', 'form', 'util'], function() {
+				var element = layui.element,
+					form = layui.form,
+					$ = layui.jquery,
+					util = layui.util;
+				layer = layui.layer,
+					table = layui.table;
+
+				var list = [{
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}, {
+					num: '01',
+					time: '2020-08-06 09:58:48',
+					tel: '110',
+					typeName: '气体火灾',
+					content: '测试',
+					number: 5
+				}]
+
+				$(function() {
+					// initList();
+					table.render({
+						elem: '#tableOut',
+						data: list,
+						cols: [
+							[
+
+								{
+									field: 'num',
+									title: '序号',
+									width: 65
+								},
+								{
+									field: 'time',
+									title: '报警时间'
+								},
+								{
+									field: 'tel',
+									title: '报警电话',
+									width: 100
+								},
+								{
+									field: 'typeName',
+									title: '报警类型',
+									width: 100
+								},
+								{
+									title: '操作流程',
+									templet: function(d) {
+										console.log(d)
+										var htmlte = '<div lay-event="addRowTable"><span class="licheng">'
+										if (d.number > 0) {
+											for (var i = 0; i < d.number; i++) {
+												htmlte += '<a href="javascript:;">' + i + '</a>'
+
+											}
+											htmlte += '</span><span class="layui-badge" >' + d.number + '条待审批</span></div>'
+										}
+
+										return htmlte
+									}
+								},
+								{
+									field: 'content',
+									title: '报警内容'
+								},
+								{
+									title: '操作',
+									width: 120,
+									templet: function(d) {
+										return '<a href="javascript:;" class="operate-jie">接</a> <a href="javascript:;" class="operate">处</a> <a href="javascript:;" class="operate">审</a>'
+									}
+								}
+							]
+						],
+						   //在表格加载完毕后执行的方法
+						    done: function (res, curr, count) {
+								 $("tbody tr:even").addClass("evenClass");
+						    }
+
+						// even: true
+					});
+					
+
+					// 假释真的需要默认点击搜索在下面table render过之后再调用$dom.click()即可
+					//监听工具条
+					table.on('tool(tableOut)', function(obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+
+						var data = obj.data; //获得当前行数据
+						var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+						// 异常不要用它原来的这个作为tr的dom
+						// var tr = obj.tr; //获得当前行 tr 的DOM对象
+						var $this = $(this);
+						var tr = $this.parents('tr');
+						var trIndex = tr.data('index');
+						if (layEvent === 'addRowTable') {
+							// 外围的table的id + tableIn_ + 当前的tr的data-index
+							$(this).attr('lay-event', 'fold');
+							// var tableId = 'tableOut_tableIn_' + trIndex;
+							var divHtml = template('list-template', {
+								name: '11'
+							})
+							var _html = [
+								'<tr class="table-item">',
+								'<td colspan="' + tr.find('td').length + '" class="item-td">',
+								'<div> ' + divHtml + ' </div>', //可以嵌套表格也可以是其他内容，如是其他内容则无须渲染该表格
+								'</td>',
+								'</tr>'
+							];
+							tr.after(_html.join('\n'));
+
+						} else if (layEvent === 'fold') {
+							$(this).attr('lay-event', 'addRowTable');
+							tr.next().remove();
+						}
+					});
+				})
+				$(".coslloge").on("click", function() {
+					$("#map-div").toggle();
+					if ($("#map-div").css('display') == 'none') {
+						$("#list-div").removeClass("layui-col-xs7").addClass("layui-col-xs12")
+						$(this).css('left', '5px')
+						$(".coslloge img").attr('src', 'assets/image/you.png')
+					} else {
+						$("#list-div").removeClass("layui-col-xs12").addClass("layui-col-xs7")
+						$(".coslloge img").attr('src', 'assets/image/zuo.png')
+						$(this).css('left', '-30px')
+					}
+					table.reload('tableOut');
+				})
+
+				var point = new BMap.Point(118.812483, 32.048004); // 创建点坐标
+				var myDis = new BMapLib.DistanceTool(map);
+				var currZoomLevel = 11
+				var setMarkerStatus = false
+				map.centerAndZoom(point, currZoomLevel); // 初始化地图，设置中心点坐标和地图级别
+				map.setMinZoom(9);
+				map.setMaxZoom(17);
+				map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+				// map.addControl(new BMap.NavigationControl()); //缩放按钮
+				// map.addControl(new BMap.ScaleControl());//显示地图的比例关系
+				// map.addControl(new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT}));//显示地图的比例关系
+				// var geoc = new BMap.Geocoder();  
+				if (map.attachEvent) {
+
+					map.attachEvent("click", function(e) {
+						// alert("您点击了地图。");    
+						if (setMarkerStatus) {
+							var pt = e.point;
+							console.log("pt", pt)
+							setMarker(pt)
+							// console.log("geoc", geoc)
+							// geoc.getLocation(pt, function(rs){
+							//     //addressComponents对象可以获取到详细的地址信息
+							//     var addComp = rs.addressComponents;
+							//     var site = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+							//     console.log("site", site)
+							//     //将对应的HTML元素设置值
+							// });
+						}
+					})
+					map.attachEvent("zoomend", function() {
+						// alert("地图缩放至：" +  + "级");    
+						currZoomLevel = this.getZoom()
+						console.log("zoomLevel", currZoomLevel)
+					});
+				} else if (map.addEventListener) {
+
+					map.addEventListener("click", function(e) {
+						// alert("您点击了地图。");    
+						if (setMarkerStatus) {
+							var pt = e.point;
+							console.log("pt", pt)
+							setMarker(pt)
+							// console.log("geoc", geoc)
+							// geoc.getLocation(pt, function(rs){
+							//     //addressComponents对象可以获取到详细的地址信息
+							//     var addComp = rs.addressComponents;
+							//     var site = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+							//     console.log("site", site)
+							//     //将对应的HTML元素设置值
+							// });
+						}
+					})
+					map.addEventListener("zoomend", function() {
+						// alert("地图缩放至：" +  + "级");    
+						currZoomLevel = this.getZoom()
+						console.log("zoomLevel", currZoomLevel)
+					});
+
+				}
+				// map.addEventListener("zoomend", function() {
+				// 	// alert("地图缩放至：" +  + "级");    
+				// 	currZoomLevel = this.getZoom()
+				// 	console.log("zoomLevel", currZoomLevel)
+				// });
+				$('.custom-tool').on('click', 'li', function(e) {
+					var btnId = $(e.currentTarget).attr('btn-id')
+					if (btnId === '1') {
+						// 漫游
+					} else if (btnId === '2') {
+						// 测距
+						myDis.open(); //开启鼠标测距
+						//myDis.close();  //关闭鼠标测距
+						// layer.msg('开启鼠标测距离');
+					} else if (btnId === '3') {
+						// 放大
+						console.log("currZoomLevel", currZoomLevel)
+						map.setZoom(currZoomLevel > 16 ? 17 : (currZoomLevel + 1));
+					} else if (btnId === '4') {
+						// 缩小
+						console.log("currZoomLevel", currZoomLevel)
+						map.setZoom(currZoomLevel < 4 ? 3 : (currZoomLevel - 1));
+					} else if (btnId === '5') {
+						// 测面积
+					} else if (btnId === '6') {
+						// 标注
+						setMarkerStatus = !setMarkerStatus
+					} else if (btnId === '7') {
+						// 清除
+						map.clearOverlays()
+					} else if (btnId === '8') {
+						// 全图
+						map.setZoom(9);
+					}
+				})
+				$("#fullScreen").on("click", function() {
+					var element = document.getElementsByClassName('map-area')[0];
+					if (element.requestFullscreen) {
+						element.requestFullscreen();
+					} else if (element.msRequestFullscreen) {
+						element.msRequestFullscreen();
+					} else if (element.mozRequestFullScreen) {
+						element.mozRequestFullScreen();
+					} else if (element.webkitRequestFullscreen) {
+						element.webkitRequestFullscreen();
+					}
+				})
+				//编号必填验证规则
+				form.verify({
+					account: function(value) {
+						if (value) {
+							return '请输入接警台账号！';
+						}
+					},
+					password: function(value) {
+						if (value) {
+							return '请输入接警台密码！';
+						}
+					}
+				});
+				/* 我要接警弹框 */
+				$("#openCode").on('click', function() {
+					if ($(this).hasClass('yellow-btn')) {
+						layer.open({
+							type: 1,
+							title: '我要接警',
+							content: $('#codeDialog'), //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+							cancel: function(index, layero) {
+								$("#operateDiv").css('display', 'none');
+								$('#loginImg').attr("src", 'assets/image/denglu.png')
+								$("#loginTitle").html('接警台登录')
+								$("#userInfo").css('display', 'none');
+								$("#loginForm").css('display', 'block');
+								layer.close(index)
+								return false;
+							}
+						});
+					}
+
+				})
+				$("#changeUser").on('click', function() {
+					layer.open({
+						type: 1,
+						title: '操作选择',
+						content: $('#selectUser'), //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+						area: ['300px', '240px'],
+						btn: ['确认', '直接签退'],
+						yes: function(index, layero) {
+							layer.close(index)
+						},
+						btn2: function(index, layero) {
+							//按钮【按钮二】的回调
+
+							layer.open({
+								type: 1,
+								offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+									,
+								content: '<div style="padding: 20px 100px;">确认退单？</div>',
+								btn: ['确定', '取消'],
+								btnAlign: 'c' //按钮居中
+									,
+								yes: function() {
+									layer.closeAll();
+								},
+								btn2: function(index, layero) {
+
+								}
+
+							});
+							//return false 开启该代码可禁止点击该按钮关闭
+						},
+						cancel: function(index, layero) {
+
+							layer.close(index)
+							return false;
+						}
+					});
+
+				})
+				//监听提交
+				form.on('submit(login-submit)', function(data) {
+					// 关闭弹框
+					// layer.closeAll();
+					// // 访问接口成功后修改按钮样式
+					// $(".yellow-btn span").html('接警中')
+					// $(".yellow-btn").addClass("green-btn")
+					// $(".yellow-btn").removeClass('yellow-btn')
+					$("#operateDiv").css('display', 'block');
+					$('#loginImg').attr("src", 'assets/image/chenggong.png')
+					$("#loginTitle").html('登录成功')
+					$("#userInfo").css('display', 'block');
+					$("#loginForm").css('display', 'none');
+
+					form.val('example', {
+						"name": "朱涛",
+						"ip": "50.18.109.30",
+						"time": '2020.08.24.16.55'
+					});
+
+
+					return false;
+				});
+				$("#closeDialog").on('click', function() {
+					layer.closeAll();
+				})
+			})
+		</script>
+
+		<script type="text/javascript">
+			function setMarker(point) {
+				var marker = new BMap.Marker(point); // 创建标注
+				map.addOverlay(marker); // 将标注添加到地图中
+				marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+			}
+			// 118.802422,32.13268
+			// 119.621677,32.041638
+			// 121.961008,31.521545
+			// // 创建小车图标
+			// var pt = new BMap.Point(118.812483,32.048004);
+			// var myIcon = new BMap.Icon("./images/cabin.png", new BMap.Size(52, 26));
+			// var marker = new BMap.Marker(pt, {
+			// 	icon: myIcon
+			// });  // 创建标注
+			// map.addOverlay(marker);
+			//地图
+			function locate() {
+				map.setZoom(9);
+			}
+			// //全屏
+			// function fullScreen() {
+			// 	debugger
+			// 	var element = document.getElementsByClassName('map-area')[0];
+			// 	if (element.requestFullscreen) {
+			// 		element.requestFullscreen();
+			// 	} else if (element.msRequestFullscreen) {
+			// 		element.msRequestFullscreen();
+			// 	} else if (element.mozRequestFullScreen) {
+			// 		element.mozRequestFullScreen();
+			// 	} else if (element.webkitRequestFullscreen) {
+			// 		element.webkitRequestFullscreen();
+			// 	}
+			// 	// setTimeout(function() {
+			// 	// 	map.centerAndZoom(point, currZoomLevel);
+			// 	// }, 300);
+			// }
+			//监听退出全屏事件
+			window.onresize = function() {
+				if (!checkFull()) {
+					//要执行的动作
+				}
+				setTimeout(function() {
+					map.centerAndZoom(point, currZoomLevel);
+				}, 300);
+			}
+
+			function checkFull() {
+				var isFull = document.fullscreenEnabled || window.fullScreen || document.webkitIsFullScreen || document.msFullscreenEnabled;
+				//to fix : false || undefined == undefined
+				if (isFull === undefined) {
+					isFull = false;
+				}
+				return isFull;
+			}
+		</script>
+	</body>
+</html>

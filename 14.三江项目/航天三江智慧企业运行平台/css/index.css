@@ -1,0 +1,1085 @@
+html,
+body {
+	background: #F1F5F9;
+}
+
+.header {
+	overflow: hidden;
+	height: 70px;
+	background-color: #0A2964;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 99;
+}
+
+.title {
+	font-size: 22px;
+	color: #fff;
+	letter-spacing: 1.02px;
+	line-height: 70px;
+}
+
+.logo {
+	height: 44px;
+	float: left;
+	margin-top: 13px;
+	margin-left: 25px;
+}
+
+.ove {
+	overflow: hidden;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.home {
+	width: 25px;
+	height: 25px;
+	margin-left: 30px;
+	margin-top: 22px;
+	cursor: pointer;
+}
+
+.name {
+	height: 70px;
+	line-height: 70px;
+	font-size: 16px;
+	color: white;
+}
+
+.headImage {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	margin-left: 20px;
+	margin-right: 30px;
+	margin-top: 20px;
+}
+
+.fresh {
+	width: 25px;
+	height: 25px;
+	margin-left: 30px;
+	margin-right: 20px;
+	margin-top: 22px;
+	cursor: pointer;
+}
+
+
+.line {
+	font-size: 24px;
+	margin-top: 19px;
+	color: white;
+}
+
+.people {
+	width: 60px;
+	height: 65px;
+	margin: 30px 19px 22px 30px;
+}
+
+.org {
+	font-size: 14px;
+	color: #fff;
+	line-height: 14px;
+	margin-bottom: 9px;
+}
+
+.menuIcon {
+	width: 20px;
+	height: 20px;
+	margin-right: 20px;
+}
+
+.closeIcon {
+	width: 20px;
+	height: 15px;
+	margin: 31px 17px 0 0;
+	cursor: pointer;
+}
+
+.openIcon {
+	width: 20px;
+	height: 15px;
+	padding: 5px;
+	padding-left: 20px;
+	position: fixed;
+	background: #2E6ABA;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	top: 130px;
+	cursor: pointer;
+	z-index: 999;
+	display: none;
+}
+
+.exitImg {
+	width: 12px;
+	height: 13px;
+	margin-right: 6px;
+	cursor: pointer;
+}
+
+.exit {
+	font-size: 12px;
+	color: #fff;
+	line-height: 12px;
+	cursor: pointer;
+}
+
+.leftBox {
+	padding: 23px 20px 23px 30px;
+	min-height: 900px;
+}
+
+.middleBox {
+	padding: 23px 20px 23px 0;
+}
+
+.rightBox {
+	width: calc(100% - 300px);
+	position: absolute;
+	top: 70px;
+	left: 225px;
+}
+
+#radiusList {
+	height: 260px;
+	overflow-y: auto;
+}
+
+.layui-table,
+.layui-table-view {
+	margin: 10px 0px 0px;
+}
+
+.mt12 {
+	margin-bottom: 12px;
+}
+
+.iteml {
+	width: 100%;
+	border-radius: 10px;
+	background: #ffffff;
+	border: 2px solid #EDEEED inset;
+	margin-top: 18px;
+}
+
+#CalendarMain {
+	width: calc(100% - 50px);
+	height: 280px;
+	border: 1px solid #ccc;
+	margin: 2px auto;
+}
+
+.layui-tab-brief>.layui-tab-title .layui-this {
+	color: #1369C0;
+}
+
+.layui-tab-brief>.layui-tab-more li.layui-this:after,
+.layui-tab-brief>.layui-tab-title .layui-this:after {
+	border: none;
+}
+
+.layui-tab-title {
+	border-bottom: 1px solid #999999;
+	;
+}
+
+.barLine {
+	width: 1px;
+	height: 100%;
+	background: #DCDCDC;
+	position: absolute;
+	left: 15px;
+}
+
+#Demo {
+	overflow: hidden;
+	position: relative;
+	padding: 5px 0
+}
+
+#title {
+	width: 100%;
+	height: 40px;
+	background: linear-gradient(180deg, #5FA3F8 0%, #2E6ABA 100%);
+}
+
+.downIcon {
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	cursor: pointer;
+}
+
+#title a {
+	line-height: 40px;
+}
+
+.selectBtn {
+	font-weight: 900;
+	font-size: 15px;
+	color: #fff;
+	cursor: pointer;
+	text-decoration: none;
+	padding: 0px 10px 0px 10px;
+}
+
+.selectBtn:hover {
+	opacity: 0.8;
+}
+
+.selectYear {
+	float: left;
+	margin-left: 50px;
+	position: absolute;
+}
+
+.selectMonth {
+	float: left;
+	margin-left: 120px;
+	position: absolute;
+}
+
+.month {
+	float: left;
+	position: absolute;
+}
+
+.nextMonth {
+	float: right;
+}
+
+.currentDay {
+	float: right;
+}
+
+#context {
+	background-color: #fff;
+	width: 100%;
+}
+
+.week {
+	width: 100%;
+	height: 30px;
+}
+
+.week>h3 {
+	float: left;
+	color: #808080;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	margin-top: 5px;
+	font-size: 16px;
+}
+
+.dayItem {
+	float: left;
+}
+
+.lastItem {
+	color: #d1c7b7 !important;
+}
+
+.item {
+	color: #333;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+	margin: 0;
+	font-family: "微软雅黑";
+	font-size: 13px;
+}
+
+.item:hover {
+	color: #b9121b;
+}
+
+.currentItem>a {
+	background-color: #4E96F4;
+	width: 25px;
+	line-height: 25px;
+	float: left;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	color: #fff;
+}
+
+#foots {
+	width: 100%;
+	height: 35px;
+	background-color: #fff;
+	border-top: 1px solid #ccc;
+	margin-top: -1px;
+}
+
+#footNow {
+	float: right;
+	margin: 6px 15px 0 0;
+	color: #009ad6;
+	font-family: "微软雅黑";
+}
+
+#Container {
+	overflow: hidden;
+	float: left;
+}
+
+#center {
+	width: 100%;
+	overflow: hidden;
+}
+
+#centerMain {
+	width: 300%;
+	margin-left: -100%;
+}
+
+#selectYearDiv {
+	float: left;
+	background-color: #fff;
+}
+
+#selectYearDiv>div {
+	float: left;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	border: 1px solid #ccc;
+	margin-left: -1px;
+	margin-top: -1px;
+	cursor: pointer;
+	color: #909090;
+}
+
+.currentYearSd,
+.currentMontSd {
+	color: #ff4400 !important;
+}
+
+#selectMonthDiv {
+	float: left;
+	background-color: #fff;
+}
+
+#selectMonthDiv>div {
+	color: #909090;
+	float: left;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	border: 1px solid #ccc;
+	margin-left: -1px;
+	margin-top: -1px;
+	cursor: pointer;
+}
+
+#selectYearDiv>div:hover,
+#selectMonthDiv>div:hover {
+	background-color: #efefef;
+}
+
+#centerCalendarMain {
+	float: left;
+}
+
+.newIcon {
+	width: 45px;
+	height: 45px;
+	margin: 12px 20px 12px 30px;
+	cursor: pointer;
+}
+
+.itemTitle {
+	font-size: 15px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 70px;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.todo {
+	background: #fff;
+	border-radius: 10px;
+	border: 2px solid #EDEEED inset;
+	box-shadow: 0px 0px 5px 0px rgba(70, 104, 177, 0.2);
+}
+
+.myDate {
+	/* padding-left: 20px; */
+}
+
+.myDateBox {
+	background: #fff;
+	margin-top: 10px;
+	border-radius: 20px;
+	border: 2px solid #EDEEED inset;
+	padding-bottom: 10px;
+}
+
+.radius {
+	width: 9px;
+	height: 9px;
+	border-radius: 9px;
+	border: 2px solid #81CAA6;
+	background: #FFFFFF;
+	margin: 10px 7px 10px 9px;
+	position: relative;
+	z-index: 9;
+}
+
+.radiusBox {
+	width: calc(100% - 40px);
+	background: #FFFFFF;
+	border-radius: 4px;
+	padding-left: 7px;
+}
+
+.ymd {
+	font-size: 12px;
+	font-family: PingFang SC;
+	font-weight: 500;
+	color: #333333;
+	line-height: 12px;
+	margin: 12px 4px 7px 0px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	word-break: break-all;
+}
+
+.over {
+	font-size: 12px;
+	font-family: PingFang SC;
+	font-weight: 500;
+	color: #FFFFFF;
+	padding: 3px 2px;
+	border-radius: 4px;
+	background: #4E96F4;
+	display: inline-block;
+	margin-top: 14px;
+	float: right;
+	margin-right: 4px;
+}
+
+.time {
+	font-size: 12px;
+	font-family: PingFang SC;
+	font-weight: 500;
+	color: #999999;
+	line-height: 12px;
+	margin-bottom: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	word-break: break-all;
+}
+
+.titleR {
+	font-size: 12px;
+	font-family: PingFang SC;
+	font-weight: 500;
+	color: #333333;
+	line-height: 13px;
+	margin-top: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	word-break: break-all;
+}
+
+.num {
+
+	font-size: 18px;
+	line-height: 20px;
+	margin: 10px 0px 10px 20px;
+}
+
+.blue {
+	color: #3F95E0;
+}
+
+.pup {
+	color: #6E68B8;
+}
+
+.yel {
+	color: #F6C45A;
+}
+
+.todoText {
+	color: #282828;
+	font-size: 12px;
+	line-height: 14px;
+	margin: 0px 0px 5px 20px;
+}
+
+.bigTitle {
+	font-size: 18px;
+	color: black;
+	padding: 10px 30px 5px;
+	font-weight: 600;
+}
+
+.bigTitle1 {
+	float: left;
+	font-size: 18px;
+	color: black;
+	font-weight: 600;
+}
+.layui-table td, .layui-table th{
+	position: relative;
+	padding: 5px 15px;
+	min-height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
+.myDate .bigTitle {
+	font-size: 18px;
+	color: #1369C0;
+	padding: 10px 30px;
+}
+
+.tagIcon {
+	width: 20px;
+	height: 20px;
+	margin-right: 30px;
+	margin-top: 16px;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.tag {
+	font-size: 16px;
+	line-height: 16px;
+	color: #666666;
+	margin: 18px 39px 0 0;
+	cursor: pointer;
+}
+
+.bar {
+	width: calc(100% - 60px);
+	height: 2px;
+	background: #EDEEED;
+	margin-left: 30px;
+}
+
+.tips {
+	width: 100%;
+	height: 30px;
+	background-color: rgb(226, 233, 240, 0.3);
+}
+
+.tipsTitle {
+	float: left;
+	font-size: 14px;
+	line-height: 30px;
+	margin-left: 30px;
+	position: relative;
+}
+
+.tipsTitle span {
+	height: 16px;
+	line-height: 16px;
+	position: absolute;
+	top: 4px;
+	padding: 0 4px;
+}
+
+.itemContent {
+	width: 14%;
+	float: left;
+}
+
+.todoLeft {
+	padding: 20px 20px;
+}
+
+.bluebg {
+	background: #3F95E0;
+}
+
+.yelbg {
+	background: #F6C45A
+}
+
+.pupbg {
+	background: #6E68B8
+}
+
+.itemTodo {
+	border-radius: 6px;
+	overflow: hidden;
+	cursor: pointer;
+	height: 60px;
+	margin: 10px 10px;
+}
+
+.greyBg {
+	background: #F5F5F5 !important;
+}
+
+.itemTodo:hover .num,
+.itemTodo:hover .todoText {
+	color: #FFFFFF;
+}
+
+.allTodoIcon {
+	width: 20px;
+	height: 20px;
+}
+
+.todoBottom {
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 5px #E8EDFB;
+	padding: 20px;
+	padding-left: 0;
+	overflow: hidden;
+	margin-top: 20px;
+}
+
+.titleKuaijie {
+	width: 100%;
+	overflow: hidden;
+	padding-top: 11px;
+	padding-left: 15px;
+	border: 1px solid #E5E5E5;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.todoBottomLeft {
+	padding-right: 20px;
+}
+
+.todoitem {
+	width: 20%;
+	padding-top: 28px;
+	padding-bottom: 28px;
+	float: left;
+	cursor: pointer;
+	transition: all .5s;
+}
+
+.todoitem:hover {
+	transform: scale(1.1);
+}
+
+.kuaijieBottom {
+	overflow: hidden;
+	border: 1px solid #E5E5E5;
+	border-top: none;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.todoItemText {
+	font-size: 14px;
+	color: #121212;
+	padding-top: 22px;
+	text-align: center;
+}
+
+.todoItemIcon {
+	width: 42px;
+	height: 42px;
+	display: block;
+	margin: 0 auto;
+}
+
+.notice {
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 5px #E8EDFB;
+	padding-bottom: 19px;
+}
+
+.titleSmallBox {
+	overflow: hidden;
+	padding: 16px 24px;
+}
+
+.titleSmall {
+	color: #121212;
+	font-size: 16px;
+	margin-left: 10px;
+	position: relative;
+	top: -4px;
+}
+
+.titleIconApp {
+	width: 14px;
+	height: 12px;
+}
+
+.titleIconTodo {
+	width: 16px;
+	height: 14px;
+}
+
+.titleIconNotice {
+	width: 12px;
+	height: 14px;
+}
+
+.con {
+	padding-right: 30px;
+}
+
+.applyBigBox {
+	padding: 0 12px 12px;
+	overflow: hidden;
+}
+
+.applyItem {
+	background: #F7FAFF;
+	border-radius: 6px;
+	margin: 12px 12px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	cursor: pointer;
+}
+
+.applyItem:hover {
+	background: #fff;
+	border: 1px solid #F3F3F3;
+	margin: 12px 12px;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	box-shadow: 0 0 5px rgba(232, 232, 232, 0.33);
+}
+
+.imgApplyItem {
+	width: 42px;
+	height: 42px;
+	display: block;
+	margin: 0px auto;
+}
+
+.pd0 {
+	padding: 0 !important;
+}
+
+.applyItemName {
+	margin: 13px auto 0;
+	text-align: center;
+}
+
+.todoBarOut {
+	padding: 0 20px 20px;
+}
+
+.todoBar {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background: linear-gradient(to right, #F9F9F9, #ECF0F5);
+}
+
+.tab {
+	padding: 0;
+}
+
+a {
+	color: #333333;
+}
+
+.nav>li>a {
+	padding: 0;
+	line-height: 50px;
+}
+
+.dropdown-toggle {
+	color: #999999;
+}
+
+.down {
+	width: 14px;
+	position: absolute;
+	top: 20px;
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+	color: #2277F6;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.nav-tabs {
+	border: none;
+}
+
+.nav-tabs>li>a {
+	margin-right: 0;
+	border: none;
+	border-radius: 0;
+}
+
+.nav-tabs .dropdown-menu {
+	border-radius: 6px;
+}
+
+.nav-tabs .dropdown-menu li a {
+	line-height: 30px;
+}
+
+.rhomb {
+	color: #D2D9E6;
+	font-size: 14px;
+	line-height: 36px;
+	margin-right: 5px;
+}
+
+.todoTitle {
+	color: #121212;
+	font-size: 14px;
+	line-height: 30px;
+	margin-right: 5px;
+}
+
+.todoFrom {
+	color: #999999;
+	font-size: 12px;
+	line-height: 36px;
+	float: right;
+	margin-right: 20px;
+}
+
+.todoTime {
+	color: #999999;
+	font-size: 14px;
+	float: right;
+	line-height: 36px;
+}
+
+.todoList {
+	cursor: pointer;
+	padding: 0 30px;
+	line-height: 36px;
+}
+
+.todoList:hover {
+	background-color: #f0f0f0;
+}
+
+.todoList:hover .rhomb,
+.todoList:hover .todoTitle {
+	color: #167EFF;
+}
+
+.state {
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	background-color: rgba(41, 135, 247, 0.1);
+	border-radius: 2px;
+	color: #2987F7;
+}
+
+.layui-table[lay-skin=line] {
+	border: none;
+}
+
+.todoListBox {
+	height: 200px;
+}
+
+.chrome {
+	width: 40px;
+	height: 40px;
+	float: left;
+}
+
+.chromeName {
+	font-size: 14px;
+	color: #121212;
+	padding-left: 20px;
+	line-height: 40px;
+	float: left;
+}
+
+.chromeBoxL {
+	width: 47%;
+	padding: 19px 19px;
+	overflow: hidden;
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+	float: left;
+	margin-right: 3%;
+	cursor: pointer;
+	transition: all .5s;
+}
+
+.chromeBoxL:hover {
+	transform: scale(1.03);
+}
+
+.chromeBoxR {
+	width: 47%;
+	padding: 19px 19px;
+	overflow: hidden;
+	border: 1px solid #E5E5E5;
+	border-radius: 4px;
+	float: left;
+	margin-left: 3%;
+	cursor: pointer;
+	transition: all .5s;
+}
+
+.chromeBoxR:hover {
+	transform: scale(1.03);
+}
+
+.mb {
+	margin-bottom: 15px;
+}
+
+.titleRight {
+	font-size: 14px;
+	color: #6281AC;
+}
+
+.textRight {
+	margin-top: 5px;
+	font-size: 16px;
+	color: #333333;
+	width: 200px;
+	word-break: break-all;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.circle {
+	margin-left: 15px;
+	margin-right: 17px;
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius: 10px;
+	border: 1px solid #CFCFCF;
+	float: left;
+	position: relative;
+	top: 5px;
+}
+
+.noticeValue {
+	float: left;
+	width: calc(100% - 47px);
+}
+
+.noticeItem {
+	overflow: hidden;
+	padding: 7px 0 30px;
+	cursor: pointer;
+}
+
+.barItem {
+	position: relative;
+}
+
+.noticeItem:hover .circle {
+	background: #167EFF;
+	border: #167EFF;
+}
+
+.noticeItem:hover .textRight {
+	color: #167EFF;
+}
+
+.circleRed {
+	width: 13px;
+	height: 13px;
+	background: #F32E2E;
+	border-radius: 13px;
+	position: absolute;
+	top: 10px;
+	right: 20%;
+	color: #fff;
+	font-size: 12px;
+	line-height: 12px;
+	text-align: center;
+}
+
+.layui-nav-side {
+	top: 70px;
+}
+
+.layui-nav {
+	border-radius: 0;
+}
+
+.layui-nav {
+	background: rgb(0, 61, 127);
+}
+
+li a:hover {
+	background: #1369C0;
+}
+
+.layui-nav-tree {
+	width: 200px;
+}
+
+.layui-carousel>[carousel-item] {
+	height: 60px;
+}
+
+.layui-carousel-ind {
+	display: none;
+}
+
+.layui-col-space16 {
+	padding: 0 60px;
+	background: #FFFFFF !important;
+	width: calc(100% - 120px) !important;
+}
+
+.layui-carousel {
+	background: #FFFFFF;
+	margin: 5px 0;
+}
+
+.layui-tab {
+	margin: 0 15px 10px;
+	border: 1px solid #EDEEED;
+	background: #EDEEED;
+}
+
+.layui-tab-content {
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.layui-nav-tree .layui-nav-child dd {
+	margin: 0;
+	padding-left: 40px;
+}

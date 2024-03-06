@@ -1,0 +1,145 @@
+body,html {
+	background-color: RGBA(245, 248, 254, 1);
+}
+
+.dis-fl {
+	display: flex;
+}
+
+.card-item {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.card-item-div {
+	flex: 1;
+	margin: 15px;
+	padding: 15px;
+	height: 165px;
+}
+
+.card-item-div p {
+	color: #FFFFFF;
+}
+
+.card-item-div .left {
+	flex: 1;
+}
+
+.card-item-div .right {
+	border-left: 1px solid rgba(255, 255, 255, .61);
+	padding: 5px 25px;
+}
+
+.card-item-div .right .title {
+	font-size: 14px;
+	font-family: Microsoft YaHei;
+	font-weight: 400;
+	color: rgba(255, 255, 255, 1);
+}
+
+.card-item-div .right p {
+	text-align: center;
+}
+
+.card-item-div .right .num {
+	font-size: 22px;
+	font-family: PingFang SC;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 1);
+	line-height: 30px;
+}
+
+.card-num {
+	font-size: 40px;
+	font-family: PingFang SC;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 1);
+	margin-top: 15px;
+}
+
+.card-unit {
+	font-size: 20px;
+}
+
+.card-title {
+	font-size: 20px;
+	font-family: Microsoft YaHei;
+	font-weight: 400;
+	color: rgba(255, 255, 255, 1);
+	line-height: 40px;
+	padding-left: 6px;
+}
+
+.txt-center {
+	text-align: center;
+}
+
+.echarts-div {
+	margin-top: 5px;
+	display: flex;
+}
+
+.echarts-div>div {
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 0px 5px 30px 0px rgba(22, 115, 255, 0.1);
+	flex: 1;
+	margin: 0 10px;
+	height: 450px;
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1366px) {
+	.card-item{
+		margin-bottom: 0px;
+	}
+	.card-item-div{
+		padding: 0 15px;
+		height: 115px;
+	}
+	.card-num{
+		font-size: 30px;
+	}
+	.card-item-div .right{
+		padding: 5px;
+	}
+	.card-item-div .right .num{
+		line-height: 26px;
+	}
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1400px) {
+	.card-item-div{
+		padding: 0 15px;
+		height: 120px;
+	}
+	.card-num{
+		font-size: 30px;
+	}
+	.card-item-div .right{
+		padding: 5px;
+	}
+	.card-item-div .right .num{
+		line-height: 26px;
+	}
+}
+@media screen and (min-width: 1440px) and (max-width: 1600px) {
+	.card-item-div{
+		padding: 0 15px;
+		height: 135px;
+	}
+	.card-num{
+		font-size: 30px;
+	}
+	.card-item-div .right{
+		padding: 5px;
+	}
+	.card-item-div .right .num{
+		line-height: 26px;
+	}
+}
+@media screen and (min-width: 1680px) and (max-width: 1680px){
+	.card-item-div{
+		padding: 0 15px;
+		height: 145px;
+	}
+}

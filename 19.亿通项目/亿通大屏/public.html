@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./css/normalize.css">
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./css/public-info.css">
+		<link rel="stylesheet" href="./css/animate.css">
+		<title>临港新片区公共数据资源</title>
+		<style type="text/css">
+		</style>
+	</head>
+
+	<body>
+		<div class="theme-info theme-wrapper scale-wrapper">
+			<div id="loading">
+				<div class="loading_img">
+					<!-- 加载动画 -->
+					<img class="loading-ring-o" src="images/loading-ring-o.png">
+					<img class="loading-ring-i" src="images/loading-ring-i.png">
+				</div>
+			</div>
+			<div class="title-bar">
+				<p class="title-name">临港新片区公共数据资源</p>
+
+				<!-- <div class="nav-btn">运营管理平台</div> -->
+			</div>
+			<div class="content">
+				<div class="c-center">
+					<div style="position: relative;">
+						<div style="overflow: hidden;padding-top: 34px;">
+							<div class="chart-item-three">
+								<div class="text">
+									需求量（个）
+								</div>
+								<div class="num">19000</div>
+							</div>
+							<div class="chart-item-three">
+								<div class="text">
+									编目资源数量（个）
+								</div>
+								<div class="num">19000</div>
+							</div>
+							<div class="chart-item-three">
+								<div class="text">
+									共享资源数量（个）
+								</div>
+								<div class="num">19000</div>
+							</div>
+						</div>
+						<div class="transX">
+							<div class="transMove" id="zx-charts">
+
+							</div>
+						</div>
+						<img class="middleIcon" src="./images/middleIcon.png">
+						<img class="middleImg" src="./images/middle.png">
+					</div>
+				</div>
+				<div class="c-left">
+					<div class="chart-item">
+						<img class="topRightImg" src="./images/border-top-right.png">
+						<img class="bottomLeftImg" src="./images/border-bottom-left.png">
+						<img class="bottomRightImg" src="./images/border-bottom-right.png">
+						<img class="topLeftImg" src="./images/border-top-left.png">
+						<p class="charts-title">一体化资源分布</p>
+						<div class="chart-item-middle">
+							<div class="leftTop">
+								<div class="fl">
+									<div class="num">1234</div>
+									<div class="text">资源总量（个）</div>
+								</div>
+								<img class="iconTotal" src="./images/total.png">
+							</div>
+							<div id="classify-charts"></div>
+						</div>
+						<div class="chart-item-middle">
+							<div class="leftTop">
+								<div class="fl">
+									<div class="num">1234</div>
+									<div class="text">资源总数据量（个）</div>
+								</div>
+								<img class="iconTotal" src="./images/data.png">
+							</div>
+							<div id="source-charts"></div>
+						</div>
+
+					</div>
+					<!-- <div class="divider"></div> -->
+
+
+					<div class="chart-item" style="padding: 0px 0 30px;">
+						<div class="chart-item-middle">
+							<p class="charts-title">业务类数据量</p>
+							<div class="transData" style="margin-top: 25px;">
+								<img class="fl erpIcon" src="./images/erp.png">
+								<div class="fl">
+									<div class="erpText">
+										企业ERP（个）
+									</div>
+									<div class="erpNum">
+										6887777
+									</div>
+								</div>
+							</div>
+							<div class="transData">
+								<img class="fl erpIcon" src="./images/work.png">
+								<div class="fl">
+									<div class="erpText">
+										作业（个）
+									</div>
+									<div class="erpNum">
+										6887777
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="chart-item-middle">
+							<p class="charts-title">政务类数据量</p>
+							<div class="sqlDataBox">
+								<div class="num">
+									68788
+								</div>
+								<div class="text">税务（票）</div>
+							</div>
+							<div class="sqlDataBox">
+								<div class="num">
+									68788
+								</div>
+								<div class="text">税务（票）</div>
+							</div>
+							<div class="sqlDataBox">
+								<div class="num">
+									68788
+								</div>
+								<div class="text">税务（票）</div>
+							</div>
+							<div class="sqlDataBox">
+								<div class="num">
+									68788
+								</div>
+								<div class="text">税务（票）</div>
+							</div>
+						</div>
+						<img class="topRightImg" src="./images/border-top-right.png">
+						<img class="bottomLeftImg" src="./images/border-bottom-left.png">
+						<img class="bottomRightImg" src="./images/border-bottom-right.png">
+						<img class="topLeftImg" src="./images/border-top-left.png">
+					</div>
+
+
+					<div class="chart-item" style="padding-bottom: 30px;">
+						<p class="charts-title" style="margin-bottom:20px">接入企业数据实时情况</p>
+						<div id="company">
+
+						</div>
+
+						<img class="topRightImg" src="./images/border-top-right.png">
+						<img class="bottomLeftImg" src="./images/border-bottom-left.png">
+						<img class="bottomRightImg" src="./images/border-bottom-right.png">
+						<img class="topLeftImg" src="./images/border-top-left.png">
+					</div>
+
+				</div>
+				<div class="c-right">
+					<div class="chart-item">
+						<div class="chart-item-middle">
+							<p class="charts-title">资源需求申请</p>
+							<div id="zyxq-charts"></div>
+						</div>
+						<div class="chart-item-middle">
+							<p class="charts-title">市级委办资源数据量</p>
+							<div id="swb-charts"></div>
+						</div>
+						<img class="topRightImg" src="./images/border-top-right.png">
+						<img class="bottomLeftImg" src="./images/border-bottom-left.png">
+						<img class="bottomRightImg" src="./images/border-bottom-right.png">
+						<img class="topLeftImg" src="./images/border-top-left.png">
+					</div>
+					<div class="chart-item">
+						<p class="charts-title">服务调用数量趋势</p>
+						<div id="yhfw-charts"></div>
+						<img class="topRightImg" src="./images/border-top-right.png">
+						<img class="bottomLeftImg" src="./images/border-bottom-left.png">
+						<img class="bottomRightImg" src="./images/border-bottom-right.png">
+						<img class="topLeftImg" src="./images/border-top-left.png">
+						<!-- yhfwInit（） -->
+					</div>
+
+					<div class="chart-item" style="padding: 0 34px;">
+						<p class="charts-title">开放主题分类</p>
+						<!-- <div id="qysj-charts"></div> -->
+						<table class="child-company-table" border cellspacing="0">
+							<tbody>
+								<tr style="color: #00D8FF;background: #0D2963">
+									<td>主题名称</td>
+									<td>主题资源量</td>
+									<td>主题资源信息项</td>
+									<td>主题资源数据量</td>
+									<td>更新时间</td>
+								</tr>
+								<tr>
+									<td>企业</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>2020-11-31</td>
+								</tr>
+								<tr style="background: #0D2963;">
+									<td>风控</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>2020-11-31</td>
+								</tr>
+								<tr>
+									<td>企业</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>2020-11-31</td>
+								</tr>
+								<tr style="background: #0D2963;">
+									<td>风控</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>2020-11-31</td>
+								</tr>
+							</tbody>
+						</table>
+						<img class="topRightImg" src="./images/border-top-right.png">
+						<img class="bottomLeftImg" src="./images/border-bottom-left.png">
+						<img class="bottomRightImg" src="./images/border-bottom-right.png">
+						<img class="topLeftImg" src="./images/border-top-left.png">
+					</div>
+				</div>
+
+				<div class="c-bottom">
+					<div id="tada" >
+						<p class="charts-title">XXXXXXXXXXXXXXXXX部门</p>
+						<div class="mid-bottom">
+							<div class="radiusBottom">
+								<div class="text"> 收集资源（个）</div>
+								<div class="num">6633333</div>
+							</div>
+						</div>
+						<div class="mid-bottom">
+							<div class="radiusBottom">
+								<div class="text"> 编目资源（个）</div>
+								<div class="num">6633333</div>
+							</div>
+						</div>
+						<div class="mid-bottom">
+							<div class="radiusBottom">
+								<div class="text"> 需求资源（个）</div>
+								<div class="num">6633333</div>
+							</div>
+						</div>
+						<div class="mid-bottom">
+							<div class="radiusBottom">
+								<div class="text"> 共享资源（个）</div>
+								<div class="num">6633333</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script id="model1" type="text/html">
+			{{each list item index}}
+				<div class="chart-item-middle">
+					<div class="company">
+						<div class="text">{{item.name}}</div>
+						<div class="num">{{item.value}}</div>
+					</div>
+					<div class="progress-bar stripes" style="background:{{item.bg}}">
+						<span style="width:{{item.present}}%;background:{{item.color}}"></span>
+					</div>
+				</div>
+			{{/each}}
+		</script>
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/template-web.js"></script>
+		<script src="./js/echarts.js"></script>
+		<script src="./js/echarts-wordcloud.js"></script>
+		<script src="./js/global.js"></script>
+		<script src="./js/public.js"></script>
+	</body>
+
+</html>

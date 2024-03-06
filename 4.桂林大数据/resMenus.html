@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<link rel="stylesheet" href="./assets/css/resMenus.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<meta name="keywords" content="电子政务信息共享网站" />
+		<meta name="description" content="电子政务信息共享网站" />
+		<title>电子政务信息共享网站</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<div class="layui-logo"><a href="javascript:;"><img src="assets/imgs/logo.png" alt="logo"></a></div>
+
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<span class="img-span">
+							<img src="assets/imgs/user.png" class="layui-nav-img">
+						</span>
+						<span>刘追星</span>
+					</li>
+					<li class="layui-nav-item"><a href="javascript:;" class="divider"><i class="iconfont icon-quit"></i><span>个人中心</span></a></li>
+					<li class="layui-nav-item"><img width="24px" src="assets/imgs/warnning.png" /></li>
+				</ul>
+			</div>
+			<div class="layui-header menu">
+				<ul class="layui-nav layui-layout-left">
+					<li class="layui-nav-item layui-this"><a href="javascript:;"><img src="assets/imgs/shouye.png" />网站首页</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/xiangqing.png" />数据目录</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/shujia.png" />共享统计</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/haoyou.png" />互动交流</a></li>
+				</ul>
+			</div>
+			<div class="layui-body">
+				<p class="current-page"><img src="assets/imgs/dingwei.png" />当前位置：资源目录</p>
+				<div class="layui-card content">
+					<ul class="layui-nav layui-nav-tree" lay-filter="test" id="menu">
+						<li class="layui-nav-item layui-nav-itemed">
+							<a href="javascript:;"><img src="assets/imgs/mulu@2x.png" />基础信息资源目录</a>
+							<dl class="layui-nav-child">
+								<dd><a href="javascript:;"><img src="assets/imgs/minzhuxuanju.png" />民主法制建设</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/shenpi-2.png" />投资审批</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/shuiwu.png" />涉税信息</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/quanminjiankang.png" />全民健康保障</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/xinyong.png" />信用体系建设</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/fangzi.png" />全民住房保障</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/minzhuxuanju.png" />全民社会保障</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/yaopin.png" />药品安全监督</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/maozi.png" />食品安全监督</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/wuzhihuanjingjiance.png" />生态环境保护</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/yingjicaigou.png" />应急维护保障</a></dd>
+								<dd><a href="javascript:;"><img src="assets/imgs/ok.png" />安全生产监督</a></dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;"><img src="assets/imgs/zhuti@2x.png" />主题信息资源目录</a>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;"><img src="assets/imgs/drxx27@2x.png" />部门信息资源目录</a>
+						</li>
+					</ul>
+					<div class="right-list">
+						<div class="result">
+							<span>结果列表 共查询<span class="num">6个</span>结果</span>
+							<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入搜索名称" class="layui-input">
+							<img src="assets/imgs/sousuo@2x.png" onclick="init()"/>
+						</div>
+						<div class="layui-card">
+							<div class="layui-card-header">
+								<div>综合排序
+									<span class="layui-table-sort layui-inline" lay-sort="asc">
+										<i class="layui-edge layui-table-sort-asc" title="升序"></i>
+										<i class="layui-edge layui-table-sort-desc" title="降序"></i>
+									</span>
+								</div>
+								<div>更新时间
+									<span class="layui-table-sort layui-inline" lay-sort=""><i class="layui-edge layui-table-sort-asc" title="升序"></i><i
+										 class="layui-edge layui-table-sort-desc" title="降序"></i></span>
+								</div>
+							</div>	
+								<div class="layui-card-body layui-clear">
+									<ul id='news'>
+
+									</ul>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script src="./assets/static/json.js"></script>
+				<script src="./assets/js/jquery-3.2.1.min.js"></script>
+				<script src="assets/layui/layui.js"></script>
+				<script src="assets/js/template-web.js"></script>
+				<script id="list-template" type="text/html">
+					{{each list}}
+			<li>
+				<div>
+					<p class="title">{{$value.title}}</p>
+					<p class="list-content">
+						<span class="label">接口状态：<span class="value">{{$value.status}}</span></span>
+						<span class="label">提供部门：<span class="value">{{$value.dept}}</span></span>
+						<span class="label">更新时间：<span class="value">{{$value.time}}</span></span>
+						<span class="label">申请量：<span class="value" style="width: 30px;">{{$value.num}}</span></span>
+						<span class="label"><img src="assets/imgs/liulan.png"/>访问量：<span class="value">{{$value.account}}</span></span>
+					</p>
+				</div>
+			</li>
+			{{/each}}
+		</script>
+				<script>
+					//注意：导航 依赖 element 模块，否则无法进行功能性操作
+					layui.use('element', function() {
+						var element = layui.element,
+						$ = layui.jquery;
+						$('.layui-table-sort').on('click',function(){
+							let sort = $(this).attr('lay-sort');
+							 $(".layui-table-sort").attr('lay-sort','');
+							if(sort == 'asc'){
+								$(this).attr('lay-sort','desc');
+							}else{
+								$(this).attr('lay-sort','asc');
+							}
+						})
+
+					});
+					$(function() {
+						init()
+					})
+//搜索列表
+					function init() {
+						var html = template('list-template', {
+							list: newList
+						})
+						$('#news').append(html);
+					}
+				</script>
+	</body>
+
+</html>

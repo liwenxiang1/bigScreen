@@ -1,0 +1,306 @@
+html,img,span, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+margin: 0;
+padding: 0;
+}
+*{box-sizing: border-box;}
+html, body {
+min-height: 100%;
+}
+
+body {
+font-family: "Microsoft YaHei";
+font-size:14px;
+color:#333;
+}
+h1, h2, h3, h4, h5, h6{font-weight:normal;}
+ul,ol {
+list-style: none;
+}
+
+img {
+border: none;
+vertical-align: middle;
+}
+
+a {
+text-decoration: none;
+color: #232323;
+}
+
+table {
+border-collapse: collapse;
+table-layout: fixed;
+}
+
+input, textarea {
+outline: none;
+border: none;
+}
+
+textarea {
+resize: none;
+overflow: auto;
+}
+
+.clearfix {
+zoom: 1;
+}
+
+.clearfix:after {
+content: ".";
+width: 0;
+height: 0;
+visibility: hidden;
+display: block;
+clear: both;
+overflow:hidden;
+}
+
+.fl {
+float: left
+}
+
+.fr {
+float: right
+}
+
+.tl {
+text-align: left;
+}
+
+.tc {
+text-align: center
+}
+
+.tr {
+text-align: right;
+}
+
+.ellipse {
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.inline{
+display: inline-block;
+*display: inline;
+*zoom: 1;
+}
+.header{
+	height: 70px;
+	box-shadow: 0 0 10px rgba(72, 74, 78, 0.1);
+	background: #FFFFFF;
+}
+.logo{
+	width: 30px;
+	height: 30px;
+	margin: 15px 20px;
+	position: relative;
+	top: -4px;
+}
+.title{
+	line-height: 70px;
+	font-size: 20px;
+	color: #FFFFFF;
+}
+.top .layui-nav{
+	background: #FFFFFF;
+}
+.top .layui-nav .layui-nav-item{
+	height: 70px;
+	line-height: 70px;
+}
+.pic{
+	width: 30px;
+	height: 30px;
+	margin: 20px 22px 20px 6px;
+}
+.headerBar{
+	width: 1px ;
+	height: 30px;
+	background: #444549;
+	margin-top: 20px;
+}
+.headerIcon{
+	width: 28px;
+	height: 28px;
+}
+.editIcon{
+	width: 25px;
+	height: 24px;
+}
+.packUp{
+	width: 21px;
+	height: 18px;
+	margin: 26px 0 26px 31px;
+	cursor: pointer;
+}
+.notice{
+	width: 24px;
+	height: 28px;
+}
+.layui-nav{
+	background: none;
+}
+.leftNav .layui-nav-tree{
+	width: 100%;
+}
+.leftNav .layui-input{
+	width: 80%;
+	margin: 35px auto 19px auto;
+}
+.leftNav .layui-nav-tree .layui-nav-child a{
+	color: #FFFFFF;
+}
+/* .leftNav .layui-nav-itemed i{
+	color: #2F4DA5!important;
+} */
+.leftNav .layui-nav-tree .layui-nav-item a{
+	height: 50px;
+	line-height: 50px;
+}
+.leftNav .layui-nav-tree .layui-nav-item dd a{
+	padding-left: 35px;
+}
+.leftNav .layui-nav-tree .layui-nav-item>a:hover{
+	background: #1890FF;
+}
+
+.leftNav .layui-nav-tree .layui-nav-item dd a:hover{
+	background: #1890FF;
+}
+.leftNavPre{
+	width: 13.5%;
+	float: left;
+	border-right: 1px solid #DADEE4;
+}
+.rightContent{
+	width: 84%;
+	float: left;
+	padding-left: 2%;
+	border-left: 1px solid #DADEE4;
+}
+.rightContent2{
+	width: 86.5%;
+	border-left: 1px solid #DADEE4;
+	float: right;
+	background: #F9FAFB;
+}
+.layui-side{
+	width: 13.5%;
+}
+.layui-side-scroll{
+	width: 100%;
+}
+.layui-bg-black{
+	/* background-color: #141D36!important; */
+	background: url(../images/beijing@2x.png) 100% ;
+}
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
+	background: none;
+}
+.whiteIcon{
+	width: 16px;
+	height: 16px;
+	margin-right: 13px;
+}
+.layui-nav.fr .layui-nav-item a{
+	color: #131313;
+	font-size: 18px;
+}
+.layui-nav .layui-this:after, .layui-nav-bar{
+	display: none;
+}
+.pd32{
+	padding: 20px 12px 20px 32px;
+}
+.pr20{
+	padding-right: 20px;
+}
+.item{
+	border-radius: 8px;
+	width: 100%;
+	background: #FFFFFF;
+	box-shadow: 0 0 10px rgba(218, 218, 218, 0.5);
+}
+.num{
+	padding: 34px 0 25px 28px;
+	font-size: 24px;
+	line-height: 24px;
+	color: #1F51E4;
+	font-weight: bold;
+}
+.itemTitle{
+	font-size: 16px;
+	font-weight: 400;
+	color: #545766;
+	line-height: 16px;
+	padding: 0 0 32px 27px;
+}
+.redColor{
+	color: #EE3A3B;
+}
+.w39{
+	width: 39%;
+	float: left;
+}
+.w61{
+	width: 61%;
+	float: left;
+}
+.item4{
+	border-radius: 4px;
+	width: 100%;
+	background: #FFFFFF;
+	box-shadow: 0 0 10px rgba(218, 218, 218, 0.5);
+	margin-top: 20px;
+	padding: 15px;
+	position: relative;
+}
+.boxTitle{
+	font-size: 18px;
+	color: #121212;
+	font-weight: 500;
+	padding: 6px 0 22px 0;
+	border-bottom: 1px solid #E3E3E3;
+}
+.blueColor{
+	color: #2F4DA5;
+}
+.toTop{
+	float: right;
+	position: relative;
+	top: -65px;
+}
+.item4 .layui-tab-card{
+	border: none;
+	box-shadow: none;
+}
+#serviceType{
+	width: 50%;
+	height: 350px;
+}
+
+.radius{
+	width: 12px;
+	height: 12px;
+	border-radius: 12px;
+	background: #C6C9CF;
+	position: relative;
+	top: 2px;
+}
+#echartsList1{
+	padding: 0 20px;
+}
+.precentInfo{
+	margin-top: 40px;
+}
+.preNum{
+	color: #2D4CA5;
+}
+#netWork{
+	height: 300px;
+}
+#barEcharts{
+	height: 350px;
+}

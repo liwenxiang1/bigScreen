@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指标看板</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link href="../css/common.css" rel="stylesheet">
+    <style type="text/css">
+        p {
+            margin: 0;
+        }
+
+        #zhibiao-list {
+            width: 100%;
+            margin: 30px auto;
+            margin: 0 auto;
+            color: #7A7C7E;
+        }
+
+        #zhibiao-list .zhibiao-item {
+            height: 100px;
+            width: 100%;
+            max-width: 250px;
+            margin: 15px auto;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+            border-radius: 5px;
+            -webkit-transition: all .3s;
+            transition: all .3s;
+            cursor: pointer;
+        }
+
+        #zhibiao-list .zhibiao-item:hover {
+            -webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+        }
+
+        #zhibiao-list .zhibiao-item .item-title {
+            position: relative;
+            width: 100%;
+            padding: 0 10px;
+            line-height: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        #zhibiao-list .zhibiao-item .item-title .mark {
+            position: absolute;
+            display: block;
+            right: 5px;
+            top: 50%;
+            -webkit-transform: translateY(-50%) scale(0.7);
+                    transform: translateY(-50%) scale(0.7);
+            padding: 5px 10px;
+            line-height: 12px;
+            color: #fff;
+            font-size: 12px;
+            background-color: #3A8FD0;
+            border-radius: 3px;
+        }
+
+        #zhibiao-list .zhibiao-item .item-content {
+            padding: 5px 10px;
+        }
+
+        #zhibiao-list .zhibiao-item .item-content .amount {
+            font-size: 28px;
+            letter-spacing: 1.5px;
+        }
+
+        #zhibiao-list .zhibiao-item .item-content .remark {
+            text-align: left;
+            font-size: 12px;
+        }
+
+        #zhibiao-list .zhibiao-item .item-content .rote {
+            float: right;
+        }
+
+        .charts-wrapper {
+            width: calc(100% - 60px);
+            margin: 30px auto;
+            padding: 20px 30px 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+            border-radius: 5px;
+        }
+
+        #bar-chart {
+            float: left;
+            width: calc(100% - 400px);
+            height: 350px;
+            margin: 0;
+        }
+
+        #progress {
+            float: left;
+            width: 400px;
+            height: 350px;
+            padding: 20px 0 0 30px;
+        }
+
+        #progress .progress-item .amount {
+            font-size: 28px;
+            color: #999;
+            text-align: left;
+            line-height: 30px;
+        }
+
+        #progress .progress-item .remark {
+            font-size: 12px;
+            color: #999;
+            line-height: 20px;
+            text-align: left;
+        }
+
+        #progress .progress-item .remark .rote {
+            float: right;
+        }
+
+        #progress .progress-item .progress-bar-wrapper {
+            height: 7px;
+            margin: 5px 0 40px 0;
+            border-radius: 3px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        #progress .progress-item .progress-bar-wrapper .progress-bar {
+            height: 7px;
+            width: 0;
+            -webkit-transition: width .5s;
+            transition: width .5s;
+        }
+
+        .btn-group-wrapper {
+            text-align: right;
+            margin: 0 0 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="zhibiao-panel container-fluid animated fadeInRight search-content">
+        <div id="zhibiao-list" class="row">
+        </div>
+        <div class="charts-wrapper clearfix">
+            <div class="btn-group-wrapper">
+                <div data-toggle="buttons" class="btn-group">
+                    <label class="btn btn-sm btn-white active" id="year">
+                        <input type="radio" name="options">年</label>
+                    <label class="btn btn-sm btn-white" id="month">
+                        <input type="radio" name="options">月</label>
+                    <label class="btn btn-sm btn-white" id="day">
+                        <input type="radio" name="options">日</label>
+                </div>
+            </div>
+            <div id="bar-chart"></div>
+            <div id="progress">
+            </div>
+        </div>
+        
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts-en.min.js"></script> -->
+    <script src="../js/plugins/echarts/echarts.min.js"></script>
+    <!-- <script src="common.js"></script> -->
+    <script type="text/javascript">
+        $(function () {
+            listInit()
+            chartsInit()
+            progressInit()
+        });
+
+        function listInit() {
+            const listData = [{
+                id:'1',
+                name: '营业收入',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '98%'
+            }, {
+                id:'2',
+                name: '利润总额',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '20%'
+            }, {
+                id:'3',
+                name: '净利润',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '44%'
+            }, {
+                id:'4',
+                name: '成本支出',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '48%'
+            }, {
+                id:'5',
+                name: '存货',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '98%'
+            }, {
+                id:'6',
+                name: 'EVA',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '20%'
+            }, {
+                id:'7',
+                name: '资产总额',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '46%'
+            }, {
+                id:'8',
+                name: '负债总额',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '20%'
+            }, {
+                id:'9',
+                name: '应收账款',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '98%'
+            }, {
+                id:'10',
+                name: '资产负债率',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '20%'
+            }, {
+                id:'11',
+                name: '总产出',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '46%'
+            }, {
+                id:'12',
+                name: '现金流',
+                amount: (Math.floor(Math.random() * 40000000) + 1000).toLocaleString(),
+                rote: '20%'
+            }]
+            let listDom = ''
+            $.each(listData, (index, val) => {
+                const a = (index + 1) % 4;
+                if (a === 1) {
+                    val['color'] = '#3A8FD0';
+                    val['icon'] = 'flash'
+                } else if (a === 2) {
+                    val['color'] = '#4DCDD0';
+                    val['icon'] = 'level-up'
+                } else if (a === 3) {
+                    val['color'] = '#42BC9E';
+                    val['icon'] = 'level-up'
+                } else {
+                    val['color'] = '#E75F6E';
+                    val['icon'] = 'level-down'
+                };
+                listDom += '<div class="col-sm-3 col-xs-6">'+
+                    '<div class="zhibiao-item" onclick="showInfo('+ val.id +')">'+
+                        '<div class="item-title">'+ val.name +
+                            '<span class="mark" style="background-color:'+ val.color +'">全年</span>'+
+                        '</div>'+
+                        '<div class="item-content">'+
+                            '<p class="amount">'+ val.amount +'</p>'+
+                            '<p class="remark clearfix">'+
+                                '<span class="monnth">当月</span>'+
+                                '<span class="rote" style="color:'+ val.color + '">'+
+                                    '<span>'+ val.rote +'</span>'+
+                                    '<i class="fa fa-'+ val.icon +'"></i>'+
+                                '</span></p></div></div></div>'
+            })
+            $('#zhibiao-list').append(listDom)
+            
+            // $('#zhibiao-list').on('click', '.zhibiao-item', e=>{
+            //     const valId = $(e.currentTarget).attr('valId')
+                
+            // })
+        }
+
+        function chartsInit() {
+            var barChart = echarts.init(document.getElementById('bar-chart'));
+            barChart.setOption({
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                grid: {
+                    top: '8%',
+                    left: '1%',
+                    right: '1%',
+                    bottom: '8%',
+                    containLabel: true,
+                },
+                legend: {
+                    itemGap: 50,
+                    data: ['已开工', '未开工'],
+                },
+                xAxis: [{
+                    type: 'category',
+                    boundaryGap: true,
+                    axisLine: { //坐标轴轴线相关设置。数学上的x轴
+                        show: true,
+                    },
+                    axisLabel: { //坐标轴刻度标签的相关设置
+                        textStyle: {
+                            margin: 15,
+                        },
+                    },
+                    axisTick: {
+                        show: false,
+                    },
+                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', ],
+                }],
+                yAxis: [{
+                    type: 'value',
+                    name:'合同总数',
+                    min: 0,
+                    // max: 140,
+                    splitNumber: 7,
+                    splitLine: {
+                        show: true
+                    },
+                    axisLine: {
+                        show: false,
+                    },
+                    axisLabel: {
+                        margin: 20,
+                    },
+                    axisTick: {
+                        show: false,
+                    },
+                }],
+                series: [{
+                    name: '已开工',
+                    type: 'bar',
+                    barWidth: 20,
+                    label: {
+                        show: true,
+                        position: 'top'
+                    },
+                    itemStyle: {
+                        normal: {
+                            // barBorderRadius: 5,
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [{
+                                        offset: 0,
+                                        color: '#43eec6'
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: '#14c8d4'
+                                    }
+                                ]
+                            )
+                        }
+                    },
+                    data: [200, 382, 102, 267, 186, 315, 316]
+                },{
+                    name: '未开工',
+                    type: 'line',
+                    // smooth: true, //是否平滑曲线显示
+                    // 			symbol:'circle',  // 默认是空心圆（中间是白色的），改成实心圆
+                    showAllSymbol: true,
+                    symbol: 'emptyCircle',
+                    symbolSize: 0,
+                    lineStyle:{
+                        color: 'rgba(193,146,255,0.52)'
+                    },
+                    areaStyle: { //区域填充样式
+                        normal: {
+                            //线性渐变，前4个参数分别是x0,y0,x2,y2(范围0~1);相当于图形包围盒中的百分比。如果最后一个参数是‘true’，则该四个值是绝对像素位置。
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgba(193,146,255,0.52)'
+                                },
+                                {
+                                    offset: 1,
+                                    color: 'rgba(0,0,0, 0)'
+                                }
+                            ], false),
+                            shadowColor: 'rgba(193,146,255,0.52)', //阴影颜色
+                            shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+                        }
+                    },
+                    data: [393, 438, 485, 631, 689, 824, 987]
+                }]
+            })
+
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                barChart.resize()
+            });
+        }
+        
+        function progressInit(){
+            const progressData = [{
+                amount: 2467,
+                title: '订单总数',
+                rote: '48%',
+                color: '#42BC9E',
+                icon: 'level-up'
+            },{
+                amount: 4420,
+                title: '最近一个月订单',
+                rote: '66%',
+                color: '#42BC9E',
+                icon: 'level-down'
+            },{
+                amount: 9180,
+                title: '最近一个月销售额',
+                rote: '22%',
+                color: '#42BC9E',
+                icon: 'flash'
+            }];
+            let proDom = ''
+            $.each(progressData, (index, val)=>{
+                proDom += '<div class="progress-item">'+
+                    '<p class="amount">'+ val.amount +'</p>'+
+                    '<p class="remark">'+
+                        '<span class="subname">'+ val.title +'</span>'+
+                        '<span class="rote" style="color:'+ val.color +'">'+
+                            '<span>'+ val.rote +'</span>'+
+                            '<i class="fa fa-'+ val.icon +'"></i>'+
+                        '</span>'+
+                    '</p>'+
+                    '<div class="progress-bar-wrapper">'+
+                        '<div class="progress-bar" style="background-color:'+ (val.color || '#42BC9E') +'" rote="'+ val.rote +'"></div>'+
+                    '</div>'+
+                '</div>'
+            })
+            $('#progress').append(proDom)
+            $('#progress .progress-bar').each((index, el)=>{
+                $(el).width($(el).attr('rote'))
+            })
+        }
+        function showInfo(id){
+            window.open('zhibiao_tabs.html?id='+ id ,'_self')
+
+            // $('.btn-group').on('click', '.btn', e=>{
+            //     const curType = $(e.currentTarget).attr('id')
+            //     console.log("progressInit -> curType", curType);
+            //     // 查询刷新
+            // })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<link rel="stylesheet" href="./assets/css/businessTopic.css">
+		<meta name="keywords" content="数据地图" />
+		<meta name="description" content="数据地图" />
+		<title>数据地图</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<div class="layui-logo"><a href="javascript:;"><img class="logo-img" src="assets/imgs/logo.png" alt="logo"></a></div>
+
+				<ul class="layui-nav" lay-filter="">
+					<li class="layui-nav-item"><a href="javascript:;">首页</a></li>
+					<li class="layui-nav-item layui-this"><a href="businessTopic.html">业务主题</a></li>
+					<li class="layui-nav-item"><a href="dataSource.html">数据来源</a></li>
+					<li class="layui-nav-item "><a href="proSystem.html">项目系统</a></li>
+					<li class="layui-nav-item"><a href="messageStandard.html">报文标准</a></li>
+				</ul>
+				<div class="search-div">
+					<input type="text" name="title" autocomplete="off" placeholder="请输入关键词" class="search-input">
+					<i class="iconfont icon-sousuo"></i>
+				</div>
+
+				<button type="button" class="layui-btn search-button">搜索</button>
+				<a class="refData" href="javascript:;"><i class="iconfont icon-a-shuju4"></i>参考数据</a>
+			</div>
+			<div class="layui-body">
+				<div class="class-btns">
+					<button type="button" class="layui-btn layui-this"><i class="iconfont icon-a-chuan1"></i>海港物流</button>
+					<button type="button" class="layui-btn"><i class="iconfont icon-a-feiji1"></i>空港物流</button>
+					<button type="button" class="layui-btn"><i class="iconfont icon-quyu"></i>自贸区</button>
+					<button type="button" class="layui-btn"><i class="iconfont icon-huowu"></i>获取贸易</button>
+				</div>
+				<div id="badgeList" class="badge-list"></div>
+				<div id="topicList" class="badge-list"></div>
+				<div class="box">
+					<canvas id="myCanvas" width="1600" height="160"></canvas>
+				</div>
+				<div class="layui-tab">
+					<ul class="layui-tab-title" id="tab-titles">
+					</ul>
+					<div class="layui-tab-content">
+						<div class="layui-tab-item layui-show">
+							<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+								<ul class="layui-tab-title" id="tabChange">
+									<li class="layui-this">残损报告</li>
+									<li>短卸</li>
+									<li>溢卸</li>
+									<li>船图</li>
+									<li>集装箱卸船</li>
+								</ul>
+								<div class="layui-tab-content">
+									<div class="layui-tab-item layui-show">
+										<p class="tab-p" id="tabp1">残损报告</p>
+										<table class="layui-hide" id="tab1"></table>
+										<div id="laypage-table" class="laypage"></div>
+									</div>
+									<div class="layui-tab-item">
+										<p class="tab-p" id="tabp2">短卸</p>
+										<table class="layui-hide" id="tab2"></table>
+										<div id="laypage-table" class="laypage"></div>
+									</div>
+									<div class="layui-tab-item">
+										<p class="tab-p" id="tabp3">溢卸</p>
+										<table class="layui-hide" id="tab3"></table>
+										<div id="laypage-table" class="laypage"></div>
+									</div>
+									<div class="layui-tab-item">
+										<p class="tab-p" id="tabp4">船图</p>
+										<table class="layui-hide" id="tab4"></table>
+										<div id="laypage-table" class="laypage"></div>
+									</div>
+									<div class="layui-tab-item">
+										<p class="tab-p" id="tabp5">集装箱卸船</p>
+										<table class="layui-hide" id="tab5"></table>
+										<div id="laypage-table" class="laypage"></div>
+									</div>
+									<!-- <div style="position: relative;">
+										<p class="tab-p" id="tabp1">残损报告</p>
+										<table class="layui-hide" id="tab1"></table>
+										<p class="tab-p" id="tabp2">短卸</p>
+										<table class="layui-hide" id="tab2"></table>
+										<p class="tab-p" id="tabp3">溢卸</p>
+										<table class="layui-hide" id="tab3"></table>
+										<p class="tab-p" id="tabp4">船图</p>
+										<table class="layui-hide" id="tab4"></table>
+										<p class="tab-p" id="tabp5">集装箱卸船</p>
+										<table class="layui-hide" id="tab5"></table>
+										<div id="laypage-table" class="laypage"></div>
+									</div> -->
+								</div>
+							</div>
+
+						</div>
+						<!-- 物理表 -->
+						<div class="layui-tab-item">
+							<table class="layui-hide" id="systemTable"></table>
+							<div id="laypage-table-tab2" class="laypage"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+			<!--[if lt IE 9]>
+			  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+			  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+		</div>
+		<script src="./assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/template-web.js"></script>
+		<script id="badge-template" type="text/html">
+			<span class="badge-label">业务流:</span>
+			{{each list}}
+				<div class="item-div">
+					<button type="text">{{$value.name}}</button>
+				</div>
+			{{/each}}
+		</script>
+		<script type="text/html" id="checkboxTpl">
+			<a class="table-a" href="">{{d.username}}</a>
+		</script>
+		<script id="tabTitle-template" type="text/html">
+			{{each list}}
+			{{if $index === 0}}
+				<li class="layui-this">{{$value.name}}({{$value.num}})</li>
+			{{else}}
+				<li>{{$value.name}}({{$value.num}})</li>
+			 {{/if}}
+			{{/each}}
+		</script>
+		<script type="text/html" id="checkboxTp2">
+		  <span class="level">安全-{{d.num}}级</span>
+		</script>
+		<script>
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use(['element', 'laypage', 'form', 'table', 'util'], function() {
+				var util = layui.util
+				//固定块
+				util.fixbar({
+					top:true
+					, css: { right: 30, bottom: 35 }
+					, bgcolor: '#2a96ff !important;display:block;'
+					,showHeight:100
+					, click: function (type) {
+						if (type === 'top') {
+							$('.layui-body').animate({//主要代码
+								scrollTop: 0
+							}, 200);
+						}
+					}
+				});
+				
+				var element = layui.element;
+				var laypage = layui.laypage;
+				var form = layui.form
+				var table = layui.table;
+				$(function() {
+
+					$(".class-btns .layui-btn").click(function() {
+						$(this).siblings('.layui-btn').removeClass('layui-this'); // 删除其他子元素的样式
+						$(this).addClass('layui-this'); // 添加当前元素的样式
+					});
+					initBadge()
+					iniTopics()
+					initTabTitles()
+					initTable()
+					initTableTab2()
+					initDrawFlow()
+					$('#tabChange li').click(function(e, index) {
+						let num = $(this).index() + 1
+						var t = $('#tabp' + num).offset().top;
+						$(window).scrollTop(t);
+					})
+				})
+
+				function initBadge() {
+					var list = [{
+						name: '货物进口',
+					}, {
+						name: '货物出口',
+					}, {
+						name: '船舶进出境',
+					}, {
+						name: '国际中转',
+					}, {
+						name: '内支线中转',
+					}]
+					var html = template('badge-template', {
+						list: list
+					})
+					$('#badgeList').append(html);
+					// 将第一个设置为选中状态
+					$($('#badgeList').children("div").get(0)).addClass("active")
+					// 设置切换效果
+					$("#badgeList .item-div").click(function() {
+						$(this).siblings('.item-div').removeClass('active'); // 删除其他子元素的样式
+						$(this).addClass('active'); // 添加当前元素的样式
+					});
+				}
+
+				function iniTopics() {
+					var list = [{
+						name: '船',
+					}, {
+						name: '箱',
+					}, {
+						name: '货',
+					}, {
+						name: '冷链',
+					}, {
+						name: '危险品',
+					}, {
+						name: '全链路跟踪',
+					}, {
+						name: '企业',
+					}]
+					var html = template('badge-template', {
+						list: list
+					})
+					$('#topicList').append(html);
+					// 将第一个设置为选中状态
+					$($('#topicList').children("div").get(0)).addClass("active")
+					// 设置切换效果
+					$("#topicList .item-div").click(function() {
+						$(this).siblings('.item-div').removeClass('active'); // 删除其他子元素的样式
+						$(this).addClass('active'); // 添加当前元素的样式
+					});
+				}
+
+				function initTabTitles() {
+					var listTitles = [{
+						name: '数据项',
+						num: '10'
+					}, {
+						name: '物理表',
+						num: '9'
+					}, {
+						name: '单证类别',
+						num: '16'
+					}]
+					var html = template('tabTitle-template', {
+						list: listTitles
+					})
+					$('#tab-titles').append(html);
+				}
+
+				function initTable() {
+					let obj = {
+						username: '临港企业名录',
+						num: 2
+					}
+					let tableData = []
+					for (var i = 0; i < 5; i++) {
+						tableData.push(obj)
+					}
+					tableData.forEach((obj, index) => {
+						table.render({
+							elem: '#tab' + (index + 1)
+								// ,url:'/demo/table/user/'
+								,
+							data: tableData,
+							cellMinWidth: 80,
+							cols: [
+								[{
+										title: '序号',
+										type: 'numbers'
+									}, {
+										field: 'username',
+										title: '属性名称',
+										templet: '#checkboxTpl',
+									}, {
+										field: '业务填写规范',
+										title: '表中文名',
+										templet: '#usernameTpl'
+									}, {
+										field: 'username',
+										title: '引用码表',
+										templet: '#checkboxTpl',
+									}, {
+										field: 'username',
+										title: '数据展示格式'
+									},
+									{
+										field: 'username',
+										title: '数据单位'
+									},
+									{
+										field: 'username',
+										title: '关联标准名称',
+										templet: '#checkboxTpl',
+									},
+									{
+										field: 'username',
+										title: '关联标准字段',
+									}
+								]
+							],
+						});
+					})
+
+					laypage.render({
+						elem: 'laypage-table' //注意，这里的 test1 是 ID，不用加 # 号
+							,
+						count: 50 //数据总数，从服务端得到
+					});
+				}
+
+				function initTableTab2() {
+					let obj1 = {
+						username:'临港企业名录',
+						num:2
+					}
+					let tableData1 = []
+					for(var i = 0;i< 10;i++){
+						tableData1.push(obj1)
+					}
+					table.render({
+						elem: '#systemTable'
+							// ,url:'/demo/table/user/'
+							,data:tableData1,
+						cellMinWidth: 80,
+						cols: [
+							[{
+								title: '序号',
+								type: 'numbers'
+							}, {
+								field: 'username',
+								title: '表英文名',
+							}, {
+								field: 'username',
+								title: '表中文名',
+							}, {
+								field: 'username',
+								title: '健康度'
+							}, {
+								field: 'username',
+								title: '生效时间',
+							}, {
+								field: 'username',
+								title: '表状态',
+							}, {
+								field: 'username',
+								title: '表空间',
+							}, {
+								field: 'username',
+								title: '说明',
+							}, {
+								field: 'username',
+								title: '上下文路径',
+							}, {
+								field: 'username',
+								title: '系统分类路径',
+							}, {
+								field: 'username',
+								title: '标签',
+								templet: '#checkboxTp2',
+								width:100
+							}]
+						],
+					});
+					laypage.render({
+						elem: 'laypage-table-tab2' //注意，这里的 test1 是 ID，不用加 # 号
+							,
+						count: 50 //数据总数，从服务端得到
+					});
+				}
+				function initDrawFlow() {
+					var canvas = document.getElementById("myCanvas");
+					var cxt = canvas.getContext('2d');
+					var canWidth = cxt.canvas.clientWidth;
+					let list = [{
+						name: 'D1.货物装船',
+						isActive: false
+					}, {
+						name: 'D2.到货通知',
+						isActive: false
+					}, {
+						name: 'D3.理货卸船',
+						isActive: true
+					}, {
+						name: 'D4.换单',
+						isActive: false
+					}, {
+						name: 'D5.报检',
+						isActive: false
+					}, {
+						name: 'D6.报关',
+						isActive: false
+					}, {
+						name: 'D6a.整箱放行',
+						isActive: false
+					}, {
+						name: 'D7.提箱',
+						isActive: false
+					}, {
+						name: 'D8.拆箱',
+						isActive: false
+					}, {
+						name: 'D9.还箱',
+						isActive: false
+					}]
+					list.forEach((obj, index) => {
+						let x = 0,
+							y = 0,
+							width = 100,
+							style = {}
+						if (index == 0) {
+							y = 40
+						} else if (index == 1) {
+							x = 140;
+							y = 40
+						} else if (index == 2) {
+							x = 350;
+							y = 0
+						} else if (index == 3) {
+							x = 310;
+							y = 100, width = 70
+						} else if (index == 4) {
+							x = 410;
+							y = 100, width = 70
+						} else if (index == 5) {
+							x = 640;
+							y = 0, width = 80
+						} else if (index == 6) {
+							x = 640;
+							y = 100
+						} else if (index == 7) {
+							x = 820;
+							y = 50, width = 70
+						} else if (index == 8) {
+							x = 1020;
+							y = 100, width = 70
+						} else if (index == 9) {
+							x = 1020;
+							y = 0, width = 70
+						}
+						if (obj.isActive) {
+							style.bgColor = '#5979F2'
+							style.color = '#ffffff'
+						}
+						drawRoundRect(cxt, x, y, width, 30, obj.name, 10, style)
+
+					})
+					// D1-d2
+					drawLineArrow(cxt, 100, 55, 140, 55, '#5979F2')
+					// D2出
+					drawLine(cxt, 240, 55, 280, 55)
+					// d2竖线
+					drawLine(cxt, 280, 15, 280, 115)
+					// 竖线到D3
+					drawLineArrow(cxt, 280, 15, 350, 15, '#5979F2')
+					// 竖线到D4
+					drawLineArrow(cxt, 280, 115, 310, 115, '#5979F2')
+					// d4-d5
+					drawLineArrow(cxt, 380, 115, 410, 115, '#5979F2')
+					// D3出
+					drawLine(cxt, 450, 15, 510, 15)
+					// d3竖线
+					drawLine(cxt, 510, 15, 510, 115)
+					// D5出
+					drawLine(cxt, 480, 115, 510, 115)
+					// 横线
+					drawLine(cxt, 510, 55, 540, 55)
+					// 竖线
+					drawText(cxt, 580, 16, '非分拨')
+					drawText(cxt, 580, 116, '分拨')
+					drawLine(cxt, 540, 15, 540, 115)
+					// 到非分拨
+					drawLine(cxt, 540, 15, 555, 15)
+					// 到分拨
+					drawLine(cxt, 540, 115, 560, 115)
+					// 非分拨出
+					drawLineArrow(cxt, 605, 15, 640, 15, '#5979F2')
+					// 分拨出
+					drawLineArrow(cxt, 595, 115, 640, 115, '#5979F2')
+					// D6出
+					drawLine(cxt, 720, 15, 780, 15)
+					// D6a出
+					drawLine(cxt, 740, 115, 780, 115)
+					// 竖线
+					drawLine(cxt, 780, 15, 780, 115)
+					// 到D7
+					drawLineArrow(cxt, 780, 65, 820, 65, '#5979F2')
+					// D7出
+					drawLine(cxt, 890, 65, 930, 65)
+					//竖线
+					drawLine(cxt, 930, 15, 930, 115)
+					// 到分拨
+					drawLine(cxt, 930, 115, 965, 115)
+					// 到非分拨
+					drawLine(cxt, 930, 15, 960, 15)
+					drawText(cxt, 980, 16, '非分拨')
+					drawText(cxt, 980, 116, '分拨')
+					// 到D9
+					drawLineArrow(cxt, 1000, 15, 1020, 15, '#5979F2')
+					// 到D8
+					drawLineArrow(cxt, 990, 115, 1020, 115, '#5979F2')
+
+				}
+
+				function drawLine(context, fromX, fromY, toX, toY) {
+					context.moveTo(fromX, fromY)
+					context.lineTo(toX, toY)
+					context.strokeStyle = '#5979F2'
+					context.stroke()
+				}
+				//绘制文字
+				function drawText(context, x, y, text) {
+					context.font = "normal 14px 微软雅黑";
+					// 设置颜色
+					context.fillStyle = "#5979F2";
+					// 设置水平对齐方式
+					context.textAlign = "center";
+					// 设置垂直对齐方式
+					context.textBaseline = "middle";
+					// 绘制文字（参数：要写的字，x坐标，y坐标）
+					context.fillText(text, x, y);
+				}
+				//画圆角矩形
+				function drawRoundRect(context, x, y, w, h, text, radius, style) {
+					radius = radius || 20;
+					context.beginPath();
+					context.arc(x + radius, y + radius, radius, Math.PI, Math.PI * 3 / 2);
+					context.lineTo(w - radius + x, y);
+					context.arc(w - radius + x, radius + y, radius, Math.PI * 3 / 2, Math.PI * 2);
+					context.lineTo(w + x, h + y - radius);
+					context.arc(w - radius + x, h - radius + y, radius, 0, Math.PI * 1 / 2);
+					context.lineTo(radius + x, h + y);
+					context.arc(radius + x, h - radius + y, radius, Math.PI * 1 / 2, Math.PI);
+					context.closePath();
+					context.fillStyle = style.bgColor ? style.bgColor : 'white'; //背景颜色
+					context.fill();
+					context.strokeStyle = '#5979F2' //边框颜色
+					context.font = 'normal 14px 微软雅黑';
+					context.fillStyle = style.color ? style.color : '#666666'; //文字颜色
+					context.textAlign = "center";
+					context.fillText(text, x + w / 2, y + h / 2 + 6);
+					context.stroke();
+				}
+				// 画带箭头的线
+				function drawLineArrow(context, fromX, fromY, toX, toY, color) {
+					var headLen = 10; //自定义线的长度
+					var theta = 25; //自定义箭头线与直线的夹角，
+					var arrowX, arrowY; //箭头线重点坐标
+					var angle = Math.atan2(fromY - toY, fromX - toX) * 180 / Math.PI
+					var angle1 = (angle + theta) * Math.PI / 180
+					var angle2 = (angle - theta) * Math.PI / 180
+					var topX = headLen * Math.cos(angle1)
+					var topY = headLen * Math.sin(angle1)
+					var bopX = headLen * Math.cos(angle2)
+					var bopY = headLen * Math.sin(angle2)
+					context.beginPath()
+					//画直线
+					context.moveTo(fromX, fromY)
+					context.lineTo(toX, toY)
+
+					arrowX = toX + topX
+					arrowY = toY + topY
+					// 画上边箭头线
+					context.moveTo(arrowX, arrowY)
+					context.lineTo(toX, toY)
+
+					arrowX = toX + bopX
+					arrowY = toY + bopY
+					// 画下边箭头线
+					context.lineTo(arrowX, arrowY)
+
+					context.strokeStyle = color
+					context.stroke()
+				}
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>通用设置</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+		<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<link href="../css/common.css" rel="stylesheet">
+	</head>
+	<body >
+		<div class="container-fluid animated fadeInRight search-content">
+			<div id="toolbar" class='btn-group'>
+				<button id="btn_edit" onclick="layerEnd('导入成功')" type="button" class="btn btn-success">
+					<span class="glyphicon glyphicon-import" aria-hidden="true"></span>批量导入
+				</button>
+			</div>
+			<table id="table"
+				data-toggle="table"
+				data-toolbar="#toolbar" 
+				data-show-refresh="true"
+				data-show-columns="true"
+				data-show-export="true"
+				data-click-to-select="true"
+				data-export-types="['xlsx']"
+				data-pagination="true"
+				>
+				<thead>
+					<tr>
+						<th data-formatter="thIndex" data-align="center" data-rowspan="2" data-width="3%">序号</th>
+						<th data-field="type" data-align="center" data-rowspan="2">月报类型</th>
+						<th data-align="center" data-rowspan="2" data-formatter="toInput">填报单位</th>
+						<th data-align="center" data-colspan="2">2020-01</th>
+						<th data-align="center" data-colspan="2">2020-02</th>
+						<th data-align="center" data-colspan="2">2020-03</th>
+						<th data-align="center" data-colspan="2">2020-04</th>
+						<th data-align="center" data-colspan="2">2020-05</th>
+					</tr>
+					<tr>
+						<th data-align="center" data-formatter="toM">填报开始时间</th>
+						<th data-align="center" data-formatter="toM">填报结束时间</th>
+						<th data-align="center" data-formatter="toM">填报开始时间</th>
+						<th data-align="center" data-formatter="toM">填报结束时间</th>
+						<th data-align="center" data-formatter="toM">填报开始时间</th>
+						<th data-align="center" data-formatter="toM">填报结束时间</th>
+						<th data-align="center" data-formatter="toM">填报开始时间</th>
+						<th data-align="center" data-formatter="toM">填报结束时间</th>
+						<th data-align="center" data-formatter="toM">填报开始时间</th>
+						<th data-align="center" data-formatter="toM">填报结束时间</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+		<!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+		<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="../js/plugins/layer/layer.js"></script>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+		var $table = $('#table');
+		var datas = [];
+		$(['主要经济指标月报','主要产出月报','增加值月报','能源消耗月报','新签合同月报','合同储备月报']).each(function(i,e){
+			datas.push({type:e});
+		});
+		$(function(){
+			$table.bootstrapTable('load',datas);
+		});
+		function search(){//查询方法
+			$table.bootstrapTable('refresh');
+		}
+		function toM(val){
+			return '<input type="datetime-local" class="form-control boot-date"/>';
+		}
+		function toInput(val){
+			return '<input type="text" class="form-control"/>';
+		}
+		
+		</script>
+	</body>
+</html>

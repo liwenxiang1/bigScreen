@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>报表分析</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+		<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<link href="../css/common.css" rel="stylesheet">
+		<style type="text/css">
+			td[colspan="2"]{font-weight: 600;} .btn-white.active{border: 1px solid #2196F3};
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid animated fadeInRight search-content">
+			<div class="row">
+				<div class="col-sm-12" style="padding: 5px 15px;">
+					<div data-toggle="buttons" class="btn-group">
+						<label class="btn btn-sm btn-white active">
+							<input type="radio" id="option1" name="options">在建合同储备</label>
+						<label class="btn btn-sm btn-white">
+							<input type="radio" id="option2" name="options">海外机构经营表</label>
+						<label class="btn btn-sm btn-white">
+							<input type="radio" id="option3" name="options">重大合同签约表</label>
+						<label class="btn btn-sm btn-white">
+							<input type="radio" id="option4" name="options">境内海外公司业务表</label>
+					</div>
+				</div>
+			</div>
+			<table id="table" data-toggle="table" data-pagination="true" data-page-list="[15,50,100]" data-page-size="15">
+				<thead>
+					<tr>
+						<th data-formatter="thIndex" data-align="center">序号</th>
+						<th data-field="no" data-align="center">项目序号</th>
+						<th data-field="unit" data-align="center">单位名称</th>
+						<th data-field="name" data-align="center">合同名称</th>
+						<th data-field="unit2" data-align="center">承担单位</th>
+						<th data-field="unit3" data-align="center">签约合作方</th>
+						<th data-field="text" data-align="center">合同主要内容</th>
+						<th data-field="price" data-align="center">合同金额</th>
+						<th data-field="" data-align="center">分类</th>
+						<th data-field="yz" data-align="center">业主方</th>
+						<th data-field="addr" data-align="center">工程所在地</th>
+						<th data-field="" data-align="center">业务类型</th>
+						<th data-field="" data-align="center">承揽方式</th>
+						<th data-field="" data-align="center">工程类别</th>
+						<th data-field="" data-align="center">是否停工缓建</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+		<!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+		<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="../js/plugins/layer/layer.js"></script>
+		<script src="../js/plugins/echarts/echarts.min.js"></script>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+			var $table = $('#table');
+			var table_data = [
+				['CENC-Y2200122019-02','中核二三','合同名称-建安工程','中核二三','中核国电漳州能源有限公司','建安工程','2512.58','','中核国电漳州能源有限公司','湖南'],
+				['CENC-Y2200122019-03','中核二三','合同名称-EPC项目','中核二三','中国核动力研究院','EPC项目','624.1','','中国核动力研究院','北京'],
+				['CENC-Y2200122019-04','中核二三','合同名称-建安工程','中核二三','中核四〇四有限公司','建安工程','3365.4','','中核四〇四有限公司','上海'],
+				['CENC-Y2200122019-05','中核二三','合同名称-建安工程','中核二三',' 中核齐通建设（涟水）有限公司','建安工程','2556.2','',' 中核齐通建设（涟水）有限公司','济南'],
+				['CENC-Y2200122019-06','中核二三','合同名称-施工总承包','中核二三','中核龙瑞科技有限公司','施工总承包','752.2','','中核龙瑞科技有限公司','广东'],
+				['CENC-Y2200122019-07','中核二三','PPP转化项目 市政','中核二三','沿河晓清环保科技有限公司','PPP转化项目 市政','900','','沿河晓清环保科技有限公司','湖南'],
+				['CENC-Y2200122019-08','中核二三','EPC总承包','中核二三',' 上海孚宝港务有限公司','EPC总承包','654.2','',' 上海孚宝港务有限公司','北京'],
+				['CENC-Y2200122019-09','中核二三','EPC项目','中核二三','','EPC项目','2512.58','','','上海'],
+				['CENC-Y2200122019-10','中核二三','EPC总承包','中核二三','','EPC总承包','624.1','','','济南'],
+				['CENC-Y2200122019-11','中核二三','建安工程','中核二三','中核核电工程有限公司郑州分公司','建安工程','3365.4','','中核核电工程有限公司郑州分公司','广东'],
+				['CENC-Y2200122019-12','中核二三','施工总承包','中核二三','保山市隆建投资开发有限责任公司','施工总承包','2556.2','','保山市隆建投资开发有限责任公司','湖南'],
+				['CENC-Y2200122019-13','中核二三','PPP转化项目 市政','中核二三','吕梁市中梁水务投资发展有限公司','PPP转化项目 市政','752.2','','吕梁市中梁水务投资发展有限公司','北京'],
+				['CENC-Y2200122019-14','中核二三','（PPP建安合同）施工总承包','中核二三','中核齐通建设（涟水）有限公司','（PPP建安合同）施工总承包','900','','中核齐通建设（涟水）有限公司','上海'],
+				['CENC-Y2200122019-15','中核二三','建安工程','中核二三','北京石油化工工程有限公司','建安工程','654.2','','北京石油化工工程有限公司','济南'],
+				['CENC-Y2200122019-16','中核二三','施工总承包','中核二三','青岛市地铁一号线有限公司','施工总承包','2512.58','','青岛市地铁一号线有限公司','广东'],
+				['CENC-Y2200122019-17','中核二三','建安工程','中核二三','新疆晋商风电有限责任公司','建安工程','624.1','','新疆晋商风电有限责任公司','湖南'],
+				['CENC-Y2200122019-18','中核华兴','PPP-市政','中核华兴','昆明市晋宁区华锐投资有限公司','PPP-市政','3365.4','','昆明市晋宁区华锐投资有限公司','北京'],
+				['CENC-Y2200122019-19','中核华兴','PPP-公共','中核华兴','庆云县惠信工程建设发展有限公司','PPP-公共','2556.2','','庆云县惠信工程建设发展有限公司','上海'],
+				['CENC-Y2200122019-20','中核华兴','PPP-公共','中核华兴','德州市兴金建设发展有限公司','PPP-公共','752.2','','德州市兴金建设发展有限公司','济南'],
+				['CENC-Y2200122019-21','中核华兴','PPP-住宅','中核华兴','南京康安建设发展有限公司','PPP-住宅','900','','南京康安建设发展有限公司','广东'],
+				['CENC-Y2200122019-22','中核华兴','PPP-住宅','中核华兴','南京康安建设发展有限公司','PPP-住宅','654.2','','南京康安建设发展有限公司','湖南'],
+				['CENC-Y2200122019-23','中核华兴','PPP-公共','中核华兴','醴陵市渌江兴华投资有限责任公司','PPP-公共','2512.58','','醴陵市渌江兴华投资有限责任公司','北京'],
+				['CENC-Y2200122019-24','中核华兴','建安总承包-其他','中核华兴','中国神华国际工程有限公司','建安总承包-其他','624.1','','中国神华国际工程有限公司','上海'],
+				['CENC-Y2200122019-25','中核华兴','PPP-公共','中核华兴','南京华兴九峰山建设发展有限公司','PPP-公共','3365.4','','南京华兴九峰山建设发展有限公司','济南'],
+				['CENC-Y2200122019-26','中核华兴','EPC总承包-公共','中核华兴','德州市医疗发展有限公司','EPC总承包-公共','2556.2','','德州市医疗发展有限公司','广东'],
+				['CENC-Y2200122019-27','中核华兴','EPC总承包-住宅','中核华兴','扬州铜山体育小镇建设发展有限公司','EPC总承包-住宅','752.2','','扬州铜山体育小镇建设发展有限公司','湖南'],
+				['CENC-Y2200122019-28','中核华兴','建安总承包-市政','中核华兴','宿迁三台山实业发展有限公司','建安总承包-市政','900','','宿迁三台山实业发展有限公司','北京'],
+				['CENC-Y2200122019-29','中核华兴','PPP-市政','中核华兴','淮南市路兴工程建设投资有限公司','PPP-公共','654.2','','淮南市路兴工程建设投资有限公司','上海'],
+				['CENC-Y2200122019-30','中核华兴','总承包-公共','中核华兴','南京苏宁仙林置业有限公司','EPC总承包-公共','654.2','','南京苏宁仙林置业有限公司','济南'],
+				['CENC-Y2200122019-31','中核华兴','总承包-公共','中核华兴','中核（上海）企业发展有限公司','EPC总承包-住宅','654.2','','中核（上海）企业发展有限公司','广东']
+			];
+			
+			var datas = [],keys = ['no','unit','name','unit2','unit3','text','price','yz','addr'];
+			$.each(table_data,function(i,e){
+				var obj = {};
+				$.each(keys,function(index,key){obj[key] = e[index];});
+				datas.push(obj);
+			});
+			$('.btn-white').click(setDatas);
+			function setDatas(){
+				$table.bootstrapTable('load', datas);
+			}
+			
+			$(function() {
+				setDatas();
+			});
+			
+
+			function search() { //查询方法
+				$table.bootstrapTable('refresh');
+			}
+
+			function toM(val) {
+				if (val == '未开始') return '<a href="javascript:layer.msg(\'激活成功\');">激活</a> | <a href="javascript:edit(1);">修改</a>';
+				else return '<a href="javascript:edit(2);">查看</a>';
+			}
+
+			function edit(a) { //编辑方法(推荐)
+				layer.open({
+					type: 2,
+					title: '数据采集信息',
+					content: "form_2.1.html",
+					shadeClose: false,
+					area: ['90%', '90%'],
+					maxmin: true,
+					success: function(layero, index) { //子页面加载完后执行
+						var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象
+						iframeWin.setData(a); //执行子页面写入数据方法
+					}
+				});
+			}
+
+			function edit2() { //添加方法(推荐)
+				layer.open({
+					type: 2,
+					title: '数据填报',
+					content: "table_1.2.html",
+					shadeClose: false,
+					area: ['90%', '90%'],
+					maxmin: true
+				});
+			}
+
+			function edit3() { //添加方法(推荐)
+				layer.open({
+					type: 1,
+					title: '数据填报',
+					content: "<img src='img/lc-img.png'></img>",
+					shadeClose: false,
+					area: ['90%', '90%'],
+					maxmin: true
+				});
+			}
+
+			function getSelections() { //获取所选行方法
+				return $table.bootstrapTable('getSelections');
+			}
+
+			function toDetail(val, row) {
+				return '<a href="javascript:;" onclick="openDetail(this)">详情</a>';
+			}
+
+			function openDetail(e) {
+				var index = $(e).parents('tr').data('index');
+				var data = $table.bootstrapTable('getData')[index];
+				layer.open({
+					type: 2,
+					title: '员工信息详情',
+					content: contextPath + "/demo/testUserinfoForm.jsp",
+					shadeClose: false,
+					area: ['90%', '90%'],
+					maxmin: true,
+					success: function(layero, index) { //子页面加载完后执行
+						var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象
+						iframeWin.setData(data, 'read'); //执行子页面写入数据方法
+					}
+				});
+			}
+
+			function remove() { //删除方法
+				var selRows = getSelections();
+				if (selRows.length == 0) {
+					sweetAlert("错误", "请先选择行", "error");
+					return;
+				}
+				layer.confirm('删除所选项？', {
+					btn: ['删除', '取消'] //按钮
+				}, function() {
+					$({
+						datas: selRows
+					}).post('com.primeton.demo.test.deleteTestUserinfos.biz.ext', function(h) {
+						if (h.exception == null) {
+							layer.msg('删除成功');
+							$table.bootstrapTable('refresh');
+						} else {
+							layer.msg('删除失败');
+						}
+					});
+				});
+			}
+
+			function exports() {
+				$('.export li[data-type=xlsx]').click();
+			}
+		</script>
+	</body>
+</html>

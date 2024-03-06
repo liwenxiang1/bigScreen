@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/resource-type.css">
+    <link rel="stylesheet" href="js/layui/css/layui.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"> -->
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="上港资源" />
+    <meta name="description" content="上港资源" />
+    <title>上港资源-资源选择</title>
+</head>
+
+<body>
+    <script src="js/browser.min.js"></script>
+    <script src="js/browser-polyfill.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/layui/layui.all.js"></script>
+    <script type="text/babel">
+        let resourceQueryModel = {
+          keywords: '', // 关键词
+          pageIndex: 0, // 当前页码
+          pageSize: 10, // 每页显示数量
+          total: 0 // 总数
+        }
+        let fieldQueryModel = {
+          keywords: '', // 关键词
+          pageIndex: 0, // 当前页码
+          pageSize: 10, // 每页显示数量
+          total: 0 // 总数
+        }
+        Array.prototype.remove = function (val) {
+            let index = this.indexOf(val)
+            if (index > -1) {
+                this.splice(index, 1)
+            }
+        };
+        let resDataCheckedArray = new Array() // 关联资源勾选数组
+        let resDataIDCheckedArray = new Array() // 关联资源勾选ID数组
+
+        $(document).ready(() => {
+            treeInit()
+            // resourceTableInit()
+            // fieldTableInit()
+            loadFieldData()
+            loadResourceData()
+        })
+        function treeInit (){
+          const treeData = [{
+            title: '船舶'
+            ,id: 1
+            ,children: [{
+              title: '船舶规范'
+              ,id: 1000
+              ,children: [{
+                title: '船舶规范'
+                ,id: 10001
+              },{
+                title: '船舶规范'
+                ,id: 10002
+              }]
+            },{
+              title: '船舶基础信息'
+              ,id: 1001
+            }]
+          },{
+            title: '航线'
+            ,id: 2
+            ,children: [{
+              title: '所属公司'
+              ,id: 2000
+            },{
+              title: '经营时间'
+              ,id: 2001
+            },{
+              title: '航线协议'
+              ,id: 2002
+            },{
+              title: '挂靠港口'
+              ,id: 2003
+            }]
+          },{
+            title: '港口数据'
+            ,id: 3
+            ,children: [{
+              title: '港口代码'
+              ,id: 3000
+            },{
+              title: '所属国家'
+              ,id: 3001
+            },{
+              title: '地理位置'
+              ,id: 3001
+            }]
+          }, {
+            title: '其他（海运）'
+            ,id: 4
+            ,children: [{
+              title: '其他（海运）'
+              ,id: 4000
+            }]
+          }]
+          
+          const tree = layui.tree
+          tree.render({
+            elem: '#theme-tree'
+            ,data: treeData
+            ,onlyIconControl: true  //是否仅允许节点左侧图标控制展开收缩
+            ,click: function(obj){
+              layer.msg(JSON.stringify(obj.data));
+              // 选择对应主题节点，获取相关联的资源数据
+              resourceSearch()
+            }
+          });
+        }
+        // 关联资源查询
+        function resourceSearch (){
+          resourceQueryModel.pageIndex = 0
+          // 重置勾选数据
+          resDataCheckedArray = [] // 清空已勾选数据源
+          resDataIDCheckedArray = [] // 清空已勾选数据源ID
+          loadResourceData()
+        }
+        // 资源列表数据查询
+        function loadResourceData (){
+          // $.ajax({
+          //       url: '',
+          //       type: 'GET',
+          //       dataType: "json",
+          //       data: {
+          //           'pageIndex': resourceQueryModel.pageIndex,
+          //           'pageSize': resourceQueryModel.pageSize,
+          //           'keywords': resourceQueryModel.keywords,
+          //       },
+          //       success: function (res) {
+          //           // 结果数据数量
+          //           resourceQueryModel.total = res.total || 0
+          //           fieldPaginationInit()
+          //           fieldTableInit(res.datas, '0')
+          //       },
+          //       error: function (err) {
+          //           //请求出错处理
+          //           console.log('err ==>', err);
+          //       }
+          //   })
+          let data = [{
+                  id: '1',
+                  zh_name: '航线信息表',
+                  system: 'TOPS5',
+                  org: '港口单位'
+                }, {
+                  id: '2',
+                  zh_name: '港口信息表',
+                  system: 'TOPS5',
+                  org: '港口单位'
+                }, {
+                  id: '3',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '4',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '5',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '6',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '7',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '8',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '9',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '10',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '11',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '12',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '13',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '14',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }, {
+                  id: '15',
+                  zh_name: '港口信息表',
+                  system: 'TOPS10',
+                  org: '港口单位'
+                }]
+          // 结果数据数量
+          // fieldQueryModel.total = res.total || 0
+          resourceQueryModel.total = data.length
+          resPaginationInit()
+          resTableInit(data)
+        }
+        // 资源列表渲染
+        function resTableInit (data){
+          layui.use('table', function () {
+                let form = layui.form
+                let table = layui.table;
+                // 当前页数据
+                let dataCurrentArray = []
+
+                table.render({
+                    elem: '#resource-table',
+                    limit: 15,
+                    // page: true,
+                    cols: [
+                        [{
+                            type: 'checkbox'
+                        }, {
+                            field: 'zh_name',
+                            title: '表中文名',
+                            templet: d => {
+                                return `<span style="color: #F5882D">${d.zh_name}</span>`
+                            }
+                        }, {
+                            field: 'system',
+                            title: '所属系统',
+                            sort: false
+                        }, {
+                            field: 'org',
+                            title: '所属单位',
+                            sort: false
+                        }]
+                    ],
+                    data: data || [],
+                    done: function (res, curr, count) {
+                        //如果是异步请求数据方式，res即为你接口返回的信息。
+                        //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                        dataCurrentArray = res.data;
+                        //.假设你的表格指定的 id="maintb"，找到框架渲染的表格
+                        const tbl = $('#resource-table').next('.layui-table-view');
+                        // 渲染选择框
+                        for (let i = 0; i < dataCurrentArray.length; i++) {
+                            for (let j = 0; j < resDataIDCheckedArray.length; j++) {
+                                if (dataCurrentArray[i].id == resDataIDCheckedArray[j]) {
+                                    tbl.find('table>tbody>tr').eq(i).find('td').eq(0).find(
+                                        'input[type=checkbox]').prop('checked', true);
+                                }
+                            }
+                        }
+                    }
+                });
+                table.on('checkbox(resource-table)', function (obj) {
+                    let checkData = obj.data;
+                    // 如果是全选中
+                    if (obj.type == 'all' && obj.checked == true) {
+                        let checkStatus = table.checkStatus('resource-table'),
+                            data = checkStatus.data;
+                        for (let i = 0; i < data.length; i++) {
+                            // 如果包含就去掉 ，不包含就添加
+                            if (resDataIDCheckedArray.indexOf(data[i].id) > -1) {} else {
+                                resDataIDCheckedArray.push(data[i].id);
+                                resDataCheckedArray.push(data[i])
+                            }
+                        }
+                    }
+                    // 全不选中
+                    else if (obj.type == 'all' && obj.checked == false) {
+                        for (let i = 0; i < dataCurrentArray.length; i++) {
+                            // 找到当前Index
+                            const dindex = resDataIDCheckedArray.indexOf(dataCurrentArray[i].id)
+                            resDataIDCheckedArray.remove(dataCurrentArray[i].id);
+                            resDataCheckedArray.splice(dindex, 1)
+                        }
+                    }
+                    // 如果是单选
+                    else {
+                        let checkedId = checkData.id;
+                        // 如果包含就去掉 ，不包含就添加
+                        console.log("loadTagsResult -> resDataIDCheckedArray.indexOf(checkedId)",
+                            resDataIDCheckedArray.indexOf(checkedId))
+                        if (resDataIDCheckedArray.indexOf(checkedId) > -1) {
+                            resDataCheckedArray.splice(resDataIDCheckedArray.indexOf(checkedId), 1)
+                            resDataIDCheckedArray.remove(checkedId);
+                        } else {
+                            resDataIDCheckedArray.push(checkedId);
+                            resDataCheckedArray.push(checkData)
+                        }
+                    }
+                    console.log(resDataIDCheckedArray, '..................')
+                    console.log(resDataCheckedArray, '..................')
+                    // 勾选关联资源，获取相关字段数据
+                    fieldSearch()
+                    // console.log(obj.checked); //当前是否选中状态
+                    // console.log(obj.data); //选中行的相关数据
+                    // console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one
+                });
+          });
+        }
+        // 资源列表分页检索
+        function resPaginationInit (){
+            layui.use('laypage', function () {
+                let laypage = layui.laypage;
+                laypage.render({
+                    elem: 'resource-pages',
+                    count: resourceQueryModel.total,
+                    limit: resourceQueryModel.pageSize,
+                    curr: resourceQueryModel.pageIndex + 1,
+                    layout: ['prev', 'page', 'next', 'skip'],
+                    prev: '上一页',
+                    next: '下一页',
+                    skip: 'Go',
+                    jump: function (obj, first) {
+                        // 当前页
+                        resourceQueryModel.pageIndex = obj.curr - 1
+                        // console.log(obj.limit); //得到每页显示的条数
+                        //首次不执行
+                        if (!first) {
+                            // 加载当前页数据
+                            console.log('************************', resourceQueryModel.pageIndex)
+                            loadResourceData()
+                            //do something
+                        }
+                    }
+                });
+            });
+        }
+        
+        
+        // 字段关键词检索
+        function fieldSearch (){
+          fieldQueryModel.pageIndex = 0
+          loadFieldData()
+        }
+        // 字段数据查询
+        function loadFieldData (){
+          // $.ajax({
+          //       url: '',
+          //       type: 'GET',
+          //       dataType: "json",
+          //       data: {
+          //           'pageIndex': fieldQueryModel.pageIndex,
+          //           'pageSize': fieldQueryModel.pageSize,
+          //           'keywords': fieldQueryModel.keywords,
+          //       },
+          //       success: function (res) {
+          //           // 结果数据数量
+          //           fieldQueryModel.total = res.total || 0
+          //           fieldPaginationInit()
+          //           fieldTableInit(res.datas, '0')
+          //       },
+          //       error: function (err) {
+          //           //请求出错处理
+          //           console.log('err ==>', err);
+          //       }
+          //   })
+
+          let data = [{
+                  id: '1',
+                  field_name: 'HXMC',
+                  field_zh_name: '航线名称',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'HXBM',
+                  field_zh_name: '航线编码',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }, {
+                  id: '1',
+                  field_name: 'GKKA',
+                  field_zh_name: '挂靠港口',
+                  level: '集团内共享'
+                }]
+          
+          // 结果数据数量
+          // fieldQueryModel.total = res.total || 0
+          fieldQueryModel.total = data.length
+          fieldPaginationInit()
+          fieldTableInit(data)
+        }
+        // 字段列表渲染
+        function fieldTableInit (data){
+          layui.use('table', function () {
+                let table = layui.table;
+                // 当前页数据
+                table.render({
+                    elem: '#field-table',
+                    limit: 15,
+                    // page: true,
+                    cols: [
+                        [{
+                            type: 'checkbox'
+                        }, {
+                            field: 'field_name',
+                            title: '字段名称',
+                            sort: false
+                        }, {
+                            field: 'field_zh_name',
+                            title: '字段中文名称',
+                            templet: d => {
+                                return `<span style="color: #F5882D">${d.field_zh_name}</span>`
+                            }
+                        }, {
+                            field: 'level',
+                            title: '共享级别',
+                            sort: false
+                        }]
+                    ],
+                    data: data || [],
+                    done: function (res, curr, count) {
+                      // fieldPaginationInit()
+                    }
+                });
+            });
+          }
+        // 字段列表分页检索
+        function fieldPaginationInit (){
+            layui.use('laypage', function () {
+                let laypage = layui.laypage;
+                laypage.render({
+                    elem: 'field-pages',
+                    count: fieldQueryModel.total,
+                    limit: fieldQueryModel.pageSize,
+                    curr: fieldQueryModel.pageIndex + 1,
+                    layout: ['prev', 'page', 'next', 'skip'],
+                    prev: '上一页',
+                    next: '下一页',
+                    skip: 'Go',
+                    jump: function (obj, first) {
+                        // 当前页
+                        fieldQueryModel.pageIndex = obj.curr - 1
+                        // console.log(obj.limit); //得到每页显示的条数
+                        //首次不执行
+                        if (!first) {
+                            // 加载当前页数据
+                            console.log('************************', fieldQueryModel.pageIndex)
+                            loadFieldData()
+                            //do something
+                        }
+                    }
+                });
+            });
+          }
+    
+    </script>
+    <div class="resource-type clearfix">
+      <div class="action-bar">
+        <button type="button" class="layui-btn layui-btn-sm  layui-btn-normal">
+          <i class="iconfont">&#xe64e;</i> 已选资源
+        </button>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal">
+          <i class="iconfont">&#xe656;</i> 下一步
+        </button>
+        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal">
+          <i class="iconfont">&#xe601;</i> 返回首页
+        </button>
+      </div>
+      <div class="theme-tree-wrapper">
+        <div class="label-line">主题</div>
+        <div id="theme-tree"></div>
+      </div>
+      <div class="resource-table-wrapper">
+        <div class="label-line">关联的资源</div>
+        <div class="search-bar clearfix">
+          <span id="selected-name">船舶</span>
+          <div class="search-row pull-right">
+              <input type="text" name="keyword" value="" placeholder="系统名/表中文名称">
+              <div class="search-btn">
+                  <span>检索</span>
+                  <i class="iconfont">&#xe690;</i>
+              </div>
+          </div>
+        </div>
+        <table id="resource-table" lay-filter="resource-table"></table>
+        <div id="resource-pages"></div>
+      </div>
+      <div class="field-table-wrapper">
+        <div class="label-line">关联的字段</div>
+        <div class="search-bar clearfix">
+          <div class="search-row pull-left">
+              <input type="text" name="keyword" value="" placeholder="字段中文名称">
+              <div class="search-btn">
+                  <span>检索</span>
+                  <i class="iconfont">&#xe690;</i>
+              </div>
+          </div>
+        </div>
+        <table id="field-table" lay-filter="field-table"></table>
+        <div id="field-pages"></div>
+      </div>
+    </div>
+</body>
+
+</html>

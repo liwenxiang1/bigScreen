@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>人事看板</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet">
+		<link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+		<style>
+			.ibox-title {
+				border: 0;
+				min-height: 40px;
+			}
+
+			.ibox-title h5 {
+				margin: 0;
+			}
+
+			.row>div {
+				padding: 3px;
+			}
+
+			.ibox {
+				margin-bottom: 0px;
+				border-radius: 3px;
+				overflow: hidden;
+			}
+
+			.wrapper-content {
+				padding: 3px 18px;
+			}
+
+			.ibox-content {
+				padding: 15px;
+			}
+
+			.box-item {
+				height: 101px;
+				background: #EF5350;
+				color: #eee;
+				padding: 20px;
+				border-radius: 3px;
+				position: relative;
+			}
+
+			.box-item+.box-item {
+				margin-top: 3px;
+			}
+
+			.box-item p {
+				margin: 0;
+			}
+
+			.box-item p>span {
+				font-size: 25px;
+				margin-right: 5px;
+			}
+
+			.box-item span.icon {
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				bottom: 5px;
+				right: 5px;
+				background-image: url(img/产值.png);
+				background-size: 100% 100%;
+			}
+			.box-flex-div {
+			    display: flex;
+			    border-top: 3px solid #ccc;
+			}
+			
+			.box-flex {
+			    flex: 1;
+			    text-align: center;
+			    font-size: 18px;
+			}
+			
+			.box-flex p {
+			    margin: 0;
+			}
+			
+			.box-flex .val {
+			    font-size: 30px;
+			    color: #2196F3;
+			}
+			span.icon {
+			    font-size: 25px;
+			    font-weight: 800;
+			    text-align: center;
+			    display: inline-block;
+			    width: 45px;
+			    height: 45px;
+			    line-height: 30px;
+			    background: #2196F3;
+			    color: #fff;
+			    border-radius: 50%;
+			    padding: 10px;
+			    position: relative;
+			    bottom: -6px;
+			    right: 15px;
+			}
+			
+			.box-flex p.tips {
+			    padding-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div data-toggle="buttons" class="btn-group">
+						<label class="btn btn-sm btn-white active">
+							<input type="radio" id="option1" name="options">在职人员</label>
+						<label class="btn btn-sm btn-white">
+							<input type="radio" id="option2" name="options">新增人员</label>
+						<label class="btn btn-sm btn-white">
+							<input type="radio" id="option3" name="options">离职退休</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox">
+						<div class="ibox-content box-flex-div">
+							<div class="box-flex">
+								<p class="tips"><span class="icon"><span class="glyphicon glyphicon-user"></span></span>2018年度在职人员</p>
+								<p class="val"><span>7975</span>人</p>
+							</div>
+							<div class="box-flex">
+								<p class="tips"><span class="icon" style="background-color: #EF5350;"><span class="glyphicon glyphicon-user"></span></span>2017年度在职人员</p>
+								<p class="val"><span>6783</span>人</p>
+							</div>
+							<div class="box-flex">
+								<p class="tips"><span class="icon" style="background-color: #2196F3;"><span class="glyphicon glyphicon-arrow-up"></span></span>较去年新增人数</p>
+								<p class="val"><span>+1192</span>人</p>
+							</div>
+							<div class="box-flex">
+								<p class="tips"><span class="icon" style="background-color: #ffb74d;">%</span>新增率</p>
+								<p class="val"><span>14.94</span>%</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>按性别划分</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-1"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>按年龄划分</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-2"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>按职业划分</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>按地区划分</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-4"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>按党员划分</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-5"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>按学历划分</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-6"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="js/plugins/echarts/echarts.min.js"></script>
+		<script>
+			var colors = ['#EF5350','#2196F3','#607D8B','#ffb74d','#4caf50','#009688','#673ab7'];
+			var obj = {
+				d1: {
+					vals: {
+						'男性': 5214,
+						'女性': 2851
+					},
+					legend: [],
+					data: [],
+					seriesName:'按性别划分'
+				},
+				d2: {
+					vals: {
+						'51岁及以上': 981,
+						'41-50岁': 1143,
+						'31-40岁': 2167,
+						'30岁及以下': 3684
+					},
+					legend: [],
+					data: [],
+					seriesName:'按年龄划分'
+				},
+				d3: {
+					vals: {
+						'高级管理人员': 981,
+						'中层管理人员': 1143,
+						'一般及技术员工': 5851
+					},
+					legend: [],
+					data: [],
+					seriesName:'按职级划分'
+				},
+				d4: {
+					vals: {
+						'北方地区': 3951,
+						'南方地区': 3043,
+						'海外地区': 981,
+					},
+					legend: [],
+					data: [],
+					seriesName:'按地区划分'
+				},
+				d5: {
+					vals: {
+						'党员': 2651,
+						'其它': 5324
+					},
+					legend: [],
+					data: [],
+					seriesName:'按党员划分'
+				},
+				d6: {
+					vals: {
+						'硕士及以上': 1674,
+						'本科生': 4831,
+						'专科及以下': 1470
+					},
+					legend: [],
+					data: [],
+					seriesName:'按学历划分'
+				}
+			}
+			var options = [];
+			$.each(obj,function(i,e){
+				$.each(e.vals, function(key, val) { //处理数据
+					e.legend.push(key);
+					e.data.push({
+						value: val,
+						name: key
+					});
+				});
+				options.push(getOptions(e));
+			});
+			
+			function getOptions(d){
+				return {
+					tooltip: {
+						trigger: 'item',
+						formatter: '{a} <br/>{b}: {c}人 ({d}%)'
+					},
+					legend: {
+						orient: 'vertical',
+						right: 10,
+						top: 20,
+						bottom: 20,
+						data: d.legend,
+						formatter: function(a) {
+							return a +' '+ d.vals[a] + '人';
+						}
+					},
+					series: [{
+						name: d.seriesName,
+						type: 'pie',
+						center: ['35%', '50%'],
+						radius: ['50%', '80%'],
+						avoidLabelOverlap: false,
+						label: {
+							show: false,
+							position: 'center'
+						},
+						emphasis: {
+							label: {
+								show: true,
+								fontSize: '20',
+								fontWeight: 'bold'
+							}
+						},
+						labelLine: {
+							show: true
+						},
+						data: d.data
+					}]
+				};
+			}
+
+			$.each(options, function(i, e) {
+				e.color = colors;
+				var index = i + 1;
+				var myChart = echarts.init(document.getElementById('echarts-' + index));
+				myChart.setOption(e);
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河南省工业学校</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header-box">
+        <div class="flex">
+            <img src="./img/logo.png" alt="logo" class="school-logo">
+            <span class="header-line"></span>
+            <div class="header-houtai">
+                <img src="./img/houtai2.png" alt="">
+                <span>后台管理</span>
+            </div>
+        </div>
+        <!-- <div class="flex header-right">
+            <img src="./img/dingwei.png" alt="" class="dingwei">
+            <span class="header-dizhi">郑州市</span>
+            <span class="header-tianqi">多云转晴16～22度</span>
+            <div class="header-msg-box">
+                <img src="./img/xiaoxi.png" alt="" class="xiaoxi">
+                <span class="layui-badge layui-badge-xx">
+                    <span class="layui-badge-xx-num">9</span>
+                </span>
+
+            </div>
+            <div class="header-user-box">
+                <img src="./img/touxiang.png" alt="用户" class="touxiang">
+                <span class="user-name">用户名</span>
+                <i class="layui-icon layui-icon-triangle-d user-name-icon"></i>
+            </div>
+        </div> -->
+        <ul class="layui-nav header-right">
+            <li class="layui-nav-item">
+                <img src="./img/dingwei.png" alt="" class="dingwei">
+                <span class="header-dizhi">郑州市</span>
+                <span class="header-tianqi">多云转晴16～22度</span>
+            </li>
+            <li class="layui-nav-item">
+                <div class="header-msg-box">
+                    <img src="./img/xiaoxi.png" alt="" class="xiaoxi">
+                    <span class="layui-badge layui-badge-xx">
+                        <span class="layui-badge-xx-num">9</span>
+                    </span>
+                </div>
+            </li>
+            <li class="layui-nav-item">
+                <div class="header-user-box">
+                    <img src="./img/touxiang.png" alt="用户" class="touxiang">
+                    <span class="user-name">用户名</span>
+                </div>
+            </li>
+            <li class="layui-nav-item">
+                <i class="layui-icon layui-icon-triangle-d user-name-icon"></i>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">个人数据中心</a></dd>
+                    <dd><a href="javascript:;">退出系统</a></dd>
+                </dl>
+            </li>
+        </ul>
+
+    </div>
+    <!-- content -->
+    <div class="content-box">
+        <div class="layui-row layui-col-space20">
+            <!-- 最近使用 -->
+            <div class="layui-col-md6">
+                <div class="layui-card content-card">
+                    <div class="layui-card-header">最近使用</div>
+                    <div class="layui-card-body layui-row">
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon1.png" alt="" class="content-icon">
+                            <span id="dom1" class="msg-mouse"
+                                onmouseover="showTip({id:'dom1',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">教师在线讲课</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon2.png" alt="" class="content-icon">
+                            <span id="dom2" class="msg-mouse"
+                                onmouseover="showTip({id:'dom2',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学生综合系统</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon3.png" alt="" class="content-icon">
+                            <span id="dom3" class="msg-mouse"
+                                onmouseover="showTip({id:'dom3',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学士学位登记</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon4.png" alt="" class="content-icon">
+                            <span id="dom4" class="msg-mouse"
+                                onmouseover="showTip({id:'dom4',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学期成绩查询</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon5.png" alt="" class="content-icon">
+                            <span id="dom5" class="msg-mouse"
+                                onmouseover="showTip({id:'dom5',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学生离校登记</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon6.png" alt="" class="content-icon">
+                            <span id="dom6" class="msg-mouse"
+                                onmouseover="showTip({id:'dom6',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">网上报修系统</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon7.png" alt="" class="content-icon">
+                            <span id="dom7" class="msg-mouse"
+                                onmouseover="showTip({id:'dom7',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">个人日程</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon8.png" alt="" class="content-icon">
+                            <span id="dom8" class="msg-mouse"
+                                onmouseover="showTip({id:'dom8',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">图书借阅管理</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon9.png" alt="" class="content-icon">
+                            <span id="dom9" class="msg-mouse"
+                                onmouseover="showTip({id:'dom9',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">远程视频指导</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 办事大厅 -->
+            <div class="layui-col-md6">
+                <div class="layui-card content-card">
+                    <div class="layui-card-header">办事大厅</div>
+                    <div class="layui-card-body layui-row">
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon10.png" alt="" class="content-icon">
+                            <span id="dom21" class="msg-mouse"
+                                onmouseover="showTip({id:'dom21',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">校园网自助</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon11.png" alt="" class="content-icon">
+                            <span id="dom22" class="msg-mouse"
+                                onmouseover="showTip({id:'dom22',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">离校系统管理</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon12.png" alt="" class="content-icon">
+                            <span id="dom23" class="msg-mouse"
+                                onmouseover="showTip({id:'dom23',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">正版校园软件</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon13.png" alt="" class="content-icon">
+                            <span id="dom24" class="msg-mouse"
+                                onmouseover="showTip({id:'dom24',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学生上网系统</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon14.png" alt="" class="content-icon">
+                            <span id="dom25" class="msg-mouse"
+                                onmouseover="showTip({id:'dom25',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">教职工体检</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon15.png" alt="" class="content-icon">
+                            <span id="dom26" class="msg-mouse"
+                                onmouseover="showTip({id:'dom26',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">远程视频指导</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon16.png" alt="" class="content-icon">
+                            <span id="dom27" class="msg-mouse"
+                                onmouseover="showTip({id:'dom27',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">任务中心</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon17.png" alt="" class="content-icon">
+                            <span id="dom28" class="msg-mouse"
+                                onmouseover="showTip({id:'dom28',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">直播学习平台</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon18.png" alt="" class="content-icon">
+                            <span id="dom29" class="msg-mouse"
+                                onmouseover="showTip({id:'dom29',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">健康校园管理</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 应用广场 -->
+            <div class="layui-col-md6">
+                <div class="layui-card content-card">
+                    <div class="layui-card-header">应用广场</div>
+                    <div class="layui-card-body layui-row" id="yygc">
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon13.png" alt="" class="content-icon">
+                            <span id="dom41" class="msg-mouse"
+                                onmouseover="showTip({id:'dom41',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学生上网系统</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon14.png" alt="" class="content-icon">
+                            <span id="dom42" class="msg-mouse"
+                                onmouseover="showTip({id:'dom42',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">教职工体检</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon15.png" alt="" class="content-icon">
+                            <span id="dom43" class="msg-mouse"
+                                onmouseover="showTip({id:'dom43',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">远程视频指导</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon4.png" alt="" class="content-icon">
+                            <span id="dom44" class="msg-mouse"
+                                onmouseover="showTip({id:'dom44',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学期成绩查询</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon5.png" alt="" class="content-icon">
+                            <span id="dom45" class="msg-mouse"
+                                onmouseover="showTip({id:'dom45',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学生离校登记</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon6.png" alt="" class="content-icon">
+                            <span id="dom46" class="msg-mouse"
+                                onmouseover="showTip({id:'dom46',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">网上报修系统</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon1.png" alt="" class="content-icon">
+                            <span id="dom47" class="msg-mouse"
+                                onmouseover="showTip({id:'dom47',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">教师在线讲课</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon2.png" alt="" class="content-icon">
+                            <span id="dom48" class="msg-mouse"
+                                onmouseover="showTip({id:'dom48',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学生综合系统</span>
+                        </div>
+                        <div class="layui-col-md4 content-item">
+                            <img src="./img/icon/icon3.png" alt="" class="content-icon">
+                            <span id="dom49" class="msg-mouse"
+                                onmouseover="showTip({id:'dom49',text:'教务教学-OA系统：老师线上教课适用于大课、小班课支持录播反复观看'})"
+                                onmouseleave="hiddenTip()">学士学位登记</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 待办工作 -->
+            <div class="layui-col-md6">
+                <div class="layui-card content-card">
+                    <div class="layui-card-header content-tongzhi">
+                        <span>待办工作</span>
+                        <div class="content-header-more">
+                            <span>更多</span>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </div>
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-tab layui-tab-card card-tab-box">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">
+                                    <img src="./img/daiban.png" alt="" class="layui-tab-title-icon">
+                                    <span>待办任务</span>
+                                    <span class="layui-badge layui-badge-db">
+                                        <span class="layui-badge-db-num">9</span>
+                                    </span>
+                                </li>
+                                <li>
+
+                                    <img src="./img/yiban.png" alt="" class="layui-tab-title-icon">
+                                    <span>已办任务</span>
+                                </li>
+                                <li>
+
+                                    <img src="./img/faqi.png" alt="" class="layui-tab-title-icon">
+                                    <span>发起任务</span>
+                                </li>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <div class="layui-tab-item layui-show">
+                                    <div class="tab-item-box">
+                                        <div class="tab-item-flex">
+                                            <span class="tab-item-title msg-mouse">本学期优秀毕业生名单请与6月底放假之前完</span>
+                                            <span class="tab-item-time">2023-04-27 09:30:45</span>
+                                        </div>
+                                        <button class="layui-btn layui-btn-warm">待处理</button>
+                                    </div>
+                                    <div class="tab-item-box">
+                                        <div class="tab-item-flex">
+                                            <span class="tab-item-title  msg-mouse">本学期优秀毕业生名单请与6月底放假之前完</span>
+                                            <span class="tab-item-time">2023-04-27 09:30:45</span>
+                                        </div>
+                                        <button class="layui-btn layui-btn-warm">待处理</button>
+                                    </div>
+                                    <div class="tab-item-box">
+                                        <div class="tab-item-flex">
+                                            <span class="tab-item-title  msg-mouse">本学期优秀毕业生名单请与6月底放假之前完</span>
+                                            <span class="tab-item-time">2023-04-27 09:30:45</span>
+                                        </div>
+                                        <button class="layui-btn layui-btn-warm">待处理</button>
+                                    </div>
+                                    <div class="tab-item-box">
+                                        <div class="tab-item-flex">
+                                            <span class="tab-item-title  msg-mouse">本学期优秀毕业生名单请与6月底放假之前完</span>
+                                            <span class="tab-item-time">2023-04-27 09:30:45</span>
+                                        </div>
+                                        <button class="layui-btn layui-btn-warm">待处理</button>
+                                    </div>
+                                    <div class="tab-item-box">
+                                        <div class="tab-item-flex">
+                                            <span class="tab-item-title  msg-mouse">本学期优秀毕业生名单请与6月底放假之前完</span>
+                                            <span class="tab-item-time">2023-04-27 09:30:45</span>
+                                        </div>
+                                        <button class="layui-btn layui-btn-warm">待处理</button>
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <div class="tab-item-box">
+                                        <div class="tab-item-flex">
+                                            <span class="tab-item-title  msg-mouse">2本学期优秀毕业生名单请与6月底放假之前完</span>
+                                            <span class="tab-item-time">2023-04-27 09:30:45</span>
+                                        </div>
+                                        <!-- <button class="layui-btn layui-btn-warm">待处理</button> -->
+                                    </div>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <div class="tab-item-box">
+                                        <div class="tab-item-flex">
+                                            <span class="tab-item-title  msg-mouse">3本学期优秀毕业生名单请与6月底放假之前完</span>
+                                            <span class="tab-item-time">2023-04-27 09:30:45</span>
+                                        </div>
+                                        <!-- <button class="layui-btn layui-btn-warm">待处理</button> -->
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 校内通知 -->
+            <div class="layui-col-md6">
+                <div class="layui-card content-card">
+                    <div class="layui-card-header content-tongzhi">
+                        <span>校内通知</span>
+                        <div class="content-header-more">
+                            <span>更多</span>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </div>
+                    </div>
+                    <div class="layui-card-body msg-card-body">
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type">【宣传部门】</div>
+                                <div class="msg-item-msg">五一小长假在校生校内安全用带你规章制度通知</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type">【宣传部门】</div>
+                                <div class="msg-item-msg">五一小长假在校生校内安全用带你规章制度通知</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type">【宣传部门】</div>
+                                <div class="msg-item-msg">五一小长假在校生校内安全用带你规章制度通知</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type">【宣传部门】</div>
+                                <div class="msg-item-msg">五一小长假在校生校内安全用带你规章制度通知</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type">【宣传部门】</div>
+                                <div class="msg-item-msg">五一小长假在校生校内安全用带你规章制度通知</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type">【宣传部门】</div>
+                                <div class="msg-item-msg">五一小长假在校生校内安全用带你规章制度通知</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 公示公告 -->
+            <div class="layui-col-md6">
+                <div class="layui-card content-card">
+                    <div class="layui-card-header content-tongzhi">
+                        <span>公示公告</span>
+                        <div class="content-header-more">
+                            <span>更多</span>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </div>
+                    </div>
+                    <div class="layui-card-body msg-card-body">
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type-point"></div>
+                                <div class="msg-item-msg">河南省工业学校2023年公开招聘工作人员</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type-point"></div>
+                                <div class="msg-item-msg">河南省工业学校2023年公开招聘工作人员</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type-point"></div>
+                                <div class="msg-item-msg">河南省工业学校2023年公开招聘工作人员</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type-point"></div>
+                                <div class="msg-item-msg">河南省工业学校2023年公开招聘工作人员</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                        <div class="msg-item-box">
+                            <div class="msg-item msg-mouse">
+                                <div class="msg-item-type-point"></div>
+                                <div class="msg-item-msg">河南省工业学校2023年公开招聘工作人员</div>
+                            </div>
+                            <span class="msg-item-time">2023-05-09</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </v>
+        </div>
+        <div class="copyright">
+            版权信息：Copyright ©️ 2023河南省工业学校版权所有 豫ICP备10201850
+        </div>
+        <div class="suspension-box" id="suspension-box">
+            <!-- 收起时展示 -->
+            <div class="suspension-box-left layui-anim layui-anim-fadein" style="display:block" id="suspension-left">
+                <div class="shouqi" onclick="showSuspension()">
+                    <img src="./img/shouqi.png" alt="" class="suspension-left-icon">
+                </div>
+                <div class="suspension-box-left-box">
+                    <div class="suspension-box-left-item" onclick="showSuspension('0')">
+                        <img src="./img/zuijin.png" alt="" class="suspension-left-icon-20">
+                        <span>最近使用</span>
+                    </div>
+                </div>
+                <div class="suspension-box-left-box">
+                    <div class="suspension-box-left-item" onclick="showSuspension('1')">
+                        <img src="./img/dating.png" alt="" class="suspension-left-icon-20">
+                        <span>办事大厅</span>
+                    </div>
+                </div>
+                <div class="suspension-box-left-box">
+                    <div class="suspension-box-left-item" onclick="showSuspension('2')">
+                        <img src="./img/yingyong.png" alt="" class="suspension-left-icon-20">
+                        <span>应用广场</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 展开时 -->
+            <div class="suspension-box-right layui-anim layui-anim-fadein" style="display:none" id="suspension-right">
+                <!-- 顶部 -->
+                <!-- <div class="suspension-top">
+                    <div class="suspension-top-icon">
+                        <i class="layui-icon layui-icon-shrink-right" "></i>   
+                    </div> -->
+                <div class="suspension-top-tab layui-tab layui-tab-brief" lay-filter="right-tab">
+                    <ul class="layui-tab-title">
+                        <div class="suspension-top-icon" onclick="hiddenSuspension()" lay-id="all">
+                            <i class="layui-icon layui-icon-shrink-right"></i>
+                        </div>
+                            <li class="layui-this" lay-id="0">
+                                <img src="./img/zuijin.png" alt="" class="suspension-left-icon-20">
+                                <span>最近使用</span>
+                            </li>
+                            <li lay-id="1">
+                                <img src="./img/dating.png" alt="" class="suspension-left-icon-20">
+                                <span>办事大厅</span>
+                            </li>
+                            <li lay-id="2">
+                                <img src="./img/yingyong.png" alt="" class="suspension-left-icon-20">
+                                <span>应用广场</span>
+                            </li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <!-- <div class="layui-tab-item layui-show">
+                                    shdgushdgui
+                                </div>
+                                <div class="layui-tab-item">
+                                    😧22222
+                                </div>
+                                <div class="layui-tab-item">
+                                    😤33333333
+                                </div> -->
+                        <div class="suspension-content">
+                            <div class="search-input-box">
+                                <img src="./img/search-icon.png" alt="" class="search-input-icon">
+                                <input type="text" placeholder="请输入搜索关键字" autocomplete="off" class="search-input-input">
+                            </div>
+                            <div>
+                                <table class="layui-table suspension-layui-table">
+                                    <colgroup>
+                                        <col width="165">
+                                        <col width="290">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>服务名称</th>
+                                            <th>服务描述</th>
+                                            <th>最近使用时间</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <!-- 表格内容，可滚动 -->
+                            <div class="table-scroll">
+                                <table class="layui-table suspension-layui-table">
+                                    <colgroup>
+                                        <col width="165">
+                                        <col width="290">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon1.png" alt="">
+                                                <span>教师在线讲课</span>
+                                            </td>
+                                            <td>行政办公 - OA系统：老师线上教课适用于大班课小班课可录视频反复学习观看，暂时30个字。</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon2.png" alt="">
+                                                <span>学生综合系统</span>
+                                            </td>
+                                            <td>教务教学 - 学生系统：学生快速办理各项事项</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon3.png" alt="">
+                                                <span>学士学位登记</span>
+                                            </td>
+                                            <td>教务教学 - 学生系统：学生快速办理各项事项</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon4.png" alt="">
+                                                <span>学期成绩查询</span>
+                                            </td>
+                                            <td>教务教学 - 学生系统：学生快速办理各项事项</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon5.png" alt="">
+                                                <span>学生离校登记</span>
+                                            </td>
+                                            <td>教务教学 - 学生系统：学生快速办理各项事项</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon6.png" alt="">
+                                                <span>网上报修系统</span>
+                                            </td>
+                                            <td>教务教学 - 学生系统：学生快速办理各项事项</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon7.png" alt="">
+                                                <span>个人日程</span>
+                                            </td>
+                                            <td>教务教学 - 学生系统：学生快速办理各项事项</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon8.png" alt="">
+                                                <span>图书借阅管理</span>
+                                            </td>
+                                            <td>教务教学 - 学生系统：学生快速办理各项事项</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="flex">
+                                                <img src="./img/icon/icon8.png" alt="">
+                                                <span>图书借阅管理</span>
+                                            </td>
+                                            <td>教务教学 - 学生系统：学生快速办理各项事项</td>
+                                            <td>2023-03-24 </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="suspension-mask" id="suspension-mask" onclick="clickMask()"></div>
+</body>
+<script src="layui/layui.js"></script>
+<script>
+    function showTip(obj) {
+        layer.tips(
+            '<span class="item-tips">' + obj.text + '</span>',
+            '#' + obj.id,
+            { tips: [3, '#ffffff'], time: 0 },
+
+        )
+    }
+    function hiddenTip() {
+        layer.closeAll('tips');
+    }
+    function showSuspension(index) {
+        let arr = [{ label: '最近使用', value: 0 }, { label: '应用广场', value: 1 }, { label: '办事大厅', value: 2 }]
+        const suspension = document.getElementById('suspension-box')
+        const suspensionLeft = document.getElementById('suspension-left')
+        const suspensionRight = document.getElementById('suspension-right')
+        const suspensionMask = document.getElementById('suspension-mask')
+        suspensionLeft.style.display = 'none'
+        suspensionRight.style.display = 'block'
+        suspension.style.top = '130px'
+        suspensionMask.style.display = 'block'
+        layui.use('element', function () {
+            const element = layui.element;
+            console.log(index);
+            element.tabChange('right-tab', index)
+        });
+    }
+    function hiddenSuspension() {
+        const suspension = document.getElementById('suspension-box')
+        const suspensionLeft = document.getElementById('suspension-left')
+        const suspensionRight = document.getElementById('suspension-right')
+        const suspensionMask = document.getElementById('suspension-mask')
+        suspensionLeft.style.display = 'block'
+        suspensionRight.style.display = 'none'
+        suspensionMask.style.display = 'none'
+        suspension.style.top = 'calc(50% - 320px / 2)'
+    }
+    // 点击悬浮层的蒙层
+    function clickMask(){
+        console.log('clickMask');
+        hiddenSuspension()
+    }
+
+</script>
+
+</html>

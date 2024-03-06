@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/resource_portal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="上港资源" />
+    <meta name="description" content="上港资源" />
+    <title>上港资源</title>
+</head>
+
+<body>
+    <div class="resource-portal">
+        <div class="search-bar clearfix">
+            <div class="search-row pull-left">
+                <input type="text" name="keyword" value="" placeholder="请输入检索关键词">
+                <div class="search-btn">
+                    <span>信息检索</span>
+                    <i class="iconfont">&#xe690;</i>
+                </div>
+            </div>
+        </div>
+        <div class="label-line">业务主题分类</div>
+        <div class="bns-theme-list clearfix"></div>
+
+        <div class="label-line">部门主题分类</div>
+        <div class="org-theme-list clearfix"></div>
+        
+        <div class="label-line">集团基础信息</div>
+        <div class="cmp-info-list clearfix"></div>
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            bnsThemeInit()
+            orgThemeInit()
+            cmpInfoInit()
+        })
+        bnsThemeInit = ()=> {
+            const bnsThemeData = [{
+                id: '1',
+                name: '全部'
+            }, {
+                id: '2',
+                name: '海运'
+            }, {
+                id: '3',
+                name: '集装箱'
+            }, {
+                id: '4',
+                name: '码头'
+            }, {
+                id: '5',
+                name: '单证'
+            }, {
+                id: '6',
+                name: '客户'
+            }, {
+                id: '7',
+                name: '物流'
+            }, {
+                id: '8',
+                name: '费收'
+            }, {
+                id: '9',
+                name: '工程'
+            }]
+            let bnsDom = ''
+            $.each(bnsThemeData, (index, item)=>{
+                bnsDom += `<div class="bns-theme-item">${item.name}</div>`
+            })
+            $('.bns-theme-list').append(bnsDom)
+        }
+        orgThemeInit = ()=> {
+            const orgThemeData = [{
+                id: '1',
+                name: '集团直属'
+            }, {
+                id: '2',
+                name: '外理公司'
+            }, {
+                id: '3',
+                name: '上港物流'
+            }, {
+                id: '4',
+                name: '益东分公司'
+            }, {
+                id: '5',
+                name: '沪东分公司'
+            }, {
+                id: '6',
+                name: '集团直属'
+            }, {
+                id: '7',
+                name: '外理公司'
+            }, {
+                id: '8',
+                name: '上港物流'
+            }, {
+                id: '9',
+                name: '益东分公司'
+            }, {
+                id: '10',
+                name: '沪东分公司'
+            }]
+            let orgDom = ''
+            $.each(orgThemeData, (index, item)=>{
+                orgDom += `<div class="org-theme-item">${item.name}</div>`
+            })
+            $('.org-theme-list').append(orgDom)
+        }
+        cmpInfoInit = ()=> {
+            const cmpInfoData = [{
+                id: '1',
+                name: '人员',
+                unicode: '&#xe629;'
+            }, {
+                id: '2',
+                name: '组织机构',
+                unicode: '&#xe687;'
+            }, {
+                id: '3',
+                name: '岗位',
+                unicode: '&#xe612;'
+            }]
+            let cpmItemDom = ''
+            $.each(cmpInfoData, (index, item)=>{
+                cpmItemDom += `<div class="cmp-info-item"><i class="iconfont">${item.unicode}</i>${item.name}</div>`
+            })
+            $('.cmp-info-list').append(cpmItemDom)
+        }
+    </script>
+</body>
+
+</html>

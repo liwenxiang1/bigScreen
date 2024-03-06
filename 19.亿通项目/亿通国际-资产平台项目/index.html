@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>亿通国际首页</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<!-- layui-unselect  -->
+
+<body class="home" id="home">
+    <!--    第一块 -->
+    <div class="layui-row home-top">
+        <div class="layui-col-md4">
+            <div class=" home-top-item">
+                <div class="home-top-item-left">
+                    <div class="left-num" id="user">0</div>
+                    <div class="left-title">用户量(个)</div>
+                </div>
+                <img src="./images/user-icon.png" alt="" class="home-top-item-icon">
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class=" home-top-item">
+                <div class="home-top-item-left">
+                    <div class="left-num" id="visitedAll">0</div>
+                    <div class="left-title">总访问量(次)</div>
+                </div>
+                <img src="./images/visiting-all-icon.png" alt="" class="home-top-item-icon">
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class=" home-top-item">
+                <div class="home-top-item-left">
+                    <div class="left-num" id="visitedDay">0</div>
+                    <div class="left-title">日访问量(次)</div>
+                </div>
+                <img src="./images/visiting-day-icon.png" alt="" class="home-top-item-icon"> 
+            </div>
+        </div>
+    </div>
+    <!-- 第二块 公司总览 大数据平台 -->
+    <div class="layui-row layui-unselect">
+        <div class="layui-col-md12" style="padding: 0;">
+            <div class="layui-panel">
+                <!-- 标签栏 -->
+                <div class="layui-tab layui-tab-home">
+                    <ul class="layui-tab-title layui-tab-title-er">
+                        <li class="layui-this">公司总览</li>
+                        <li>大数据平台</li>
+                    </ul>
+                    <!-- 标签内容 -->
+                    <div class="layui-tab-content layui-tab-content-home">
+                        <!-- 公司总览 -->
+                        <div class="layui-tab-item layui-show layui-row layui-col-space30">
+                            <!-- 项目系统 -->
+                            <div class="layui-col-md3">
+                                <div class="layui-panel layui-panel-tab" id="xmxtTab">
+                                    <div class="tab-left">
+                                        <p class="tab-left-title">项目系统(个)</p>
+                                        <p class="tab-left-num" id="xmxt">0</p>
+                                    </div>
+                                    <div class="tab-icon xmxt"></div>
+                                    <div class="details-box" id="details1">
+                                        <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                        <span class="details">详细</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 数据库 -->
+                            <div class="layui-col-md3">
+                                <div class="layui-panel layui-panel-tab" id="sjkTab">
+                                    <div class="tab-left">
+                                        <p class="tab-left-title">数据库(个)</p>
+                                        <p class="tab-left-num" id="sjk">0</p>
+                                    </div>
+                                    <div class="tab-icon sjk"></div>
+                                </div>
+                            </div>
+                            <!-- schema -->
+                            <div class="layui-col-md3">
+                                <div class="layui-panel layui-panel-tab" id="schemaTab">
+                                    <div class="tab-left">
+                                        <p class="tab-left-title">schema(个)</p>
+                                        <p class="tab-left-num" id="schema">0</p>
+                                    </div>
+                                    <div class="tab-icon schema"></div>
+                                </div>
+                            </div>
+                            <!-- 数据表 -->
+                            <div class="layui-col-md3">
+                                <div class="layui-panel layui-panel-tab" id="sjbTab">
+                                    <div class="tab-left">
+                                        <p class="tab-left-title">数据表(张)</p>
+                                        <p class="tab-left-num" id="sjb">0</p>
+                                    </div>
+                                    <div class="tab-icon sjb"></div>
+                                </div>
+                            </div>
+                            <!-- 字段 -->
+                            <div class="layui-col-md3">
+                                <div class="layui-panel layui-panel-tab" id="zdTab">
+                                    <div class="tab-left">
+                                        <p class="tab-left-title">字段(个)</p>
+                                        <p class="tab-left-num" id="zd">0</p>
+                                    </div>
+                                    <div class="tab-icon zd"></div>
+                                </div>
+                            </div>
+                            <!-- 已备案 -->
+                            <div class="layui-col-md3">
+                                <div class="layui-panel layui-panel-tab" id="ybaTab">
+                                    <div class="tab-left">
+                                        <p class="tab-left-title">已备案(张)</p>
+                                        <p class="tab-left-num" id="yba">0</p>
+                                        <div class="quality-small-text">备案率:<span id="ybaPre">0%</span></div>
+                                    </div>
+                                    <div class="tab-icon yba"></div>
+                                </div>
+                            </div>
+                            <!-- 未备案 -->
+                            <div class="layui-col-md3">
+                                <div class="layui-panel layui-panel-tab" id="wbaTab">
+                                    <div class="tab-left">
+                                        <p class="tab-left-title">未备案(张)</p>
+                                        <p class="tab-left-num" id="wba">0</p>
+                                    </div>
+                                    <div class="tab-icon wba"></div>
+                                    <div class="details-box" id="details2">
+                                        <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                        <span class="details">详细</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 大数据平台 -->
+                        <div class="layui-tab-item">
+                            <div class="layui-tab layui-tab-data">
+                                <ul class="layui-tab-title layui-tab-title-pingtai">
+                                    <li class="layui-this">生产数据</li>
+                                    <li>数据汇集</li>
+                                    <li>数据资源</li>
+                                    <li>数据资产</li>
+                                </ul>
+
+                                <div class="layui-tab-content">
+                                    <!-- 第一项 -->
+                                    <div class="layui-tab-item layui-show layui-row layui-col-space30">
+                                        <!-- 数据总量 -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjzlTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据总量(条)</p>
+                                                    <p class="tab-left-num" id="sjzl">0</p>
+                                                </div>
+                                                <div class="tab-icon sjzl"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 数据存储量 -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjcclTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据存储量(GB)</p>
+                                                    <p class="tab-left-num" id="sjccl">0</p>
+                                                </div>
+                                                <div class="tab-icon sjccl"></div>
+                                                <div class="details-box" id="details14">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 数据存储使用率(%) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjccsylTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据存储使用率(%)</p>
+                                                    <p class="tab-left-num" id="sjccsyl">0</p>
+                                                </div>
+                                                <div class="tab-icon sjccsyl"></div>
+                                                <div class="details-box" id="details15">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 第二项 -->
+                                    <div class="layui-tab-item layui-row layui-col-space30">
+                                        <!-- 物流类企业(类) -->
+                                        <div class="layui-col-md6">
+                                            <div class="layui-panel layui-panel-tab" id="wlqyTab">
+                                                <div class="layui-panel-tab6 layui-panel-tab6-left">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">物流类企业(类)</p>
+                                                        <p class="tab-left-num" id="wlqy">0</p>
+                                                    </div>
+                                                    <div class="tab-icon wlqy"></div>
+                                                </div>
+                                                <div class="wall"></div>
+                                                <div class="layui-panel-tab6">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">数据表(张)</p>
+                                                        <p class="tab-left-num" id="wlqyt">0</p>
+                                                    </div>
+                                                    <div class="tab-icon sjb3"></div>
+                                                </div>
+                                                <div class="details-box" id="details3">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 政府部门(类) -->
+                                        <div class="layui-col-md6">
+                                            <div class="layui-panel layui-panel-tab" id="zfbmTab">
+                                                <div class="layui-panel-tab6 layui-panel-tab6-left">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">政府部门(类)</p>
+                                                        <p class="tab-left-num" id="zfbm">0</p>
+                                                    </div>
+                                                    <div class="tab-icon zfbm"></div>
+                                                </div>
+                                                <div class="wall"></div>
+                                                <div class="layui-panel-tab6">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">数据表(张)</p>
+                                                        <p class="tab-left-num" id="zfbmt">0</p>
+                                                    </div>
+                                                    <div class="tab-icon sjb3"></div>
+                                                </div>
+                                                <div class="details-box" id="details4">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 金融机构(类) -->
+                                        <div class="layui-col-md6">
+                                            <div class="layui-panel layui-panel-tab" id="jrjgTab">
+                                                <div class="layui-panel-tab6 layui-panel-tab6-left">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">金融机构(类)</p>
+                                                        <p class="tab-left-num" id="jrjg">0</p>
+                                                    </div>
+                                                    <div class="tab-icon jrjg"></div>
+                                                </div>
+                                                <div class="wall"></div>
+                                                <div class="layui-panel-tab6">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">数据表(张)</p>
+                                                        <p class="tab-left-num" id="jrjgt">0</p>
+                                                    </div>
+                                                    <div class="tab-icon sjb3"></div>
+                                                </div>
+                                                <div class="details-box" id="details5">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 第三方平台(类) -->
+                                        <div class="layui-col-md6">
+                                            <div class="layui-panel layui-panel-tab" id="dsfptTab">
+                                                <div class="layui-panel-tab6 layui-panel-tab6-left">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">第三方平台(类)</p>
+                                                        <p class="tab-left-num" id="dsfpt">0</p>
+                                                    </div>
+                                                    <div class="tab-icon dsfpt"></div>
+                                                </div>
+                                                <div class="wall"></div>
+                                                <div class="layui-panel-tab6">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">数据表(张)</p>
+                                                        <p class="tab-left-num" id="dsfptt">0</p>
+                                                    </div>
+                                                    <div class="tab-icon sjb3"></div>
+                                                </div>
+                                                <div class="details-box" id="details6">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 采集业务系统数(个) -->
+                                        <div class="layui-col-md6">
+                                            <div class="layui-panel layui-panel-tab" id="ywxtTab">
+                                                <div class="layui-panel-tab6 layui-panel-tab6-left">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">采集业务系统数(个)</p>
+                                                        <p class="tab-left-num" id="ywxt">0</p>
+                                                    </div>
+                                                    <div class="tab-icon ywxt"></div>
+                                                </div>
+                                                <div class="wall"></div>
+                                                <div class="layui-panel-tab6">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">数据表(张)</p>
+                                                        <p class="tab-left-num" id="ywxtt">0</p>
+                                                    </div>
+                                                    <div class="tab-icon sjb3"></div>
+                                                </div>
+                                                <div class="details-box" id="details11">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 采集业务单证种类(个) -->
+                                        <div class="layui-col-md6">
+                                            <div class="layui-panel layui-panel-tab" id="ywpzTab">
+                                                <div class="layui-panel-tab6 layui-panel-tab6-left">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">采集业务单证种类(个)</p>
+                                                        <p class="tab-left-num" id="ywpz">0</p>
+                                                    </div>
+                                                    <div class="tab-icon ywpz"></div>
+                                                </div>
+                                                <div class="wall"></div>
+                                                <div class="layui-panel-tab6">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">数据表(张)</p>
+                                                        <p class="tab-left-num" id="ywpzt">0</p>
+                                                    </div>
+                                                    <div class="tab-icon sjb3"></div>
+                                                </div>
+                                                <div class="details-box" id="details12">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 第三项 -->
+                                    <div class="layui-tab-item layui-row layui-col-space30">
+                                        <!-- 项目系统(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="xmxt3Tab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">项目系统(个)</p>
+                                                    <p class="tab-left-num" id="xmxt3">0</p>
+                                                </div>
+                                                <div class="tab-icon xmxt3"></div>
+                                            </div>
+                                        </div>
+                                        <!-- schema -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="schema2Tab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">SCHEMA</p>
+                                                    <p class="tab-left-num" id="schema2">0</p>
+                                                </div>
+                                                <div class="tab-icon schema"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 数据表(张) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjb2Tab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据表(张)</p>
+                                                    <p class="tab-left-num" id="sjb2">0</p>
+                                                </div>
+                                                <div class="tab-icon sjb"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 字段(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="zd2Tab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">字段(个)</p>
+                                                    <p class="tab-left-num" id="zd2">0</p>
+                                                </div>
+                                                <div class="tab-icon zd"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 已备案(条) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="yba2Tab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">已备案(张)</p>
+                                                    <p class="tab-left-num" id="yba2">0</p>
+                                                    <div class="quality-small-text">备案率:<span id="yba2Pre">0%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-icon yba"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 未备案(条) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="wba2Tab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">未备案(张)</p>
+                                                    <p class="tab-left-num" id="wba2">0</p>
+                                                </div>
+                                                <div class="tab-icon wba"></div>
+                                                <div class="details-box" id="details13">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 第四项 -->
+                                    <div class="layui-tab-item layui-row layui-col-space30">
+
+                                        <!-- 主题库(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="ztkTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">主题库(个)</p>
+                                                    <p class="tab-left-num" id="ztk">0</p>
+                                                </div>
+                                                <div class="tab-icon ztk"></div>
+                                                <div class="details-box" id="details7">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 数据需求(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjxqTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据需求(个)</p>
+                                                    <p class="tab-left-num" id="sjxq">0</p>
+                                                </div>
+                                                <div class="tab-icon sjxq"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 数据服务(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjfwTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据服务(个)</p>
+                                                    <p class="tab-left-num" id="sjfw">0</p>
+                                                    <p class="tab-left-sub-title">对内(个)：<span id="sjfwn">0</span> 对外(个：
+                                                        <span id="sjfww"></span>)</p>
+                                                </div>
+                                                <div class="tab-icon sjfw"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 数据产品(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjcpTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据产品(个)</p>
+                                                    <p class="tab-left-num" id="sjcp">0</p>
+                                                </div>
+                                                <div class="tab-icon sjcp"></div>
+                                                <div class="details-box" id="details8">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 核心资产(条) -->
+                                        <div class="layui-col-md6">
+                                            <div class="layui-panel layui-panel-tab" id="hxzcTab">
+                                                <div class="layui-panel-tab6 layui-panel-tab6-left">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">核心资产(条)</p>
+                                                        <p class="tab-left-num" id="hxzc">0</p>
+                                                    </div>
+                                                    <div class="tab-icon hxzc"></div>
+                                                </div>
+                                                <div class="wall"></div>
+                                                <div class="layui-panel-tab6">
+                                                    <div class="tab-left">
+                                                        <p class="tab-left-title">重要资产(条)</p>
+                                                        <p class="tab-left-num" id="zyzc">0</p>
+                                                    </div>
+                                                    <div class="tab-icon zyzc"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 数据实体(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjstTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据实体(个)</p>
+                                                    <p class="tab-left-num" id="sjst">0</p>
+                                                </div>
+                                                <div class="tab-icon sjst"></div>
+                                                <div class="details-box" id="details9">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 数据模型(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="sjmxTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">数据模型(个)</p>
+                                                    <p class="tab-left-num" id="sjmx">0</p>
+                                                </div>
+                                                <div class="tab-icon sjmx"></div>
+                                                <div class="details-box" id="details10" data-name="数据模型"
+                                                    data-params="sjmx">
+                                                    <img src="./images/icon/detail.png" alt="" class="details-box-img">
+                                                    <span class="details">详细</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 基础标准(个)-->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="jcbzTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">基础标准(个)</p>
+                                                    <p class="tab-left-num" id="jcbz">0</p>
+                                                </div>
+                                                <div class="tab-icon jcbz"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 指标标准(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="zbbzTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">指标标准(个)</p>
+                                                    <p class="tab-left-num" id="zbbz">0</p>
+                                                </div>
+                                                <div class="tab-icon zbbz"></div>
+                                            </div>
+                                        </div>
+                                        <!-- 报文标准(个) -->
+                                        <div class="layui-col-md3">
+                                            <div class="layui-panel layui-panel-tab" id="bwbzTab">
+                                                <div class="tab-left">
+                                                    <p class="tab-left-title">报文标准(个)</p>
+                                                    <p class="tab-left-num" id="bwbz">0</p>
+                                                </div>
+                                                <div class="tab-icon bwbz"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- echarts -->
+    <div class="layui-row layui-col-space20 layui-col-space20-wai">
+        <!-- 安全标签 -->
+        <div class="layui-col-md6 layui-col-md6-echarts layui-unselect">
+            <div class="layui-panel">
+                <div class="echarts-top">
+                    <span class="echarts-top-title">安全标签</span>
+                </div>
+                <div id="safetyLabel" class="echarts"></div>
+            </div>
+        </div>
+        <!-- 热度排名TOP10 -->
+        <div class="layui-col-md6 layui-col-md6-echarts layui-unselect">
+            <div class="layui-panel">
+                <div class="echarts-top">
+                    <span class="echarts-top-title">热度排名TOP10</span>
+                </div>
+                <div class="echarts">
+                    <div class="layui-tab layui-tab-data layui-tab-data-echarts" lay-filter="hot">
+                        <ul class="layui-tab-title layui-tab-title-pingtai layui-tab-title-echarts">
+                            <li class="layui-this">业务表</li>
+                            <li>码表</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <!-- 业务表排名 -->
+                            <div class="layui-tab-item layui-show">
+                                <div class="echarts-pro" id="businessTable">
+                                    <!-- 接口插入元素 -->
+                                    <!-- <div class="progress-box">
+                                        <div class="progress-sort">TOP1</div>
+                                        <div class="progress-content">
+                                            <div class="progress-title">
+                                                <span class="name">通用代码表</span>
+                                                <span class="num">879</span>
+                                            </div>
+                                            <div class="layui-progress layui-progress-myself">
+                                                <div class="layui-progress-bar" lay-percent="80%"></div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <!-- 码表排名 -->
+                            <div class="layui-tab-item">
+                                <div class="echarts-pro" id="businessTable1">
+                                    <!-- 接口插入元素 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 数据需求 -->
+        <div class="layui-col-md6 layui-col-md6-echarts layui-unselect">
+            <div class="layui-panel">
+                <div class="echarts-top">
+                    <span class="echarts-top-title">数据需求</span>
+                    <!-- <select class="select" id="dataNeedSelect">
+                        <option value="Jan">1月</option>
+                        <option value="Feb">2月</option>
+                        <option value="Mar">3月</option>
+                        <option value="Apr">4月</option>
+                        <option value="May">5月</option>
+                        <option value="Jun">6月</option>
+                        <option value="Jul">7月</option>
+                        <option value="Aug">8月</option>
+                        <option value="Sept">9月</option>
+                        <option value="Oct">10月</option>
+                        <option value="Nov">11月</option>
+                        <option value="Dec">12月</option>
+                    </select> -->
+                </div>
+                <div class="layui-tab layui-tab-data layui-tab-data-echartsS" lay-filter="dataNeed">
+                    <ul class="layui-tab-title layui-tab-title-pingtai layui-tab-title-echarts">
+                        <li class="layui-this">需求量</li>
+                        <li>状态</li>
+                    </ul>
+                    <!-- <div id="dataStandard" class="echarts dataStandard"></div> -->
+                    <div id="dataNeed" class="echarts dataStandard"></div>
+                </div>
+                <!-- <div id="dataNeed" class="echarts"></div> -->
+            </div>
+        </div>
+        <!-- 数据标准 -->
+        <div class="layui-col-md6 layui-col-md6-echarts layui-unselect">
+            <div class="layui-panel">
+                <div class="echarts-top">
+                    <span class="echarts-top-title">数据标准</span>
+                </div>
+                <div class="layui-tab layui-tab-data layui-tab-data-echartsS" lay-filter="dataStandard">
+                    <ul
+                        class="layui-tab-title layui-tab-title-pingtai layui-tab-title-echarts layui-tab-title-echarts3">
+                        <li class="layui-this">基础标准</li>
+                        <li>报文标准</li>
+                        <li>指标标准</li>
+                    </ul>
+                    <div id="dataStandard" class="echarts dataStandard"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 数据服务 -->
+        <div class="layui-col-md6 layui-col-md6-echarts layui-unselect">
+            <div class="layui-panel">
+                <div class="echarts-top">
+                    <span class="echarts-top-title">数据服务</span>
+                </div>
+                <div id="dataService" class="echarts"></div>
+            </div>
+        </div>
+        <!-- 服务调用量 -->
+        <div class="layui-col-md6 layui-col-md6-echarts layui-unselect">
+            <div class="layui-panel">
+                <div class="echarts-top">
+                    <span class="echarts-top-title">服务调用量</span>
+                </div>
+                <div id="serviceCall" class="echarts"></div>
+            </div>
+        </div>
+        <!-- 数据质量 -->
+        <div class="layui-col-md6 layui-col-md6-echarts layui-unselect">
+            <div class="layui-panel">
+                <div class="echarts-top">
+                    <span class="echarts-top-title">数据质量</span>
+                </div>
+                <div class="layui-row layui-col-space12 echarts quality-box-row">
+                    <div class="layui-col-md6">
+                        <div class="quality-box">
+                            <div class="quality-left">
+                                <img src="./images/rule.png" alt="" class="quality-icon">
+                                <div class="quality-text">
+                                    <span class="quality-big-text">规则数(个)：</span>
+                                </div>
+                            </div>
+                            <span class="quality-num" id="rule">0</span>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="quality-box">
+                            <div class="quality-left">
+                                <img src="./images/task.png" alt="" class="quality-icon">
+                                <div class="quality-text">
+                                    <span class="quality-big-text">任务数(个)：</span>
+                                </div>
+                            </div>
+                            <span class="quality-num" id="task">0</span>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="quality-box">
+                            <div class="quality-left">
+                                <img src="./images/controlled.png" alt="" class="quality-icon">
+                                <div class="quality-text">
+                                    <span class="quality-big-text">受控表(张)：</span>
+                                    <div class="quality-small-text">核心资产占比：<span id="Proportion">0%</span></div>
+                                </div>
+                            </div>
+                            <span class="quality-num" id="controlled">0</span>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="quality-box">
+                            <div class="quality-left">
+                                <img src="./images/question.png" alt="" class="quality-icon">
+                                <div class="quality-text">
+                                    <span class="quality-big-text">问题数(个)：</span>
+                                </div>
+                            </div>
+                            <span class="quality-num" id="question">0</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 质量问题解决分布 -->
+        <div class="layui-col-md6 layui-col-md6-echarts layui-unselect">
+            <div class="layui-panel">
+                <div class="echarts-top">
+                    <span class="echarts-top-title">质量问题解决分布</span>
+                    <select class="select" id="qualitySelect">
+                        <option value="Jan">1月</option>
+                        <option value="Feb">2月</option>
+                        <option value="Mar">3月</option>
+                        <option value="Apr">4月</option>
+                        <option value="May">5月</option>
+                        <option value="Jun">6月</option>
+                        <option value="Jul">7月</option>
+                        <option value="Aug">8月</option>
+                        <option value="Sept">9月</option>
+                        <option value="Oct">10月</option>
+                        <option value="Nov">11月</option>
+                        <option value="Dec">12月</option>
+                    </select>
+                </div>
+                <div id="quality" class="echarts"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 详情弹框的蒙层 -->
+    <div id="pop-mask"></div>
+    <!-- 详情弹框 -->
+    <div class="pop-box layui-unselect" id="pop-box">
+        <div class="pop-back" id="pop-back">
+            <img src="./images/icon/hidden.png" alt="" class="pop-back-icon">
+            <span class="pop-back-text">收起</span>
+        </div>
+        <div class="pop-content" id="pop-content">
+            <div class="detailsLoading homeLoading">
+                <img src="./images/loading.gif" alt="" class="loadingImg">
+            </div>
+            <div class="card-box layui-row" id="card-box">
+                <!-- 动态渲染 -->
+                <!-- <div class="layui-col-md4 ">
+                        <div class="card-b">
+                            <span class="card-b-title">XX系统名</span>
+                            <span class="card-b-sum">8989</span>
+                        </div>
+                    </div> -->
+            </div>
+            <div id="laypage"></div>
+            <!-- 动态渲染 -->
+            <!-- <div id="popEcharts"></div> -->
+        </div>
+    </div>
+    <!-- 标签介绍 -->
+    <div id="tooltip" class="tooltip-box">
+        <div class="tooltipText"></div>
+        <div class="triangle"></div>
+    </div>
+    <!-- 全屏loading -->
+    <div class="viewLoading homeLoading">
+        <img src="./images/loading.gif" alt="" class="loadingImg viewLoadingImg">
+    </div>
+
+    <!-- 你的 HTML 代码 -->
+
+    <script src="./layui/layui.js"></script>
+    <!-- <script>layui.config({ base: './js/' }).use('main'); </script> -->
+    <script type="text/javascript" src="./js/echarts.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    </script>
+
+
+</body>
+
+</html>

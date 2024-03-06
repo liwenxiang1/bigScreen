@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<link rel="stylesheet" href="./assets/css/index.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<meta name="keywords" content="电子政务信息共享网站" />
+		<meta name="description" content="电子政务信息共享网站" />
+		<title>电子政务信息共享网站</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<div class="layui-logo"><a href="javascript:;"><img src="assets/imgs/logo.png" alt="logo"></a></div>
+
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<span class="img-span">
+							<img src="assets/imgs/user.png" class="layui-nav-img">
+						</span>
+						<span>刘追星</span>
+					</li>
+					<li class="layui-nav-item"><a href="javascript:;" class="divider"><i class="iconfont icon-quit"></i><span>个人中心</span></a></li>
+					<li class="layui-nav-item"><img width="24px" src="assets/imgs/warnning.png" /></li>
+				</ul>
+			</div>
+			<div class="banner">
+				<div class="search">
+					<form class="layui-form">
+						<div class="layui-inline" style="width: 65%;">
+							<div class="layui-input-block">
+								<input type="text" name="" placeholder="请输入数据目录/api关键词" autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1"><img src="assets/imgs/fangdajing-2@2x.png" />搜索</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="layui-header menu">
+				<ul class="layui-nav layui-layout-left">
+					<li class="layui-nav-item layui-this"><a href="javascript:;"><img src="assets/imgs/shouye.png" />网站首页</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/xiangqing.png" />数据目录</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/shujia.png" />共享统计</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><img src="assets/imgs/haoyou.png" />互动交流</a></li>
+				</ul>
+			</div>
+			<div>
+				<div class="layui-card">
+					<div class="layui-card-body item-card" id="itemDiv">
+					</div>
+				</div>
+				<h1 class="title-h1">数据目录</h1>
+				<div class="data-menu">
+					<div class="left">
+						<div class="data-menu-head">
+							<p class="title-p">基础目录</p>
+							<div class="under-line"></div>
+						</div>
+						<div class="data-menu-body">
+							<div class="layui-row layui-col-space25">
+								<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+									<div class="menu-card">
+										<img src="assets/imgs/renkouxinxi@2x.png" />
+										<span>人口信息</span>
+									</div>
+
+								</div>
+								<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+									<div class="menu-card">
+										<img src="assets/imgs/faren@2x.png" />
+										<span>人口信息</span>
+									</div>
+								</div>
+								<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+									<div class="menu-card">
+										<img src="assets/imgs/dianzizhengzhao@2x.png" />
+										<span>电子证照</span>
+									</div>
+
+								</div>
+								<div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+									<div class="menu-card">
+										<img src="assets/imgs/ziyuan@2x.png" />
+										<span>自然资源</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="layui-row">
+								<button type="button" class="layui-btn layui-btn-lg layui-btn-normal btn-space">
+									<img style="width: 24px;" src="./assets/imgs/dili.png" />
+									空间地理
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="right">
+						<div class="data-menu-head">
+							<p class="title-p">法人单位</p>
+							<div class="under-line"></div>
+						</div>
+						<div class="data-menu-body" id="unitDiv">
+
+						</div>
+					</div>
+				</div>
+				<div class="data-menu">
+					<div>
+						<div class="data-menu-head">
+							<p class="title-p">部门目录</p>
+							<div class="under-line"></div>
+						</div>
+						<div class="data-menu-body">
+							<div class="deptMenu">
+								<div class="deptMenu-left">
+									<p class="layui-this">国家部门</p>
+									<p>其他省</p>
+									<p>广西自治区部门</p>
+									<p>广西地市</p>
+									<p>桂林市</p>
+								</div>
+								<div class="layui-tab-content layui-container" id="deptsDiv">
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="service">
+					<div class="service-left">
+						<div class="service-head">
+							<p>服务指引</p>
+							<div class="under-line"></div>
+						</div>
+						<div class="service-body">
+							<div class="serviceMenu-left">
+								<div class="layui-this">
+									<p><img src="assets/imgs/list.png" />目录注册</p>
+								</div>
+								<div>
+									<p><img src="assets/imgs/list.png" />资源注册</p>
+								</div>
+								<div>
+									<p><img src="assets/imgs/list.png" />申请资源</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="service-right">
+						<div class="layui-tab layui-tab-brief">
+							<ul class="layui-tab-title">
+								<li class="layui-this">目录动态</li>
+								<li>用户管理</li>
+								<li>数据调用动态</li>
+							</ul>
+							<div class="layui-tab-content">
+								<div class="layui-tab-item layui-show">
+									<ul class="layui-timeline" id="timeLine">
+
+
+									</ul>
+								</div>
+								<div class="layui-tab-item">内容2</div>
+								<div class="layui-tab-item">内容3</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="ranking">
+					<h1 class="title-h1">热门排行</h1>
+					<div class="ranking-body">
+						<div class="ranking-body-left">
+							<div class="layui-card">
+								<div class="layui-card-header">
+									<div class="left">热门目录</div>
+									<div class="right">
+										<a href="javascript:;" class="layui-this">本年</a>
+										<a href="javascript:;">本月</a>
+									</div>
+								</div>
+								<div class="layui-card-body">
+									<ul class="rankingMenus" id="rankingMenus">
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="ranking-body-right">
+							<div class="layui-card">
+								<div class="layui-card-header">
+									<div class="left">热门目录</div>
+									<div class="right">
+										<a href="javascript:;" class="layui-this">本年</a>
+										<a href="javascript:;">本月</a>
+									</div>
+								</div>
+								<div class="layui-card-body">
+									<ul class="rankingMenus" id="rankingRight">
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="footer">
+					<div>
+						<img src="assets/imgs/guohui.png" style="margin-right: 10px;" />支持单位：桂林市大数据中心
+					</div>
+					<div>
+						版权所有：桂林市信息中心 承办单位：xxx技术有限公司 联系电话：132xxxx0078 上班时间：9:00-6:00
+					</div>
+				</div>
+			</div>
+			<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+			<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+		</div>
+		<script src="./assets/static/json.js"></script>
+		<script src="./assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/template-web.js"></script>
+		<script id="items-template" type="text/html">
+			{{each items}}
+				<div class="item-div">
+					<img src="{{$value.imgSrc}}"/>
+					<div>
+						<p class="item-num"><span>{{$value.num}}</span><span class="unit">{{$value.unit}}</span></p>
+						<p class="item-label">{{$value.label}}</p>
+					</div>
+				</div>
+			{{/each}}
+		</script>
+		<script id="unit-template" type="text/html">
+			<div class="layui-row">
+			{{each units}}
+				{{if $index < 7}}
+					<div class="item">
+						<img src="{{$value.imgSrc}}" />
+						<p>{{$value.label}}</p>
+					</div>
+				{{/if}}
+			{{/each}}
+			</div>
+		</script>
+		<script id="depts-template" type="text/html">
+			<div class="layui-row layui-col-space20">
+			{{each depts}}
+				<div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
+					<div class="label col-div">
+						{{$value.label}}
+					</div>
+				</div>
+			{{/each}}
+			</div>
+		</script>
+		<script id="timeLine-template" type="text/html">
+			{{each list}}
+				<li class="layui-timeline-item">
+				  <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+				  <div class="layui-timeline-content layui-text">
+					<a href="javascript:;" class="layui-timeline-title"><span class="date">{{$value.date}}</span><span class="time">{{$value.time}}</span><span class="title">{{$value.title}}</span></a>
+				  </div>
+				</li>
+			{{/each}}
+		</script>
+		<script id="rankList-template" type="text/html">
+			{{each list}}
+				<li>
+				<a href="javascript:;">
+				{{if $index < 3}}
+					<div class="hot">
+						{{$index + 1}}
+					</div>
+					{{else}}
+					<div class="hot-liu">
+						{{$index + 1}}
+					</div>
+					{{/if}}
+					<div class="content">
+						<p>{{$value.title}}</p>
+						<div class="layui-row">
+							<div class="layui-col-md6">{{$value.deptName}}</div>
+							<div class="layui-col-md3">{{$value.date}}</div>
+							<div class="layui-col-md3"><img src="assets/imgs/liulan.png" class="liulan"/>{{$value.num}}次</div>
+						</div>
+					</div>
+					</a>
+				</li>
+			{{/each}}
+		</script>
+		<script id="rankRight-template" type="text/html">
+			{{each list}}
+				<li>
+				<a href="javascript:;">
+				{{if $index < 3}}
+					<div class="hot-red">
+						{{$index + 1}}
+					</div>
+					{{else}}
+					<div class="hot-liu">
+						{{$index + 1}}
+					</div>
+					{{/if}}
+					<div class="content">
+						<p>{{$value.title}}</p>
+						<div class="layui-row">
+							<div class="layui-col-md5">来源部门：{{$value.deptName}}</div>
+							<div class="layui-col-md3">调用量：{{$value.num}}次</div>
+							<div class="layui-col-md2">申请量：{{$value.applyNum}}次</div>
+							<div class="layui-col-md2">
+								<img style="margin-right: 10px;" src="assets/imgs/shoucang.png"/>
+								<img src="assets/imgs/bianji.png"/>
+							</div>
+						</div>
+					</div>
+					</a>
+				</li>
+			{{/each}}
+		</script>
+
+
+		<script>
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use('element', function() {
+				var element = layui.element;
+
+			});
+			$(function() {
+				if(IEVersion() == '-1' || IEVersion() == 'edge'){
+					$('.layui-container').css('width','100%')
+				}
+				//初始化资源目录
+				initItem()
+				//初始化法人单位
+				initUnits()
+				//初始化部门目录
+				initDeptMenu()
+				//初始化目录动态
+				initTimeLineList()
+				//初始化热门目录
+				initRanking()
+				//初始化热门目录 --- 右侧
+				initRankingRight()
+			})
+			//判断是都为ie浏览器
+			function IEVersion() {
+				var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
+				var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+				var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+				var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+				if (isIE) {
+					var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+					reIE.test(userAgent);
+					var fIEVersion = parseFloat(RegExp["$1"]);
+					if (fIEVersion == 7) {
+						return 7;
+					} else if (fIEVersion == 8) {
+						return 8;
+					} else if (fIEVersion == 9) {
+						return 9;
+					} else if (fIEVersion == 10) {
+						return 10;
+					} else {
+						return 6; //IE版本<=7
+					}
+				} else if (isEdge) {
+					return 'edge'; //edge
+				} else if (isIE11) {
+					return 11; //IE11  
+				} else {
+					return -1; //不是ie浏览器
+				}
+			}
+			//初始化item
+			function initItem() {
+
+				var html = template('items-template', {
+					items: itemList
+				})
+				$('#itemDiv').append(html);
+			}
+			//初始化主题目录
+			function initUnits() {
+				var htmlUnit = template('unit-template', {
+					units: unitList.slice(0, 7)
+				})
+				var htmlUnit2 = template('unit-template', {
+					units: unitList.slice(7)
+				})
+				$('#unitDiv').append(htmlUnit);
+				$('#unitDiv').append(htmlUnit2);
+
+			}
+			//初始化部门目录
+			function initDeptMenu() {
+				let obj = {
+					label: '更多...'
+				}
+				deptList.push(obj)
+				var htmlDept = template('depts-template', {
+					depts: deptList
+				})
+				$('#deptsDiv').append(htmlDept);
+			}
+			//初始化目录动态
+			function initTimeLineList() {
+				var htmlTimeLine = template('timeLine-template', {
+					list: serviceList
+				})
+				$('#timeLine').append(htmlTimeLine);
+			}
+			//初始化热门目录
+			function initRanking() {
+				var htmlRankList = template('rankList-template', {
+					list: rankList
+				})
+				$('#rankingMenus').append(htmlRankList);
+			}
+			//初始化热门右侧
+			function initRankingRight() {
+				var htmlRankRight = template('rankRight-template', {
+					list: rankRightList
+				})
+				$('#rankingRight').append(htmlRankRight);
+			}
+			$(function() {
+				$(".deptMenu p").on("click", function() {
+					$(this).siblings('p').removeClass('layui-this'); // 删除其他兄弟元素的样式
+					$(this).addClass('layui-this');
+				})
+				$(".serviceMenu-left div").on("click", function() {
+					$(this).siblings('div').removeClass('layui-this'); // 删除其他兄弟元素的样式
+					$(this).addClass('layui-this');
+				})
+				$(".right a").on("click", function() {
+					$(this).siblings('a').removeClass('layui-this'); // 删除其他兄弟元素的样式
+					$(this).addClass('layui-this');
+				})
+
+
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,37 @@
+{
+  "id": "1775423",
+  "name": "kexie",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "13709510",
+      "name": "arrow-right",
+      "font_class": "arrow-right",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "8777398",
+      "name": "减",
+      "font_class": "jian",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "7966274",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "10243275",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+@media print body {
+	background: #FFFFFF;
+}
+
+.mt5 {
+	margin-top: 5px;
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.mt15 {
+	margin-top: 15px;
+}
+
+.mt30 {
+	margin-top: 30px;
+}
+
+.mt60 {
+	margin-top: 60px;
+}
+
+.mb5 {
+	margin-bottom: 5px;
+}
+
+.mb10 {
+	margin-bottom: 10px;
+}
+
+.mb15 {
+	margin-bottom: 15px;
+}
+
+.mb30 {
+	margin-bottom: 30px;
+}
+
+.ml5 {
+	margin-left: 5px;
+}
+
+.ml10 {
+	margin-left: 10px;
+}
+
+.ml15 {
+	margin-left: 15px;
+}
+
+.mr5 {
+	margin-right: 5px;
+}
+
+.mr10 {
+	margin-right: 10px;
+}
+
+.p15 {
+	padding: 15px;
+}
+
+.pt15 {
+	padding-top: 15px;
+}
+
+.pb15 {
+	padding-bottom: 15px;
+}
+
+.pl15 {
+	padding-left: 15px;
+}
+
+.pl30 {
+	padding-left: 30px;
+}
+
+.pl60 {
+	padding-left: 60px;
+}
+
+.pr15 {
+	padding-right: 15px;
+}
+
+.pl10 {
+	padding-left: 10px;
+}
+
+.space {
+	width: 100%;
+	height: 10px;
+	background-color: #F5F2F3;
+}
+
+.lh30 {
+	line-height: 30px;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.fontwb {
+	font-weight: bold;
+}
+
+.font10 {
+	font-size: 10px;
+}
+
+.font12 {
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.font14 {
+	font-size: 14px;
+}
+
+.font16 {
+	font-size: 16px;
+}
+
+.font20 {
+	font-size: 20px;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.block {
+	display: block;
+}
+
+.font-red {
+	color: #FF0000;
+}
+
+.font-green {
+	color: green;
+}
+
+.font-black {
+	color: #333333;
+}
+
+.font-blue {
+	color: #023ab9;
+}
+
+.font-gray {
+	color: #999999;
+}
+
+.bg-blue {
+	padding: 3px 6px;
+	background-color: #F0F4FE;
+	border-radius: 3px;
+}
+
+.bg-gray {
+	background-color: #F7F7F7;
+}
+
+.border-black {
+	border: 1px solid #000000;
+}
+
+.border-b-black {
+	border-bottom: 1px solid #000000 !important;
+}
+.border-div-black div{
+	border-bottom: 1px solid #000;height: 30px;
+}
+.border-b-gray {
+	border-bottom: 1px solid #E6E6E6 !important;
+}
+.logo {
+	float: left;
+	/* width: 150px;
+	height: 80px; */
+}
+
+.position-relative {
+	position: relative;
+	padding-bottom: 100px !important;
+}
+
+.position-absolute {
+	position: absolute;
+}
+
+.mfooter {
+	background: #FFFFFF;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	/* margin-bottom: 50px; */
+}
+
+.mfooter table {
+	border-collapse: separate;
+	width: 100%;
+	/* margin-left: 5%; */
+	display: inline-table;
+	
+	}
+
+.mfooter table td {
+	padding: 6px 10px;
+	height: 30px;
+	line-height: 40px;
+}
+.title{
+	color: #000000;font-weight: 800;font-size: 18px;padding-left:80px;white-space:nowrap;
+}
+.title-bottom{
+	color: #000000;font-weight: 800;font-size: 18px;padding-left:80px;white-space:nowrap;
+}
+.name{
+	padding-top: 5px;color: #000000;font-size: 14px;padding-left:80px;white-space:nowrap;
+}
+.title-weigh{
+	font-size: 24px;
+	font-weight: 800;
+	text-align: center;
+	padding: 0 5px;
+}
+.table th{
+	border: none !important;
+	background: #fff;
+	
+}
+.table th div{
+	font-size: 18px;
+	width: 100%;
+	/* text-align: right; */
+}
+.page-foot{
+	width: 100%;border-top: 1px solid #000000;margin-top: 20px;display: flex;
+}
+.page-foot div{
+	padding: 6px 10px;flex: 1;
+}
+.table thead th{
+    border:2px solid #000080;
+}
+.table td{
+	text-align: left;
+	white-space:nowrap;
+}
+.table td div{
+	font-weight: 600;
+}
+.title-left{
+	width: 40%;margin-top:50px
+}
+.title-right{
+	width: 30%;margin-top:50px
+}
+.logodiv{
+	width: 210px;
+	height: 110px;
+}
+.head-div{
+	border-bottom: 1px solid #000;padding-bottom: 10px;display: flex;margin-top: 15px;
+}
+.notediv{
+	border: 1px solid #000;padding: 5px;margin:5px 10px;
+}
+.notediv span{
+	padding: 0 150px;
+}

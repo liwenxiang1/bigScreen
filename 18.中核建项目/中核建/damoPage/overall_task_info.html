@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国核工业建设·任务详情看板</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+	<link rel="stylesheet" href="./../plugins/jq-range/jquery.range.css">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid overall-panel-info animated fadeInRight search-content">
+        <p class="page-title t-tag">D2-2 核电设计优化</p>
+        <div class="info-panel row">
+            <div class="col-sm-6">
+                <div class="info-li" id="info-label">
+                    <span class="li-label">
+                        行动方案名称：
+                    </span>
+                    <span class="li-value">D2-2 核电设计优化</span>
+                </div>
+                <div class="info-li" id="info-label">
+                    <span class="li-label">
+                        分管领导：
+                    </span>
+                    <span class="li-value">曹述栋</span>
+                </div>
+                <div class="info-li" id="info-label">
+                    <span class="li-label">
+                        牵头部门：
+                    </span>
+                    <span class="li-value">中国核电</span>
+                </div>
+                <div class="info-li" id="info-label">
+                    <span class="li-label">
+                        配合部门：
+                    </span>
+                    <span class="li-value">科信部、中国核电、中国核建、核动力院、中核工程、中核财务、中核资讯</span>
+                </div>
+                <div class="info-li" id="info-label">
+                    <span class="li-label">
+                        完成状态：
+                    </span>
+                    <span class="li-value">D2-2 核电设计优化</span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="info-li" id="info-label">
+                            <span class="li-label">
+                                开始时间：
+                            </span>
+                            <span class="li-value">2020-04-25</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="info-li" id="info-label">
+                            <span class="li-label">
+                                预计到期时间：
+                            </span>
+                            <span class="li-value">2020-10-02</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="info-li" id="info-label">
+                    <span class="li-label">
+                        目标描述：
+                    </span>
+                    <p class="li-value">华龙一号持续优化造价水平，海南二期初步设计概算下降2%</p>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="time-line">
+            <button class="btn btn-primary" type="button" value="2020-01">2020-01</button>
+            <button class="btn btn-primary" type="button" value="2020-02">2020-02</button>
+            <button class="btn btn-primary" type="button" value="2020-03">2020-03</button>
+            <button class="btn btn-primary" type="button" value="2020-04">2020-04</button>
+            <button class="btn btn-primary" type="button" value="2020-05">2020-05</button>
+            <button class="btn btn-primary" type="button" value="2020-06">2020-06</button>
+            <button class="btn btn-primary" type="button" value="2020-07">2020-07</button>
+            <button class="btn btn-primary" type="button" value="2020-08">2020-08</button>
+            <button class="btn btn-primary" type="button" value="2020-09">2020-09</button>
+            <button class="btn btn-primary" type="button" value="2020-10">2020-10</button>
+            <button class="btn btn-primary" type="button" value="2020-11">2020-11</button>
+            <button class="btn btn-primary" type="button" value="2020-12">2020-12</button>
+        </div> -->
+		<input class="date-slider" type="hidden" value="0.0"/>
+
+        <table id="table" data-pagination="true" data-page-size="5" data-pagination-loop="false"
+            data-pagination-pre-text="上一页" data-pagination-next-text="下一页">
+            <thead>
+                <tr>
+                    <th data-field="code" data-align="center">子项行动编号</th>
+                    <th data-field="endTime" data-align="center">计划结束时间</th>
+                    <th data-field="status" data-align="center" data-formatter="formatter">完成状态</th>
+                    <th data-field="description" data-align="center">子项行动计划目标描述</th>
+                    <th data-field="instructions" data-align="center">子项行动计划完成说明</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="info-area clearfix">
+            <div class="info-item description">
+                <p class="info-title t-tag">完成情况说明</p>
+                <p class="info">
+                    描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明描述完成情况具体说明
+                </p>
+            </div>
+            <div class="info-item measures">
+                <p class="info-title t-tag">改进措施</p>
+                <p class="info">
+                    改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施改进措施
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../plugins/jq-range/jquery.range-min.js"></script>
+    <script src="common.js"></script>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            var monthArr = ['2020-01','2020-02','2020-03','2020-04','2020-05','2020-06','2020-07','2020-08','2020-09','2020-10','2020-11','2020-12']
+            $('.date-slider').jRange({
+                    from: 1,
+                    to: 12,
+                    step: 1,
+                    scale: monthArr,
+		            format: (val, pointer)=>{
+                        getMonth(parseInt(val))
+                        return monthArr[parseInt(val) - 1]
+                    },
+                    width: 550,
+                    showLabels: true,
+                    snap: true
+                });
+
+            var $table = $('#table');
+            let tableData = [{
+                code: 'D2-2-1①',
+                endTime: '2020/3/31',
+                status: '已完成',
+                description: '配合中国核电和中核能源做好设计优化工作',
+                instructions: '根据集团安排推进工作'
+            },{
+                code: 'D2-2-2②',
+                endTime: '2020/3/31',
+                status: '已完成',
+                description: '做好核电设计优化课题和核建股份相关前期调研工作',
+                instructions: '根据集团安排推进工作'
+            },{
+                code: 'D2-2-3③',
+                endTime: '2020/9/30',
+                status: '未完成',
+                description: '配合中国核电和中核能源做好设计优化工作',
+                instructions: '根据集团安排推进工作'
+            },{
+                code: 'D2-2-4④',
+                endTime: '2020/3/31',
+                status: '未完成',
+                description: '配合中国核电和中核能源做好设计优化工作',
+                instructions: '根据集团安排推进工作'
+            },{
+                code: 'D2-2-5①',
+                endTime: '2020/3/31',
+                status: '未完成',
+                description: '配合中国核电和中核能源做好设计优化工作',
+                instructions: '根据集团安排推进工作'
+            },{
+                code: 'D2-2-6①',
+                endTime: '2020/3/31',
+                status: '未完成',
+                description: '配合中国核电和中核能源做好设计优化工作',
+                instructions: '根据集团安排推进工作'
+            }]
+            tableData = tableData  //, ...tableData, ...tableData
+            $table.bootstrapTable({
+                data: tableData,
+                undefinedText: '-',
+                onClickRow: (row, $el, filed) => {
+                    $('.row-selected').removeClass('row-selected');
+                    $($el).addClass('row-selected');
+                    $('.overall-panel-info .description .info').text(row.instructions || '无')
+                    $('.overall-panel-info .measures .info').text(row.description || '无')
+                }
+            });
+        })
+
+        function getMonth(mon){
+            console.log("getMonth -> mon", mon)
+            // 拿到月份刷新表格数据
+        }
+
+        function formatter(val,row,c){
+            let color = ''
+            if(val === '已完成'){
+                color = '#1ABF76'
+            }else {
+                color = '#DD4E43'
+            }
+            return '<span style="color:'+ color +'">'+ val +'</span>'
+        }
+    </script>
+</body>
+
+</html>

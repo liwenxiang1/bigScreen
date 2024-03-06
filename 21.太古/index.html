@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>山东太古</title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/index.css" />
+		<link rel="stylesheet" type="text/css" href="./css/daterangepicker.css" />
+		<link href="./tran-plus/bootstrap-table.min.css" rel="stylesheet">
+		<link href="./tran-plus/tranfer.css" rel="stylesheet">
+      <!-- <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script> -->
+	</head>
+	<body>
+		<div class="col-lg-12 header">
+			<img class="logo" src="./img/logo.png" >
+			<div class="fr people">
+				Captain_Babossa，欢迎你
+			</div>
+		</div>
+		<div class="con">
+			<div class="col-lg-3 leftBox">
+				<div class="app">
+					<div class="titleSmallBox">
+						<img class="titleIconApp fl" src="./img/app.png">
+						<div class="titleSmall fl">
+							应用中心
+						</div>
+					</div>
+					<div class="applyBigBox">
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/duban.png">
+								<div class="applyItemName">
+									督办系统
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/juece.png">
+								<div class="applyItemName">
+									决策事项管理
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/zonghe.png">
+								<div class="applyItemName">
+									综合经营管理
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/xietong.png">
+								<div class="applyItemName">
+									协同办公
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="app mt20">
+					<div class="titleSmallBox">
+						<img class="titleIconApp fl" src="./img/app.png">
+						<div class="titleSmall fl">
+							模块中心
+						</div>
+					</div>
+					<div class="applyBigBox-bottom">
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/hezuo.png">
+								<div class="applyItemName">
+									协同设计平台
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/caiwu.png">
+								<div class="applyItemName">
+									财务系统
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/huiyi.png">
+								<div class="applyItemName">
+									会议管理
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/erp.png">
+								<div class="applyItemName">
+									ERP系统
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/duban.png">
+								<div class="applyItemName">
+									科研生产
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 pd0">
+							<div class="applyItem">
+								<img class="imgApplyItem" src="./img/juece.png">
+								<div class="applyItemName">
+									财务共享系统
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9 middleBox">
+				<div class="todo">
+					<div class="titleSmallBox">
+						<div class="flex">
+							<div id="titleSmallBoxItem0" class="titleSmallBoxItem titleSmallBoxItemThis" onclick="goCenter0()">
+								<img class="titleIconTodo fl" src="./img/time.png">
+								<div class="titleSmall fl">
+									待办中心
+								</div>
+							</div>
+							<div id="titleSmallBoxItem1" class="titleSmallBoxItem" onclick="goCenter1()">
+								<img class="titleIconTodo fl" src="./img/time.png">
+								<div class="titleSmall fl">
+									已办中心
+								</div>
+							</div>
+						</div>
+						<div class="titleSmallMore" onclick="goMoreDialog()" >更多</div>
+					</div>
+					<div >
+						<div id="todoList" class="todoListBox">
+							
+						</div>
+					</div>
+				</div>
+				<div class="todoBottom">
+					<div class="col-lg-12 todoBottomLeft">
+						<div class="titleKuaijie flex juCenter">
+							<div>
+								<img class="titleIconTodo fl" src="./img/kuaijie.png">
+								<div class="titleSmall fl">
+									快捷入口
+								</div>
+							</div>
+							<div class="titleSmall fl zidingyi" onclick="openDialog()">自定义</div>
+						</div>
+						<div class="kuaijieBottom">
+							<div class="todoitem">
+								<img class="todoItemIcon" src="./img/xietong.png" >
+								<div class="todoItemText">
+									协同办公
+								</div>
+							</div>
+							<div class="todoitem">
+								<img class="todoItemIcon" src="./img/caiwu.png" >
+								<div class="todoItemText">
+									财务系统
+								</div>
+							</div>
+							<div class="todoitem">
+								<img class="todoItemIcon" src="./img/youjian.png" >
+								<div class="todoItemText">
+									邮件系统
+								</div>
+							</div>
+							<div class="todoitem">
+								<img class="todoItemIcon" src="./img/huiyi.png" >
+								<div class="todoItemText">
+									会议管理
+								</div>
+							</div>
+							<div class="todoitem">
+								<img class="todoItemIcon" src="./img/erp.png" >
+								<div class="todoItemText">
+									ERP系统
+								</div>
+							</div>
+							<!-- <div class="todoitem">
+								<img class="todoItemIcon" src="./img/erp.png" >
+								<div class="todoItemText">
+									ERP系统
+								</div>
+							</div> -->
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="centerMoreDialog" tabindex="-1" role="dialog" aria-labelledby="centerMoreDialogLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div style="float: right;"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+						<div class="topFunctionBox">
+							<div class="col-lg-4 topFunctionCol">
+								<span class="searchSpan">发布起止日期</span>
+								<!-- <div> -->
+									<input type="text" id="config-demo" class="form-control" placeholder="请选择起止日期"  onfocus="selectDate()">
+								<!-- </div> -->
+								
+							</div>
+							<div class="col-lg-4 topFunctionCol">
+								<span class="searchSpan">标题或发布人</span>
+								<!-- <input type="text" id="searchInput" class="inputBox"> -->
+								<input type="text" class="form-control" id="searchValue" placeholder="请输入标题或发布人">
+							</div>
+							<div class="btn" onclick="searchCenterParams()">搜索</div>
+						</div>
+					</div>
+					<div class="modal-body" id="centerModalBody">
+						<!-- 插入模板渲染 -->
+					</div>
+					<!-- 分页 -->
+					<div class="modal-footer modal-footer-center">
+						<span class="pagination-total">共0页</span>
+						<ul class="pagination centerPagination" onclick="changePageNum(event)"></ul>
+						<select id="selectPageSize" class="selectPageSize" onclick="changePageSize(event)">
+							<option value ="10" selected>10条/页</option>
+							<option value ="20">20条/页</option>
+							<option value="50">50条/页</option>
+							<option value="100">100条/页</option>
+						</select>
+						<div class="jumpBox">
+							<span>到第</span>
+							<input type="text" class="inputNumber" οnpaste="return false;" onkeypress="onlyNumber(event)">
+							<span>页</span>
+							<div class="btn jumpBoxBtn" onclick="jumpPage()">确定</div>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+		<!-- 常用链接模态框 -->
+		<div class="modal fade" id="urlDialog" tabindex="-1" role="dialog" aria-labelledby="centerMoreDialogLabel" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div style="float: right;"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+					<div id="transferContainer" class="row" style="height: 600px;width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+		<script src="./js/es5-shim.min.js"></script>
+		<script src="./js/jquery.min.js"></script>
+		<script src="js/browser.min.js"></script>
+		<script src="js/browser-polyfill.min.js" type="text/javascript"></script>
+		<script src="./js/bootstrap.min.js"></script>
+		<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="./js/moment.min.js"></script>
+		<script type="text/javascript" src="./js/daterangepicker.js"></script>
+
+		<!-- <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="https://www.jq22.com/jquery/bootstrap-4.2.1.js"></script> -->
+<script src="./tran-plus/bootstrap-table.min.js"></script>
+<script src="./tran-plus/bootstrap-table-zh-CN.min.js"></script>
+		<script src="./tran-plus/transfer-plus.js"></script>
+		<script id="todo" type="text/javascript">
+			{{each todoList $value index}}
+				<div class="todoList">
+					<span class="rhomb">
+						◆
+					</span>
+					<span class="todoTitle">
+						{{$value.title}}
+					</span>
+					<span class="todoFrom">
+						经办人：{{$value.people}} ｜ 来源系统：{{$value.appFrom}}
+					</span>
+					<span class="todoTime">
+						2021-12-11 14:02
+					</span>
+				</div>
+			{{/each}}
+		</script>
+		<script id="notice" type="text/javascript">
+			{{each noticeData  $value index}}
+				<div class="noticeItem">
+					<div class="circle">
+					</div>
+					<div class="noticeValue">
+						<div class="titleRight">
+							时间：{{$value.time}}
+						</div>
+						<div class="textRight">
+							{{$value.title}}
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</script>
+		<script id="centerModalBodyTable" type="text/javascript">
+			{{each centerData  $value index}}
+						<div class="tableItem">
+							<div class="modalTitleBox">
+								<div class="modalYuan"></div>
+								<span class="modalTitle">{{$value.title}}</span>
+							</div>
+							<div class="modalTitleTime">{{$value.time}}</div>
+						</div>
+			{{/each}}
+		</script>
+		
+		<script type="text/javascript">
+			function openDialog(){
+				$('#urlDialog').modal()
+			}
+			$('.close').click(function () {
+				$('#urlDialog').modal('hide')
+				$('#centerMoreDialog').modal('hide')
+			})
+			
+			// 中心
+			var centerType = 0
+			// 待办中心 已办中心 切换
+			function goCenter0(){
+				console.log('待办中心')
+				$('#titleSmallBoxItem0').addClass('titleSmallBoxItemThis')
+				$('#titleSmallBoxItem1').removeClass('titleSmallBoxItemThis')
+				createElementDBYB(0)
+			}
+			// 待办中心 已办中心 切换
+			function goCenter1(){
+				console.log('已办中心')
+				$('#titleSmallBoxItem0').removeClass('titleSmallBoxItemThis')
+				$('#titleSmallBoxItem1').addClass('titleSmallBoxItemThis')
+				createElementDBYB(1)
+			}
+			// 创建中心数据 mock
+			function createElementDBYB(type = 0){
+				centerType = type
+				$("#todoList").children().remove()
+				var todoList = []
+				switch(type){
+					// 待办
+					case 0:
+						todoList =[{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},]
+						break;
+					// 已办
+					case 1:
+						todoList =[{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},{
+							people:'刘俐俐',
+							appFrom:'协同办公',
+							title:'用印审批已完成（信息化建设项目10个子项技术协议，作为合同伴随服务）'
+						},]
+						break;
+						default:
+							break;
+				}
+				var html=template('todo',{todoList:todoList});
+				document.querySelector('#todoList').innerHTML=html
+			}
+			// 获取中心数据
+			// type 0待办中心  1已办中心
+			// pageSize 每页条数 10
+			// pageNum 页数 1
+			// isNeedOpen 是否需要打开弹框 false
+			let centerTotal = 0
+			let centerPageSize = 10
+			let centerPageNum = 1
+			let centerIsNeedOpen = true
+			// 请求中心弹框的接口方法
+			function getCenterData(type=0,pageSize=10,pageNum=1,isNeedOpen){
+				// mock数据
+				let centerData = []
+				setTimeout(()=>{
+					total = 200
+					for (let i = 0;i<pageSize;i++){
+						centerData.push({
+							title:'风雨同舟共前行 和衷共济抗疫情'+i+type,
+							time:'2022-05-14'
+						})
+					}
+					centerTotal = total
+					centerPageSize = pageSize
+					centerPageNum = pageNum
+					centerType = type
+					centerIsNeedOpen = isNeedOpen
+					createPagination(total,pageNum,pageSize)
+					var html=template('centerModalBodyTable',{centerData:centerData});
+					document.querySelector('#centerModalBody').innerHTML=html
+					if(isNeedOpen){
+						$('#centerMoreDialog').modal()
+					}
+				},100)
+			}
+			// 翻页
+			function changePageNum(e) {
+				let node = e.target
+				let haveDisabled = e.target.parentNode.dataset.disabled
+				if(haveDisabled) return false
+				if (node.innerHTML === '下一页') {
+					centerPageNum++
+				} else if (node.innerHTML === '上一页') {
+					centerPageNum--
+				} else if (node.innerHTML === '...') {
+					if(e.target.dataset.direction === 'right'){
+						if(centerPageNum<5){
+							centerPageNum = 6
+						}else{
+							centerPageNum += 2
+						}
+					}else if(e.target.dataset.direction === 'left'){
+						centerPageNum -= 2
+					}
+				}  else {
+					centerPageNum = parseInt(node.innerHTML)
+				}
+				getCenterData(centerType,centerPageSize,centerPageNum,false)
+
+			}
+			// 每页条数
+			function changePageSize(e){
+				let selectValue = $("#selectPageSize").val()
+				if(selectValue != centerPageSize){
+					centerPageSize = selectValue;
+					centerPageNum = 1;
+					getCenterData(centerType,centerPageSize,centerPageNum,false)
+				}
+			}
+			// 跳页
+			function jumpPage(){
+				if($(".inputNumber").val()){
+					if(Number.parseInt($(".inputNumber").val())>allPageNum){
+						// 超过总页码，不能执行
+						return false
+					}
+					centerPageNum = Number.parseInt($(".inputNumber").val())
+					getCenterData(centerType,centerPageSize,centerPageNum,false)
+				}
+			}
+			// 打开中心更多弹框
+			function goMoreDialog(){
+				console.log('打开弹框', '=====')
+				$(".inputNumber").val('')
+				$(".selectPageSize").val('10')
+				centerTotal = 0
+				centerPageSize = 10
+				centerPageNum = 1
+				centerIsNeedOpen = true
+				getCenterData(centerType,centerPageSize,centerPageNum,true)
+			}
+			// 弹框搜索
+			// 默认待办中心
+			createElementDBYB(0)
+			var noticeData=[{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},{time:'2021年05月31日  18:40',title:'关于xxxxxx最新发布的三期总体设计'},]
+			// var html2=template('notice',{noticeData:noticeData});
+			// document.querySelector('#noticeBox').innerHTML=html2;
+		</script>
+		<script type="text/javascript">
+			var data = [{
+					"importUnitId": "1",
+					"importUnitName": "微信应用配置1",
+					"flag": false,
+	
+			}, {
+					"importUnitId": "2",
+					"importUnitName": "微信应用配置2",
+					"flag": false,
+			}, {
+					"importUnitId": "3",
+					"importUnitName": "微信应用配置3",
+					"flag": false,
+			}, {
+					"importUnitId": "4",
+					"importUnitName": "微信应用配置4",
+					"flag": false,
+			}, {
+					"importUnitId": "5",
+					"importUnitName": "微信应用配置5",
+					"flag": false,
+			}, {
+					"importUnitId": "6",
+					"importUnitName": "微信应用配置6",
+					"flag": false,
+			}, {
+					"importUnitId": "7",
+					"importUnitName": "微信应用配置7",
+					"flag": false,
+			}, {
+					"importUnitId": "8",
+					"importUnitName": "微信应用配置8",
+					"flag": false,
+			}, {
+					"importUnitId": "9",
+					"importUnitName": "微信应用配置9",
+					"flag": false,
+			}]
+			var selectdData = [ {
+					"importUnitId": "10",
+					"importUnitName": "微信应用配置10",
+					"flag": false,
+			}, {
+					"importUnitId": "11",
+					"importUnitName": "微信应用配置11",
+					"flag": false,
+			}, {
+					"importUnitId": "12",
+					"importUnitName": "微信应用配置12",
+					"flag": false,
+			}, {
+					"importUnitId": "13",
+					"importUnitName": "微信应用配置13",
+					"flag": false,
+			}, {
+					"importUnitId": "14",
+					"importUnitName": "微信应用配置14",
+					"flag": false,
+			}, {
+					"importUnitId": "15",
+					"importUnitName": "微信应用配置15",
+					"flag": false,
+			}, {
+					"importUnitId": "16",
+					"importUnitName": "微信应用配置16",
+					"flag": false,
+			}, {
+					"importUnitId": "17",
+					"importUnitName": "微信应用配置17",
+					"flag": false,
+			}]
+	
+	
+			$('#transferContainer').transfer({
+					titles: ['可选链接', '已选链接'],
+					search: true,
+					uniqueId: "importUnitId", //唯一id
+					dataSource: data,
+					selectdataSource: selectdData,
+					maxSelect: 10,
+					diffKey: 'flag',
+					unselectColumns: [
+							{
+									align: "center",
+									formatter: function (value, row, index) {
+											return index + 1;
+									}
+							},
+							{
+									field: 'flag',
+									align: "center",
+									checkbox: true
+							}, {
+									field: 'importUnitName',
+									title: '可选链接'
+							}],
+					selectColumns: [
+							{
+									align: "center",
+									formatter: function (value, row, index) {
+											return index + 1;
+									}
+							}, {
+									field: 'flag',
+									checkbox: true
+							}, {
+									field: 'importUnitName',
+									title: '已选链接'
+							}]
+			});
+	
+			$('#btn').click(function () {
+					var data = $('#transferContainer').transfer('getData', 'selectData', 'importUnitId');
+					console.log(data)
+			})
+	
+			$('#refresh').click(function () {
+					$('#transferContainer').transfer('refresh', data)
+			})
+	</script>
+		<script src="./js/center.js"></script>
+	</body>
+</html>

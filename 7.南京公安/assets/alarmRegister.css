@@ -1,0 +1,171 @@
+body {
+	padding: 0 20px;
+}
+
+.layui-tab{
+	background:rgba(255,255,255,1);
+	border:1px solid rgba(219,227,235,1);
+	border-radius:4px;
+}
+.layui-tab-title{
+	display: table;
+	width: 100%;
+}
+.layui-tab-title img{
+	    width: 30px;
+	    vertical-align: middle;
+	    margin-right: 15px;
+	    margin-top: -5px;
+}
+.layui-tab-title li{
+	font-size:22px;
+	font-family:PingFang SC;
+	font-weight:bold;
+	color:rgba(33,55,85,1);
+	line-height:48px;
+	background:rgba(237,239,241,1);
+	margin-left: 2px;
+	display: table-cell;
+}
+.layui-nav{
+	background-color: #FFFFFF;
+}
+.layui-nav .layui-nav-item>a,.layui-nav .layui-nav-item>a:hover{
+	color: #A1A9B7;
+	font-size:22px;
+	line-height:58px;
+}
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
+	background-color: #f5872d;
+}
+.layui-nav .layui-this a,.layui-nav .layui-this a:hover{
+	color:#213755;
+}
+.infoList{
+	margin-top: 5px;
+}
+.infoList .layui-card{
+	border:1px solid #dbe3eb;
+}
+.layui-card-header{
+	font-size: 26px;
+	height: 65px;
+	line-height: 55px;
+	border-bottom: 1px solid #E3E5F7;
+	margin: 0 20px;
+	padding-left: 0;
+}
+.layui-card-header .iconfont{
+	font-size: 32px;
+	padding-right: 10px;
+}
+.btn-ul{
+	float: right;
+}
+.btn-ul li{
+	float: left;
+	font-size:14px;
+	font-family:PingFang SC;
+	font-weight:500;
+	color:#656565;
+	line-height:30px;
+	padding: 0 10px;
+	margin: 15px 5px;
+	border:1px solid #dbe3eb;
+	border-radius:3px;
+}
+.btn-ul li:last-child{
+	margin-right:0 ;
+}
+.btn-ul .iconfont{
+	font-size: 16px;
+	color: #919bab;
+}
+.layui-table thead{
+	background-color: #1369BF;
+}
+.layui-table th{
+	color: #FFFFFF;
+	font-size:16px;
+	text-align: center;
+}
+.layui-table td{
+	color: #333333;
+	text-align: center;
+}
+.layui-table .layui-badge{
+	border-radius:10px;
+	background-color: #277FE3;
+}
+.layui-colla-content, .layui-collapse{
+	background-color: #FFFFFF;
+}
+.layui-colla-item{
+	padding: 0 10px;
+}
+.layui-colla-title {
+	padding: 0;
+}
+.layui-colla-title .iconfont{
+	color: #154D87;
+	font-size: 22px;
+	margin-right: 10px;
+}
+.layui-colla-item .layui-show{
+	border-top: 1px solid #E3E5F7;
+}
+.layui-form-label{
+	padding: 0 0 0 10px;
+	text-align: left;width: auto;
+	line-height: 36px;
+	display: inline-block;
+}
+.layui-input-block{
+	float: left;
+}
+.layui-form-item{
+	border:1px solid rgba(211,215,221,1);
+}
+.layui-input{
+	border: none; 
+	height: 36px;
+	display: inline-block;
+}
+.inline-div{
+	white-space: nowrap;
+	    border: 1px solid #D3D7DD;
+	    overflow: hidden;
+}
+.inline-div .layui-input{
+	background-color: transparent;
+	 caret-color:#277FE3;
+}
+.layui-form .layui-this{
+	background-color: #F5F9FD;
+	border: 1px dotted #277FE3;
+}
+@media screen and (max-width: 1280px) {
+	.layui-tab-title li{
+		font-size: 18px;
+	}
+	.layui-nav .layui-nav-item>a, .layui-nav .layui-nav-item>a:hover{
+		font-size: 18px;
+	}
+	.layui-card-header{
+		font-size: 22px;
+	}
+}
+
+@media screen and (max-width: 1366px){
+	.layui-card-header{
+		padding: 0;
+	}
+}
+@media screen and (min-width: 1360px) and (max-width: 1366px) {
+	.layui-tab-title li,.layui-nav .layui-nav-item>a, .layui-nav .layui-nav-item>a:hover{
+		font-size: 18px;
+	}
+	.layui-card-header{
+		font-size: 20px;
+	}
+}

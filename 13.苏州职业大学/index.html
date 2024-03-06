@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<link rel="stylesheet" href="./assets/css/index.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<meta name="keywords" content="苏州职业大学" />
+		<meta name="description" content="苏州职业大学" />
+		<title>苏州职业大学</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="top-bg">
+				<img class="top-bg-img" src="assets/imgs/top.png" />
+				<p class="name">苏州职业大学绩效管理平台</p>
+				<div class="layui-header">
+					<!-- 头部区域（可配合layui已有的水平导航） -->
+					<div class="layui-logo"><a href="javascript:;"><img src="assets/imgs/logo1.png" alt="logo"></a></div>
+					<ul class="layui-nav">
+						<li class="layui-nav-item layui-this"><a href="#"><i class="iconfont icon-yuanxiao"></i>首页</a></li>
+						<li class="layui-nav-item">
+							<a href="javascript:;"><i class="iconfont icon-zhibiao"></i> 指标配置</a>
+						</li>
+						<li class="layui-nav-item"><a href="performance.html"><i class="iconfont icon-kaohe1"></i> 绩效考核</a></li>
+
+					</ul>
+					<ul class="layui-nav layui-layout-right">
+						<li>
+							<span class="img-span">
+								<img src="assets/imgs/user.png" class="layui-nav-img">
+							</span>
+
+						</li>
+						<li> <span>您好，张老师</span></li>
+						<li><a href="javascript:;" class="destroy">注销</a> </li>
+						<li><a href="javascript:;" class="userCenter">个人中心</a></li>
+
+					</ul>
+				</div>
+			</div>
+			<div class="layui-body">
+
+				<div class="layui-body-admin">
+					<div class="layui-card" style="height: 85%;">
+						<div class="layui-card-header">
+							<div class="layui-card-header-title">学校一张表</div>
+							<span class="layui-card-header-line"></span>
+						</div>
+						<div class="layui-card-body">
+							<div class="layui-row layui-col-space50 items-div" id="schoolDiv">
+
+
+							</div>
+						</div>
+					</div>
+					<div class="layui-card">
+						<div class="layui-card-header">
+							<div class="layui-card-header-title">学院(部)一张表</div>
+							<span class="layui-card-header-line"></span>
+						</div>
+						<div class="layui-card-body">
+							<div class="layui-row layui-col-space30 dept-div" id="deptDiv">
+
+							</div>
+						</div>
+					</div>
+					<div class="layui-card">
+						<div class="layui-card-header">
+							<div class="layui-card-header-title">管理机构及教辅单位一张表</div>
+							<span class="layui-card-header-line"></span>
+						</div>
+						<div class="layui-card-body">
+							<div class="layui-row layui-col-space50 guanli-div" id="guanliDiv">
+
+							</div>
+						</div>
+					</div>
+					<div class="layui-card">
+						<div class="layui-card-header">
+							<div class="layui-card-header-title">其他教学辅助单位一张表</div>
+							<span class="layui-card-header-line"></span>
+						</div>
+						<div class="layui-card-body">
+							<div class="layui-row layui-col-space50 guanli-div" id="qitaDiv">
+
+							</div>
+						</div>
+					</div>
+
+					<div class="layui-card geren-card" style="background: transparent;">
+						<div class="layui-card-header">
+							<div class="layui-card-header-title">个人一张表</div>
+							<span class="layui-card-header-line"></span>
+						</div>
+						<div class="layui-card-body">
+							<div class="layui-row  geren-div" id="gerenDiv">
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="qita"> -->
+
+				<!-- </div> -->
+				<div class="qita">
+
+				</div>
+				<div class="footer">
+					<span>
+						<img src="assets/imgs/footer_left.png" />
+					</span>
+					<span class="title">
+						版权信息：版权所有 COPYRIGHT © 2008 苏州市职业大学 苏ICP备06022957号 苏公网安备 32050602010546号
+					</span>
+					<span>
+						<img src="assets/imgs/footer-right.png" />
+					</span>
+				</div>
+			</div>
+
+		</div>
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+		</div>
+
+		<script src="./assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/js/template-web.js"></script>
+		<script id="school-template" type="text/html">
+			{{each list}}
+				<div class="layui-col-xs3">
+				<a href="javasxript:;">
+					<div class="layui-card" >
+						<div class="icon-div"><i class="iconfont {{$value.iconfont}}"></i></div>
+						<div class="name">
+							{{$value.name}}
+						</div>
+						
+					</div>
+					</a>
+				</div>
+			{{/each}}
+		</script>
+		<script id="dept-template" type="text/html">
+			{{each list}}
+				<div class="layui-col-xs3">
+				<a href="javasxript:;">
+					<div class="layui-card" >
+						<div class="icon-div"><img src="assets/imgs/{{$value.iconfont}}.png"/></div>
+						<div class="name">
+							{{$value.name}}
+							<span class="underline"></span>
+						</div>
+						
+					</div>
+					</a>
+				</div>
+			{{/each}}
+		</script>
+		<script id="guanli-template" type="text/html">
+			{{each list}}
+				<div class="layui-col-xs3">
+				<a href="javasxript:;">
+					<div class="layui-card" >
+						<div class="icon-div"><img src="assets/imgs/{{$value.iconfont}}.png"/></div>
+						<div class="name">
+							{{$value.name}}
+						</div>
+						
+					</div>
+					</a>
+				</div>
+			{{/each}}
+		</script>
+		<script id="geren-template" type="text/html">
+			{{each list}}
+				<div class="layui-col-xs3">
+				<a href="javasxript:;">
+					<div class="layui-card" >
+						<div class="icon-div {{$value.iconfont}}"></div>
+						<p class="name">
+							{{$value.name}}
+						</p>
+						
+					</div>
+					</a>
+				</div>
+			{{/each}}
+		</script>
+		<script>
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use('element', function() {
+				var element = layui.element;
+
+			});
+			$(function() {
+				// 学校一张表
+				school()
+				// 学院一张表
+				dept()
+				// 管理机构及教辅单位一张表
+				guanli()
+				// 其他教学辅助单位一张表
+				qita()
+				// 个人一张表
+				geren()
+			})
+
+			function school() {
+				var list = [{
+					name: '各学院各部门内涵质量建设目标责任书清单',
+					iconfont: 'icon-qingdan'
+				}, {
+					name: '各学院各部门内涵质量指标考核情况',
+					iconfont: 'icon-kaohe11'
+				}, {
+					name: '各学院(部)奖励性指标考核 情况',
+					iconfont: 'icon-jiangli'
+				}, {
+					name: '各管理机构及教辅单位奖励性指标考核情况',
+					iconfont: 'icon-biao'
+				}, {
+					name: '其他教学辅助单位奖励性指标考核情况',
+					iconfont: 'icon-jixiao'
+				}, {
+					name: '各学院各部门教师年度绩效考核情况',
+					iconfont: 'icon-diannaopcxianshiqi'
+				}, {
+					name: '有突出贡献的个人和集体情况',
+					iconfont: 'icon-gongxian'
+				}, {
+					name: '更多',
+					iconfont: 'icon-leimupinleifenleileibie'
+				}]
+				var html = template('school-template', {
+					list: list
+				})
+				$('#schoolDiv').append(html);
+			}
+
+			function dept() {
+				var deptList = [{
+					name: '本学院(部)内涵质量建设目标责任书',
+					iconfont: 'icon1'
+				}, {
+					name: '本学院(部)内涵质量指标考核情况',
+					iconfont: 'icon2'
+				}, {
+					name: '本学院(部)奖励性指标考核情况',
+					iconfont: 'icon3'
+				}, {
+					name: '本学院(部)教师年度绩效考核情况',
+					iconfont: 'icon4'
+				}]
+				var html = template('dept-template', {
+					list: deptList
+				})
+				$('#deptDiv').append(html);
+			}
+
+			function guanli() {
+				var guanliList = [{
+					name: '本单位内涵质量建设目标责任书',
+					iconfont: 'tu1'
+				}, {
+					name: '本单位内涵质量指标考核情况',
+					iconfont: 'tu2'
+				}, {
+					name: '本单位奖励性指标考核情况',
+					iconfont: 'tu3'
+				}, {
+					name: '本单位员工年度绩效考核情况',
+					iconfont: 'tu4'
+				}]
+				var html = template('guanli-template', {
+					list: guanliList
+				})
+				$('#guanliDiv').append(html);
+			}
+
+			function qita() {
+				var qitaList = [{
+					name: '本单位内涵质量建设目标责任书',
+					iconfont: 'tu1'
+				}, {
+					name: '本单位内涵质量指标考核情况',
+					iconfont: 'tu2'
+				}, {
+					name: '本单位奖励性指标考核情况',
+					iconfont: 'tu3'
+				}, {
+					name: '本单位员工年度绩效考核情况',
+					iconfont: 'tu4'
+				}]
+				var html = template('guanli-template', {
+					list: qitaList
+				})
+				$('#qitaDiv').append(html);
+			}
+
+			function geren() {
+				var gerenList = [{
+					name: '本单位内涵质量建设目标责任书',
+					iconfont: 'wei1'
+				}, {
+					name: '本单位内涵质量指标考核情况',
+					iconfont: 'wei2'
+				}, {
+					name: '本单位奖励性指标考核情况',
+					iconfont: 'wei3'
+				}, {
+					name: '本单位员工年度绩效考核情况',
+					iconfont: 'wei4'
+				}]
+				var html = template('geren-template', {
+					list: gerenList
+				})
+				$('#gerenDiv').append(html);
+			}
+
+			function open() {
+				alert("11")
+			}
+
+			function setIframeHeight(iframe) {
+				if (iframe) {
+					var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+					if (iframeWin.document.body) {
+						iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+
+
+					}
+				}
+			};
+		</script>
+	</body>
+
+</html>

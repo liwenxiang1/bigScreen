@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>首页</title>
+	<link rel="stylesheet" href="../css/reset/normalize.css">
+	<link rel="stylesheet" href="../js/plugin/layui/css/layui.css">
+	<link rel="stylesheet" href="../js/plugin/swiper3.4.2/swiper.min.css">
+	<link rel="stylesheet" href="../js/plugin/tooltipster-master/css/tooltipster.bundle.min.css">
+	<link rel="stylesheet" href="../js/plugin/tooltipster-master/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css">
+	<link rel="stylesheet" href="../css/home1.css">
+	<style>
+		#jobTypeLayer {
+			display: none;
+			padding: 20px;
+		}
+
+		.tooltipster-sidetip .tooltipster-box {
+			border-radius: 5px;
+			border: 0;
+			background: #fff;
+			color: #fff;
+		}
+
+		/* Use this next selector to style things like font-size and line-height: */
+		.tooltipster-sidetip .tooltipster-content {
+			padding: 0 !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="home">
+		<div class="container-l">
+			<!-- 左 S -->
+			<div class="container-m">
+				<a class="all-hide" href="javascript:;" onclick="allHide(this)">一键隐藏</a>
+				<div class="map"></div>
+				<!-- 辖区概况 -->
+				<div class="yui-card general">
+					<div class="yui-card-header">
+						<img src="../img/icon/icon10_1.png" width="16px" height="16px" alt="">辖区概况
+					</div>
+					<div class="yui-card-body">
+						<ul class="jurisdiction-basis">
+							<li class="tooltip" data-type="1" style="background: rgba(222, 207, 234, 1)">
+								<p style="color: #945FB9;">辖区面积（km²）</p>
+								<h2 style="color: #945FB9;">2.6</h2>
+							</li>
+							<li class="tooltip" data-type="2" style="background: rgba(255, 224, 199, 1)">
+								<p style="color: #FF9845;">实有人口（人）</p>
+								<h2 style="color: #FF9845;">128,600</h2>
+							</li>
+							<li class="tooltip" data-type="3" style="background: rgba(187, 222, 222, 1)">
+								<p style="color: #1E9493;">警力数（个）</p>
+								<h2 style="color: #1E9493;">60</h2>
+							</li>
+							<li class="tooltip" data-type="4" style="background: rgba(248, 208, 203, 1)">
+								<p style="color: #E86452;">实有单位（个）</p>
+								<h2 style="color: #E86452;">5,704</h2>
+							</li>
+							<li class="tooltip" data-type="5" style="background: rgba(252, 235, 185, 1)">
+								<p style="color: #F6BD16;">当年案件数（个）</p>
+								<h2 style="color: #F6BD16;">3,004</h2>
+							</li>
+							<li class="tooltip" data-type="6" style="background: rgba(205, 221, 253, 1)">
+								<p style="color: #5B8FF9;">当年警情数（个）</p>
+								<h2 style="color: #5B8FF9;">1,324</h2>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- 警务总览 / 警务对-案件队 -->
+				<div class="yui-card pandect">
+					<div class="yui-card-header">
+						<p><img src="../img/icon/icon13_1.png" width="16px" height="16px" alt="">警务总览</p>
+						<a class="btn-sw" href="javascript: ;"></a>
+					</div>
+					<div class="yui-card-body">
+						<div class="police-overview">
+							<div class="duty-information">
+								<p class="title">值班信息</p>
+								<div class="titles">
+									<p class="titles-l">分局领导/分局指挥室</p>
+									<p class="titles-r">指挥长/值班警长</p>
+								</div>
+								<ul class="working">
+									<li>
+										<div class="working-picture"><img src="../img/icon/working_picture.png" alt=""></div>
+										<p class="name">李晓明</p>
+										<p class="phone">13054548659</p>
+									</li>
+									<li>
+										<img class="working-picture" src="../img/icon/working_picture.png" alt="">
+										<p class="name">李晓明</p>
+										<p class="phone">13054548659</p>
+									</li>
+									<li>
+										<div class="working-picture"><img src="../img/icon/working_picture.png" alt=""></div>
+										<p class="name">李晓明</p>
+										<p class="phone">13054548659</p>
+									</li>
+									<li>
+										<img class="working-picture" src="../img/icon/working_picture.png" alt="">
+										<p class="name">李晓明</p>
+										<p class="phone">13054548659</p>
+									</li>
+								</ul>
+							</div>
+							<div class="troops">
+								<div class="titles">
+									<div class="name">
+										<a class="active" href="#">警务队</a>
+										<a href="#">案件队</a>
+									</div>
+									<div class="option">
+										<a href="javascript:;" onclick="troopsAdd(this)" class="troops-add" title="添加"></a>
+										<a href="javascript:;" onclick="troopsEdit(this)" class="troops-edit" title="编辑"></a>
+									</div>
+								</div>
+								<div class="troops-table">
+									<div class="container active">
+										<table class="layui-hide" id="troopsTable"></table>
+									</div>
+									<div class="container">
+										<table class="layui-hide" id="troopsTable1"></table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 勤务效能 -->
+				<div class="yui-card efficiency">
+					<div class="yui-card-header">
+						<img src="../img/icon/icon_28_1.png" width="16px" height="16px" alt="">勤务效能
+					</div>
+					<div class="yui-card-body">
+						<div id="efficiencyEchartsRadar"></div>
+					</div>
+				</div>
+				<!-- 警情分析 -->
+				<div class="yui-card police-analysis">
+					<div class="yui-card-header">
+						<img src="../img/icon/icon14_1.png" width="16px" height="16px" alt="">警情分析
+					</div>
+					<div class="yui-card-body">
+						<div id="policeAnalysisEchartsPie"></div>
+						<div id="policeAnalysisEchartsLine"></div>
+					</div>
+				</div>
+				<!-- 今日警情 -->
+				<div class="yui-card latest-alert">
+					<div class="yui-card-header">
+						<div class="title"><img src="../img/icon/icon15_1.png" width="16px" height="16px" alt="">今日警情</div>
+						<a class="more" href="#">更多</a>
+					</div>
+					<div class="yui-card-body">
+						<ul class="nav">
+							<li class="active" data-type="派出所">派出所</li>
+							<li data-type="警务站">警务站</li>
+							<li data-type="网格化">网格化</li>
+						</ul>
+						<div class="scroll">
+							<ul class="item list-aggregate" id="latestAlertData"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 左 E -->
+		</div>
+		<!-- 右 S -->
+		<div class="container-r">
+			<div class="container-r__t">
+				<!-- 赋值引领 -->
+				<div class="yui-card lead">
+					<div class="yui-card-header">
+						<div class="title"><img src="../img/icon/icon17_1.png" width="16px" height="16px" alt="">赋值引领</div>
+						<!-- <div class="btn">
+							<a class="add" href="#">新增</a>
+							<a class="more" href="#">更多</a>
+						</div> -->
+					</div>
+					<div class="yui-card-body">
+						<div id="leadEchartsPie"></div>
+					</div>
+				</div>
+			</div>
+			<div class="container-r__b">
+				<!-- 任务指令 -->
+				<div class="yui-card command">
+					<div class="yui-card-header">
+						<div class="title"><img src="../img/icon/icon16_1.png" width="16px" height="16px" alt="">任务指令</div>
+						<div class="state">
+							<div class="state-A onDutyTooltip" data-type="undo" data-color="#AD8FC9" data-title="未读">
+								<div class="icon"></div>
+								<p class="num">23</p>
+							</div>
+							<div class="state-C onDutyTooltip" data-type="unread" data-color="#78D17F" data-title="未处置">
+								<div class="icon"></div>
+								<p class="num">233</p>
+							</div>
+						</div>
+						<div class="btn" style="display:flex;align-items: center;">
+							<a class="type-select" href="javascript: jobType();"></a>
+							<a class="more" href="#">更多</a>
+						</div>
+					</div>
+					<div class="yui-card-body">
+						<div class="swiper-container duty-swiper" id="onDutyData">
+							<div class="swiper-wrapper">
+								<!-- 数据填充 -->
+							</div>
+							<!-- Add Pagination -->
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 右 E -->
+	</div>
+
+	<!-- 任务值守展示数据类型选择弹窗 -->
+	<div class="layui-form" id="jobTypeLayer">
+		<div class="layui-form-item">
+			<input type="checkbox" name="jobType.xzgw" title="行政公文" lay-skin="primary" checked>
+			<input type="checkbox" name="jobType.gzyj" title="感知预计" lay-skin="primary" checked>
+			<input type="checkbox" name="jobType.xzgw1" title="行政公文" lay-skin="primary" checked>
+			<input type="checkbox" name="jobType.xzgw2" title="行政公文" lay-skin="primary" checked>
+			<input type="checkbox" name="jobType.xzgw3" title="行政公文" lay-skin="primary" checked>
+			<input type="checkbox" name="jobType.xzgw4" title="行政公文" lay-skin="primary" checked>
+			<input type="checkbox" name="jobType.xzgw5" title="行政公文" lay-skin="primary" checked>
+		</div>
+		<div class="layui-form-item" style="text-align: center;margin-top: 20px;">
+			<button class="layui-btn" lay-submit lay-filter="jobTypeSubmitBtn">立即提交</button>
+			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		</div>
+	</div>
+</body>
+
+<!-- 警务队、案件队 —— 表格姓名图标展示 layui模板引擎 -->
+<script type="text/html" id="troopsFieldNameTpl">
+	{{# if (d.type === 1) { }}
+		<img src="../img/icon/police.png" style="height: 20px;margin-right: 10px;" />{{d.username}}
+	{{# } else { }}
+		<img src="../img/icon/auxiliary_police.png" style="height: 20px;margin-right: 10px;" />{{d.username}}
+	{{# } }}
+</script>
+
+<!-- 警务队、案件队 —— 操作按钮 layui模板引擎 -->
+<script type="text/html" id="troopsOptionTpl">
+	<a href="javascript:;" lay-event="edit">
+		<img width="14px" src="../img/icon/icon12.png" alt="">
+	</a>
+	<a href="javascript:;" lay-event="delete">
+		<img width="14px" src="../img/icon/icon_29.png" alt="">
+	</a>
+</script>
+
+<!-- 今日警情模板 template模板插件-->
+<script type="text/html" id="latestAlert-template">
+	{{each list}}
+		<li class="inner">
+			<p>{{$value.content}}</p>
+			<a href="#" class="{{$value.state ? 'enter' : ''}}">{{$value.state ? '已处理' : '未处理'}}</a>
+		</li>
+	{{/each}}
+</script>
+
+<!-- 任务指令 template模板插件-->
+<script type="text/html" id="onDuty-template">
+	{{each list}}
+		<div class="swiper-slide">
+			<ul class="item">
+				{{each $value lists}}
+					{{ if lists.hasOwnProperty('img') }}
+						<li class="inner__img {{lists.state === 0 ? 'unread' : lists.state === 1 ? 'read' : ''}}">
+							<p class="type">{{lists.type}}</p>
+							<img src="../img/icon/warning.jpg" alt="" class="img">
+							<div class="inner__img-r">
+								<div class="inner__img-r-t">
+									<p class="title">{{lists.content}}</p>
+								</div>
+								<div class="inner__img-r-c">
+									<p>{{lists.content}}</p>
+								</div>
+								<div class="inner__img-r-b">
+									<p class="time">{{lists.time}}</p>
+									<div class="btn">
+										<a class="task-issuance" href="#">任务处置</a>
+										<a class="detail" href="javascript: openModelPage({{lists.id}});">查看</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					{{else}}
+						<li class="inner {{lists.state === 0 ? 'unread' : lists.state === 1 ? 'read' : ''}}">
+							<p class="type">{{lists.type}}</p>
+							<div class="inner-container">
+								<p class="inner-l">{{lists.content}}</p>
+								<div class="inner-r">
+									<div class="inner-sub">
+										<span class="time">{{lists.time}}</span>
+										<p><span style="color: rgb(227, 194, 164">(发)</span>蔡丽蓉</p>
+									</div>
+									<div class="btn">
+										<a class="task-issuance" href="#">任务处置</a>
+										<a class="detail" href="javascript: openModelPage({{lists.id}});">查看</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					{{/if}}
+				{{/each}}
+			</ul>
+		</div>
+	{{/each}}
+</script>
+
+<script src="../js/jquery1.8.1.js"></script>
+<script src="../js/plugin/layui/layui.js"></script>
+<script src="../js/plugin/echarts/echarts.js"></script>
+<script src="../js/plugin/template-web.js"></script>
+<script src="../js/plugin/tooltipster-master/js/tooltipster.bundle.min.js"></script>
+<script src="../js/plugin/marquee/jquery.marquee.js"></script>
+<script src="../js/plugin/swiper3.4.2/swiper.min.js"></script>
+<script>
+	var dutySwiper;
+	var latestAlertSwiper;
+	$(function () {
+		// 获取当前浏览器类型，如果为chrome，则分别其版本，73版以外的chrome执行以下方法
+		var navigator = window.navigator;
+		var browser = navigator.userAgent
+		if (!browser.includes("Chrome/73")) {
+			$(".home .container-r__b .yui-card-body").css("height", "478px");
+		}
+		// 执行警务队、案件队表格数据加载
+		troopsTable();
+
+		// 执行勤务效能图表加载方法
+		efficiencyEcharts();
+
+		// 执行警情分析图表加载方法
+		policeAnalysisEcharts();
+
+		// 执行今日警情数据加载
+		latestAlert();
+
+		// 执行赋值引领图表加载方法
+		leadEcharts();
+
+		// 执行任务值守数据加载
+		onDuty();
+
+		// 辖区基础悬浮元素
+		// $.ajax({
+		// 	url: "",
+		// 	type: 'post',
+		// 	dataType: "json",
+		// 	data: {},
+		// 	success: function (res) {
+		var jurisdictionBasis = {
+			1: "<div class='title-style' style='border: 1px solid #945FB9;'>"
+				+ "<h4 style='border-bottom: 1px solid #945FB9;color: #945FB9;'>辖区面积</h4>"
+				+ "<p><span class='round-mark' style='background: #945FB9;'></span>警格</p>"
+				+ "<p><span class='round-mark' style='background: #945FB9;'></span>网格</p>"
+				+ "</div>",
+			2: "<div class='title-style' style='border: 1px solid #FF9845;'>"
+				+ "<h4 style='border-bottom: 1px solid #FF9845;color: #FF9845;'>实有人口</h4>"
+				+ "<p><span class='round-mark' style='background: #FF9845;'></span>常住</p>"
+				+ "<p><span class='round-mark' style='background: #FF9845;'></span>暂住</p>"
+				+ "<p><span class='round-mark' style='background: #FF9845;'></span>流动</p>"
+				+ "<p><span class='round-mark' style='background: #FF9845;'></span>重点人员</p>"
+				+ "</div>",
+			3: "<div class='title-style' style='border: 1px solid #1E9493;'>"
+				+ "<h4 style='border-bottom: 1px solid #1E9493;color: #1E9493;'>警力</h4>"
+				+ "<p><span class='round-mark' style='background: #1E9493;'></span>民警(两个队)</p>"
+				+ "<p><span class='round-mark' style='background: #1E9493;'></span>辅警</p>"
+				+ "</div>",
+			4: "<div class='title-style' style='border: 1px solid #E86452;'>"
+				+ "<h4 style='border-bottom: 1px solid #E86452;color: #E86452;'>实有单位</h4>"
+				+ "<p><span class='round-mark' style='background: #E86452;'></span>重点单位</p>"
+				+ "<p><span class='round-mark' style='background: #E86452;'></span>九小场所</p>"
+				+ "<p><span class='round-mark' style='background: #E86452;'></span>学校</p>"
+				+ "<p><span class='round-mark' style='background: #E86452;'></span>商圈</p>"
+				+ "<p><span class='round-mark' style='background: #E86452;'></span>反恐部位</p>"
+				+ "</div>",
+			5: "<div class='title-style' style='border: 1px solid #F6BD16;'>"
+				+ "<h4 style='border-bottom: 1px solid #F6BD16;color: #F6BD16;'>案件数</h4>"
+				+ "<p><span class='round-mark' style='background: #F6BD16;'></span>辖区治安案件</p>"
+				+ "<p><span class='round-mark' style='background: #F6BD16;'></span>刑事案件</p>"
+				+ "<p><span class='round-mark' style='background: #F6BD16;'></span>治安调解</p>"
+				+ "</div>",
+			6: "<div class='title-style' style='border: 1px solid #5B8FF9;'>"
+				+ "<h4 style='border-bottom: 1px solid #5B8FF9;color: #5B8FF9;'>警情数</h4>"
+				+ "<p><span class='round-mark' style='background: #5B8FF9;'></span>辖区总警情(日均)</p>"
+				+ "<p><span class='round-mark' style='background: #5B8FF9;'></span>警务站(日均)</p>"
+				+ "<p><span class='round-mark' style='background: #5B8FF9;'></span>派出所(日均)</p>"
+				+ "</div>"
+		}
+		// title鼠标悬浮显示插件
+		$(".tooltip").tooltipster({
+			animation: 'grow' //title显示时动画效果
+			, delay: 150	//title经过多少时间展示完成
+			, theme: 'tooltipster-shadow' //使用shadow主题，根据引入的link样式来决定
+			, interactive: false //title中文字是否可复制，true为可复制
+			, minWidth: 140 //title最大宽度
+			, maxWidth: 200
+			, contentAsHTML: true//titleHTML代码
+			, functionBefore: function (origin, continueTooltip) {
+				var $liElem = $(continueTooltip.origin)
+				var $liType = $liElem.data().type;
+				$('.tooltip').tooltipster('content', jurisdictionBasis[$liType])
+			}
+			, updateAnimation: false
+		});
+		// 	}
+		// })
+
+		// 警务总览—— 警务队、案件队
+		$(".pandect .name a[class!='btn-sw']").click(function () {
+			var index = $(this).index();
+			$(this).addClass("active").siblings().removeClass("active");
+			$(".pandect .troops").eq(index).addClass("active").siblings().removeClass("active");
+		})
+
+		// 警务总览 —— 显示警务队、案件队，隐藏勤务效能，相互
+		$(".pandect .btn-sw").click(function () {
+			var $efficiency = $(".efficiency");
+			var $pandect = $(".pandect");
+			var $troops = $(".troops");
+			if ($efficiency.is(":hidden")) {
+				$efficiency.fadeIn(200);
+				$pandect.animate({"height": "266px"}, 200);
+				$pandect.find(".btn-sw").removeClass("active");
+				$troops.fadeOut(200);
+			} else {
+				$efficiency.fadeOut(200);
+				$pandect.animate({"height": "540px"}, 200);
+				$troops.fadeIn(200);
+				$pandect.find(".btn-sw").addClass("active");
+			}
+		})
+
+		// 今日警情类别选择
+		$(".latest-alert .nav").on("click", "li", function () {
+			var type = $(this).data().type;
+			$(this).addClass("active").siblings().removeClass("active");
+			latestAlert(type);
+		})
+
+	})
+	// 一键显示、隐藏
+	function allHide (that) {
+		that.flag ? $(that).animate({"left": "346px"}).parent().find(".yui-card").fadeIn() : $(that).animate({"left": '48px'}).parent().find(".yui-card").fadeOut();
+		that.flag = !that.flag;
+	}
+
+	layui.use(['layer', 'form'], function () {
+		var layer = layui.layer,
+			form = layui.form;
+
+		var jonTypeLayerIndex = null;
+
+		window.openModelPage = function (id) {
+			layer.open({
+				type: 2,
+				title: "任务值守详情",
+				shade: .4,
+				shadeClose: true,
+				area: ["1000px", "500px"],
+				content: "formData.html"
+			})
+		}
+		// 任务值守数据类型选择弹窗
+		window.jobType = function () {
+			// jonTypeLayerIndex = layer.open({
+			// 	type: 1,
+			// 	title: "任务值守类型选择",
+			// 	shade: .4,
+			// 	shadeClose: false,
+			// 	area: ["360px", "250px"],
+			// 	content: $("#jobTypeLayer")
+			// })
+
+			layui.use('layer', function () {
+				var layer = layui.layer;
+				layer.alert('sdf', function (index) {
+					setOndutyFloat("../json/onDuty1.json");
+					layer.close(index)
+				})
+			})
+		}
+		// 任务值守数据类型选择数据提交
+		form.on('submit(jobTypeSubmitBtn)', function (data) {
+			console.log(data)
+			if (true) {
+				layer.close(jonTypeLayerIndex)
+			}
+		})
+	})
+
+	// 警务队、案件队表格
+	function troopsTable() {
+		// 警务队
+		layui.use('table', function () {
+			var table = layui.table;
+
+			table.render({
+				elem: '#troopsTable'
+				, url: '../json/troopsTable.json' //数据接口
+				, id: 'troopsTable'
+				, cellMinWidth: 80
+				, height: 198
+				, page: false //开启分页
+				, skin: 'line'
+				, cols: [[ //表头
+					{ field: 'username', title: '姓名', width: 90, align: 'center', templet: '#troopsFieldNameTpl' }
+					, { field: 'code', title: '警号', width: 65, align: 'center' }
+					, { field: 'phone', title: '联系方式', align: 'center' }
+					, { field: 'status', title: '状态', width: 40, align: 'center', templet: function (d) { return d.status ? '<span style="color: #FF9845;">在岗<span>' : '离线'} }
+					, { title: '通讯', align: 'center', hide: this.flag, width: 66, toolbar: '#troopsOptionTpl' }
+				]]
+			})
+			// 案件队
+			table.render({
+				elem: '#troopsTable1'
+				, url: '../json/troopsTable.json' //数据接口
+				, id: 'troopsTable1'
+				, cellMinWidth: 80
+				, height: 198
+				, page: false //开启分页
+				, skin: 'line'
+				, cols: [[ //表头
+					{ field: 'username', title: '姓名', width: 90, align: 'center', templet: '#troopsFieldNameTpl' }
+					, { field: 'code', title: '警号', width: 65, align: 'center' }
+					, { field: 'phone', title: '联系方式', align: 'center' }
+					, { field: 'status', title: '状态', width: 40, align: 'center', templet: function (d) { return d.status ? '<span style="color: #FF9845;">在岗<span>' : '离线'} }
+					, { title: '通讯', align: 'center', hide: this.flag, width: 66, toolbar: '#troopsOptionTpl' }
+				]]
+			})
+
+			// 警务队，案件队 (添加按钮)
+			window.troopsAdd = function (that) {
+				console.log(that)
+			};
+
+			// 警务队，案件队 (编辑按钮，针对警务队)
+			window.troopsEdit = function (that) {
+				table.reload('troopsTable', {
+					cols: [[ //表头
+						{ field: 'username', title: '姓名', width: 110, align: 'center', templet: '#troopsFieldNameTpl' }
+						, { field: 'code', title: '警号', align: 'center' }
+						, { field: 'phone', title: '联系方式', align: 'center' }
+						, { title: '操作', align: 'center', hide: this.flag, width: 120, toolbar: '#troopsOptionTpl' }
+					]]
+				})
+				this.flag = !this.flag;
+			}
+			// 警务队，案件队行按钮
+			table.on('tool(troopsTableFilter)', function (obj) {
+				console.log(obj)
+			})
+		})
+	}
+
+	// 勤务效能图表方法
+	function efficiencyEcharts() {
+		var myCharts = echarts.init(document.getElementById("efficiencyEchartsRadar"));
+		var i = -1;
+		var total = 0;
+		var arr = [60, 5, 0.30, -100, 1500, 200];
+		var option = {
+			radar: [
+				{
+					indicator: [
+						{ text: '窗口服务满意度', color: '#945FB9', max: 100 },
+						{ text: '接处警满意度', color: '#FF9947' },
+						{ text: '社会治安满意度', color: '#1E9493' },
+						{ text: '公安队伍满意度', color: '#E86452' },
+						{ text: '案件类型', color: '#6092F9' },
+						{ text: '社区民警满意度', color: '#F6BD16' }
+					],
+					center: ['50%', '50%'],
+					radius: 90,
+					startAngle: 120,
+					splitNumber: 4,
+					name: {
+						formatter: function (a,b) {
+							i++;
+							if (!total) {
+								arr.forEach(function (v) {
+									total += parseFloat(v);
+								})
+							}
+							var d = (parseFloat(arr[i]) / total).toFixed(2)*100
+							var str = a + '\n' + d + '%';
+							return str
+						}
+					},
+					splitArea: {
+						areaStyle: {
+							color: 'rgba(255, 255, 255, 0)'
+						}
+					},
+					axisLine: {
+						lineStyle: {
+							color: 'rgba(255, 255, 255, 0.5)'
+						}
+					},
+					splitLine: {
+						lineStyle: {
+							color: 'rgba(255, 255, 255, 0.5)'
+						}
+					}
+				}
+			],
+			series: [
+				{
+					type: 'radar',
+					symbol: "rect",
+					emphasis: {
+						lineStyle: {
+							width: 4
+						}
+					},
+					itemStyle: {
+						color: '#FF9845'
+					},
+					data: [
+						{
+							value: arr,
+							areaStyle: {
+								color: 'rgba(91, 143, 249, 0.65)'
+							},
+							lineStyle: {
+									color:"rgba(91, 143, 249, 1)" // 图表中各个图区域的边框线颜色
+							},
+						}
+					]
+				}
+			]
+		}
+		myCharts.setOption(option);
+	}
+
+	// 警情分析图表方法
+	function policeAnalysisEcharts() {
+		var myChart1 = echarts.init(document.getElementById("policeAnalysisEchartsPie"));
+		var myChart2 = echarts.init(document.getElementById("policeAnalysisEchartsLine"));
+		var option1 = {
+			title: {
+				text: '饼图名称',
+				x: "center",
+				bottom: '5',
+				textStyle: {
+					color: 'rgba(255, 255, 255, .89)',
+					fontSize: 14
+				}
+			},
+			tooltip: {
+				trigger: 'item',
+				position: 'right',
+				formatter: '{a} <br/>{b} : {c} ({d}%)'
+			},
+			legend: {
+				orient: 'horizontal',
+				bottom: '30',
+				itemWidth: 6,
+				itemHeight: 6,
+				itemGap: 10,
+				textStyle: {
+					fontSize: 12,
+					color: 'rgba(255, 255, 255, .79)'
+				},
+				data: ['刑事警情', '纠纷', '举报投诉', '其他警情', '行政(治安)警情', '群众求助']
+			},
+			series: [
+				{
+					name: '警情分析',
+					type: 'pie',
+					radius: '50%',
+					center: ['50%', '25%'],
+					labelLine: {
+						normal: {
+							show: true
+						}
+					},
+					label: {
+						normal: {
+							show: false
+						}
+					},
+					data: [
+						{ value: 335, name: '刑事警情', itemStyle: { color: '#7CCEEE' } },
+						{ value: 310, name: '纠纷', itemStyle: { color: '#6495FA' } },
+						{ value: 234, name: '举报投诉', itemStyle: { color: '#9F6FC1' } },
+						{ value: 135, name: '其他警情', itemStyle: { color: '#8B008B' } },
+						{ value: 130, name: '行政(治安)警情', itemStyle: { color: '#00FFFF' } },
+						{ value: 140, name: '群众求助', itemStyle: { color: '#00FF7F' } },
+					],
+					emphasis: {
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}
+			]
+		};
+		var options2Color79 = 'rgba(255, 255, 255, .79)';
+		var options2Color49 = 'rgba(255, 255, 255, .49)';
+		var option2 = {
+			title: {
+				text: '辖区警情柱状图',
+				x: "center",
+				bottom: '5',
+				textStyle: {
+					color: 'rgba(255, 255, 255, .89)',
+					fontSize: 14
+				}
+			},
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'shadow'
+				}
+			},
+			legend: {
+				top: 10,
+				x: 'center',
+				itemWidth: 8,
+				itemHeight: 8,
+				textStyle: {
+					color: options2Color79
+				},
+				data: ['昨日警情', '今日警情']
+			},
+			grid: {
+				top: '18%',
+				left: '20%',
+				right: 0,
+				bottom: '28%'
+			},
+			xAxis: {
+				type: 'category',
+				axisTick: {show: false},
+				axisLabel: {
+					color: options2Color79,
+					top: 10
+				},
+				axisLine: {
+					lineStyle: {
+						color: options2Color79
+					}
+				},
+				data: ['警务站1', '警务站2', '派出所']
+			},
+			yAxis: {
+				type: 'value',
+				max: 6000,
+				axisLabel: {
+					color: options2Color49,
+					formatter: function (value,index) {
+						var value;
+						if (value >= 1000) {
+							value = (value / 1000).toFixed(1) + 'k';
+						} else if (value < 1000) {
+							value = value;
+						}
+						return value
+					}
+				},
+				axisLine: {
+					show: false,
+				}
+			},
+			series: [
+				{
+					name: '昨日警情',
+					type: 'bar',
+					barWidth: 18,
+					barGap: 0,
+					data: [320, 3002, 301],
+					itemStyle: {
+						color: '#5B8FF9'
+					}
+				},
+				{
+					name: '今日警情',
+					type: 'bar',
+					barWidth: 18,
+					barGap: 0,
+					itemStyle: {
+						color: '#5AD8A6'
+					},
+					data: [220, 182, 191]
+				}
+			]
+		};
+		myChart1.setOption(option1)
+		myChart2.setOption(option2)
+	}
+
+	// 赋值引领
+	function leadEcharts () {
+		var myChart = echarts.init(document.getElementById("leadEchartsPie"));
+		var data = [
+						{value: 335, name: '工作质态引领', itemStyle: {color: '#6DC8EC'}},
+						{value: 310, name: '基础管控引领', itemStyle: {color: '#5FB974'}},
+						{value: 234, name: '打击破案引领', itemStyle: {color: '#1E9493'}},
+						{value: 135, name: '风险防控引领', itemStyle: {color: '#2D80F8'}},
+						{value: 154, name: '重点人员管控引领', itemStyle: {color: '#5AD8A6'}},
+						{value: 148, name: '巡防盘查引领', itemStyle: {color: '#6686C7'}},
+						{value: 548, name: '警情处置引领', itemStyle: {color: '#EBAE53'}}
+					];
+		var option = {
+			tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b}: {c} ({d}%)'
+			},
+			series: [
+				{
+					type: 'pie',
+					radius: ['40%', '60%'],
+					center: ['50%', '50%'],
+					data: data,
+					animation: false,
+					label: {
+						position: 'outer',
+						alignTo: 'labelLine',
+						bleedMargin: 5,
+						formatter: '{b} \n {d}%'
+					}
+				}
+			]
+		}
+		myChart.setOption(option);
+	}
+
+	// 今日警情
+	function latestAlert(type) {
+		var list = [
+			{ id: 1, content: '11月3日 12:30左右南京火车站附近发生追尾', state: 1, new: 0 },
+			{ id: 2, content: '11月3日 12:30左右南京火车站附近发生追尾', state: 1, new: 0 },
+			{ id: 3, content: '11月3日 12:30左右南京火车站附近发生追尾', state: 0, new: 0 },
+			{ id: 4, content: '11月5日 12:30左右南京火车站附近发生追尾', state: 0, new: 1 },
+			{ id: 5, content: '11月3日 12:30左右南京火车站附近发生追尾', state: 0, new: 0 },
+			{ id: 6, content: '11月3日 12:30左右南京火车站附近发生追尾', state: 0, new: 0 },
+			{ id: 7, content: '11月3日 12:30左右南京火车站附近发生追尾', state: 0, new: 0 },
+			{ id: 8, content: '11月3日 12:30左右南京火车站附近发生追尾', state: 0, new: 0 },
+			{ id: 9, content: '11月3日 12:30左右南京火车站附近发生追尾', state: 0, new: 0 }
+		]
+		var html = template("latestAlert-template", {
+			list: list
+		})
+		for (var i = 0;i < list.length; i++) {
+			if (list[i].new === 1) {
+				var aClass= list[i].state ? 'enter' : '';
+				var aText = list[i].state ? '已处理' : '未处理';
+				var str = '<div class="new" onclick="handleButtonlatestAlert('+ list[i].id +')">'
+										+'<p>'+ list[i].content + '</p>'
+										+'<a href="#" class="'+ aClass +'">'+ aText +'</a>'
+									+'</div>';
+				$(".latest-alert .nav").after(str)
+				break;
+			}
+		}
+		$("#latestAlertData").html(html);
+		latestAlertDataScroll();
+	}
+	// 今日警情滚动初始化
+	function latestAlertDataScroll () {
+		// 判断是否已加载过swiper，有则先销毁
+		console.log(latestAlertSwiper)
+		if (latestAlertSwiper) {
+			latestAlertSwiper.destroy()
+		}
+		// 初始化轮播控件
+		latestAlertSwiper = new Swiper('.latest-alert-swiper',{
+			direction: 'vertical',
+			autoplay: 2000,
+			loop: true,
+			slidesPerView: 3,
+			spaceBetween: 0,
+			speed: 1300
+		})
+	}
+
+	// 跳转最新警情详情页面
+	function handleButtonlatestAlert(id) {
+		location.href = "" + id;
+	}
+
+	// 任务指令
+	function onDuty() {
+		var list = [
+			{ id: 0001, content: '湖西街南湖新村12栋，王胜利办理居住', time: '2019-08-24 12:00:34', state: 1, type: '基控中心' },
+			{ id: 0002, content: '湖西街南湖新村12栋，王胜利办理居住', time: '2019-08-24 12:00:34', state: 1, type: '接警中心', img: '../img/icon/icon1.png' },
+			{ id: 0003, content: '湖西街南湖新村12栋，王胜利办理居住', time: '2019-08-24 12:00:34', state: 0, type: '情报中心', img: '../img/icon/icon1.png' },
+			{ id: 0004, content: '湖西街南湖新村12栋，王胜利办理居住', time: '2019-08-24 12:00:34', state: 2, type: '行政公文' },
+			{ id: 0005, content: '湖西街南湖新村12栋，王胜利办理居住', time: '2019-08-24 12:00:34', state: 0, type: '社区民警' },
+		]
+		// 执行一维转二维数组方法
+		var lists = group(list, 4);
+		var html = template("onDuty-template", {
+			list: lists
+		})
+		$("#onDutyData .swiper-wrapper").html(html);
+		// 初始化轮播控件
+		var swiper = new Swiper('.duty-swiper', {
+			pagination: '.swiper-pagination',
+			paginationClickable: true,
+			autoplay: 2000,
+			loop: true,
+			speed: 1300
+		});
+		// 已读，未读，未处置下类型数据
+		// var obj = [{jichu: 100, jiejian: 2}, {jichu: 1, jiejian: 3}, {jichu: 1, jiejian: 10}]
+		setOndutyFloat("../json/onDuty.json")
+	}
+
+	function setOndutyFloat(url) {
+		if ($(".onDutyTooltip").hasClass("tooltipstered")) {
+			$(".onDutyTooltip").tooltipster("destroy");
+		}
+		$.ajax({
+			url: url,
+			type: "get",
+			dataType: "json",
+			data: {},
+			success: function (text) {
+				// title鼠标悬浮显示插件
+				$(".onDutyTooltip").tooltipster({
+					animation: 'grow' //title显示时动画效果
+					, delay: 150	//title经过多少时间展示完成
+					, theme: 'tooltipster-shadow' //使用shadow主题，根据引入的link样式来决定
+					, interactive: false //title中文字是否可复制，true为可复制
+					, minWidth: 140 //title最大宽度
+					, maxWidth: 200
+					, position: 'bottom'
+					, contentAsHTML: true//titleHTML代码
+					, functionBefore: function (origin, continueTooltip) {
+						var $liElem = $(continueTooltip.origin)
+						var $liType = $liElem.data().type;
+						var $liColor = $liElem.data().color;
+						var $liTitle = $liElem.data().title;
+						var html = "";
+						var data = text[$liType];
+						$.each(data, function (i, v) {
+							html += '<p><span class="round-mark" style="background: ' + $liColor + '"></span>' + v.TASKNAME + '<span>(' + v.NUM + ')</span></p>'
+						})
+						var onDutyTitle = '<div class="title-style" style="border: 1px solid ' + $liColor + ';">'
+							+ '<h4 style="border-bottom: 1px solid ' + $liColor + ';color: ' + $liColor + ';">' + $liTitle + '</h4>'
+							+ html
+							+ '</div>';
+						$(".onDutyTooltip").tooltipster('content', onDutyTitle);
+					}
+					, updateAnimation: false
+				});
+			}
+		})
+	}
+
+	// 一维数组转二维数组，如后端数据已是要求的数据格式，这在上面数据格式转换处去除，该方法也可删除
+	function group(array, subGroupLength) {
+		var index = 0;
+		var newArray = [];
+		while (index < array.length) {
+			newArray.push(array.slice(index, index += subGroupLength));
+		}
+		return newArray;
+	}
+</script>
+
+</html>

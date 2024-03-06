@@ -1,0 +1,288 @@
+body {
+	padding: 0 20px;
+}
+
+.btn-ul {
+	float: right;
+}
+
+.btn-ul li {
+	float: left;
+	font-size: 14px;
+	font-family: PingFang SC;
+	font-weight: 500;
+	color: #656565;
+	line-height: 30px;
+	padding: 0 10px;
+	margin: 15px 5px;
+	border: 1px solid #dbe3eb;
+	border-radius: 3px;
+}
+
+.btn-ul li:last-child {
+	margin-right: 0;
+}
+
+.btn-ul .iconfont {
+	font-size: 16px;
+	color: #919bab;
+	margin-right: 5px;
+}
+
+.stop {
+	background-color: #C70000;
+	color: #FFFFFF !important;
+}
+
+.stop .iconfont,
+.place .iconfont {
+	color: #FFFFFF !important;
+}
+
+.place {
+	background-color: #1369BF;
+	color: #FFFFFF !important;
+}
+
+.layui-card-header {
+	height: 45px;
+	line-height: 45px;
+}
+
+.btn-ul li {
+	margin: 5px;
+}
+
+.layui-card {
+	background-color: transparent;
+}
+
+.layui-card-header {
+	background-color: #FFFFFF;
+	margin: 0;
+}
+
+.layui-card-body {
+	padding: 0;
+}
+
+.layui-nav .layui-nav-item>a,
+.layui-nav .layui-nav-item>a:hover {
+	color: #213755;
+}
+
+.layui-tab-title {
+	background-color: #FFFFFF;
+	padding-left: 20px;
+}
+
+.layui-tab-title li {
+	color: #213755;
+	font-size: 22px;
+}
+
+.layui-tab-title .layui-this:after {
+	border-bottom: 3px solid #FBA12D;
+}
+
+.search-content {
+	background-color: #FFFFFF;
+	padding: 20px;
+}
+
+.search-content-header span {
+	font-size: 20px;
+	font-family: PingFang SC;
+	color: #233757;
+}
+
+.search-content-header div {
+	float: right;
+}
+
+.submit-btn,
+.submit-btn:hover {
+	background-color: #FBA12D;
+	border-radius: 10px 0 0 10px;
+	border: none;
+	min-width: 120px;
+	color: #FFFFFF;
+}
+
+.map-btn,
+.map-btn:hover {
+	background-color: #1369BF;
+	color: #FFFFFF;
+	border-radius: 0 10px 10px 0;
+	height: 40px;
+	font-size: 18px;
+	min-width: 180px;
+	margin-left: -5px !important;
+	border: none;
+	min-width: 120px;
+}
+
+.btns .iconfont {
+	font-size: 18px;
+	margin-right: 5px;
+}
+
+.search-content-body {
+	background-color: #FFFFFF;
+	margin-top: 30px;
+}
+
+.layui-form-label {
+	padding: 0 0 0 10px;
+	text-align: left;
+	width: auto;
+	line-height: 36px;
+	display: inline-block;
+}
+
+.layui-input-block {
+	float: left;
+}
+
+.layui-form-item {
+	border: 1px solid rgba(211, 215, 221, 1);
+}
+
+.layui-input {
+	border: none;
+	height: 36px;
+	display: inline-block;
+}
+
+.inline-div {
+	white-space: nowrap;
+	border: 1px solid #D3D7DD;
+	overflow: hidden;
+}
+
+.inline-div .layui-input {
+	background-color: transparent;
+	caret-color: #277FE3;
+}
+
+.layui-form .layui-this {
+	background-color: #F5F9FD;
+	border: 1px dotted #277FE3;
+}
+
+.layui-form-checkbox[lay-skin=primary] span {
+	color: #333333;
+	font-size: 14px;
+	line-height: 35px;
+}
+
+.layui-form-checkbox[lay-skin=primary] i {
+	margin-top: 8px;
+	border-radius: 50%;
+}
+
+.time-div .layui-input {
+	width: 40%;
+}
+
+.layui-form-checkbox[lay-skin=primary]:hover i {
+	border-color: #277FE3;
+	color: #277FE3;
+}
+
+.list {
+	background-color: #FFFFFF;
+	margin-top: 15px;
+	padding: 15px;
+}
+
+.list-title {
+	font-size: 24px;
+	font-family: PingFang SC;
+	font-weight: 400;
+	color: #233757;
+	margin-bottom: 15px;
+}
+
+.layui-table thead {
+	background-color: #1369BF;
+}
+
+.layui-table th {
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.layui-table td {
+	text-align: center;
+}
+
+.layui-table td .iconfont {
+	font-size: 18px;
+}
+
+.layui-badge {
+	border-radius: 10px;
+}
+
+.laypage {
+	text-align: right;
+}
+
+.layui-laypage a,
+.layui-laypage button,
+.layui-laypage input,
+.layui-laypage select,
+.layui-laypage span {
+	border: none;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+	background-color: transparent;
+	border: 1px solid #DBE3EB;
+
+}
+
+.layui-laypage .layui-laypage-curr em {
+	color: #333333 !important;
+
+}
+
+.layui-laypage a:hover {
+	color: #1369BF !important;
+}
+
+.layui-laypage-count {
+	float: right;
+}
+
+.layui-laypage a,
+.layui-laypage span {
+	padding: 0 10px;
+	height: 25px;
+	line-height: 28px;
+	font-size: 14px;
+}
+
+.evenClass {
+	background-color: #EFF5FD;
+	border-radius: 20px;
+}
+@media screen and (max-width: 1366px) {
+	.layui-tab-title li{
+		font-size: 18px;
+	}
+	.layui-nav .layui-nav-item>a, .layui-nav .layui-nav-item>a:hover{
+		font-size: 18px;
+	}
+	.layui-card-header{
+		font-size: 22px;
+	}
+	.submit-btn,.map-btn, .map-btn:hover{
+		font-size: 16px;
+		min-width: 100px;
+	}
+	.list-title{
+		font-size: 20px;
+	}
+}

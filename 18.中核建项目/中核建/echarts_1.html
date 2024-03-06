@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>项目看板(产值分析)</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet">
+		<link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+		<style>
+			.ibox-title {
+				border: 0;
+				min-height: 40px;
+			}
+
+			.ibox-title h5 {
+				margin: 0;
+			}
+
+			.row>div {
+				padding: 3px;
+			}
+
+			.ibox {
+				margin-bottom: 0px;
+				border-radius: 3px;
+				overflow: hidden;
+			}
+
+			.wrapper-content {
+				padding: 3px 18px;
+			}
+
+			.ibox-content {
+				padding: 15px;
+			}
+
+			.box-item {
+				height: 101px;
+				background: #EF5350;
+				color: #eee;
+				padding: 20px;
+				border-radius: 3px;
+				position: relative;
+			}
+
+			.box-item+.box-item {
+				margin-top: 3px;
+			}
+
+			.box-item p {
+				margin: 0;
+			}
+
+			.box-item p>span {
+				font-size: 25px;
+				margin-right: 5px;
+			}
+
+			span.icon {
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				bottom: 5px;
+				right: 5px;
+				background-image: url(img/产值.png);
+				background-size: 100% 100%;
+			}
+		</style>
+	</head>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="ibox">
+						<div class="ibox-content" style="height: 311px;border: 0;padding: 0;background: #f3f3f4;">
+							<div class="box-item">
+								<p class="val"><span>139.33</span>千万</p>
+								<p class="tips">本期产值</p>
+								<span class="icon"></span>
+							</div>
+							<div class="box-item" style="background: #2196F3;">
+								<p class="val"><span>129.95</span>千万</p>
+								<p class="tips">本期预算</p>
+								<span class="icon"></span>
+							</div>
+							<div class="box-item" style="background: #607D8B;">
+								<p class="val"><span>41.93</span>%</p>
+								<p class="tips">本期完成率(平均值)</p>
+								<span class="icon"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>项目产值占比</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-1"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>每月产值占比</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-2"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>当月产值分析</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-3"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-7">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>项目累计产值分析</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-4"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>项目产值分析</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-5"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h5>产值趋势分析</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="echarts" id="echarts-6"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="js/plugins/echarts/echarts.min.js"></script>
+		<script>
+			var colors = ['#EF5350','#2196F3','#607D8B','#ffb74d','#4caf50','#009688','#673ab7'];
+			var obj = {
+				d1: {
+					vals: {
+						'项目1': 33.51,
+						'项目2': 31.47,
+						'项目3': 23.42,
+						'项目4': 13.54,
+						'项目5': 15.48
+					},
+					legend: [],
+					data: []
+				},
+				d2: {
+					vals: {},
+					legend: [],
+					data: [],
+					selected: {}
+				},
+				d3: {
+					vals: {
+						'项目1': 33.51,
+						'项目2': 31.47,
+						'项目3': 23.42,
+						'项目4': 13.54,
+						'项目5': 15.48,
+					},
+					legend: ['总费用'],
+					data: [],
+					data2: [0],
+					total: 0
+				},
+				d4: {
+					legend: ['本期累计产值','同期累计产值','本期累计完成率'],
+					xData: ['项目1','项目2','项目3','项目4','项目5'],
+					data1: [33.51,31.47,23.42,13.54,15.48],//本期累计
+					data2: [31.51,28.47,25.42,15.54,17.48],//同期累计
+					data3: [120,100,95,93,96],//累计完成率
+				},
+				d5: {
+					legend: ['本期产值','同期产值','上期产值','本期预算'],
+					xData: ['项目1','项目2','项目3','项目4','项目5'],
+					data1: [33.51,31.47,23.42,13.54,15.48],//本期累计
+					data2: [31.51,28.47,25.42,15.54,17.48],//同期累计
+					data3: [31.51,28.47,25.42,15.54,17.48],//上期产值
+					data4: [31.51,28.47,25.42,15.54,17.48],//本期预算
+				},
+				d6: {
+					legend: ['本期产值','同期产值','上期产值','周比'],
+					xData: ['项目1','项目2','项目3','项目4','项目5'],
+					data1: [33.51,31.47,23.42,13.54,15.48],//本期累计
+					data2: [31.51,28.47,25.42,15.54,17.48],//同期累计
+					data3: [33.51,31.47,23.42,13.54,15.48],//上期产值
+					data4: [120,98,80,114,103],//本期预算
+				}
+			}
+			$.each(obj.d1.vals, function(key, val) { //处理项目产值占比数据
+				obj.d1.legend.push(key);
+				obj.d1.data.push({
+					value: val,
+					name: key
+				});
+			});
+			for (var i = 1; i <= 12; i++) { //处理月产值占比数据
+				var val = Math.floor(Math.random() * 1600 + 700) / 100,
+					key = i + '月';
+				obj.d2.vals[key] = val;
+				obj.d2.legend.push(key);
+				obj.d2.data.push({
+					value: val,
+					name: key
+				});
+				obj.d2.selected[key] = i <= 5;
+			}
+
+			$.each(obj.d3.vals, function(key, val) {
+				obj.d3.total += val;
+			});
+			obj.d3.data.push(obj.d3.total);
+			$.each(obj.d3.vals, function(key, val) { //处理当月产值分析数据
+				obj.d3.legend.push(key);
+				obj.d3.data.push(val);
+				obj.d3.total -= val;
+				obj.d3.data2.push(obj.d3.total);
+			});
+
+			var options = [{ //产值占比
+				tooltip: {
+					trigger: 'item',
+					formatter: '{a} <br/>{b}: {c}千万 ({d}%)'
+				},
+				legend: {
+					orient: 'vertical',
+					right: 10,
+					top: 20,
+					bottom: 20,
+					data: obj.d1.legend,
+					formatter: function(a) {
+						return obj.d1.vals[a] + '千万 ' + a;
+					}
+				},
+				series: [{
+					name: '项目产值',
+					type: 'pie',
+					center: ['40%', '50%'],
+					radius: ['60%', '80%'],
+					avoidLabelOverlap: false,
+					label: {
+						show: false,
+						position: 'center'
+					},
+					emphasis: {
+						label: {
+							show: true,
+							fontSize: '30',
+							fontWeight: 'bold'
+						}
+					},
+					labelLine: {
+						show: false
+					},
+					data: obj.d1.data
+				}]
+			}, { //月产值占比
+				tooltip: {
+					trigger: 'item',
+					formatter: '{a} <br/>{b} : {c}千万 ({d}%)'
+				},
+				legend: {
+					type: 'scroll',
+					orient: 'vertical',
+					right: 10,
+					top: 20,
+					bottom: 20,
+					data: obj.d2.legend,
+					formatter: function(a) {
+						return obj.d2.vals[a] + '千万 ' + a;
+					},
+					selected: obj.d2.selected
+				},
+				series: [{
+					name: '月产值占比',
+					type: 'pie',
+					radius: '80%',
+					center: ['40%', '50%'],
+					data: obj.d2.data,
+					emphasis: {
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}]
+			}, {//当月产值分析
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					},
+					formatter: function(params) {
+						var tar = params[1];
+						return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value + '千万';
+					}
+				},
+				grid: {
+					left: '3%',
+					right: '3%',
+					bottom: '0%',
+					top: '12%',
+					containLabel: true
+				},
+				xAxis: {
+					type: 'category',
+					splitLine: {
+						show: false
+					},
+					data: obj.d3.legend
+				},
+				yAxis: {
+					type: 'value',
+					name: '单位:千万'
+				},
+				series: [{
+						name: '辅助',
+						type: 'bar',
+						stack: '总量',
+						itemStyle: {
+							barBorderColor: 'rgba(0,0,0,0)',
+							color: 'rgba(0,0,0,0)'
+						},
+						emphasis: {
+							itemStyle: {
+								barBorderColor: 'rgba(0,0,0,0)',
+								color: 'rgba(0,0,0,0)'
+							}
+						},
+						data: obj.d3.data2
+					},
+					{
+						name: '生活费',
+						type: 'bar',
+						stack: '总量',
+						label: {
+							show: true,
+							position: 'inside'
+						},
+						data: obj.d3.data
+					}
+				]
+			}, {//项目累计产值分析
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'cross'
+					}
+				},
+				grid: {
+					top: '12%',
+					left: '5%',
+					right: '5%',
+					bottom: '8%'
+				},
+				legend: {
+					data: obj.d4.legend
+				},
+				xAxis: [{
+					type: 'category',
+					axisTick: {
+						alignWithLabel: true
+					},
+					data: obj.d4.xData
+				}],
+				yAxis: [{
+						type: 'value',
+						name: '单位:千万',
+						position: 'left'
+					},
+					{
+						type: 'value',
+						name: '本期累计完成率',
+						position: 'right',
+						axisLabel: {
+							formatter: '{value} %'
+						},
+						splitLine: {
+							show: false
+						}
+					}
+				],
+				series: [{
+						name: '本期累计产值',
+						type: 'bar',
+						data: obj.d4.data1,
+						barWidth:40
+					},
+					{
+						name: '同期累计产值',
+						type: 'bar',
+						data: obj.d4.data2,
+						barWidth:40
+					},
+					{
+						name: '本期累计完成率',
+						type: 'line',
+						yAxisIndex: 1,
+						data: obj.d4.data3
+					}
+				]
+			},{//项目产值分析
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'cross'
+					}
+				},
+				grid: {
+					top: '12%',
+					left: '5%',
+					right: '5%',
+					bottom: '8%'
+				},
+				legend: {
+					data: obj.d5.legend
+				},
+				xAxis: [{
+					type: 'category',
+					axisTick: {
+						alignWithLabel: true
+					},
+					data: obj.d5.xData
+				}],
+				yAxis: [{
+						type: 'value',
+						name: '单位:千万',
+						position: 'left'
+					}
+				],
+				series: [{
+						name: '本期产值',
+						type: 'bar',
+						data: obj.d5.data1,
+						barWidth:30
+					},
+					{
+						name: '同期产值',
+						type: 'bar',
+						data: obj.d5.data2,
+						barWidth:30
+					},
+					{
+						name: '上期产值',
+						type: 'bar',
+						data: obj.d5.data3,
+						barWidth:30
+					},
+					{
+						name: '本期预算',
+						type: 'line',
+						data: obj.d5.data4
+					}
+				]
+			},{//项目趋势分析
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'cross'
+					}
+				},
+				grid: {
+					top: '12%',
+					left: '5%',
+					right: '5%',
+					bottom: '8%'
+				},
+				legend: {
+					data: obj.d6.legend
+				},
+				xAxis: [{
+					type: 'category',
+					axisTick: {
+						alignWithLabel: true
+					},
+					data: obj.d6.xData
+				}],
+				yAxis: [{
+						type: 'value',
+						name: '单位:千万',
+						position: 'left'
+					},
+					{
+						type: 'value',
+						name: '周比',
+						position: 'right',
+						axisLabel: {
+							formatter: '{value} %'
+						},
+						splitLine: {
+								show: false
+						}
+					}
+				],
+				series: [{
+						name: '本期产值',
+						type: 'bar',
+						data: obj.d6.data1,
+						barWidth:30
+					},
+					{
+						name: '同期产值',
+						type: 'line',
+						areaStyle: {},
+						data: obj.d6.data2,
+						barWidth:30
+					},
+					{
+						name: '上期产值',
+						type: 'line',
+						areaStyle: {},
+						data: obj.d6.data3,
+						barWidth:30
+					},
+					{
+						name: '周比',
+						type: 'line',
+						yAxisIndex: 1,
+						data: obj.d6.data4
+					}
+				]
+			}];
+
+			$.each(options, function(i, e) {
+				e.color = colors;
+				var index = i + 1;
+				var myChart = echarts.init(document.getElementById('echarts-' + index));
+				myChart.setOption(e);
+			});
+		</script>
+	</body>
+</html>

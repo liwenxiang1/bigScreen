@@ -1,0 +1,537 @@
+body {
+	padding: 0 20px;
+}
+
+.layui-card {
+	border: none;
+}
+
+.items {
+	background-color: #FFFFFF;
+	padding: 15px;
+	border-radius: 4px;
+	border: 2px solid #EFEFEF;
+}
+
+.item-div .left {
+	float: left;
+	padding: 10px 20px;
+	border-left: 2px dashed #D5D9DD;
+}
+
+.no-border {
+	border: none !important;
+}
+
+.item-div .right {
+	float: left;
+	padding: 0 20px;
+
+}
+
+.item-div .title {
+	font-size: 24px;
+	font-family: Microsoft YaHei;
+	font-weight: bold;
+	color: #1F1F1F;
+}
+
+.item-div .unit {
+	font-size: 16px;
+}
+
+.item-div .status {
+	font-size: 18px;
+	color: #A3A3A3;
+	line-height: 40px;
+}
+
+.card-div {
+	background-color: #FFFFFF;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.list-header {
+	text-align: right;
+}
+
+.layui-btn {
+	background: #1369BF;
+	border: 2px solid #1369BF;
+	border-radius: 4px;
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 35px;
+}
+
+.layui-btn .iconfont {
+	margin-right: 15px;
+}
+
+.green-btn {
+	background-color: #51CB87;
+	border: 2px solid #51CB87;
+}
+
+.yellow-btn {
+	background-color: #FBA12D;
+	border: 2px solid #FBA12D;
+}
+
+.layui-table th {
+	color: #1369BF;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.layui-table td {
+	font-size: 18px;
+}
+
+.layui-badge {
+	background-color: #FBA12D;
+}
+
+.licheng a {
+	border: 1px solid #1369BF;
+	color: #1369BF;
+	padding: 1px 5px;
+	height: 25px;
+	line-height: 25px;
+	border-radius: 50%;
+	margin-right: 5px;
+	behavior: url(PIE.htc);
+
+}
+
+.layui-table-view .layui-table td,
+.layui-table-view .layui-table th {
+	padding: 8px 0;
+}
+
+.evenClass {
+	background-color: #EFF5FD;
+	border-radius: 20px;
+}
+
+.operate-jie {
+	color: #FBA12D;
+	border: 1px solid #FBA12D;
+	padding: 3px;
+	border-radius: 4px;
+	behavior: url(PIE.htc);
+}
+
+.operate {
+	color: #1369BF;
+	border: 1px solid #1369BF;
+	padding: 3px;
+	border-radius: 4px;
+	behavior: url(PIE.htc);
+}
+
+ul,
+p {
+	list-style: none;
+	margin: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 0;
+}
+
+.map-area {
+	position: relative;
+	width: 100%;
+	height: 550px;
+	text-align: center;
+}
+
+.map-area #map-container {
+	height: 100%;
+	width: 100%;
+}
+
+.map-area .custom-tool {
+	display: inline-block;
+	position: absolute;
+	top: 10px;
+	left: calc(50% - 268px);
+	padding: 5px 0;
+	box-shadow: 0px 5px 5px 0px rgba(7, 7, 43, 0.09);
+	background-color: #fff;
+	border-radius: 3px;
+	z-index: 1;
+}
+
+.map-area .custom-tool li {
+	position: relative;
+	float: left;
+	padding: 0 14px;
+	line-height: 35px;
+	user-select: none;
+	cursor: pointer;
+	border-right: 1px dashed #D6D9DD;
+}
+
+.map-area .custom-tool li:nth-last-of-type(1) {
+	border-right: none;
+}
+
+/* .map-area .custom-tool li::before {
+        content: '';
+        width: 1px;
+        height: 100%;
+
+    } */
+.map-area .custom-tool li:hover span {
+	font-weight: 500;
+}
+
+.map-area .custom-tool li img {
+	display: inline-block;
+	vertical-align: middle;
+	height: 22px;
+}
+
+.map-area .custom-tool li span {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 3px;
+	font-size: 18px;
+	font-weight: 400;
+	color: #55596A;
+}
+
+.anchorBL {
+	display: none;
+}
+
+.btns {
+	position: absolute;
+	top: 40%;
+	background-color: #1369BF;
+	border-radius: 0px 10px 10px 0px;
+	padding: 10px 15px;
+
+}
+
+.btns .floatBtn {
+	width: 50px;
+	color: #FFFFFF;
+	width: 10px;
+	padding: 10px 0;
+	margin-top: 5px;
+
+}
+
+.locate-div {
+	padding: 10px 10px;
+	background: #d7e6f5;
+}
+
+.locate-div span {
+	color: #1369BF;
+	font-size: 16px;
+	font-size: 20px;
+}
+
+.locate-div .iconfont {
+	padding: 3px 10px;
+	font-size: 22px;
+	border-right: 1px solid #abc6e2;
+}
+
+.span-right {
+	float: right;
+}
+
+.span-right .iconfont {
+	color: #51CB87;
+	border: none;
+	font-size: 22px;
+}
+
+.span-right .status {
+	color: #FAA12D;
+}
+
+#codeDialog {
+	padding: 10px 15px 50px 15px;
+	position: relative;
+	display: none;
+	width: 330px;
+}
+
+.dialog-foot {
+	width: 100%;
+	margin-top: 40px;
+	text-align: center;
+}
+
+.dialog-foot .layui-btn {
+	height: 40px;
+	background: #3A88F7;
+	border-radius: 10px;
+	width: 96%;
+	border: none;
+}
+
+.gray-btn {
+	background-color: #A3A3A3;
+	border-color: #A3A3A3;
+}
+
+.item-card {
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+	border-radius: 6px;
+	padding: 0 15px;
+	margin-bottom: 15px;
+}
+
+.item-card .title {
+
+	font-size: 20px;
+	font-family: Microsoft YaHei;
+	font-weight: 400;
+	color: #171333;
+	line-height: 48px;
+}
+
+.item-card .num {
+
+	font-size: 14px;
+	font-family: Microsoft YaHei;
+	font-weight: 400;
+	color: #999999;
+	line-height: 48px;
+}
+
+.layui-text h1,
+.layui-text h2,
+.layui-text h3,
+.layui-timeline-item .layui-icon {
+	font-size: 14px;
+	font-family: Microsoft YaHei;
+	font-weight: 400;
+	color: #999999;
+}
+
+.layui-table-cell {
+	padding: 0;
+}
+
+.layui-this h1,
+.layui-this h2,
+.layui-this h3,
+.layui-this .layui-icon {
+	color: #FAA12D;
+}
+
+.layui-before h1,
+.layui-before h2,
+.layui-before h3,
+.layui-before .layui-icon {
+	color: #1369BF;
+}
+
+.layui-timeline-item:before {
+	left: 8px;
+	top: 16px;
+}
+
+.layui-timeline-item .layui-icon {
+	position: absolute;
+}
+
+.layui-timeline-title span {
+	min-width: 70px;
+	display: inline-block;
+}
+
+.layui-table th .layui-table-cell {
+	color: #1369BF;
+
+	font-size: 16px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.layui-table td {
+	text-align: center;
+}
+
+.table-item td {
+	text-align: left;
+}
+
+.table-item .layui-timeline {
+	padding-left: 15px;
+}
+
+.list-div {
+	height: 550px;
+}
+
+.layui-timeline-item {
+	padding-bottom: 15px;
+}
+
+.layui-timeline-title {
+	margin-bottom: 0;
+}
+
+.coslloge {
+	position: absolute;
+	top: 50%;
+	z-index: 99;
+	left: -30px;
+}
+
+.layui-layer-title {
+	background-color: rgba(57, 135, 247, 1) !important;
+	color: #FFFFFF !important;
+	font-size: 16px !important;
+}
+
+.layui-layer-ico {
+	background: url(image/guanbi.png) no-repeat !important;
+	background-size: 20px !important;
+}
+
+#codeDialog .layui-input {
+	height: 50px;
+	line-height: 50px;
+	border-width: 1px;
+	border-style: solid;
+	background-color: #fff;
+	border-radius: 2px;
+	border: none;
+	border-bottom: 1px solid #d2d2d2;
+	margin-top: 5px;
+	width: 90%;
+	display: inline-block;
+}
+#codeDialog .layui-form{
+	padding: 0 10px;
+}
+.form-item .iconfont {
+	font-size: 22px;
+	color: #ABABAB;
+}
+
+.login-title {
+	font-size: 28px;
+	font-weight: bold;
+	color: #3A88F7;
+}
+.operate-div {
+	text-align: right;
+	margin-bottom: 10px;
+	display: none;
+}
+.operate-div a{
+	margin-left: 10px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #3A88F7;
+}
+#selectUser{
+	padding: 15px;
+	display:none;
+}
+.change-title{
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: 400;
+	color: #080808;
+}
+.layui-layer-btn{
+	text-align: center !important;
+}
+.layui-layer-btn a{
+	background:#3A88F7 !important;
+	color: #ffffff !important;
+	width: 80px;
+}
+.layui-layer-btn-c .layui-layer-btn1{
+	background-color: #80b2f8 !important;
+}
+@media screen and (max-width: 1600px) {
+	.map-area .custom-tool li span {
+		font-size: 16px;
+	}
+
+	.item-div .title {
+		font-size: 20px;
+	}
+
+	.item-div .unit {
+		font-size: 14px;
+	}
+
+	.map-area,
+	.list-div {
+		height: 480px;
+	}
+
+	.locate-div span {
+		font-size: 16px;
+	}
+
+	.locate-div .iconfont {
+		font-size: 20px;
+	}
+
+	.layui-table td,
+	.layui-table th {
+		padding: 9px 0;
+		font-size: 14px;
+	}
+
+	.layui-table th {
+		font-size: 14px;
+	}
+
+	.licheng a {
+		border: 1px solid #1369BF;
+		color: #1369BF;
+		padding: 0px 3px;
+		border-radius: 50%;
+		margin-right: 0px;
+		behavior: url(PIE.htc);
+	}
+
+	.layui-badge {
+		font-size: 12px;
+	}
+
+	.operate,
+	.operate-jie {
+		padding: 1px;
+	}
+
+	.item-card .title {
+		font-size: 16px;
+	}
+}
+
+@media screen and (min-width: 1601px) and (min-width: 1680px) {
+
+	.layui-table th,
+	.layui-table td {
+		font-size: 15px;
+	}
+
+	.layui-tab-title li,
+	.layui-nav .layui-nav-item>a,
+	.layui-nav .layui-nav-item>a:hover {
+		font-size: 20px;
+	}
+
+	.layui-card-header {
+		font-size: 24px;
+	}
+}

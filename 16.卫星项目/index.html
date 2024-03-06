@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./css/normalize.css">
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./js/swiper/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/dateRange.css"/>
+		<title>北京卫星</title>
+		<style>
+			.swiper-container,
+        .swiper-wrapper,
+        .swiper-slide,
+        object,
+        embed {
+            width: 100%;
+            height: 100%;
+        }
+
+        .full-screen,
+        .exit-full-screen {
+            display: block;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            z-index: 9999;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .full-screen:hover,
+        .exit-full-screen:hover {
+            transform: scale(1.1);
+        }
+
+        .exit-full-screen {
+            display: none;
+        }
+    </style>
+	</head>
+
+	<body>
+		<div class="swiper-container">
+			<!-- <img src="./images/fullScreen.png" alt="" class="full-screen" onclick="fullScreen()">
+			<img src="./images/exitFullScreen.png" alt="" class="exit-full-screen" onclick="exitFullScreen()">
+			<div class="theme-select clearfix">
+				<span class="curr-theme-name"></span>
+				<img src="./images/expand-arrow.png" alt="">
+				<ul class="theme-list">
+					<li class="theme-item" theme="0">
+						<span class="color darken"></span>
+						<span class="theme-name">深蓝</span>
+					</li>
+					<li class="theme-item" theme="1">
+						<span class="color"></span>
+						<span class="theme-name">中蓝</span>
+					</li>
+					<li class="theme-item" theme="2">
+						<span class="color lighten"></span>
+						<span class="theme-name">浅蓝</span>
+					</li>
+				</ul>
+			</div> -->
+			<div class="theme-info theme-wrapper scale-wrapper">
+				<div id="loading">
+					<div class="loading_img">
+						<!-- 加载动画 -->
+						<img class="loading-ring-o" src="images/loading-ring-o.png">
+						<img class="loading-ring-i" src="images/loading-ring-i.png">
+					</div>
+				</div>
+				<div class="title-bar">
+					<p class="title-name">数据可视化大屏显示</p>
+					<span id="time">2021-12-06 ~ 2021-12-11</span>
+					<!-- <img class="config" src="" > -->
+					<div class="topBtnBox">
+						<div class="left-Btn btnChange activeBtn" id="main">
+							首页
+						</div>
+						<div class="left-Btn btnChange" id="people">
+							天基信息需求
+						</div>
+						<div class="left-Btn btnChange" id="moon">
+							天地测控数传
+						</div>
+						<!-- <div class="right-Btn btnChange" id="target">
+							目标信息
+						</div> -->
+						<div class="right-Btn btnChange" id="product">
+							任务规划方案
+						</div>
+						<div class="right-Btn btnChange" id="floor">
+							地面站
+						</div>
+					</div>
+					<!-- <div class="nav-btn">距离竣工还有 <span> 534 </span> 天</div> -->
+				</div>
+				
+				<!-- 首页 -->
+				<object >
+					<embed id="pageUrl" src="theme.html"></embed>
+				</object>
+				<!-- 完成率 -->
+				<!-- <object class="disNone">
+					<embed src="accRate.html"></embed>
+				</object> -->
+				<!-- 地面站 -->
+				<!-- <object class="disNone" src="place.html">
+					<embed src="place.html"></embed>
+				</object> -->
+				<!-- 产品 -->
+				<!-- <object class="disNone" src="product.html">
+					<embed src="product.html"></embed>
+				</object> -->
+				<!-- 卫星类型 -->
+				<!-- <object class="disNone" src="moonType.html">
+					<embed src="moonType.html"></embed>
+				</object>
+				<object class="disNone" src="moonInfo.html">
+					<embed src="moonInfo.html"></embed>
+				</object> -->
+			</div>
+		</div>
+		<script type="text/javascript" src="./js/dateRange.js"></script>
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/swiper/swiper.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				scalePage()
+				clearLoading()
+				// timeInit()
+				// $('.btnChange').click(function(){
+				// })
+				$('#main').on('click', function(e){
+					$(this).addClass("activeBtn").siblings().removeClass("activeBtn")
+						$("#pageUrl").attr("src","theme.html?time="+$("#time").text());
+				})
+				$('#people').on('click', function(e){
+					$(this).addClass("activeBtn").siblings().removeClass("activeBtn")
+						$("#pageUrl").attr("src","accRate.html?time="+$("#time").text());
+				})
+				$('#moon').on('click', function(e){
+					$(this).addClass("activeBtn").siblings().removeClass("activeBtn")
+						$("#pageUrl").attr("src","moonType.html?time="+$("#time").text());
+				})
+				$('#target').on('click', function(e){
+					$(this).addClass("activeBtn").siblings().removeClass("activeBtn")
+						$("#pageUrl").attr("src","moonInfo.html?time="+$("#time").text());
+				})
+				$('#product').on('click', function(e){
+					$(this).addClass("activeBtn").siblings().removeClass("activeBtn")
+						$("#pageUrl").attr("src","product.html?time="+$("#time").text());
+				})
+				$('#floor').on('click', function(e){
+					$(this).addClass("activeBtn").siblings().removeClass("activeBtn")
+						$("#pageUrl").attr("src","place.html?time="+$("#time").text());
+				})
+				var myDate = new Date();
+				var year = myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+				var month=myDate.getMonth()+1;       //获取当前月份(0-11,0代表1月)
+				var day = myDate.getDate()>9?myDate.getDate():'0'+myDate.getDate();//获取当前日(1-31)
+				var date=year+'-'+month+'-'+day
+				var dateRange1 = new pickerDateRange('time', {
+					stopToday : false,
+					isTodayValid : true,
+					startDate: '2015-11-05',
+					endDate: date,
+					needCompare : false,
+					defaultText : ' 至 ',
+					autoSubmit : false,
+					inputTrigger : 'input_trigger1',
+					theme : 'ta'
+				});
+				
+				const currTheme = localStorage.getItem('zhj_theme')
+				if (currTheme === '0') {
+					$('.curr-theme-name').text('主题：深蓝')
+				} else if (currTheme === '2') {
+					$('.curr-theme-name').text('主题：浅蓝')
+				} else {
+					$('.curr-theme-name').text('主题：中蓝')
+				}
+				$('.theme-list').on('click', '.theme-item', e => {
+					const theme = $(e.currentTarget).attr('theme')
+					localStorage.setItem('zhj_theme', theme)
+					location.reload()
+				})
+				
+				var mySwiper = new Swiper('.swiper-container', {
+					direction: 'horizontal', // 垂直切换选项
+					speed: 1000, // 切换速度
+					loop: true, // 循环模式选项
+					autoplay: {
+						delay: 3000 // 3秒切换一次
+					},
+					observer: true,
+					observeParents: true,
+					// 用户操作swiper之后，是否禁止autoplay
+					disableOnInteraction: false,
+					// 如果需要前进后退按钮
+					// navigation: {
+					//     nextEl: '.swiper-button-next',
+					//     prevEl: '.swiper-button-prev'
+					// }
+				})
+				// 监听全屏事件
+				window.onresize = function() {
+					var isFull = !!(document.webkitIsFullScreen || document.mozFullScreen ||
+						document.msFullscreenElement || document.fullscreenElement
+					); //!document.webkitIsFullScreen都为true。因此用!!
+					if (isFull == false) {
+						$('.exit-full-screen').css('display', 'none')
+						$('.full-screen').css('display', 'block')
+					} else {
+						$('.full-screen').css('display', 'none')
+						$('.exit-full-screen').css('display', 'block')
+					}
+				}
+			})
+			clearLoading = () => {
+				//删除加载动画
+				$('#loading').fadeOut(1000)
+				setTimeout(function() {
+					$('#loading').remove()
+				}, 1000);
+			}
+			scalePage = () => {
+				setScale = debounce(() => {
+					// 获取到缩放比，设置它
+					let scale = this.getScale()
+					$('.scale-wrapper').css({
+						'transform': 'scale(' + scale + ') translate(-50%, -50%)',
+						'-webkit-transform': 'scale(' + scale + ') translate(-50%, -50%)'
+					})
+				}, 200)
+				setScale()
+				window.addEventListener('resize', setScale)
+			}
+			timeInit = () => {
+				setInterval(() => {
+					let date = new Date()
+					$('#time').text(getFormatDate)
+				}, 1000);
+			}
+			getFormatDate = () => {
+				let nowDate = new Date();
+				let year = nowDate.getFullYear();
+				let month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+				let date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+				let hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+				let minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+				let second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+				return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+			}
+			getScale = () => {
+				// 固定好16:9的宽高比，计算出最合适的缩放比，宽高比可根据需要自行更改
+				const width = 1920
+				const height = 1080
+				let ww = window.innerWidth / width
+				let wh = window.innerHeight / height
+				return ww < wh ? ww : wh
+			}
+			// 防抖
+			debounce = (fun, delay) => {
+				let timer
+				return function() {
+					if (timer) {
+						clearTimeout(timer)
+					}
+					timer = setTimeout(fun, delay)
+				}
+			}
+			//全屏
+			function fullScreen() {
+				var element = document.documentElement;
+				if (element.requestFullscreen) {
+					element.requestFullscreen();
+				} else if (element.msRequestFullscreen) {
+					element.msRequestFullscreen();
+				} else if (element.mozRequestFullScreen) {
+					element.mozRequestFullScreen();
+				} else if (element.webkitRequestFullscreen) {
+					element.webkitRequestFullscreen();
+				}
+			}
+			//退出全屏 
+			function exitFullScreen() {
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+				} else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+				} else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				} else if (document.webkitExitFullscreen) {
+					document.webkitExitFullscreen();
+				}
+			}
+			
+		</script>
+	</body>
+
+</html>

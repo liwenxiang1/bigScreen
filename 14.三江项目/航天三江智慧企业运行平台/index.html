@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>航天三江智慧企业运行平台</title>
+	<link rel="stylesheet" href="layui/css/layui.css">
+	<link rel="stylesheet" type="text/css" href="./css/index.css" />
+</head>
+
+<body>
+	<div class="header">
+		<div class="title fl">
+			<img class="logo" src="img/logo.png">
+			&nbsp;&nbsp;航天三江智慧企业运行平台
+		</div>
+		<img class="fr fresh" src="img/pullDown.png">
+		<div class="fr name">张某某</div>
+		<img class="fr headImage" src="img/people.png">
+		<div class="fr line">丨</div>
+		<img class="fr fresh" src="img/edit.png">
+		<img class="fr home" src="img/question.png">
+		<img class="fr home" src="img/home.png">
+	</div>
+	<div class="layui-row">
+		<!-- <ul class="layui-nav layui-nav-tree" lay-filter="test"> -->
+		<img class="openIcon" src="img/close.png">
+		<ul id="slideMenu" class="layui-nav layui-nav-tree layui-nav-side">
+			<li class="layui-nav-item layui-nav-itemed">
+				<a href="javascript:;"><img class="menuIcon" src="img/synthesize.png">综合办公</a>
+				<dl class="layui-nav-child">
+					<dd><a href="javascript:;">公文管理</a></dd>
+					<dd><a href="javascript:;">督办管理</a></dd>
+					<dd><a href="javascript:;">决策事项管理</a></dd>
+					<dd><a href="javascript:;">邮件管理</a></dd>
+					<dd><a href="javascript:;">公商务管理</a></dd>
+					<dd><a href="javascript:;">委托授权</a></dd>
+					<!-- <dd><a href="">跳转</a></dd> -->
+				</dl>
+			</li>
+			<li class="layui-nav-item"><a href=""><img class="menuIcon" src="img/funds.png">财务经费</a></li>
+			<li class="layui-nav-item"><a href=""><img class="menuIcon" src="img/scientific.png">科研生产</a></li>
+			<li class="layui-nav-item"><a href=""><img class="menuIcon" src="img/quality.png">质量管控</a></li>
+			<li class="layui-nav-item"><a href=""><img class="menuIcon" src="img/guarantee.png">装备保障</a></li>
+			<li class="layui-nav-item"><a href=""><img class="menuIcon" src="img/attendance.png">人事考勤</a></li>
+			<li class="layui-nav-item"><a href=""><img class="menuIcon" src="img/secrecy.png">保密管理</a></li>
+			<li class="layui-nav-item"><a href=""><img class="menuIcon" src="img/knowledge.png">知识服务</a></li>
+			<li class="layui-nav-item"><a href=""><img class="menuIcon" src="img/branch.png">分院系统</a></li>
+		</ul>
+		<div class="rightBox">
+			<div class="layui-row iteml">
+				<div class="itemContent ">
+					<div class="itemTodo greyBg bluebg">
+						<div class="fl todoLeft bluebg">
+							<img class="allTodoIcon" src="img/public.png">
+						</div>
+						<div class="fl">
+							<div class="num blue">
+								14
+							</div>
+							<div class="todoText">
+								公文待办
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="itemContent ">
+					<div class="itemTodo greyBg pupbg">
+						<div class="fl todoLeft pupbg">
+							<img class="allTodoIcon" src="img/email.png">
+						</div>
+						<div class="fl">
+							<div class="num pup">
+								14
+							</div>
+							<div class="todoText">
+								邮件待办
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="itemContent ">
+					<div class="itemTodo greyBg yelbg">
+						<div class="fl todoLeft yelbg">
+							<img class="allTodoIcon" src="img/comprehensive.png">
+						</div>
+						<div class="fl">
+							<div class="num yel">
+								14
+							</div>
+							<div class="todoText">
+								综合待办
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="itemContent ">
+					<div class="itemTodo greyBg bluebg">
+						<div class="fl todoLeft bluebg">
+							<img class="allTodoIcon" src="img/finance.png">
+						</div>
+						<div class="fl">
+							<div class="num blue">
+								14
+							</div>
+							<div class="todoText">
+								财务待办
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="itemContent ">
+					<div class="itemTodo greyBg bluebg">
+						<div class="fl todoLeft bluebg">
+							<img class="allTodoIcon" src="img/attendance.png">
+						</div>
+						<div class="fl">
+							<div class="num blue">
+								14
+							</div>
+							<div class="todoText">
+								考勤管理
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="itemContent ">
+					<div class="itemTodo greyBg bluebg">
+						<div class="fl todoLeft bluebg">
+							<img class="allTodoIcon" src="img/procedure.png">
+						</div>
+						<div class="fl">
+							<div class="num blue">
+								14
+							</div>
+							<div class="todoText">
+								流程中心
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="itemContent ">
+					<div class="itemTodo greyBg bluebg">
+						<div class="fl todoLeft bluebg">
+							<img class="allTodoIcon" src="img/more.png">
+						</div>
+						<div class="fl">
+							<div class="todoText" style="height: 70px;line-height: 70px;margin: 0px 20px;">
+								更多...
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-row bottom  layui-col-space20 ">
+				<div class="layui-col-md6">
+					<div class="todo">
+						<div class="ove">
+							<div class="fl bigTitle">
+								<div class="bigTitle1">公文管理</div>
+								<div class="tipsTitle">待办<span class="layui-badge">9</span></div>
+								<div class="tipsTitle" style="color: #2254A9;">已办</div>
+							</div>
+							<!-- <div class="fr tag">
+														定制
+													</div>
+													<img class="tagIcon fr" src="img/tag.png"> -->
+							<i class="tagIcon layui-icon layui-icon-more fr"></i>
+						</div>
+						<div id="todoList" class="todoListBox">
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="layui-col-md6">
+					<div class="todo">
+						<div class="ove">
+							<div class="fl bigTitle">
+								<div class="bigTitle1">综合待办</div>
+								<div class="tipsTitle">待办<span class="layui-badge">9</span></div>
+								<div class="tipsTitle" style="color: #2254A9;">已办</div>
+							</div>
+							<!-- <div class="fr tag">
+														定制
+													</div>
+													<img class="tagIcon fr" src="img/tag.png"> -->
+							<i class="tagIcon layui-icon layui-icon-more fr"></i>
+						</div>
+						<div id="todoList" class="todoListBox">
+							<div class="todoList">
+								<span class="todoTitle">
+									<span style="color: #2254A9;">【人事】</span>最新组织级架构改变通知
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									<span style="color: #2254A9;">【人事】</span>最新组织级架构改变通知
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									<span style="color: #2254A9;">【人事】</span>最新组织级架构改变通知
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									<span style="color: #2254A9;">【人事】</span>最新组织级架构改变通知
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									<span style="color: #2254A9;">【人事】</span>最新组织级架构改变通知
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="layui-col-md6">
+					<div class="todo">
+						<div class="ove">
+							<div class="fl bigTitle">
+								<div class="bigTitle1">邮件管理</div>
+								<div class="tipsTitle">待办<span class="layui-badge">9</span></div>
+								<div class="tipsTitle" style="color: #2254A9;">已办</div>
+							</div>
+							<!-- <div class="fr tag">
+														定制
+													</div>
+													<img class="tagIcon fr" src="img/tag.png"> -->
+							<i class="tagIcon layui-icon layui-icon-more fr"></i>
+						</div>
+						<div id="todoList" class="todoListBox">
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="layui-col-md6">
+					<div class="todo">
+						<div class="ove">
+							<div class="fl bigTitle">
+								<div class="bigTitle1">财务待办</div>
+								<div class="tipsTitle">待办<span class="layui-badge">9</span></div>
+								<div class="tipsTitle" style="color: #2254A9;">已办</div>
+							</div>
+							<!-- <div class="fr tag">
+														定制
+													</div>
+													<img class="tagIcon fr" src="img/tag.png"> -->
+							<i class="tagIcon layui-icon layui-icon-more fr"></i>
+						</div>
+						<div id="todoList" class="todoListBox">
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="layui-col-md6">
+					<div class="todo">
+						<div class="ove">
+							<div class="fl bigTitle">
+								<div class="bigTitle1">保密待办</div>
+								<div class="tipsTitle">待办<span class="layui-badge">9</span></div>
+								<div class="tipsTitle" style="color: #2254A9;">已办</div>
+							</div>
+							<!-- <div class="fr tag">
+														定制
+													</div>
+													<img class="tagIcon fr" src="img/tag.png"> -->
+							<i class="tagIcon layui-icon layui-icon-more fr"></i>
+						</div>
+						<div id="todoList" class="todoListBox">
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+							<div class="todoList">
+								<span class="todoTitle">
+									拉阿拉绿绿啦啦啦绿啦绿啦啦
+								</span>
+								<span class="todoTime">
+									2021-12-11
+								</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="layui-col-md6">
+					<div class="todo">
+						<div class="ove">
+							<div class="fl bigTitle">
+								考勤管理
+							</div>
+							<!-- <div class="fr tag">
+														定制
+													</div>
+													<img class="tagIcon fr" src="img/tag.png"> -->
+							<i class="tagIcon layui-icon layui-icon-more fr"></i>
+						</div>
+						<div class="bar"></div>
+						<div id="todoList" class="todoListBox" style="height: 204px;overflow: auto;padding: 0px 30px;">
+							<table class="layui-table" lay-skin='line'>
+
+								<thead>
+									<tr>
+										<th>序号</th>
+										<th>工号</th>
+										<th>姓名</th>
+										<th>部门</th>
+										<th>打卡状态</th>
+										<th>打卡时间</th>
+									</tr>
+								</thead>
+								<tbody id="tableData">
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<script src="layui/layui.js"></script>
+			<script src="js/jquery.min.js"></script>
+			<script src="js/laydate.js"></script>
+			<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
+			<script id="table-template" type="text/html">
+				{{each list}}
+				<tr>
+					<td>{{$index + 1}}</td>
+					<td>{{$value.code}}</td>
+					<td>{{$value.name}}</td>
+					<td>{{$value.department}}</td>
+					<td>
+						<div class="state">正常</div>
+					</td>
+					<td>{{$value.time}}</td>
+				</tr>
+				{{/each}}
+			</script>
+			<script type="text/javascript">
+				$('.radiusBox').css({
+					width: $('.mt12').width() - 40 + 'px'
+				})
+				$('.rightBox').css({
+					width: document.documentElement.clientWidth - 235 + 'px'
+				})
+				$('.itemContent ').css({
+					margin: (document.documentElement.clientWidth - 235) * 0.02 / 14 + 'px'
+				})
+				$('#CalendarMain').css({
+					width: $('#Demo').width() - 50 + 'px'
+				})
+				$('.layui-col-space16').css({
+					width: $('#test1').width() - 120 + 'px'
+				})
+				$('.itemTodo').hover(function () {
+					$(this).removeClass('greyBg')
+				}, function () {
+					$(this).addClass('greyBg')
+
+				})
+				$('.openIcon').click(function () {
+					$('#slideMenu').animate({
+							width: '245px'
+						}),
+						$('.rightBox').animate({
+							width: document.documentElement.clientWidth - 235 + 'px',
+							position: 'absolute',
+							top: '100px',
+							left: '260px'
+						})
+					setTimeout(function () {
+						$('.layui-col-space16').css({
+							width: $('#test1').width() - 120 + 'px'
+						})
+						$('#CalendarMain').css({
+								width: $('#Demo').width() - 50 + 'px'
+							}),
+							$('.radiusBox').css({
+								width: $('.mt12').width() - 40 + 'px'
+							})
+						CalendarHandler.initialize()
+					}, 500)
+					$('.openIcon').toggle();
+				})
+
+				layui.use(['table'], function () {
+					var carousel = layui.carousel;
+					var table = layui.table;
+					$(function () {
+						initTableData()
+					})
+					// 我的待办
+					function initTableData() {
+						var list = [{
+							code: '12018',
+							name: '张碧晨',
+							time: '01-06 08：20',
+							department: '技术部',
+							status: '正常'
+						}, {
+							code: '12018',
+							name: '张碧晨',
+							time: '01-06 08：20',
+							department: '技术部',
+							status: '正常'
+						}, {
+							code: '12018',
+							name: '张碧晨',
+							time: '01-06 08：20',
+							department: '技术部',
+							status: '正常'
+						}, {
+							code: '12018',
+							name: '张碧晨',
+							time: '01-06 08：20',
+							department: '技术部',
+							status: '正常'
+						}, ]
+						var tableHtml = template('table-template', {
+							list: list
+						})
+						$('#tableData').append(tableHtml);
+					}
+
+					//建造实例
+					carousel.render({
+						elem: '#test1',
+						width: '100%' //设置容器宽度
+							,
+						height: '60px',
+						arrow: 'always' //始终显示箭头
+						//,anim: 'updown' //切换动画方式
+					});
+				});
+			</script>
+
+</body>
+
+</html>

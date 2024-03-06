@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="assets/layui/css/layui.css">
+		<link rel="stylesheet" href="./assets/css/normalize.css">
+		<link rel="stylesheet" href="assets/iconfont/iconfont.css">
+		<link rel="stylesheet" href="./assets/css/common.css">
+		<link rel="stylesheet" href="./assets/css/index.css">
+		<meta name="keywords" content="企业保密管理系统（网络版）" />
+		<meta name="description" content="企业保密管理系统（网络版）" />
+		<title>企业保密管理系统（网络版）</title>
+	</head>
+
+	<body>
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<!-- 头部区域（可配合layui已有的水平导航） -->
+				<div class="header-left">
+					<div class="name">企业保密管理系统（网络版）</div>
+					<div class="name-en">Enterprise confidentiality management system(network version)</div>
+				</div>
+				<ul class="layui-nav" lay-filter="">
+					<li class="layui-nav-item layui-this">
+						<a href="javascript:;" class="title-a"><i class="iconfont icon-anquantongji"></i>保密数据统计</a>
+						<dl class="layui-nav-child">
+							<dd class="li-dl show">
+								<a href="javascript:;">选项1</a>
+								<dl>
+									<dd><a href="javascript:;">二级</a></dd>
+								</dl>
+							</dd>
+							<dd class="li-dl">
+								<a href="javascript:;">选项2</a>
+								<dl>
+									<dd><a href="javascript:;">二级</a></dd>
+								</dl>
+							</dd>
+							<dd class="li-dl"><a href="javascript:;">选项3</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item "><a href="javascript:;"><i class="iconfont icon-zhengjiurichangkaohe"></i>保密日常管理</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><i class="iconfont icon-jiaoyu"></i>保密在线教育</a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><i class="iconfont icon-dailizizhizizhiqiyezizhi"></i>保密资质认定</a></li>
+				</ul>
+				<div class="userInfo">
+					<a href="javascript:;">顾向彤</a>
+					<a href="javascript:;"><i class="iconfont icon-shouyefill"></i></a>
+					<a href="javascript:;"><i class="iconfont icon-tuichu"></i></a>
+				</div>
+			</div>
+			<div class="layui-body">
+				<div class="layui-row">
+					<div class="layui-col-md9">
+						<div class="layui-row" style="height: 230px;">
+							<div class="layui-col-md4">
+								<div class="layui-card">
+									<div class="layui-card-header">基本信息<div class="line"></div>
+									</div>
+									<div class="layui-card-body">
+										<div style="display: flex;">
+											<div class="user-photo">
+												<img src="assets/imgs/user.jpg" width="120px" />
+											</div>
+											<div class="user-info">
+												<p>姓名:顾向彤</p>
+												<p>部门名称:保密部</p>
+												<p>涉密岗位:保密员</p>
+												<p>涉密等级:重要</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="layui-col-md4">
+								<div class="layui-card">
+									<div class="layui-card-header">待办理事项<i class="iconfont icon-gengduo"></i>
+										<div class="line"></div>
+									</div>
+									<div class="layui-card-body">
+										<div id='todoList' class="table-list"></div>
+									</div>
+								</div>
+							</div>
+							<div class="layui-col-md4">
+								<div class="layui-card">
+									<div class="layui-card-header">带审签流程<i class="iconfont icon-gengduo"></i>
+										<div class="line"></div>
+									</div>
+									<div class="layui-card-body">
+										<div id='toApprovList' class="table-list"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="layui-card" style="height: 300px;">
+							<div class="layui-card-header">我的待办<i class="iconfont icon-gengduo"></i>
+								<div class="line"></div>
+							</div>
+							<div class="layui-card-body">
+								<table class="layui-table" lay-skin='line'>
+
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>流程编号</th>
+											<th>流程名称</th>
+											<th>申请时间</th>
+											<th>审批节点</th>
+											<th>流程状态</th>
+										</tr>
+									</thead>
+									<tbody id="tableData">
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="layui-row" style="height: 250px;margin-top: 20px;">
+							<div class="layui-col-md4">
+								<div class="layui-card" style="height: 226px;">
+									<div class="layui-card-header">个人设备持有情况<div class="line"></div>
+									</div>
+									<div class="layui-card-body">
+										<div>
+											<div class="photo flex">
+												<i class="iconfont icon-icon-test"></i>
+												<div><span class="label">计算机总数（台）:</span><span class="num" style="color: #3F95E0;">10</span></div>
+											</div>
+											<div class="info flex">
+												<div><span class="label">台式机（台）:</span><span class="num" style="color: #F6C45A;">5</span></div>
+												<div><span class="label">便携机（台）:</span><span class="num" style="color: #6E68B8;">2</span></div>
+												<div><span class="label">服务器（台）:</span><span class="num" style="color: #41BBBC;">3</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="layui-col-md4">
+								<div class="layui-card">
+									<div class="layui-card-header">个人留存载体情况<div style="float: right;">载体总数<span style="color: #4778C7;font-weight: bold;padding: 0 5px;">10</span>个</div>
+										<div class="line"></div>
+									</div>
+									<div class="layui-card-body">
+										<div id="liucun" style="height: 140px;">
+										</div>
+										<div class="liucun-label flex">
+											<div style="color: #F6C45A;">秘密级：0</div>
+											<div style="color: #eb731e;">机密级：0</div>
+											<div style="color: #e11a10;">绝密级：0</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="layui-col-md4">
+								<div class="layui-card">
+									<div class="layui-card-header">保密教学时情况<div class="line"></div>
+									</div>
+									<div class="layui-card-body" id="baomi" style="height: 165px;">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layui-col-md3">
+						<div class="layui-card" style="height: 378px;">
+							<div class="layui-card-header">通知公告
+								<div class="line"></div>
+							</div>
+							<div class="layui-card-body">
+								<ul id='noticeList' class="notice-ul"></ul>
+							</div>
+						</div>
+						<div class="layui-card" style="height: 385px;margin-top: 15px;">
+							<div class="layui-card-header">保密学堂
+								<div class="line"></div>
+							</div>
+							<div class="layui-card-body">
+								<ul id='screatList' class="notice-ul"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-footer">
+					企业保密管理系统
+				</div>
+			</div>
+
+			<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+			<!--[if lt IE 9]>
+			  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+			  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+		</div>
+		<script src="./assets/js/jquery-3.2.1.min.js"></script>
+		<script src="assets/layui/layui.js"></script>
+		<script src="assets/js/template-web.js"></script>
+		<script src="assets/js/echarts.min.js"></script>
+		<script id="todo-template" type="text/html">
+			{{each list}}
+				  <p>
+						<span class="title" title='{{$value.title}}'>{{$value.title}}</span>
+						<span class="time">{{$value.time}}</span>
+					
+				  </p>
+			{{/each}}
+		</script>
+		<script id="table-template" type="text/html">
+			{{each list}}
+				<tr>
+					  <td>{{$index + 1}}</td>
+					  <td><a href="javascript:;">{{$value.code}}</a></td>
+					  <td title="{{$value.name}}"><a href="javascript:;">{{$value.name}}</a></td>
+					  <td>{{$value.time}}</td>
+					  <td>{{$value.node}}</td>
+					  <td>{{$value.status}}</td>
+				</tr>
+			{{/each}}
+		</script>
+		<script id="notice-template" type="text/html">
+			{{each list}}
+				<li title='{{$value}}'>{{$value}}</li>
+			{{/each}}
+		</script>
+		<script>
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use(['element', 'table', 'util'], function() {
+				var util = layui.util
+				var element = layui.element;
+				var table = layui.table;
+				$(function() {
+					initTodo()
+					initTableData()
+					initNotice()
+					initPie()
+					initBaoMi()
+					$('.li-dl').click(function() {
+						// 此处动态获取菜单，成功后下面代码，切换显示
+						$(this).siblings('dd').removeClass('show'); // 删除其他兄弟元素的样式
+						$(this).addClass('show');
+					})
+				})
+				// 待办事项和审签流程
+				function initTodo() {
+					var list = [{
+						title: '未执行涉密岗位调整审批表',
+						time: '2021-12-20'
+					}, {
+						title: '未执行涉密岗位调整审批表',
+						time: '2021-12-20'
+					}, {
+						title: '未执行涉密岗位调整审批表',
+						time: '2021-12-20'
+					}, {
+						title: '未执行涉密岗位调整审批表',
+						time: '2021-12-20'
+					}, {
+						title: '未执行涉密岗位调整审批表',
+						time: '2021-12-20'
+					}]
+					var html = template('todo-template', {
+						list: list
+					})
+					$('#todoList').append(html);
+					$('#toApprovList').append(html);
+				}
+				// 我的待办
+				function initTableData() {
+					var list = [{
+						code: 'JN63-2021-TMHF-101',
+						name: '未执行涉密岗位调整审批表',
+						time: '2021-12-20',
+						node: '结束',
+						status: '进行中'
+					}, {
+						code: 'JN63-2021-TMHF-102',
+						name: '未执行涉密岗位调整审批表',
+						time: '2021-12-20',
+						node: '结束',
+						status: '进行中'
+					}, {
+						code: 'JN63-2021-TMHF-103',
+						name: '未执行涉密岗位调整审批表',
+						time: '2021-12-20',
+						node: '结束',
+						status: '进行中'
+					}, {
+						code: 'JN63-2021-TMHF-104',
+						name: '未执行涉密岗位调整审批表',
+						time: '2021-12-20',
+						node: '结束',
+						status: '进行中'
+					}, {
+						code: 'JN63-2021-TMHF-105',
+						name: '未执行涉密岗位调整审批表',
+						time: '2021-12-20',
+						node: '结束',
+						status: '进行中'
+					}]
+					var tableHtml = template('table-template', {
+						list: list
+					})
+					$('#tableData').append(tableHtml);
+				}
+				// 通知公告和保密学堂
+				function initNotice() {
+					var list = [
+						'未执行涉密岗位调整审批表',
+						'未执行涉密岗位调整审批表',
+						'未执行涉密岗位调整审批表',
+						'未执行涉密岗位调整审批表',
+						'未执行涉密岗位调整审批表',
+						'未执行涉密岗位调整审批表',
+						'未执行涉密岗位调整审批表',
+					]
+					var noticeHtml = template('notice-template', {
+						list: list
+					})
+					$('#noticeList').append(noticeHtml);
+					$('#screatList').append(noticeHtml);
+
+				}
+				// 个人留存载体环形图
+				function initPie() {
+					var option = {
+						tooltip: {
+							formatter: function(param) {
+								return '<div style=" "> ' + param.name + "<br>" + param.value + "<br>"
+								'</div>';
+
+							}
+						},
+						legend: {
+							orient: 'vertical',
+							// left: 'right',
+							top: '10%',
+							right: '10%'
+						},
+						series: [{
+							name: 'Access From',
+							type: 'pie',
+							radius: ['50%', '70%'],
+							center: ['25%', '40%'], //距离左右，上下距离的百分比
+							avoidLabelOverlap: false,
+							label: {
+								show: false,
+								position: 'center'
+							},
+							labelLine: {
+								show: false
+							},
+							data: [{
+									value: 1048,
+									name: '纸截止'
+								},
+								{
+									value: 735,
+									name: '磁介质'
+								},
+								{
+									value: 580,
+									name: '光介质'
+								},
+								{
+									value: 484,
+									name: '电子文档'
+								}
+							]
+						}]
+					};
+					var myChart = echarts.init(document.getElementById('liucun'));
+
+					//使用制定的配置项和数据显示图表
+					myChart.setOption(option);
+				}
+				// 保密教学时情况
+				function initBaoMi() {
+					var optionM = {
+						grid: {
+							x: 30,
+							y: 30,
+							x2: 0,
+							y2: 20,
+							borderWidth: 1
+						},
+						xAxis: {
+							type: 'category',
+							data: ['应完成学时', '已完成学时', '未完成学时'],
+							axisLabel: {},
+							axisTick: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							}
+						},
+						yAxis: {
+							type: 'value',
+							axisTick: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: true,
+								lineStyle: {
+									type: 'dashed'
+								}
+							}
+						},
+						tooltip: {
+							formatter: function(param) {
+								return '<div style=" "> ' + param.name + "<br>" + param.value + "<br>"
+								'</div>';
+
+							}
+						},
+						series: [{
+							type: 'bar',
+							showBackground: true,
+							barWidth: 20,
+							itemStyle: {
+								color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#83bff6'
+									},
+									{
+										offset: 0.5,
+										color: '#188df0'
+									},
+									{
+										offset: 1,
+										color: '#188df0'
+									}
+								])
+							},
+
+							data: ['15', '6', '9']
+						}]
+					};
+					var myChartM = echarts.init(document.getElementById('baomi'));
+
+					//使用制定的配置项和数据显示图表
+					myChartM.setOption(optionM);
+				}
+			});
+		</script>
+
+	</body>
+
+</html>

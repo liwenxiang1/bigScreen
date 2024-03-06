@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>数据审核列表</title>
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link href="../css/animate.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../js/plugins/layer/default/layer.css">
+		<link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<link href="../css/common.css" rel="stylesheet">
+	</head>
+	<body >
+		<div class="container-fluid animated fadeInRight search-content">
+			<div class='panel panel-default' style="margin-bottom: 0;">
+				<form id='form1' class="container-fluid search-form">
+					<div class="form-group col-sm-4">
+						<div class="input-group">
+							<div class="input-group-addon">月报类型:</div>
+							<select class="form-control">
+								<option>请选择</option>
+								<option>主要经济指标月报</option>
+								<option>主要产出月报</option>
+								<option>增加值月报</option>
+								<option>能源消耗月报</option>
+								<option>新签合同月报</option>
+								<option>合同储备月报</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-4">
+						<div class="input-group">
+							<div class="input-group-addon">年度:</div>
+							<select class="form-control">
+								<option>请选择</option>
+								<option>2016年</option>
+								<option>2017年</option>
+								<option>2018年</option>
+								<option>2019年</option>
+								<option>2020年</option>
+								<option>2021年</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-4">
+						<div class="input-group">
+							<div class="input-group-addon">月份:</div>
+							<select class="form-control">
+								<option>请选择</option>
+								<option>1月</option>
+								<option>2月</option>
+								<option>3月</option>
+								<option>4月</option>
+								<option>5月</option>
+								<option>6月</option>
+								<option>7月</option>
+								<option>8月</option>
+								<option>9月</option>
+								<option>10月</option>
+								<option>11月</option>
+								<option>12月</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-4">
+						<div class="input-group">
+							<div class="input-group-addon">单位:</div>
+							<input class="form-control" placeholder="请输入单位" />
+						</div>
+					</div>
+					<div class="form-group col-sm-4">
+						<div class="input-group">
+							<div class="input-group-addon">填报进展:</div>
+							<select class="form-control">
+								<option>请选择</option>
+								<option>未报</option>
+								<option>填报中</option>
+								<option>已报</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-4">
+						<div class="input-group">
+							<div class="input-group-addon">审批状态:</div>
+							<select class="form-control">
+								<option>请选择</option>
+								<option>未报</option>
+								<option>填报中</option>
+								<option>已报</option>
+							</select>
+						</div>
+					</div>
+					<div class="btn-group">
+						<button type="button" onclick="search()" class="btn btn-default" title="查询">
+							<span class="glyphicon glyphicon-search"></span></button>
+						<button type="button" onclick="reset()" class="btn btn-default" title="重置">
+							<span class="glyphicon glyphicon-repeat"></span></button>
+					</div>
+				</form>
+			</div>
+			<div id="toolbar" class='btn-group'>
+				<button id="btn_add" onclick="edit()" type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>填报状态
+				</button>
+				<button onclick="exports()" type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+				</button>
+			</div>
+			<table id="table"
+				data-toggle="table"
+				data-toolbar="#toolbar" 
+				data-show-refresh="true"
+				data-show-columns="true"
+				data-show-export="true"
+				data-click-to-select="true"
+				data-export-types="['xlsx']"
+				data-pagination="true"
+				>
+				<thead>
+					<tr>
+						<th data-colspan="9" data-align="center"><h3 style="margin: 0;">2020年主要经济指标月报</h2></th>
+					</tr>
+					<tr>
+						<th data-formatter="thIndex" data-align="center" data-width="3%">序号</th>
+						<th data-field="type" data-align="center">月报类型</th>
+						<th data-field="unit" data-align="center">单位</th>
+						<th data-field="year" data-align="center" >年份</th>
+						<th data-field="month" data-align="center" >月份</th>
+						<th data-field="status" data-align="center" data-formatter="toM">操作</th>
+						<th data-field="ys" data-align="center" data-colors="已审批:#4CAF50,已退回:red,未审批:#9C27B0" data-formatter="thColors">审批状态</th>
+						<th data-field="user" data-align="center" >填报人</th>
+						<th data-field="date" data-align="center" >填报时间</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.5"></script>
+		<!-- <script src="js/content.min.js?v=1.0.0"></script> -->
+		<script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="../js/plugins/layer/layer.js"></script>
+		<script src="common.js"></script>
+		<script type="text/javascript">
+		var $table = $('#table');
+		var datas = [];
+		$(['主要经济指标月报','主要产出月报','增加值月报']).each(function(index,e){
+			for(var i=1;i<=4;i++){
+				datas.push({unit:'中核二三',year:2020,month:i+'月',type:e,status:index,ys:index==0?'未审批':(index==1?'已审批':'已退回'),user:'张三',date:'2020-0'+i+'-01'});
+			}
+		});
+		$(function(){
+			$table.bootstrapTable('load',datas);
+		});
+		function search(){//查询方法
+			$table.bootstrapTable('refresh');
+		}
+		function toM(val){
+			if(val == '1') return '<a href="javascript:edit2();">查看</a>';
+			if(val == '0') return '<a href="javascript:layer.msg(\'审批成功\');">审批</a> | <a style="color:red;" href="javascript:layer.msg(\'退回成功\');">退回</a>';
+			if(val == '2') return '';
+		}
+		function toS(val){
+			return '<a href="javascript:edit3();">查看</a>';
+		}
+		function edit(){//编辑方法(推荐)
+			layer.open({
+				type: 2,
+				title: '填报状态列表',
+				content: "table_1.3.1.html",
+				shadeClose: false,
+				area: ['90%', '90%'],
+				maxmin: true
+			});
+		}
+		function edit2(){//添加方法(推荐)
+			layer.open({
+				type: 2,
+				title: '数据填报',
+				content: "table_look_1.2.html",
+				shadeClose: false,
+				area: ['90%', '90%'],
+				maxmin: true
+			});
+		}
+		function edit3(){//添加方法(推荐)
+			layer.open({
+				type: 1,
+				title: '数据填报',
+				content: "<img src='img/lc-img.png'></img>",
+				shadeClose: false,
+				area: ['90%', '90%'],
+				maxmin: true
+			});
+		}
+		
+		function getSelections(){//获取所选行方法
+			return $table.bootstrapTable('getSelections');
+		}
+
+		function toDetail(val,row){
+			return '<a href="javascript:;" onclick="openDetail(this)">详情</a>';
+		}
+		
+		function openDetail(e){
+			var index = $(e).parents('tr').data('index');
+			var data = $table.bootstrapTable('getData')[index];
+			layer.open({
+				type: 2,
+				title: '员工信息详情',
+				content: contextPath+"/demo/testUserinfoForm.jsp",
+				shadeClose: false,
+				area: ['90%', '90%'],
+				maxmin: true,
+				success: function(layero, index) {//子页面加载完后执行
+					var iframeWin = window[layero.find('iframe')[0]['name']];//得到iframe页的窗口对象
+					iframeWin.setData(data,'read');//执行子页面写入数据方法
+				}
+			});
+		}
+		
+		function remove(){//删除方法
+			var selRows = getSelections();
+			if(selRows.length==0){sweetAlert("错误", "请先选择行","error");return;}
+			layer.confirm('删除所选项？', {
+				btn: ['删除','取消'] //按钮
+			}, function(){
+				$({datas:selRows}).post('com.primeton.demo.test.deleteTestUserinfos.biz.ext',function(h){
+					if(h.exception == null){
+						layer.msg('删除成功');
+						$table.bootstrapTable('refresh');
+					}else{
+						layer.msg('删除失败');
+					}
+				});
+			});
+		}
+		function exports(){
+			$('.export li[data-type=xlsx]').click();
+		}
+		</script>
+	</body>
+</html>

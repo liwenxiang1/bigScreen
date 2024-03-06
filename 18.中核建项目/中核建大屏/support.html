@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/support-info.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <title>中国核建股份-决策支持与运营管控系统</title>
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="support-info theme-wrapper scale-wrapper">
+        <div id="loading">
+            <div class="loading_img">
+                <!-- 加载动画 -->
+                <img class="loading-ring-o" src="images/loading-ring-o.png">
+                <img class="loading-ring-i" src="images/loading-ring-i.png">
+            </div>
+        </div>
+        <div class="title-bar">
+            <p class="title-name">中国核建股份-决策支持与运营管控系统</p>
+            <span id="time"></span>
+            <div class="nav-btn">运营管理平台</div>
+        </div>
+        <div class="content">
+            <div id="c-map"></div>
+            <div class="c-left">
+                <h2 class="item-title">风险提示</h2>
+                <div class="chart-item">
+                    <p class="item-subtitle">重点任务</p>
+                    <ul class="emphasis-task">
+                        <li><span>1.</span>请在下午两点赶往工地视察<div class="status-item"><span class="status danger">未完成</span>
+                            </div>
+                        </li>
+                        <li><span>2.</span>请在下午两点赶往工地视察<div class="status-item"><span class="status warning">滞后</span>
+                            </div>
+                        </li>
+                        <li><span>3.</span>请在下午两点赶往工地视察<div class="status-item"><span class="status warning">滞后</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chart-item">
+                    <p class="item-subtitle">主要进度</p>
+                    <div id="main-progress"></div>
+                </div>
+                <div class="chart-item">
+                    <p class="item-subtitle">子公司提醒 <span class="warning">（未完成）</span></p>
+                    <table class="child-company-table" border cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td>收入</td>
+                                <td>xx公司，xxx公司，xxxxx公司</td>
+                            </tr>
+                            <tr>
+                                <td>收入</td>
+                                <td>xx公司，xxx公司，xxxxx公司</td>
+                            </tr>
+                            <tr>
+                                <td>重点任务</td>
+                                <td>xx公司，xxx公司，xxxxx公司</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h2 class="item-title">资产状态</h2>
+                <div class="chart-item">
+                    <div id="assets-chart"></div>
+                </div>
+            </div>
+            <!-- <div class="c-center">
+                <div id="china-map"></div>
+            </div> -->
+            <div class="c-right">
+                <h2 class="item-title">业务结构</h2>
+                <div class="chart-item">
+                    <p class="item-subtitle">收入结构</p>
+                    <div id="income"></div>
+                </div>
+                <div class="chart-item" style="margin-top: 0">
+                    <p class="item-subtitle">绩效指标</p>
+                    <ul class="performance">
+                    </ul>
+                </div>
+                <div class="chart-item">
+                    <div id="pj-pie"></div>
+                    <p class="item-subtitle">新签合同</p>
+                    <div id="new-contract"></div>
+                </div>
+                <div class="chart-item" style="margin-top: 0">
+                    <p class="item-subtitle">合同储备</p>
+                    <div id="contract-reserve"></div>
+                </div>
+            </div>
+            <p class="c-total">项目总额：<span>243,236.00</span></p>
+            <div class="c-main-indicators clearfix">
+                <h2 class="item-title">主要指标执行情况</h2>
+                <ul class="main-indicators-list clearfix">
+                </ul>
+            </div>
+            <div class="c-bottom clearfix">
+                <div class="c-bottom-item bottom-pie1">
+                    <p class="item-subtitle">MKJ重点任务</p>
+                    <div id="mkj-pie"></div>
+                </div>
+                <div class="c-bottom-item bottom-pie2">
+                    <p class="item-subtitle">安全生产</p>
+                    <div id="safe-pie"></div>
+                </div>
+                <div class="c-bottom-item bottom-pie3">
+                    <p class="item-subtitle">集团高质量发展指标及约束指标</p>
+                    <div id="quota-pie"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/china.js"></script>
+    <script src="./js/global.js"></script>
+    <script type="text/javascript">
+        let cMapOption = null
+        let assetsChart = null
+        let assetsOption = null
+        let mkjPie = null
+        let mkjPieOpt = null
+        let safePie = null
+        let safePieOpt = null
+        let quotaPie = null
+        let quotaPieOpt = null
+
+        let newContractChart = null
+        let newContractOpt = null
+        let contractReserveChart = null
+        let contractReserveOpt = null
+        let incomeChart = null
+        let incomeOpt = null
+        let pjChart = null
+        let pjOpt = null
+
+        $(function () {
+            resetTheme()
+            scalePage()
+            clearLoading()
+            timeInit()
+            // 主要进度 main-progress-chart
+            mainProgressInit()
+            // 资产状态柱形图
+            assetsInit()
+            // 新签合同
+            newContractInit()
+            // 合同储备
+            contractReserveInit()
+            // 收入结构
+            incomeChartInit()
+            // 项目数据扇形图
+            pjChartInit()
+            // 绩效指标
+            performanceInit()
+
+            // 顶部主要指标执行情况
+            mainIndicatorsInit()
+            // 地图渲染
+            mapInit()
+
+            // 底部饼图
+            bottomChartInit()
+            // scalePage()
+            //全屏
+            // $("#fullScreen").on("click",function(){
+            //     fullScreen();
+            // })
+            // //退出全屏
+            // $("#exitFullScreen").on("click",function(){
+            //     exitFullscreen();
+            // })
+        })
+
+        clearLoading = () => {
+            //删除加载动画
+            $('#loading').fadeOut(1000)
+            setTimeout(function () {
+                $('#loading').remove()
+            }, 1000);
+        }
+
+        timeInit = () => {
+            setInterval(() => {
+                let date = new Date()
+                $('#time').text(getFormatDate)
+            }, 1000);
+        }
+        getFormatDate = () => {
+            let nowDate = new Date();
+            let year = nowDate.getFullYear();
+            let month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+            let date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+            let hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+            let minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+            let second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+            return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+        }
+        getScale = () => {
+            // 固定好16:9的宽高比，计算出最合适的缩放比，宽高比可根据需要自行更改
+            const width = 1920
+            const height = 1080
+            let ww = window.innerWidth / width
+            let wh = window.innerHeight / height
+            return ww < wh ? ww : wh
+        }
+        // 页面渲染计算比例缩放
+        scalePage = () => {
+            setScale = debounce(() => {
+                // 获取到缩放比，设置它
+                let scale = this.getScale()
+                $('.scale-wrapper').css({
+                    'transform': 'scale(' + scale + ') translate(-50%, -50%)',
+                    '-webkit-transform': 'scale(' + scale + ') translate(-50%, -50%)'
+                })
+            }, 200)
+            setScale()
+            window.addEventListener('resize', setScale)
+        }
+        // 防抖
+        debounce = (fun, delay) => {
+            let timer
+            return function () {
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(fun, delay)
+            }
+        }
+
+        // 主要进度
+        mainProgressInit = () => {
+            const mpData = [70, 80, 55, 91, 29, 64]
+            let mpChart = echarts.init(document.getElementById('main-progress'));
+            mpOpt = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        lineStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }, {
+                                    offset: 0.5,
+                                    color: 'rgba(255, 255, 255,1)',
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(0, 255, 233,0)'
+                                }],
+                                global: false
+                            }
+                        }
+                    },
+                    formatter: '{b0}: {c0}%'
+                },
+                grid: {
+                    left: 15,
+                    right: 30,
+                    bottom: 10,
+                    top: 20,
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ["收入", "利润", "净利润", "EVA", "研发", "科技投入"],
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        color: '#fff',
+                        textStyle: {
+                            fontSize: 13
+                        }
+                    },
+                    boundaryGap: false // 两侧不留白
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        color: '#fff',
+                        textStyle: {
+                            fontSize: 12
+                        },
+                        formatter: '{value}%'
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#08D1E920'
+                        }
+                    },
+                    minInterval: 25,
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    }
+                },
+                series: [{
+                    name: '',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'none',
+                    data: mpData,
+                    color: '#31B7E9',
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#31B7E930'
+                                },
+                                {
+                                    offset: 1,
+                                    color: 'rgba(108,80,243,0)'
+                                }
+                            ], false),
+                            shadowColor: '#31B7E970',
+                            shadowBlur: 20
+                        }
+                    }
+                }]
+            }
+            mpChart.setOption(mpOpt)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            setInterval(() => {
+                // toolTip轮播
+                mpChart.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: toolTipIndex
+                });
+                toolTipIndex++;
+                if (toolTipIndex > mpOpt.series[0].data.length) {
+                    toolTipIndex = 0;
+                }
+            }, 2000)
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                mpChart.resize()
+            });
+        }
+        // 资产状态
+        assetsInit = () => {
+            assetsChart = echarts.init(document.getElementById('assets-chart'));
+            const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+            assetsOption = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    confine: true
+                },
+                toolbox: {
+                    feature: {
+                        magicType: {
+                            type: ['line', 'bar']
+                        }
+                    },
+                    iconStyle: {
+                        color: '#fff'
+                    }
+                },
+                grid: {
+                    // top: 'middle',
+                    left: 0,
+                    right: 0,
+                    bottom: '3%',
+                    top: '22%',
+                    containLabel: true
+                },
+                legend: {
+                    data: ['资产', '负债', '存货', '应收'],
+                    left: 20,
+                    top: 5,
+                    itemWidth: 10,
+                    itemHeight: 10,
+                    textStyle: {
+                        color: "#f6f6f6",
+                        fontSize: 14
+                    }
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: months,
+                    axisLabel: {
+                        interval: 0,
+                        show: true,
+                        textStyle: {
+                            color: "#f6f6f6", //X轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    }
+                }],
+                yAxis: [{
+                    type: 'value',
+                    name: '',
+                    axisLabel: {
+                        formatter: '{value} ',
+                        textStyle: {
+                            color: "#f6f6f6", //X轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#42447070'
+                        }
+                    }
+                }],
+                series: [{
+                        name: '资产',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#0ECFF8"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#0570E9"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [330, 430, 570, 520, 500, 540, 550, 530, 560, 580, 530, 550]
+                    },
+                    {
+                        name: '负债',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#932AE1"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#303E8C"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [100, 150, 200, 150, 180, 210, 250, 270, 310, 280, 250, 320]
+                    },
+                    {
+                        name: '存货',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#F3C478"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#F6AD62"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [80, 60, 120, 280, 150, 230, 210, 190, 170, 200, 150, 110]
+                    },
+                    {
+                        name: '应收',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#A0FFD3"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#6CFFA7"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [150, 220, 250, 190, 170, 100, 90, 70, 80, 100, 130, 120]
+                    }
+                ]
+            }
+            assetsChart.setOption(assetsOption)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            setInterval(() => {
+                // toolTip轮播
+                assetsChart.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: toolTipIndex
+                });
+                toolTipIndex++;
+                if (toolTipIndex > assetsOption.series[0].data.length) {
+                    toolTipIndex = 0;
+                }
+            }, 1500)
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                assetsChart.resize()
+            });
+        }
+        // 右侧
+        // 新签合同
+        newContractInit = () => {
+            newContractChart = echarts.init(document.getElementById('new-contract'));
+            const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+            newContractOpt = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    confine: true
+                },
+                toolbox: {
+                    feature: {
+                        magicType: {
+                            type: ['line', 'bar']
+                        }
+                    },
+                    iconStyle: {
+                        color: '#fff'
+                    }
+                },
+                grid: {
+                    // top: 'middle',
+                    left: 0,
+                    right: 0,
+                    bottom: '3%',
+                    top: '35%',
+                    containLabel: true
+                },
+                legend: {
+                    data: ['军工', '民用', '核电'],
+                    left: 100,
+                    top: 0,
+                    itemWidth: 10,
+                    itemHeight: 10,
+                    textStyle: {
+                        color: "#f6f6f6",
+                        fontSize: 14
+                    }
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: months,
+                    axisLabel: {
+                        interval: 0,
+                        show: true,
+                        textStyle: {
+                            color: "#f6f6f6", //X轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    }
+                }],
+                yAxis: [{
+                    type: 'value',
+                    name: '（万元）',
+                    nameTextStyle: {
+                        color: "#fff", //Y轴文字颜色
+                        verticalAlign: 'middle'
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: "#f6f6f6", //Y轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#42447070'
+                        }
+                    }
+                }],
+                series: [{
+                        name: '军工',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#0ECFF8"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#0570E9"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [330, 430, 570, 520, 500, 540, 550, 530, 560, 580, 530, 550]
+                    },
+                    {
+                        name: '民用',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#932AE1"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#303E8C"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [150, 220, 250, 190, 170, 100, 90, 70, 80, 100, 130, 120]
+                    },
+                    {
+                        name: '核电',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#A0FFD3"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#6CFFA7"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [100, 150, 200, 150, 180, 210, 250, 270, 310, 280, 250, 320]
+                    }
+                ]
+            }
+            newContractChart.setOption(newContractOpt)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            setInterval(() => {
+                // toolTip轮播
+                newContractChart.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: toolTipIndex
+                });
+                toolTipIndex++;
+                if (toolTipIndex > newContractOpt.series[0].data.length) {
+                    toolTipIndex = 0;
+                }
+            }, 1500)
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                newContractChart.resize()
+            });
+        }
+        // 合同储备
+        contractReserveInit = () => {
+            contractReserveChart = echarts.init(document.getElementById('contract-reserve'));
+            const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+            contractReserveOpt = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    confine: true
+                },
+                toolbox: {
+                    feature: {
+                        magicType: {
+                            type: ['line', 'bar']
+                        }
+                    },
+                    iconStyle: {
+                        color: '#fff'
+                    }
+                },
+                grid: {
+                    // top: 'middle',
+                    left: 0,
+                    right: 0,
+                    bottom: '3%',
+                    top: '35%',
+                    containLabel: true
+                },
+                legend: {
+                    data: ['军工', '民用', '核电'],
+                    left: 100,
+                    top: 0,
+                    itemWidth: 10,
+                    itemHeight: 10,
+                    textStyle: {
+                        color: "#f6f6f6",
+                        fontSize: 14
+                    }
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: months,
+                    axisLabel: {
+                        interval: 0,
+                        show: true,
+                        textStyle: {
+                            color: "#f6f6f6", //X轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    }
+                }],
+                yAxis: [{
+                    type: 'value',
+                    name: '（万元）',
+                    nameTextStyle: {
+                        color: "#fff", //Y轴文字颜色
+                        verticalAlign: 'middle'
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: "#f6f6f6", //Y轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#42447070'
+                        }
+                    }
+                }],
+                series: [{
+                        name: '军工',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#0ECFF8"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#0570E9"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [330, 430, 570, 520, 500, 540, 550, 530, 560, 580, 530, 550]
+                    },
+                    {
+                        name: '民用',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#932AE1"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#303E8C"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [150, 220, 250, 190, 170, 100, 90, 70, 80, 100, 130, 120]
+                    },
+                    {
+                        name: '核电',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#A0FFD3"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#6CFFA7"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [100, 150, 200, 150, 180, 210, 250, 270, 310, 280, 250, 320]
+                    }
+                ]
+            }
+            contractReserveChart.setOption(contractReserveOpt)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            setInterval(() => {
+                // toolTip轮播
+                contractReserveChart.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: toolTipIndex
+                });
+                toolTipIndex++;
+                if (toolTipIndex > contractReserveOpt.series[0].data.length) {
+                    toolTipIndex = 0;
+                }
+            }, 1500)
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                contractReserveChart.resize()
+            });
+        }
+        // 收入结构
+        incomeChartInit = () => {
+            incomeChart = echarts.init(document.getElementById('income'));
+            const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+            incomeOpt = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    confine: true
+                },
+                toolbox: {
+                    feature: {
+                        magicType: {
+                            type: ['line', 'bar']
+                        }
+                    },
+                    iconStyle: {
+                        color: '#fff'
+                    }
+                },
+                grid: {
+                    // top: 'middle',
+                    left: 0,
+                    right: 0,
+                    bottom: '3%',
+                    top: '35%',
+                    containLabel: true
+                },
+                legend: {
+                    data: ['军工', '民用', '核电'],
+                    left: 100,
+                    top: 0,
+                    itemWidth: 10,
+                    itemHeight: 10,
+                    textStyle: {
+                        color: "#f6f6f6",
+                        fontSize: 14
+                    }
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: months,
+                    axisLabel: {
+                        interval: 0,
+                        show: true,
+                        textStyle: {
+                            color: "#f6f6f6", //X轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    }
+                }],
+                yAxis: [{
+                    type: 'value',
+                    name: '（万元）',
+                    nameTextStyle: {
+                        color: "#fff", //Y轴文字颜色
+                        verticalAlign: 'middle'
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: "#f6f6f6", //Y轴文字颜色
+                            fontSize: 13
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#42447070',
+                            width: 0.5
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#42447070'
+                        }
+                    }
+                }],
+                series: [{
+                        name: '军工',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#0ECFF8"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#0570E9"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [330, 430, 570, 520, 500, 540, 550, 530, 560, 580, 530, 550]
+                    },
+                    {
+                        name: '民用',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#932AE1"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#303E8C"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [150, 220, 250, 190, 170, 100, 90, 70, 80, 100, 130, 120]
+                    },
+                    {
+                        name: '核电',
+                        type: 'bar',
+                        barMaxWidth: 5,
+                        itemStyle: {
+                            normal: {
+                                // barBorderRadius: 5,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: "#A0FFD3"
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: "#6CFFA7"
+                                    }
+                                ])
+                            }
+                        },
+                        data: [100, 150, 200, 150, 180, 210, 250, 270, 310, 280, 250, 320]
+                    }
+                ]
+            }
+            incomeChart.setOption(incomeOpt)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            setInterval(() => {
+                // toolTip轮播
+                incomeChart.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: toolTipIndex
+                });
+                toolTipIndex++;
+                if (toolTipIndex > incomeOpt.series[0].data.length) {
+                    toolTipIndex = 0;
+                }
+            }, 1500)
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                incomeChart.resize()
+            });
+        }
+        // 项目数据扇形图
+        pjChartInit = () => {
+            const pjData = [{
+                value: 15,
+                amount: 1200,
+                name: '新签项目数'
+            }, {
+                value: 12,
+                amount: 345,
+                name: '在建项目数'
+            }, {
+                value: 8,
+                amount: 400,
+                name: '中标未签数'
+            }, {
+                value: 10,
+                amount: 100,
+                name: '停缓建数'
+            }]
+            let pjChart = echarts.init(document.getElementById('pj-pie'));
+            pjOpt = {
+                title: {
+                    text: 742,
+                    subtext: ' 总数',
+                    textStyle: {
+                        color: '#00FFFE',
+                        fontSize: 24,
+                    },
+                    subtextStyle: {
+                        fontSize: 16,
+                        color: '#00FFFE'
+                    },
+                    x: '43%',
+                    y: '36%',
+                },
+                grid: {
+                    left: 0,
+                    top: 0,
+                    bottom: 0,
+                    right: 0
+                },
+                series: [{
+                    type: "pie",
+                    center: ["50%", "50%"],
+                    radius: ["50%", "60%"],
+                    color: ['#00AEFF', '#56CEC4', '#802ED0', '#FF6D82'],
+                    startAngle: 190,
+                    // selectedMode: 'single',
+                    labelLine: {
+                        length: 10,
+                        length2: 15,
+                        lineStyle: {
+                            type: 'dashed'
+                        }
+                    },
+                    label: {
+                        normal: {
+                            formatter: '{b|{b}：}{b|{c}}\n {d|金额}：{e|{@amount}}{d|万}',
+                            backgroundColor: 'rgba(0, 87, 195, 0.25)',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            textShadowBlur: 3,
+                            // shadowOffsetX: 3,
+                            // shadowOffsetY: 3,
+                            shadowColor: '#fff',
+                            padding: [2, 10, 5, 10],
+                            align: 'left',
+                            rich: {
+                                b: {
+                                    fontSize: 14,
+                                    lineHeight: 30,
+                                    color: '#fff',
+                                    align: 'left'
+                                },
+                                d: {
+                                    fontSize: 14,
+                                    color: '#00F4FF',
+                                    align: 'left'
+                                },
+                                e: {
+                                    fontSize: 18,
+                                    color: '#00F4FF',
+                                    align: 'left'
+                                }
+                            }
+                        }
+                    },
+                    data: pjData
+                }]
+            }
+            pjChart.setOption(pjOpt)
+
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                pjChart.resize()
+            });
+        }
+        // 绩效指标
+        performanceInit = () => {
+            const pfData = [{
+                id: '1',
+                title: '盈利能力',
+                label: '利润率',
+                percentage: '82%'
+            }, {
+                id: '1',
+                title: '资产质量',
+                label: '两金占比',
+                percentage: '52%'
+            }, {
+                id: '1',
+                title: '债务风险',
+                label: '资产负债率',
+                percentage: '20%'
+            }, {
+                id: '1',
+                title: '经营增长',
+                label: '收入增长率',
+                percentage: '97%'
+            }]
+            let pfDom = ''
+            $.each(pfData, (index, item) => {
+                pfDom += `<li>
+                    <span class="performance-title">${item.title}：</span>
+                    <span class="label">${item.label}</span>
+                    <span class="progress-wrapper">
+                        <span class="progress" style="width: ${item.percentage}"><span class="percentage">${item.percentage}</span></span>
+                    </span>
+                </li>`
+            })
+            $('.performance').append(pfDom)
+
+        }
+        // 顶部主要指标执行情况
+        mainIndicatorsInit = () => {
+            const miData = [{
+                id: '1',
+                title: '收入',
+                doneValue: '234',
+                planValue: '899'
+            }, {
+                id: '2',
+                title: '净利润',
+                doneValue: '234',
+                planValue: '899'
+            }, {
+                id: '3',
+                title: 'EVA',
+                doneValue: '234',
+                planValue: '899'
+            }, {
+                id: '4',
+                title: '应收账款',
+                doneValue: '234',
+                planValue: '899'
+            }, {
+                id: '5',
+                title: '新签合同',
+                doneValue: '234',
+                planValue: '899'
+            }, {
+                id: '6',
+                title: '合同储备',
+                doneValue: '234',
+                planValue: '899'
+            }, {
+                id: '7',
+                title: '研发费用',
+                doneValue: '234',
+                planValue: '899'
+            }, {
+                id: '8',
+                title: '科技支出',
+                doneValue: '234',
+                planValue: '899'
+            }]
+            let miDom = ''
+            $.each(miData, (index, item) => {
+                miDom += `<li>
+                        <p class="label">${item.title}</p>
+                        <p class="label">完成值/计划值</p>
+                        <p class="amount">${item.doneValue}<span>万</span>/${item.planValue}<span>万</span></p>
+                    </li>`
+            })
+            $('.main-indicators-list').append(miDom)
+        }
+
+        // 底部扇形图
+        bottomChartInit = () => {
+            mkjPie = echarts.init(document.getElementById('mkj-pie'));
+            safePie = echarts.init(document.getElementById('safe-pie'));
+            quotaPie = echarts.init(document.getElementById('quota-pie'));
+
+            const mkjPieData = [{
+                name: '完成',
+                value: 200,
+                selected: true
+            }, {
+                name: '滞后',
+                value: 400
+            }, {
+                name: '预计无法完成',
+                value: 242
+            }]
+            const safePieData = [{
+                month: '一月',
+                name: '无事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '二月',
+                name: '有事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '三月',
+                name: '无事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '四月',
+                name: '无事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '五月',
+                name: '有事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '六月',
+                name: '无事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '七月',
+                name: '无事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '八月',
+                name: '无事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '九月',
+                name: '有事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '十月',
+                name: '无事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '十一月',
+                name: '有事故',
+                value: 1,
+                status: 1
+            }, {
+                month: '十二月',
+                name: '有事故',
+                value: 1,
+                status: 1
+            }]
+            const quotaPieData = [{
+                name: '完成',
+                value: 200,
+                selected: true
+            }, {
+                name: '滞后',
+                value: 400
+            }, {
+                name: '预计无法完成',
+                value: 242
+            }]
+
+            mkjPieOpt = {
+                legend: {
+                    show: true,
+                    orient: 'vertical',
+                    top: 35,
+                    right: 0,
+                    itemWidth: 17,
+                    itemHeight: 12,
+                    textStyle: {
+                        color: '#00FFFE',
+                        fontSize: 13,
+                        fontWeight: 'bold'
+                    },
+                    formatter: (name) => {
+                        let curItem = mkjPieData.filter(item => item.name === name)
+                        return name + '：' + curItem[0].value
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    center: ["20%", "50%"],
+                    radius: ["52%", "65%"],
+                    color: ['#2BC191', '#00AEFF', '#FEC006'],
+                    startAngle: 90,
+                    selectedMode: 'single',
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: mkjPieData
+                }]
+            }
+            safePieOpt = {
+                legend: {
+                    show: true,
+                    data: ['无事故', '有事故'],
+                    orient: 'vertical',
+                    top: 50,
+                    right: 10,
+                    itemWidth: 17,
+                    itemHeight: 12,
+                    textStyle: {
+                        color: '#00FFFE',
+                        fontSize: 13,
+                        fontWeight: 'bold'
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    center: ["35%", "50%"],
+                    radius: ["52%", "65%"],
+                    color: ['#2BC191', '#F75A5B'],
+                    startAngle: 90,
+                    selectedMode: 'single',
+                    label: {
+                        show: true,
+                        formatter: function (params){
+                            return params.data.month
+                        }
+                    },
+                    labelLine: {
+                        length: 5,
+                        length2: 10,
+                        lineStyle: {
+                            type: 'dashed'
+                        }
+                    },
+                    itemStyle: {
+                        borderWidth: 2,
+                        borderColor: "rgba(255, 255, 255, 0.5)"
+                    },
+                    data: safePieData
+                }]
+            }
+            quotaPieOpt = {
+                legend: {
+                    show: true,
+                    orient: 'vertical',
+                    top: 35,
+                    right: 0,
+                    itemWidth: 17,
+                    itemHeight: 12,
+                    textStyle: {
+                        color: '#00FFFE',
+                        fontSize: 13,
+                        fontWeight: 'bold'
+                    },
+                    formatter: (name) => {
+                        let curItem = quotaPieData.filter(item => item.name === name)
+                        return name + '：' + curItem[0].value
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    center: ["20%", "50%"],
+                    radius: ["52%", "65%"],
+                    color: ['#2BC191', '#00AEFF', '#FEC006'],
+                    startAngle: 90,
+                    selectedMode: 'single',
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: quotaPieData
+                }]
+            }
+            mkjPie.setOption(mkjPieOpt)
+            safePie.setOption(safePieOpt)
+            quotaPie.setOption(quotaPieOpt)
+
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                mkjPie.resize()
+                safePie.resize()
+                quotaPie.resize()
+            });
+        }
+        // 地图渲染
+        mapInit = () => {
+            let cMap = echarts.init(document.getElementById('c-map'));
+            var data = [{
+                    name: "北京",
+                    value: 200,
+                    value2: 22,
+                    value3: 33
+                },
+                {
+                    name: "天津",
+                    value: 42,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "河北",
+                    value: 102,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "山西",
+                    value: 81,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "内蒙古",
+                    value: 47,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "辽宁",
+                    value: 67,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "吉林",
+                    value: 82,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "黑龙江",
+                    value: 123,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "上海",
+                    value: 24,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "江苏",
+                    value: 92,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "浙江",
+                    value: 114,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "安徽",
+                    value: 109,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "福建",
+                    value: 116,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "江西",
+                    value: 91,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "山东",
+                    value: 119,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "河南",
+                    value: 137,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "湖北",
+                    value: 116,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "湖南",
+                    value: 114,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "重庆",
+                    value: 91,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "四川",
+                    value: 125,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "贵州",
+                    value: 62,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "云南",
+                    value: 83,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "西藏",
+                    value: 9,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "陕西",
+                    value: 80,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "甘肃",
+                    value: 56,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "青海",
+                    value: 10,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "宁夏",
+                    value: 18,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "新疆",
+                    value: 180,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "广东",
+                    value: 123,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "广西",
+                    value: 59,
+                    value2: 11,
+                    value3: 31
+                },
+                {
+                    name: "海南",
+                    value: 14,
+                    value2: 11,
+                    value3: 31
+                },
+            ];
+
+            var geoCoordMap = {};
+
+            /*获取地图数据*/
+            cMap.showLoading();
+            var mapFeatures = echarts.getMap('china').geoJson.features;
+            cMap.hideLoading();
+            mapFeatures.forEach(function (v) {
+                // 地区名称
+                var name = v.properties.name;
+                // 地区经纬度
+                geoCoordMap[name] = v.properties.cp;
+
+            });
+            var max = 480,
+                min = 9; // todo 
+            var maxSize4Pin = 100,
+                minSize4Pin = 20;
+
+            var convertData = function (data) {
+                var res = [];
+                for (var i = 0; i < data.length; i++) {
+                    var geoCoord = geoCoordMap[data[i].name];
+                    if (geoCoord) {
+                        res.push({
+                            name: data[i].name,
+                            value: geoCoord.concat(data[i].value),
+                        });
+                    }
+                }
+                return res;
+            };
+            cMapOption = {
+                tooltip: {
+                    padding: 0,
+                    enterable: true,
+                    transitionDuration: 1,
+                    textStyle: {
+                        color: '#000',
+                        decoration: 'none',
+                    },
+                    // position: function (point, params, dom, rect, size) {
+                    //   return [point[0], point[1]];
+                    // },
+                    formatter: function (params) {
+                        var tipHtml = '';
+                        tipHtml =
+                            '<div style="position: relative;display:inline-block;min-width: 200px;max-width: 600px; height: 130px;padding: 0 15px; background:linear-gradient(0deg,rgba(14,106,178,0.44),rgba(31,53,127,0.44),rgba(25,123,202,0.44))">' +
+                            '<div style="position: absolute;top: -2px;left: -2px; width: 15px;height: 15px;border-top: 3px solid #117EC8; border-left: 3px solid #117EC8;"></div>' +
+                            '<div style="position: absolute;top: -2px;right: -2px; width: 15px;height: 15px;border-top: 3px solid #117EC8; border-right: 3px solid #117EC8;"></div>' +
+                            '<div style="position: absolute;bottom: -2px;left: -2px; width: 15px;height: 15px;border-bottom: 3px solid #117EC8; border-left: 3px solid #117EC8;"></div>' +
+                            '<div style="position: absolute;bottom: -2px;right: -2px; width: 15px;height: 15px;border-bottom: 3px solid #117EC8; border-right: 3px solid #117EC8;"></div>' +
+                            '<p style="margin: 15px 0 0 0; font-size: 14px;font-weight: 500;color: #fff;line-height: 20px;">' +
+                            '<span style="color: #74BDD8;">项目数量：</span>' +
+                            ' <span style="font-size: 20px;font-weight: bold;">' + params.data.value +
+                            '</span>' +
+                            '</p>' +
+                            '<p style="margin: 15px 0 0 0; font-size: 14px;font-weight: 500;color: #fff;line-height: 20px;">' +
+                            '<span style="color: #74BDD8;">项目总额：</span>' +
+                            '<span style="font-size: 20px;font-weight: bold;">' + params.data.value2 + '亿' +
+                            '</span>' +
+                            '</p>' +
+                            '<p style="margin: 15px 0 0 0; font-size: 14px;font-weight: 500;color: #fff;line-height: 20px;">' +
+                            '<span style="color: #74BDD8;">开工项目数：</span>' +
+                            '<span style="font-size: 20px;font-weight: bold;">' + params.data.value3 +
+                            '</span>' +
+                            '</p>' +
+                            '</div>'
+                        // setTimeout(function() {
+                        //     tooltipCharts(params.name);
+                        // }, 10);
+                        return tipHtml;
+                    }
+
+                },
+                visualMap: {
+                    show: true,
+                    min: 0,
+                    max: 200,
+                    left: '5%',
+                    bottom: 80,
+                    calculable: true,
+                    seriesIndex: [0],
+                    inRange: {
+                        color: ['#04387b', '#467bc0'] // 蓝绿
+                    }
+                },
+                geo: {
+                    show: true,
+                    map: 'china',
+                    // left: 0, 
+                    // right: 0,
+                    // boundingCoords: [
+                    //     // 定位左上角经纬度
+                    //     [65, 10],
+                    //     // 定位右下角经纬度
+                    //     [150, 55]
+                    // ],
+                    top: 100,
+                    label: {
+                        normal: {
+                            show: false
+                        },
+                        emphasis: {
+                            show: false,
+                        }
+                    },
+                    zoom: 1.1, //当前视角的缩放比例
+                    roam: false, //是否开启平游或缩放
+                    // scaleLimit: { //滚轮缩放的极限控制
+                    //     min: 0.3,
+                    //     max: 8
+                    // },
+                    itemStyle: {
+                        areaColor: '#023677',
+                        borderColor: '#1180c7',
+                        shadowBlur: 20,
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 20,
+                        emphasis: {
+                            areaColor: '#4499d0'
+                        }
+                    },
+                    z: 1
+                },
+                series: [{
+                        name: '',
+                        type: 'map',
+                        map: 'china',
+                        top: 100,
+                        showLegendSymbol: false, // 存在legend时显示
+                        label: {
+                            normal: {
+                                show: false
+                            },
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        roam: false, //是否开启平游或缩放
+                        zoom: 1.1,
+                        z: 2,
+                        itemStyle: {
+                            normal: {
+                                areaColor: '#023677',
+                                borderColor: '#3ea5e6'
+                            },
+                            emphasis: {
+                                areaColor: '#4499d0'
+                            }
+                        },
+                        animation: false,
+                        data: data
+                    }, {
+                        name: '散点',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        data: convertData(data),
+                        symbolSize: function (val) {
+                            return val[2] / 10;
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                formatter: '{b}'
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#fff'
+                            }
+                        },
+                        tooltip: {
+                            show: false
+                        }
+                    },
+                    {
+                        name: '点',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        zlevel: 6,
+                        tooltip: {
+                            show: false
+                        }
+                    },
+                    {
+                        name: 'Top 10',
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        data: convertData(data.sort(function (a, b) {
+                            return b.value - a.value;
+                        }).slice(0, 10)),
+                        symbolSize: function (val) {
+                            return val[2] / 6;
+                        },
+                        showEffectOn: 'render',
+                        rippleEffect: {
+                            brushType: 'stroke'
+                        },
+                        hoverAnimation: true,
+                        label: {
+                            normal: {
+                                formatter: '{b}',
+                                position: 'left',
+                                show: false
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: 'yellow',
+                                shadowBlur: 10,
+                                shadowColor: 'yellow'
+                            }
+                        },
+                        tooltip: {
+                            show: false
+                        },
+                        zlevel: 1
+                    }
+                ]
+            }
+            cMap.setOption(cMapOption)
+            let toolTipIndex = 0; // 轮播所在下标
+
+            let index = -1;
+            var timer = setInterval(function () {
+                // 隐藏提示框
+                cMap.dispatchAction({
+                    type: 'hideTip',
+                    seriesIndex: 0,
+                    dataIndex: index
+                });
+                // 显示提示框
+                cMap.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: index + 1
+                });
+                // 取消高亮指定的数据图形
+                cMap.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 0,
+                    dataIndex: index
+                });
+                // 高亮指定的数据图形
+                cMap.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: index + 1
+                });
+                index++;
+                if (index > 13) {
+                    index = -1;
+                }
+            }, 3000);
+            cMap.on('mousemove', function (e) {
+                clearInterval(timer);
+                cMap.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 0
+                });
+                cMap.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: e.dataIndex
+                });
+                cMap.dispatchAction({
+                    type: 'showTip',
+                    seriesIndex: 0,
+                    dataIndex: e.dataIndex
+                });
+            }); //---------------------------------------------鼠标移入静止播放
+            cMap.on('mouseout', function (e) {
+                clearInterval(timer);
+                cMap.dispatchAction({
+                    type: 'downplay',
+                    seriesIndex: 0,
+                    dataIndex: e.dataIndex
+                }); //鼠标移出后先把上次的高亮取消
+                timer = setInterval(function () {
+                    // 隐藏提示框
+                    cMap.dispatchAction({
+                        type: 'hideTip',
+                        seriesIndex: 0,
+                        dataIndex: index
+                    });
+                    // 显示提示框
+                    cMap.dispatchAction({
+                        type: 'showTip',
+                        seriesIndex: 0,
+                        dataIndex: index + 1
+                    });
+                    // 取消高亮指定的数据图形
+                    cMap.dispatchAction({
+                        type: 'downplay',
+                        seriesIndex: 0,
+                        dataIndex: index
+                    });
+                    // 高亮指定的数据图形
+                    cMap.dispatchAction({
+                        type: 'highlight',
+                        seriesIndex: 0,
+                        dataIndex: index + 1
+                    });
+                    index++;
+                    if (index > 13) {
+                        index = -1;
+                    }
+                }, 3000);
+            });
+            // 窗口尺寸变化时resize
+            $(window).resize(function () {
+                cMap.resize()
+            });
+        }
+    </script>
+</body>
+
+</html>

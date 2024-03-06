@@ -1,0 +1,68 @@
+.class-btns .layui-btn{
+	background-color: #FFFFFF;
+	color: #5979F2;
+	border: 1px solid #5979F2;
+	border-radius: 20px;
+	height: 35px;
+	line-height: 32px;
+}
+.class-btns .layui-btn .iconfont{
+	margin-right: 10px;
+}
+.class-btns .layui-this{
+	background-color: #5979F2;
+	color: #FFFFFF;
+}
+.badge-label{
+	line-height: 18px;
+	font-weight: bold;
+}
+.badge-list .active{
+	background-color: transparent;
+	border: none;
+	border-radius: 0;
+	
+}
+.badge-list .active button{
+	color: #5979F2;
+}
+.badge-list .item-div{
+	border-right: 1px solid #D2D2D2;
+	height: 18px;
+	line-height: 18px;
+	color: #666666;
+	padding: 0px 20px 0px 0;
+	font-size: 14px;
+	margin-right: 20px;
+}
+.badge-list .item-div:last-child{
+	border-right: none;
+}
+.layui-tab-content .layui-tab-title li{
+	background-color: transparent;
+	border: none;
+}
+.layui-tab-brief>.layui-tab-title .layui-this{
+	color: #5979F2;
+}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
+	border-bottom: 2px solid #5979F2;
+}
+.badge-list{
+	margin-top:20px;
+	margin-bottom: 20px;
+}
+.table-a,.table-a:hover{
+	color: #5979F2;
+	font-weight: bold;
+}
+.tab-p{
+	color: #333333;
+	font-size: 14px;
+	font-weight: bold;
+}
+.level{
+	background-color: #19CAAD;
+	color: #FFFFFF;
+	padding: 5px 2px;
+}

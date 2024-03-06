@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/platform.css">
+    <link href="" rel="stylesheet">
+    <meta name="author" content="wubo, boommax8941@gmail.com" />
+    <meta name="keywords" content="科协应用平台" />
+    <title>宣传平台</title>
+</head>
+
+<body onload="init()">
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        function init() {
+            initData()
+            refreshAll()
+        }
+
+        // 初始化左上角操作按钮
+        function refreshAll() {
+            refreshBoxBtn('.official-website')
+            refreshBoxBtn('.bus-website')
+            refreshBoxBtn('.WeChatpp')
+            refreshBoxBtn('.weibo')
+            refreshBoxBtn('.toutiao')
+            refreshBoxBtn('.douyin')
+            refreshBoxBtn('.kuaishou')
+            refreshBoxBtn('.xigua')
+            refreshBoxBtn('.bilibili')
+            refreshBoxBtn('.yingxiang')
+            refreshBoxBtn('.App')
+        }
+
+        // 一个模块有多个时第一个可删除，只有一个时隐藏删除按钮
+        function refreshBoxBtn(id) {
+            if ($(`${id} .box`).length > 1) {
+                $(`${id} .box .btn-row .minus-icon`).each((index, el) => {
+                    el.style.display = 'inline-block'
+                })
+            } else {
+                $(`${id} .box .btn-row .minus-icon`)[0].style.display = 'none'
+            }
+        }
+
+        function initData() {
+            // ajax获取数据
+            const websiteData = [{
+                xcgwbs: "1",
+                xcgwdb: "1",
+                xcgwfwl: "1",
+                xcgwmc: "1",
+                xcgwwz: "1",
+                xcgwyw: "有"
+            }, {
+                xcgwbs: "2",
+                xcgwdb: "2",
+                xcgwfwl: "2",
+                xcgwmc: "2",
+                xcgwwz: "2",
+                xcgwyw: "无"
+            }, {
+                xcgwbs: "3",
+                xcgwdb: "3",
+                xcgwfwl: "3",
+                xcgwmc: "3",
+                xcgwwz: "3",
+                xcgwyw: "有"
+            }]
+            // 获取数据长度
+            const webLen = websiteData.length
+            // 按数据数量生成相同数量节点
+            for (let i = 0; i < webLen - 1; i++) {
+                // 添加box节点
+                addItem($('.official-website .minus-icon')[0])
+            }
+            $('.official-website .box').each((index, el) => {
+                // console.log("initData -> index", index)
+                // $(el).find('input')
+                $(el).find('input').each((i, ell) => {
+                    ell.value = websiteData[index][ell.name]
+                })
+                $(el).find('.dropdown .label').each((i, ell) => {
+                    const name = ell.getAttribute('name')
+                    ell.innerHTML = websiteData[index][name]
+                })
+            })
+        }
+        // 复制一个模块
+        function addItem(e) {
+            const box = e.parentNode.parentNode
+            box.parentNode.appendChild(box.cloneNode(true))
+            refreshAll()
+            // refreshDropDown()
+        }
+
+        // 删除一个模块
+        function delItem(e) {
+            const box = e.parentNode.parentNode
+            box.parentNode.removeChild(box)
+            refreshAll()
+        }
+        // 保存
+        function savePublicityInfo() {
+            // 展示弹窗
+            let officialArr = []
+            $('.official-website .box').each((pIndex, pEl) => {
+                let boxform = {};
+                // console.log("savePublicityInfo -> $($(pEl) + ' input')", $($(pEl) + ' input'))
+                $(pEl).find('input').each((index, el) => {
+                    boxform[el.name] = el.value
+                })
+                $(pEl).find('.dropdown .label').each((index, el) => {
+                    boxform[el.getAttribute('name')] = el.innerHTML
+                })
+                officialArr.push(boxform)
+            })
+            console.log("savePublicityInfo -> officialArr", officialArr)
+
+            dialogShow(() => {
+                window.location.href = '/index.html'
+            })
+        }
+    </script>
+    <div class="publicity platform">
+        <div class="navbar clearfix">
+            <img class="navbar-back" src="./static/back.png" onclick="goback()" alt="">
+            <p class="navbar-title">宣传平台</p>
+        </div>
+        <div class="content">
+            <div class="official-website">
+                <div class="box clearfix">
+                    <p class="box-title">官网</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" name="xcgwmc" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" name="xcgwwz" value="" placeholder="请输入网址">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" name="xcgwfwl" value="" placeholder="请输入访问量">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" name="xcgwdb" value="" placeholder="请输入等保定级情况">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" name="xcgwbs" value="" placeholder="请输入网站部署地点">
+                        </li>
+                        <li class="list-item has-dropdown">
+                            <!-- <select class="dropdown">
+                                <option value="" class="label">有/无英文网站</option>
+                                <option value="1">有</option>
+                                <option value="0">无</option>
+                            </select> -->
+                            <ul class="dropdown">
+                                <li class="option label" name="xcgwyw">有/无英文网站</li>
+                                <li class="option">有</li>
+                                <li class="option">无</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bus-website">
+                <div class="box clearfix">
+                    <p class="box-title">业务网站</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入网址">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入访问量">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入等保定级情况">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入网站部署地点">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="WeChatpp">
+                <div class="box clearfix">
+                    <p class="box-title">微信公众号</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入日活跃量">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="weibo">
+                <div class="box clearfix">
+                    <p class="box-title">微博</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入日活跃量">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="toutiao">
+                <div class="box clearfix">
+                    <p class="box-title">头条号</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入日活跃量">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="douyin">
+                <div class="box clearfix">
+                    <p class="box-title">抖音号</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入关注人数">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="kuaishou">
+                <div class="box clearfix">
+                    <p class="box-title">快手号</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入关注人数">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="xigua">
+                <div class="box clearfix">
+                    <p class="box-title">西瓜号</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入关注人数">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bilibili">
+                <div class="box clearfix">
+                    <p class="box-title">B站</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入关注人数">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="yingxiang">
+                <div class="box clearfix">
+                    <p class="box-title">影像</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入影像工作机构">
+                        </li>
+                        <li class="list-item has-dropdown">
+                            <ul class="dropdown">
+                                <li class="option label">有/无影像队伍</li>
+                                <li class="option">有</li>
+                                <li class="option">无</li>
+                            </ul>
+                        </li>
+                        <li class="list-item has-dropdown">
+                            <ul class="dropdown">
+                                <li class="option label">请选择作品类型</li>
+                                <li class="option">文学</li>
+                                <li class="option">科技</li>
+                            </ul>
+                        </li>
+                        <!-- <li class="list-item">
+                            <input type="text" value="" placeholder="影像队伍有无">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请选择作品类型">
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="App">
+                <div class="box clearfix">
+                    <p class="box-title">App</p>
+                    <div class="btn-row">
+                        <img class="minus-icon" src="./static/minus.png" onclick="delItem(this)" alt="">
+                        <img class="add-icon" src="./static/add.png" onclick="addItem(this)" alt="">
+                    </div>
+                    <ul class="form-list">
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入名称">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入下载数量">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入负责人">
+                        </li>
+                        <li class="list-item">
+                            <input type="text" value="" placeholder="请输入联系方式">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="remark">
+                <textarea rows="10" placeholder="请输入描述"></textarea>
+            </div>
+            <div class="save-button" onclick="savePublicityInfo()">保存</div>
+        </div>
+    </div>
+    <div id="dialog">
+        <div id="dialog-content">
+            <img class="success-icon" src="./static/success.png" alt="">
+            <p class="dialog-title">保存成功</p>
+            <div id="dialog-confirm" class="confirm-btn">我知道了</div>
+        </div>
+    </div>
+</body>
+
+</html>

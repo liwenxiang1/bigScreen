@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>资产首页</title>
+		<link rel="stylesheet" href="./css/index.css" />
+	</head>
+	<body>
+		<div class="content">
+			<p class="titleOne">用户信息</p>
+			<div class="ove ueserFlex">
+				<div class="userInfo">
+					<img class="userIcon" src="./images/user.png">
+					<div class="name">
+						<div class="num">678</div>
+						<div class="text">用户量（个）</div>
+					</div>
+
+				</div>
+				<div class="userInfo">
+					<img class="userIcon" src="./images/visit.png">
+					<div class="name">
+						<div class="num">678</div>
+						<div class="text">用户量（个）</div>
+					</div>
+
+				</div>
+				<div class="userInfo">
+					<img class="userIcon" src="./images/note.png">
+					<div class="name">
+						<div class="num">678</div>
+						<div class="text">用户量（个）</div>
+					</div>
+
+				</div>
+				<div class="search">
+					<input class="input" placeholder="请输入" type="text" name="search" value="" />
+					<button class="button" type="button">搜索</button>
+				</div>
+
+			</div>
+			<p class="titleOne">资产信息</p>
+			<div class="ueserFlex mb23">
+				<div class="divide">
+					<div class="viceTitle">资产变更</div>
+					<div id="assets-chart" class="boxId">
+
+					</div>
+				</div>
+				<div class="divide">
+					<div class="viceTitle">资产热度排名</div>
+					<div class="boxId rank-list">
+
+					</div>
+				</div>
+			</div>
+			<div class="ueserFlex mb23">
+				<div class="divide">
+					<div class="viceTitle">安全标签（个）</div>
+					<div style="padding: 10px  20px;" class="ueserFlex">
+						<div class="divideFive">
+							<div class="num">34555</div>
+							<div class="text">安全1级</div>
+						</div>
+						<div class="divideFive">
+							<div class="num">34555</div>
+							<div class="text">安全1级</div>
+						</div>
+						<div class="divideFive">
+							<div class="num">34555</div>
+							<div class="text">安全1级</div>
+						</div>
+						<div class="divideFive">
+							<div class="num">34555</div>
+							<div class="text">安全1级</div>
+						</div>
+					</div>
+					<div style="padding: 10px 20px;" class="ueserFlex">
+						<div class="divideFive">
+							<div class="num1">34555</div>
+							<div class="text">安全1级</div>
+						</div>
+						<div class="divideFive">
+							<div class="num1">34555</div>
+							<div class="text">安全1级</div>
+						</div>
+						<div class="divideFive">
+							<div class="num1">34555</div>
+							<div class="text">安全1级</div>
+						</div>
+						<div class="divideFive">
+							<div class="num1">34555</div>
+							<div class="text">安全1级</div>
+						</div>
+					</div>
+				</div>
+				<div class="divide">
+					<div class="viceTitle">资产统计</div>
+					<div class="boxId ">
+						<table class="child-company-table" border cellspacing="0">
+							<thead>
+								<tr style="color: #333333;font-size:14px;border-bottom:1px solid #EEEEEE">
+									<th>系统分类</th>
+									<th>系统</th>
+									<th>备案表</th>
+									<th>备案文件</th>
+									<th>管控表</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr>
+									<td>单一窗口类</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>999</td>
+								</tr>
+								<tr style="background: #F9FAFB;">
+									<td>单一窗口类</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>999</td>
+								</tr>
+								<tr>
+									<td>单一窗口类</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>999</td>
+								</tr>
+								<tr style="background: #F9FAFB;">
+									<td>单一窗口类</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>999</td>
+								</tr>
+								<tr>
+									<td>单一窗口类</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+									<td>999</td>
+								</tr>
+								<!-- </div> -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<p class="titleOne">目录信息</p>
+			<div class="ueserFlex mb23">
+				<div class="divide">
+					<div class="viceTitle">需求申请数量</div>
+					<div id="needNum-chart" class="boxId">
+
+					</div>
+
+				</div>
+				<div class="divide">
+					<div class="viceTitle">数据目录</div>
+					<div class="boxId ">
+						<table class="child-company-table" border cellspacing="0">
+							<thead>
+								<tr style="color: #333333;font-size:14px;border-bottom:1px solid #EEEEEE">
+									<th>分类信息</th>
+									<th>实体数量</th>
+									<th>实体属性数量</th>
+									<th>本月新增实体数量</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>海港物流</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+								</tr>
+								<tr style="background: #F9FAFB;">
+									<td>海港物流</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+								</tr>
+								<tr>
+									<td>海港物流</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+								</tr>
+								<tr style="background: #F9FAFB;">
+									<td>海港物流</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+								</tr>
+								<tr>
+									<td>海港物流</td>
+									<td>8999</td>
+									<td>77888</td>
+									<td>6666</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="ueserFlex mb23">
+				<div class="divideInfo">
+					<p class="titleOne">标准信息</p>
+					<div class="InfoBox">
+						<div class="dropdown" style="right: 140px;">
+							<div class="label">天</div>
+							<ul class="option-list">
+								<li class="option">天</li>
+								<li class="option">月</li>
+								<li class="option">年</li>
+							</ul>
+						</div>
+						<div class="dropdown">
+							<div class="label">基础标准</div>
+							<ul class="option-list">
+								<li class="option">基础标准</li>
+								<li class="option">高级标准</li>
+							</ul>
+						</div>
+						<div class="boxId" id="pip-charts">
+
+						</div>
+					</div>
+
+				</div>
+				<div class="divideInfo">
+					<p class="titleOne">服务信息</p>
+					<div class="InfoBox">
+						<div class="boxId" id="serve-charts">
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<p class="titleOne">质量信息</p>
+			<div class="ueserFlex mb23">
+				<div class="divideSmall">
+					<div class="boxIdSmall">
+						<div class="ueserFlex" style="margin-bottom:20px">
+							<div class="itemInfo">
+								<div class="fl">
+									<div class="num">6788</div>
+									<div class="text">规则数量（个）</div>
+								</div>
+								<img class="fl icon" src="./images/gzsl.png" />
+							</div>
+							<div class="itemInfo">
+								<div class="fl">
+									<div class="num">6788</div>
+									<div class="text">任务数量（个）</div>
+								</div>
+								<img class="fl icon" src="./images/rwsl.png" />
+							</div>
+						</div>
+
+						<div class="ueserFlex">
+							<div class="itemInfo">
+								<div class="fl">
+									<div class="num">6788</div>
+									<div class="text">问题率</div>
+								</div>
+								<img class="fl icon" src="./images/wtl.png" />
+							</div>
+							<div class="itemInfo">
+								<div class="fl">
+									<div class="num">6788</div>
+									<div class="text">质量标准</div>
+								</div>
+								<img class="fl icon" src="./images/zlbz.png" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="divide">
+					<div class="viceTitle">规则趋势</div>
+					<div id="gzqs-charts" class="boxId">
+
+					</div>
+
+				</div>
+			</div>
+			<p class="titleOne">资产概况</p>
+			<ul class="item-list">
+				<li class="item">
+					<img src="./images/zctj.png" alt="" class="icon">
+					<p class="label">资产统计</p>
+					<p class="amount">1658966</p>
+				</li>
+				<li class="item">
+					<img src="./images/sjfw.png" alt="" class="icon">
+					<p class="label">数据服务</p>
+					<p class="amount">659</p>
+				</li>
+				<li class="item">
+					<img src="./images/st.png" alt="" class="icon">
+					<p class="label">实 体</p>
+					<p class="amount">30999</p>
+				</li>
+				<li class="item">
+					<img src="./images/sx.png" alt="" class="icon">
+					<p class="label">属 性</p>
+					<p class="amount">128992</p>
+				</li>
+				<li class="item">
+					<img src="./images/sjbz.png" alt="" class="icon">
+					<p class="label">数据标准</p>
+					<p class="amount">450665</p>
+				</li>
+				<li class="item">
+					<img src="./images/zcxq.png" alt="" class="icon">
+					<p class="label">资产需求</p>
+					<p class="amount">1876</p>
+				</li>
+			</ul>
+			<ul class="item-list">
+				<li class="item">
+					<img src="./images/sjk.png" alt="" class="icon">
+					<p class="label">数据库</p>
+					<p class="amount">1658966</p>
+				</li>
+				<li class="item">
+					<img src="./images/b.png" alt="" class="icon">
+					<p class="label">表</p>
+					<p class="amount">1029</p>
+				</li>
+				<li class="item">
+					<img src="./images/zd.png" alt="" class="icon">
+					<p class="label">字 段</p>
+					<p class="amount">999</p>
+				</li>
+				<li class="item">
+					<img src="./images/bwbz.png" alt="" class="icon">
+					<p class="label">报文标准</p>
+					<p class="amount">8901</p>
+				</li>
+				<li class="item">
+					<img src="./images/zbbz.png" alt="" class="icon">
+					<p class="label">指标标准</p>
+					<p class="amount">890</p>
+				</li>
+				<li class="item">
+					<img src="./images/zcba.png" alt="" class="icon">
+					<p class="label">资产备案</p>
+					<p class="amount">580</p>
+				</li>
+			</ul>
+
+		</div>
+		<script src="./jquery-3.2.1.min.js"></script>
+		<script src="./echarts.min.js"></script>
+
+		<script>
+			$(document).ready(() => {
+				assetsChartInit()
+				needNumInit()
+				//排位初始化
+				rankInit()
+				//下拉初始化
+				dropDownInit()
+				//标准信息初始化
+				pipInit()
+				//服务信息初始化
+				serveInit()
+				//规则趋势初始化
+				gzqsInit()
+			})
+			gzqsInit = () => {
+
+				var gzqsChart = echarts.init(document.getElementById('gzqs-charts'));
+				gzqsChart.setOption({
+					xAxis: {
+						type: 'category',
+						data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+					},
+					yAxis: {
+						type: 'value',
+						splitLine: {
+							show: false
+						},
+					},
+					tooltip: {
+						trigger: 'item',
+						formatter: ' {b} <br/> {c} '
+					},
+					grid: {
+						top: '15%',
+						left: '5%',
+						right: '3%',
+						bottom: '15%',
+						// containLabel: true
+					},
+					series: [{
+						data: [150, 230, 224, 218, 135, 147, 260],
+						type: 'line',
+						smooth: true,
+						showAllSymbol: true,
+						symbol: 'circle',
+						symbolSize: 10,
+						lineStyle: {
+							normal: {
+								color: "#A2DDE5",
+							},
+						},
+						itemStyle: {
+							color: "#ffffff",
+							borderColor: "#A2DDE5",
+							borderWidth: 3,
+							shadowColor: 'rgba(0, 0, 0, .3)',
+							shadowBlur: 0,
+							shadowOffsetY: 2,
+							shadowOffsetX: 2,
+						},
+						areaStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+											offset: 0,
+											color: 'rgba(210, 250, 255, 1)'
+										},
+										{
+											offset: 1,
+											color: 'rgba(255, 255, 255, 1)'
+										}
+									], false),
+									shadowColor: 'rgba(255, 255, 255, 1)',
+									shadowBlur: 20
+								}
+							},
+
+					}]
+				})
+				$(window).resize(function() {
+					gzqsChart.resize()
+				});
+			}
+			serveInit = () => {
+				var serveChart = echarts.init(document.getElementById('serve-charts'));
+				serveChart.setOption({
+					xAxis: {
+						type: 'category',
+						data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+					},
+					yAxis: {
+						type: 'value',
+						splitLine: {
+							show: false
+						},
+					},
+					grid: {
+						top: '20%',
+						left: '5%',
+						right: '2%',
+						bottom: '10%',
+						// containLabel: true
+					},
+					series: [{
+						data: [120, 200, 150, 80, 70, 110, 130],
+						type: 'bar',
+						itemStyle: {
+							normal: {
+								color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+									offset: 0,
+									color: '#C9E2FF'
+								}, {
+									offset: 1,
+									color: '#FEFEFF'
+								}]),
+								label: {
+									show: true,
+									position: 'top',
+									formatter: ['{c|{c}}', '{b|}'].join('\n'),
+									rich: {
+										c: {
+											align: 'center',
+											height: 20,
+											color: '#649BFA',
+										},
+										b: {
+											width: 55,
+											height: 5,
+											backgroundColor: '#A2C8FF'
+										}
+									}
+								}
+							}
+						},
+					}]
+				})
+				$(window).resize(function() {
+					serveChart.resize()
+				});
+			}
+			pipInit = () => {
+				var pipChart = echarts.init(document.getElementById('pip-charts'));
+				pipChart.setOption({
+					xAxis: {
+						type: 'category',
+						data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+					},
+					yAxis: {
+						type: 'value',
+						splitLine: {
+							show: false
+						},
+					},
+					tooltip: {
+						trigger: 'item',
+						formatter: ' {b} <br/> {c} '
+					},
+					grid: {
+						top: '25%',
+						left: '7%',
+						right: '3%',
+						bottom: '15%',
+						// containLabel: true
+					},
+					series: [{
+						data: [150, 230, 224, 218, 135, 147, 260],
+						type: 'line',
+						showAllSymbol: true,
+						symbol: 'circle',
+						symbolSize: 10,
+						lineStyle: {
+							normal: {
+								color: "#10D3FE",
+							},
+						},
+						itemStyle: {
+							color: "#10D3FE",
+							borderColor: "#fff",
+							borderWidth: 2,
+							shadowColor: 'rgba(0, 0, 0, .3)',
+							shadowBlur: 0,
+							shadowOffsetY: 2,
+							shadowOffsetX: 2,
+						},
+
+					}]
+				})
+				$(window).resize(function() {
+					pipChart.resize()
+				});
+			}
+			dropDownInit = () => {
+				// 点击本身节点外隐藏收起下来
+				$('body').click(e => {
+					const expandDrop = $('.isExpand')[0]
+					if (!expandDrop) {
+						return
+					}
+					if ($.contains(e.currentTarget, expandDrop)) {
+						$(expandDrop).removeClass('isExpand')
+					} else {
+						return
+					}
+				})
+				$('.dropdown').click((e) => {
+					setTimeout(() => {
+						if ($(e.currentTarget).hasClass('isExpand')) {
+							$(e.currentTarget).removeClass('isExpand')
+						} else {
+							$(e.currentTarget).addClass('isExpand')
+						}
+					}, 0);
+				})
+
+				$('.dropdown .option-list').on('click', '.option', e => {
+					setTimeout(() => {
+						$(e.currentTarget).parent().parent().find('.label')[0].innerText = e
+							.currentTarget.innerText;
+						let type = $(e.currentTarget).attr('value')
+						// 判断选择的类别来动态渲染echarts
+						$(e.currentTarget).parent().parent().removeClass('isExpand')
+					}, 5);
+				})
+			}
+			assetsChartInit = () => {
+				var assetsChart = echarts.init(document.getElementById('assets-chart'));
+
+				assetsChart.setOption({
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'cross',
+							crossStyle: {
+								color: '#999'
+							}
+						}
+					},
+					legend: {
+						itemWidth: 7,
+						itemHeight: 7,
+						left: 0,
+						top: 5,
+						data: ['新增', '修改', '删除']
+					},
+					grid: {
+						x: 0,
+						y: 40,
+						width: '95%',
+						height: '80%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+						axisPointer: {
+							type: 'shadow'
+						},
+						axisLabel: {
+							color: '#333',
+							fontSize: 10
+						}
+					}],
+					yAxis: [{
+						type: 'value',
+						name: '',
+						axisLabel: {
+							color: '#333',
+						},
+						axisLine: {
+							lineStyle: {
+								color: "#ccc"
+							}
+						},
+						axisTick: {
+							show: false
+						}
+					}],
+					series: [{
+							name: '新增',
+							type: 'bar',
+							stack: 'num',
+							color: '#1ACDA6',
+							barMaxWidth: 15,
+							data: [2, 3, 8, 6, 10, 5, 3] //, 162.2, 32.6, 20.0, 6.4, 3.3
+						},
+						{
+							name: '修改',
+							type: 'bar',
+							stack: 'num',
+							color: '#2997EF',
+							barMaxWidth: 15,
+							data: [3, 2, 2, 1, 3, 5, 7] //, 182.2, 48.7, 18.8, 6.0, 2.3
+						},
+						{
+							name: '删除',
+							type: 'bar',
+							stack: 'num',
+							color: '#3F53B1',
+							barMaxWidth: 15,
+							data: [5, 4, 3, 5, 5, 2, 6] //, 182.2, 48.7, 18.8, 6.0, 2.3
+						}
+					]
+				})
+				$(window).resize(function() {
+					assetsChart.resize()
+				});
+
+			}
+			needNumInit = () => {
+
+				var needNumChart = echarts.init(document.getElementById('needNum-chart'));
+				needNumChart.setOption({
+					tooltip: {
+						trigger: 'axis'
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						top: '15%',
+						containLabel: true
+					},
+
+					xAxis: {
+						type: 'category',
+						boundaryGap: true,
+
+						data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+					},
+					yAxis: [{
+						type: 'value',
+						splitLine: {
+							show: false
+						},
+						axisTick: { //去掉坐标轴刻线
+							alignWithLabel: false
+						},
+
+					}],
+					series: [{
+							name: '邮件营销',
+							type: 'line',
+							stack: '总量',
+							data: [120, 132, 101, 134, 90, 230, 210],
+							smooth: true,
+							itemStyle: {
+								color: 'rgba(210, 250, 255, 1)',
+								opacity: 0
+							},
+							areaStyle: {
+								normal: {
+									color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+											offset: 0,
+											color: 'rgba(210, 250, 255, 1)'
+										},
+										{
+											offset: 1,
+											color: 'rgba(255, 255, 255, 1)'
+										}
+									], false),
+									shadowColor: 'rgba(255, 255, 255, 1)',
+									shadowBlur: 20
+								}
+							},
+						},
+
+					]
+				})
+				$(window).resize(function() {
+					needNumChart.resize()
+				});
+			}
+
+			function rankInit() {
+				const rankLst = [{
+					rank: 1,
+					title: '人员基本信息',
+					score: 3500
+				}, {
+					rank: 2,
+					title: '人员基本信息',
+					score: 3200
+				}, {
+					rank: 3,
+					title: '人员基本信息',
+					score: 2900
+				}, {
+					rank: 4,
+					title: '人员基本信息',
+					score: 2850
+				}, {
+					rank: 5,
+					title: '人员基本信息',
+					score: 2500
+				}, {
+					rank: 6,
+					title: '人员基本信息',
+					score: 2400
+				}, {
+					rank: 7,
+					title: '人员基本信息',
+					score: 2200
+				}, {
+					rank: 8,
+					title: '人员基本信息',
+					score: 2150
+				}, {
+					rank: 9,
+					title: '人员基本信息',
+					score: 2050
+				}, {
+					rank: 10,
+					title: '人员基本信息',
+					score: 2000
+				}]
+				let rankEl = ''
+				rankLst.map((item, index) => {
+					rankEl +=
+						`
+		            <div class="rank-item">
+		            ${index < 3? `<img src="./images/No.${index+1}.png" alt="" class="rank-icon">`:`<div class="rank-icon-bg">${index+1}</div>`}
+		            <div class="progress-wrapper">
+		                <p class="title">${item.title}</p>
+		                <div class="progress">
+		                    <div class="progress-value"></div>
+		                </div>
+		            </div>
+		            <div class="score">${item.score}</div>
+		        </div>`
+				})
+				$('.rank-list').append(rankEl)
+				setTimeout(() => {
+					rankLst.map((item, index) => {
+						$($('.rank-list .rank-item .progress-value')[index]).css('width', item.score /
+							4000 * 100 + '%')
+					})
+				}, 0);
+			}
+		</script>
+	</body>
+</html>

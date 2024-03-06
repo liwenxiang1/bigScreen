@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国核工业建设·新增子项</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="add-child-form container-fluid form-div animated fadeInRight">
+        <form class="form-horizontal container-fluid">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-xs-2 control-label">计划编号:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" id="code" placeholder="请输入计划编号">
+                </div>
+                <label for="inputPassword3" class="col-xs-2 control-label">分管领导:</label>
+                <div class="col-xs-4">
+                    <select class="form-control" name="leader">
+                        <option>张三</option>
+                        <option>李四</option>
+                        <option>王五</option>
+                        <option>燕小六</option>
+                    </select>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-xs-2 control-label">任务描述:</label>
+                <div class="col-xs-10">
+                    <input class="form-control" id="code" placeholder="请输入任务描述">
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-xs-2 control-label">计划开始时间:</label>
+                <div class="col-xs-4">
+                    <input type="text" id="startTime" placeholder="请选择开始日期" />
+                </div>
+                <label for="inputEmail3" class="col-xs-2 control-label">计划结束时间:</label>
+                <div class="col-xs-4">
+                    <input type="text" id="endTime" placeholder="请选择结束日期" />
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-xs-2 control-label">配合单位:</label>
+                <div class="col-xs-10">
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="subButt">
+                <button type="button" onclick="saveForm('保存')" class="btn btn-info">
+                    <span class="glyphicon glyphicon-ok"></span>保存</button>
+                <button type="button" onclick="closeDialog()" class="btn btn-default">
+                    <span class="glyphicon glyphicon-remove"></span>取消</button>
+            </div>
+        </form>
+    </div>
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="../js/plugins/layer/layer.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.22.1/moment-with-locales.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#startTime").datetimepicker({
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-CN'),
+                minDate: false, // 最小日期，如'2018/08/15'，则14号及14号前的日期都不可选
+                maxDate: false, // 最大日期，同'minDate'
+            });
+            $("#endTime").datetimepicker({
+                format: 'YYYY-MM-DD',
+                locale: moment.locale('zh-CN'),
+                minDate: false, // 最小日期，如'2018/08/15'，则14号及14号前的日期都不可选
+                maxDate: false, // 最大日期，同'minDate'
+            });
+        })
+        function closeDialog(){
+            console.log('关闭')
+        }
+        function saveForm(){
+            // layer.close(layer.index)
+            console.log('保存')
+        }
+    </script>
+</body>
+
+</html>
